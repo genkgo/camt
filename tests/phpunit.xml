@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit bootstrap="./bootstrap.php">
+    <testsuites>
+        <testsuite>
+            <directory>./Unit</directory>
+            <directory>./Integration</directory>
+        </testsuite>
+    </testsuites>
+    <filter>
+        <whitelist>
+            <directory>../src</directory>
+        </whitelist>
+    </filter>
+</phpunit>

@@ -1,0 +1,6 @@
+/.idea/
+/.settings/
+/vendor/
+/tests/build/
+.project
+composer.lock

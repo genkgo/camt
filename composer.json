@@ -1,0 +1,20 @@
+{
+  "name" : "genkgo/camt",
+  "require" : {
+    "php" : ">=5.5",
+    "jschaedl/iban": "~1.1.0",
+    "mathiasverraes/money": "~1.2.1"
+  },
+  "require-dev" : {
+    "phpunit/phpunit" : "~4.0",
+    "phpunit/phpunit-mock-objects" : "2.3.0"
+  },
+  "autoload" : {
+    "psr-4" : {
+      "Genkgo\\Camt\\" : [
+        "src",
+        "tests"
+      ]
+    }
+  }
+}

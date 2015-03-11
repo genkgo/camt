@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:iso:std:iso:20022:tech:xsd:camt.053.001.02">
+    <BkToCstmrStmt>
+        <GrpHdr>
+            <MsgId>CAMT053RIB000000000001</MsgId>
+            <CreDtTm>2015-03-10T18:43:50+00:00</CreDtTm>
+        </GrpHdr>
+    </BkToCstmrStmt>
+</Document>

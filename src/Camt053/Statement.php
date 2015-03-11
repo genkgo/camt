@@ -1,0 +1,82 @@
+<?php
+namespace Genkgo\Camt\Camt053;
+
+/**
+ * Class Statement
+ * @package Genkgo\Camt\Camt053
+ */
+class Statement {
+
+    /**
+     * @var
+     */
+    private $id;
+    /**
+     * @var \DateTimeImmutable
+     */
+    private $createdOn;
+    /**
+     * @var Account
+     */
+    private $account;
+    /**
+     * @var array
+     */
+    private $balances = [];
+    /**
+     * @var array
+     */
+    private $entries = [];
+
+    /**
+     * @param $id
+     * @param \DateTimeImmutable $createdOn
+     * @param Account $account
+     */
+    public function __construct($id, \DateTimeImmutable $createdOn, Account $account)
+    {
+        $this->id = $id;
+        $this->createdOn = $createdOn;
+        $this->account = $account;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return \DateTimeImmutable
+     */
+    public function getCreatedOn()
+    {
+        return $this->createdOn;
+    }
+
+    /**
+     * @return Account
+     */
+    public function getAccount()
+    {
+        return $this->account;
+    }
+
+    /**
+     * @param Balance $balance
+     */
+    public function addBalance (Balance $balance) {
+        $this->balances[] = $balance;
+    }
+
+    /**
+     * @return Balance[]
+     */
+    public function getBalances () {
+        return $this->balances;
+    }
+
+
+}
