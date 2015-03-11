@@ -1,6 +1,8 @@
 <?php
 namespace Genkgo\Camt\Camt053;
 
+use BadMethodCallException;
+
 /**
  * Class EntryTransactionDetail
  * @package Genkgo\Camt\Camt053
@@ -35,6 +37,19 @@ class EntryTransactionDetail {
     }
 
     /**
+     * @return Reference
+     * @throws BadMethodCallException
+     */
+    public function getFirstReference () {
+        if (isset($this->references[0])) {
+            return $this->references[0];
+        } else {
+            throw new BadMethodCallException('There are no references at all for this transaction');
+        }
+
+    }
+
+    /**
      * @param RelatedParty $relatedParty
      */
     public function addRelatedParty (RelatedParty $relatedParty) {
@@ -46,6 +61,19 @@ class EntryTransactionDetail {
      */
     public function getRelatedParties () {
         return $this->relatedParties;
+    }
+
+    /**
+     * @return RelatedParty
+     * @throws BadMethodCallException
+     */
+    public function getFirstRelatedParty () {
+        if (isset($this->relatedParties[0])) {
+            return $this->relatedParties[0];
+        } else {
+            throw new BadMethodCallException('There are no related parties at all for this transaction');
+        }
+
     }
 
     /**

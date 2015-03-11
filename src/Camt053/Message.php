@@ -3,6 +3,7 @@ namespace Genkgo\Camt\Camt053;
 
 use DateTimeImmutable;
 use DOMDocument;
+use Genkgo\Camt\Camt053\Iterator\EntryIterator;
 use Genkgo\Camt\Exception\InvalidMessageException;
 use Genkgo\Camt\Iban;
 use Money\Currency;
@@ -77,6 +78,10 @@ class Message {
         }
 
         return $this->statements;
+    }
+
+    public function getEntries () {
+        return new EntryIterator($this);
     }
 
     /**

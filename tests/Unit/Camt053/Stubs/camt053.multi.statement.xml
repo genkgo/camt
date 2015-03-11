@@ -66,7 +66,7 @@
                         </BkTxCd>
                         <RltdPties>
                             <Cdtr>
-                                <Nm>Company Name</Nm>
+                                <Nm>Company Name 1</Nm>
                                 <PstlAdr>
                                     <Ctry>NL</Ctry>
                                 </PstlAdr>
@@ -78,7 +78,86 @@
                             </CdtrAcct>
                         </RltdPties>
                         <RmtInf>
-                            <Ustrd>Transaction Description</Ustrd>
+                            <Ustrd>Transaction Description 1</Ustrd>
+                        </RmtInf>
+                    </TxDtls>
+                </NtryDtls>
+            </Ntry>
+        </Stmt>
+        <Stmt>
+            <Id>254EURNL26VAYB8060476890</Id>
+            <CreDtTm>2015-03-10T18:43:50+00:00</CreDtTm>
+            <Acct>
+                <Id>
+                    <IBAN>NL26VAYB8060476890</IBAN>
+                </Id>
+                <Ccy>EUR</Ccy>
+            </Acct>
+            <Bal>
+                <Tp>
+                    <CdOrPrtry>
+                        <Cd>OPBD</Cd>
+                    </CdOrPrtry>
+                </Tp>
+                <Amt Ccy="EUR">27.00</Amt>
+                <CdtDbtInd>CRDT</CdtDbtInd>
+                <Dt>
+                    <Dt>2014-12-30</Dt>
+                </Dt>
+            </Bal>
+            <Bal>
+                <Tp>
+                    <CdOrPrtry>
+                        <Cd>CLBD</Cd>
+                    </CdOrPrtry>
+                </Tp>
+                <Amt Ccy="EUR">20.00</Amt>
+                <CdtDbtInd>CRDT</CdtDbtInd>
+                <Dt>
+                    <Dt>2014-12-31</Dt>
+                </Dt>
+            </Bal>
+            <Ntry>
+                <Amt Ccy="EUR">7.00</Amt>
+                <CdtDbtInd>DBIT</CdtDbtInd>
+                <RvslInd>false</RvslInd>
+                <Sts>BOOK</Sts>
+                <BookgDt>
+                    <Dt>2014-12-31</Dt>
+                </BookgDt>
+                <ValDt>
+                    <Dt>2015-01-02</Dt>
+                </ValDt>
+                <BkTxCd>
+                    <Prtry>
+                        <Cd>544</Cd>
+                    </Prtry>
+                </BkTxCd>
+                <NtryDtls>
+                    <TxDtls>
+                        <Refs>
+                            <EndToEndId>000000002</EndToEndId>
+                        </Refs>
+                        <BkTxCd>
+                            <Prtry>
+                                <Cd>544</Cd>
+                            </Prtry>
+                        </BkTxCd>
+                        <RltdPties>
+                            <Cdtr>
+                                <Nm>Company Name 2</Nm>
+                                <PstlAdr>
+                                    <Ctry>NL</Ctry>
+                                </PstlAdr>
+                            </Cdtr>
+                            <CdtrAcct>
+                                <Id>
+                                    <IBAN>NL56AGDH9619008421</IBAN>
+                                </Id>
+                            </CdtrAcct>
+                        </RltdPties>
+                        <RmtInf>
+                            <Ustrd>Transaction Description 2</Ustrd>
                         </RmtInf>
                     </TxDtls>
                 </NtryDtls>

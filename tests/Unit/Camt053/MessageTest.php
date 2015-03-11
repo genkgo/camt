@@ -39,6 +39,7 @@ class MessageTest extends AbstractTestCase {
         $this->assertCount(1, $statements);
         foreach ($statements as $statement) {
             $this->assertInstanceOf(Statement::class, $statement);
+            $this->assertEquals('253EURNL26VAYB8060476890', $statement->getId());
             $this->assertEquals('NL26VAYB8060476890', (string) $statement->getAccount()->getIban());
             $this->assertEquals(new \DateTimeImmutable('2015-03-10T18:43:50+00:00'), $statement->getCreatedOn());
         }
@@ -69,7 +70,7 @@ class MessageTest extends AbstractTestCase {
         }
     }
 
-    public function testEntrie () {
+    public function testEntries () {
         $message = new Message($this->getDefaultDocument());
         $statements = $message->getStatements();
 
