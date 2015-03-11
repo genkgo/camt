@@ -40,7 +40,7 @@
             </Bal>
             <Ntry>
                 <Amt Ccy="EUR">8.85</Amt>
-                <CdtDbtInd>DBIT</CdtDbtInd>
+                <CdtDbtInd>CRDT</CdtDbtInd>
                 <RvslInd>false</RvslInd>
                 <Sts>BOOK</Sts>
                 <BookgDt>
@@ -64,25 +64,19 @@
                                 <Cd>544</Cd>
                             </Prtry>
                         </BkTxCd>
-                        <RltdPties><Cdtr>
-                            <Nm>Company Name</Nm>
-                            <PstlAdr>
-                                <Ctry>NL</Ctry>
-                            </PstlAdr>
-                        </Cdtr>
+                        <RltdPties>
+                            <Cdtr>
+                                <Nm>Company Name</Nm>
+                                <PstlAdr>
+                                    <Ctry>NL</Ctry>
+                                </PstlAdr>
+                            </Cdtr>
                             <CdtrAcct>
                                 <Id>
                                     <IBAN>NL56AGDH9619008421</IBAN>
                                 </Id>
                             </CdtrAcct>
                         </RltdPties>
-                        <RltdAgts>
-                            <CdtrAgt>
-                                <FinInstnId>
-                                    <BIC>AGDHNL2AXXX</BIC>
-                                </FinInstnId>
-                            </CdtrAgt>
-                        </RltdAgts>
                         <RmtInf>
                             <Ustrd>Transaction Description</Ustrd>
                         </RmtInf>

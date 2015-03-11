@@ -78,5 +78,19 @@ class Statement {
         return $this->balances;
     }
 
+    /**
+     * @param Entry $entry
+     */
+    public function addEntry (Entry $entry) {
+        $this->entries[] = $entry;
+    }
+
+    /**
+     * @return Entry[]
+     */
+    public function getEntries () {
+        return $this->entries;
+    }
+
 
 }

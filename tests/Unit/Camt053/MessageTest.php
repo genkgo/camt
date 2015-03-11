@@ -69,4 +69,46 @@ class MessageTest extends AbstractTestCase {
         }
     }
 
+    public function testEntrie () {
+        $message = new Message($this->getDefaultDocument());
+        $statements = $message->getStatements();
+
+        $this->assertCount(1, $statements);
+        foreach ($statements as $statement) {
+            $entries = $statement->getEntries();
+            $this->assertCount(1, $entries);
+
+            foreach ($entries as $entry) {
+                $this->assertEquals(885, $entry->getAmount()->getAmount());
+                $this->assertEquals('EUR', $entry->getAmount()->getCurrency()->getName());
+                $this->assertEquals('2014-12-31', $entry->getBookingDate()->format('Y-m-d'));
+                $this->assertEquals('2015-01-02', $entry->getValueDate()->format('Y-m-d'));
+
+                $details = $entry->getTransactionDetails();
+                $this->assertCount(1, $details);
+                foreach ($details as $detail) {
+                    $parties = $detail->getRelatedParties();
+                    $this->assertCount(1, $parties);
+                    foreach ($parties as $party) {
+                        $this->assertEquals('Company Name', $party->getCreditor()->getName());
+                        $this->assertEquals('NL', $party->getCreditor()->getAddress()->getCountry());
+                        $this->assertEquals([] , $party->getCreditor()->getAddress()->getAddressLines());
+                        $this->assertEquals('NL56AGDH9619008421', (string) $party->getAccount()->getIban());
+                    }
+
+                    $references = $detail->getReferences();
+                    $this->assertCount(1, $references);
+                    foreach ($references as $reference) {
+                        $this->assertEquals('000000001', $reference->getEndToEndId());
+                        $this->assertNull($reference->getMandateId());
+                    }
+
+                    $remittanceInformation = $detail->getRemittanceInformation();
+                    $this->assertEquals('Transaction Description', $remittanceInformation->getMessage());
+                }
+
+            }
+        }
+    }
+
 }

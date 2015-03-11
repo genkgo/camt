@@ -69,6 +69,7 @@ class Message {
                 );
 
                 $this->addBalancesToStatement($statementXml, $statement);
+                $this->addEntriesToStatement($statementXml, $statement);
 
                 $this->statements[] = $statement;
             }
@@ -76,21 +77,6 @@ class Message {
         }
 
         return $this->statements;
-    }
-
-    /**
-     * @param DOMDocument $document
-     * @throws InvalidMessageException
-     */
-    private function validate (DOMDocument $document) {
-        libxml_use_internal_errors(true);
-        $valid = $document->schemaValidate(dirname(dirname(__DIR__)).'/assets/camt.053.001.02.xsd');
-        $errors = libxml_get_errors();
-        libxml_clear_errors();
-
-        if (!$valid) {
-            throw new InvalidMessageException("Provided XML is not valid according to the XSD");
-        }
     }
 
     /**
@@ -128,6 +114,112 @@ class Message {
             }
 
             $statement->addBalance($balance);
+        }
+    }
+
+    /**
+     * @param SimpleXMLElement $statementXml
+     * @param Statement $statement
+     */
+    private function addEntriesToStatement(SimpleXMLElement $statementXml, Statement $statement)
+    {
+        $entriesXml = $statementXml->Ntry;
+        foreach ($entriesXml as $entryXml) {
+            $amount = Money::stringToUnits((string) $entryXml->Amt);
+            $currency = (string)$entryXml->Amt['Ccy'];
+            $bookingDate = (string)$entryXml->BookgDt->Dt;
+            $valueDate = (string)$entryXml->ValDt->Dt;
+
+            if ((string) $entryXml->CdtDbtInd === 'DBIT') {
+                $amount = $amount * -1;
+            }
+
+            $entry = new Entry(
+                new Money($amount, new Currency($currency)),
+                new DateTimeImmutable($bookingDate),
+                new DateTimeImmutable($valueDate)
+            );
+
+            $this->addTransactionDetailsToEntry($entryXml, $entry);
+
+            $statement->addEntry($entry);
+        }
+    }
+
+    /**
+     * @param DOMDocument $document
+     * @throws InvalidMessageException
+     */
+    private function validate (DOMDocument $document) {
+        libxml_use_internal_errors(true);
+        $valid = $document->schemaValidate(dirname(dirname(__DIR__)).'/assets/camt.053.001.02.xsd');
+        $errors = libxml_get_errors();
+        libxml_clear_errors();
+
+        if (!$valid) {
+            $messages = [];
+            foreach ($errors as $error) {
+                $messages[] = $error->message;
+            }
+
+            $errorMessage = implode("\n", $messages);
+            throw new InvalidMessageException("Provided XML is not valid according to the XSD:\n{$errorMessage}");
+        }
+    }
+
+    /**
+     * @param SimpleXMLElement $entryXml
+     * @param Entry $entry
+     */
+    private function addTransactionDetailsToEntry(SimpleXMLElement $entryXml, Entry $entry)
+    {
+        $detailsXml = $entryXml->NtryDtls->TxDtls;
+        foreach ($detailsXml as $detailXml) {
+            $detail = new EntryTransactionDetail();
+            if (isset($detailXml->Refs->EndToEndId)) {
+                $endToEndId = (string)$detailXml->Refs->EndToEndId;
+                if (isset($detailXml->Refs->MndtId)) {
+                    $mandateId = (string)$detailXml->Refs->MndtId;
+                } else {
+                    $mandateId = null;
+                }
+                $detail->addReference(new Reference($endToEndId, $mandateId));
+            }
+
+            if (isset($detailXml->RltdPties)) {
+                foreach ($detailXml->RltdPties as $relatedPartyXml) {
+                    $creditor = new Creditor((string)$relatedPartyXml->Cdtr->Nm);
+                    if (isset($relatedPartyXml->Cdtr->PstlAdr)) {
+                        $address = new Address();
+                        if (isset($relatedPartyXml->Cdtr->PstlAdr->Ctry)) {
+                            $address = $address->setCountry($relatedPartyXml->Cdtr->PstlAdr->Ctry);
+                        }
+                        if (isset($relatedPartyXml->Cdtr->PstlAdr->AdrLine)) {
+                            foreach ($relatedPartyXml->Cdtr->PstlAdr->AdrLine as $line) {
+                                $address = $address->addAddressLine((string)$line);
+                            }
+                        }
+
+                        $creditor->setAddress($address);
+                    }
+
+                    $account = new Account(new Iban((string)$relatedPartyXml->CdtrAcct->Id->IBAN));
+                    $relatedParty = new RelatedParty($creditor, $account);
+                    $detail->addRelatedParty($relatedParty);
+                }
+            }
+
+            if (isset($detailXml->RmtInf)) {
+                if (isset($detailXml->RmtInf->Ustrd)) {
+                    $remittanceInformation = RemittanceInformation::fromUnstructured(
+                        (string)$detailXml->RmtInf->Ustrd
+                    );
+                    $detail->setRemittanceInformation($remittanceInformation);
+                }
+            }
+
+            $entry->addTransactionDetail($detail);
+
         }
     }
 
