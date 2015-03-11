@@ -22,7 +22,7 @@ class ReaderTest extends AbstractTestCase {
         $reader->readDom(new DOMDocument('1.0', 'UTF-8'));
     }
 
-    public function testConstructorWrongFormat () {
+    public function testReadWrongFormat () {
         $this->setExpectedException(ReaderException::class);
 
         $dom = new DOMDocument('1.0', 'UTF-8');
@@ -34,12 +34,10 @@ class ReaderTest extends AbstractTestCase {
         $reader->readDom($dom);
     }
 
-    public function testConstructor () {
-        $dom = new DOMDocument('1.0', 'UTF-8');
-        $dom->load(__DIR__.'/Camt053/Stubs/camt053.minimal.xml');
-
+    public function testReadFile () {
         $reader = new Reader($this->getDefaultConfig());
-        $this->assertInstanceOf(Message::class, $reader->readDom($dom));
+        $message = $reader->readFile(__DIR__.'/Camt053/Stubs/camt053.minimal.xml');
+        $this->assertInstanceOf(Message::class, $message);
     }
 
 }

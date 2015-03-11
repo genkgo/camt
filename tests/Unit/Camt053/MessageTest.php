@@ -44,4 +44,29 @@ class MessageTest extends AbstractTestCase {
         }
     }
 
+    public function testBalance () {
+        $message = new Message($this->getDefaultDocument());
+        $statements = $message->getStatements();
+
+        $this->assertCount(1, $statements);
+        foreach ($statements as $statement) {
+            $balances = $statement->getBalances();
+            $this->assertCount(2, $balances);
+
+            foreach ($balances as $item => $balance) {
+                if ($item === 0) {
+                    $this->assertEquals(1815, $balance->getAmount()->getAmount());
+                    $this->assertEquals('EUR', $balance->getAmount()->getCurrency()->getName());
+                    $this->assertEquals('opening', $balance->getType());
+                }
+
+                if ($item === 1) {
+                    $this->assertEquals(2700, $balance->getAmount()->getAmount());
+                    $this->assertEquals('EUR', $balance->getAmount()->getCurrency()->getName());
+                    $this->assertEquals('closing', $balance->getType());
+                }
+            }
+        }
+    }
+
 }

@@ -13,7 +13,7 @@ class Balance {
     /**
      *
      */
-    const TYPE_OPENING = 'start';
+    const TYPE_OPENING = 'opening';
     /**
      *
      */
@@ -61,6 +61,7 @@ class Balance {
 
     /**
      * @param Money $amount
+     * @param DateTimeImmutable $date
      * @return static
      */
     public static function opening(Money $amount, DateTimeImmutable $date) {
@@ -69,6 +70,7 @@ class Balance {
 
     /**
      * @param Money $amount
+     * @param DateTimeImmutable $date
      * @return static
      */
     public static function closing (Money $amount, DateTimeImmutable $date) {

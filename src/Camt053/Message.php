@@ -7,6 +7,7 @@ use Genkgo\Camt\Exception\InvalidMessageException;
 use Genkgo\Camt\Iban;
 use Money\Currency;
 use Money\Money;
+use SimpleXMLElement;
 
 /**
  * Class Message
@@ -15,7 +16,7 @@ use Money\Money;
 class Message {
 
     /**
-     * @var \SimpleXMLElement[]
+     * @var SimpleXMLElement[]
      */
     private $document;
     /**
@@ -83,7 +84,7 @@ class Message {
      */
     private function validate (DOMDocument $document) {
         libxml_use_internal_errors(true);
-        $valid = $document->schemaValidate(dirname(dirname(__DIR__)).'/assets/camt.053.001.02.xsd', LIBXML_SCHEMA_CREATE);
+        $valid = $document->schemaValidate(dirname(dirname(__DIR__)).'/assets/camt.053.001.02.xsd');
         $errors = libxml_get_errors();
         libxml_clear_errors();
 
@@ -93,21 +94,25 @@ class Message {
     }
 
     /**
-     * @param $statementXml
-     * @param $statement
+     * @param SimpleXMLElement $statementXml
+     * @param Statement $statement
      */
-    private function addBalancesToStatement($statementXml, $statement)
+    private function addBalancesToStatement(SimpleXMLElement $statementXml, Statement $statement)
     {
         $balancesXml = $statementXml->Bal;
         foreach ($balancesXml as $balanceXml) {
-            $amount = (string)$balanceXml->Amt;
+            $amount = Money::stringToUnits((string)$balanceXml->Amt);
             $currency = (string)$balanceXml->Amt['Ccy'];
             $date = (string)$balanceXml->Dt->Dt;
 
-            if ($balanceXml->Tp->CdOrPrtry->Cd === 'OPBD') {
+            if ((string) $balanceXml->CdtDbtInd === 'DBIT') {
+                $amount = $amount * -1;
+            }
+
+            if ((string) $balanceXml->Tp->CdOrPrtry->Cd === 'OPBD') {
                 $balance = Balance::opening(
                     new Money(
-                        Money::stringToUnits($amount),
+                        $amount,
                         new Currency($currency)
                     ),
                     new DateTimeImmutable($date)
@@ -115,7 +120,7 @@ class Message {
             } else {
                 $balance = Balance::closing(
                     new Money(
-                        Money::stringToUnits($amount),
+                        $amount,
                         new Currency($currency)
                     ),
                     new DateTimeImmutable($date)
