@@ -7,14 +7,14 @@ use BadMethodCallException;
  * Class EntryTransactionDetail
  * @package Genkgo\Camt\Camt053
  */
-class EntryTransactionDetail {
-
+class EntryTransactionDetail
+{
     /**
-     * @var array
+     * @var Reference[]
      */
     private $references = [];
     /**
-     * @var array
+     * @var RelatedParty[]
      */
     private $relatedParties = [];
     /**
@@ -25,14 +25,16 @@ class EntryTransactionDetail {
     /**
      * @param Reference $reference
      */
-    public function addReference (Reference $reference) {
+    public function addReference(Reference $reference)
+    {
         $this->references[] = $reference;
     }
 
     /**
      * @return Reference[]
      */
-    public function getReferences () {
+    public function getReferences()
+    {
         return $this->references;
     }
 
@@ -40,26 +42,28 @@ class EntryTransactionDetail {
      * @return Reference
      * @throws BadMethodCallException
      */
-    public function getFirstReference () {
+    public function getFirstReference()
+    {
         if (isset($this->references[0])) {
             return $this->references[0];
         } else {
             throw new BadMethodCallException('There are no references at all for this transaction');
         }
-
     }
 
     /**
      * @param RelatedParty $relatedParty
      */
-    public function addRelatedParty (RelatedParty $relatedParty) {
+    public function addRelatedParty(RelatedParty $relatedParty)
+    {
         $this->relatedParties[] = $relatedParty;
     }
 
     /**
      * @return RelatedParty[]
      */
-    public function getRelatedParties () {
+    public function getRelatedParties()
+    {
         return $this->relatedParties;
     }
 
@@ -67,28 +71,28 @@ class EntryTransactionDetail {
      * @return RelatedParty
      * @throws BadMethodCallException
      */
-    public function getFirstRelatedParty () {
+    public function getFirstRelatedParty()
+    {
         if (isset($this->relatedParties[0])) {
             return $this->relatedParties[0];
         } else {
             throw new BadMethodCallException('There are no related parties at all for this transaction');
         }
-
     }
 
     /**
      * @param RemittanceInformation $remittanceInformation
      */
-    public function setRemittanceInformation (RemittanceInformation $remittanceInformation) {
+    public function setRemittanceInformation(RemittanceInformation $remittanceInformation)
+    {
         $this->remittanceInformation = $remittanceInformation;
     }
 
     /**
      * @return RemittanceInformation|null
      */
-    public function getRemittanceInformation () {
+    public function getRemittanceInformation()
+    {
         return $this->remittanceInformation;
     }
-
-
 }

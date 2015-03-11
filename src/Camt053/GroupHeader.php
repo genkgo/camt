@@ -5,8 +5,8 @@ namespace Genkgo\Camt\Camt053;
  * Class GroupHeader
  * @package Genkgo\Camt\Camt053
  */
-class GroupHeader {
-
+class GroupHeader
+{
     /**
      * @var string
      */
@@ -41,6 +41,4 @@ class GroupHeader {
     {
         return $this->createdOn;
     }
-
-
 }

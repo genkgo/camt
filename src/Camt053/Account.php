@@ -7,9 +7,8 @@ use Genkgo\Camt\Iban;
  * Class Account
  * @package Genkgo\Camt\Camt053
  */
-class Account {
-
-
+class Account
+{
     /**
      * @var Iban
      */
@@ -27,8 +26,4 @@ class Account {
     {
         return $this->iban;
     }
-
-
-
-
 }

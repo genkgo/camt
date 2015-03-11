@@ -4,15 +4,32 @@ namespace Genkgo\Camt;
 use DOMDocument;
 use Genkgo\Camt\Exception\ReaderException;
 
-class Reader {
-
+/**
+ * Class Reader
+ * @package Genkgo\Camt
+ */
+class Reader
+{
+    /**
+     * @var Config
+     */
     private $config;
 
-    public function __construct (Config $config) {
+    /**
+     * @param Config $config
+     */
+    public function __construct(Config $config)
+    {
         $this->config = $config;
     }
 
-    public function readDom (DOMDocument $document) {
+    /**
+     * @param DOMDocument $document
+     * @return mixed
+     * @throws ReaderException
+     */
+    public function readDom(DOMDocument $document)
+    {
         if ($document->documentElement === null) {
             throw new ReaderException("Empty document");
         }
@@ -22,13 +39,25 @@ class Reader {
         return $messageFormat->getMessage($document);
     }
 
-    public function readString ($string) {
+    /**
+     * @param $string
+     * @return mixed
+     * @throws ReaderException
+     */
+    public function readString($string)
+    {
         $dom = new DOMDocument('1.0', 'UTF-8');
         $dom->loadXML($string);
         return $this->readDom($dom);
     }
 
-    public function readFile ($file) {
+    /**
+     * @param $file
+     * @return mixed
+     * @throws ReaderException
+     */
+    public function readFile($file)
+    {
         if (!file_exists($file)) {
             throw new ReaderException("{$file} does not exists");
         }
@@ -36,7 +65,13 @@ class Reader {
         return $this->readString(file_get_contents($file));
     }
 
-    private function getMessageFormatForXmlNs ($xmlNs) {
+    /**
+     * @param $xmlNs
+     * @return MessageFormatInterface
+     * @throws ReaderException
+     */
+    private function getMessageFormatForXmlNs($xmlNs)
+    {
         $messageFormats = $this->config->getMessageFormats();
         foreach ($messageFormats as $messageFormat) {
             if ($messageFormat->getXmlNs() === $xmlNs) {
@@ -46,5 +81,4 @@ class Reader {
 
         throw new ReaderException("Unsupported format, cannot find message format with xmlns {$xmlNs}");
     }
-
 }

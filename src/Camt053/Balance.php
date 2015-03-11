@@ -8,8 +8,8 @@ use Money\Money;
  * Class Balance
  * @package Genkgo\Camt\Camt053
  */
-class Balance {
-
+class Balance
+{
     /**
      *
      */
@@ -34,10 +34,12 @@ class Balance {
     private $date;
 
     /**
-     * @param Money $amount
      * @param $type
+     * @param Money $amount
+     * @param DateTimeImmutable $date
      */
-    private function __construct ($type, Money $amount, DateTimeImmutable $date) {
+    private function __construct($type, Money $amount, DateTimeImmutable $date)
+    {
         $this->type = $type;
         $this->amount = $amount;
         $this->date = $date;
@@ -64,7 +66,8 @@ class Balance {
      * @param DateTimeImmutable $date
      * @return static
      */
-    public static function opening(Money $amount, DateTimeImmutable $date) {
+    public static function opening(Money $amount, DateTimeImmutable $date)
+    {
         return new static (self::TYPE_OPENING, $amount, $date);
     }
 
@@ -73,8 +76,8 @@ class Balance {
      * @param DateTimeImmutable $date
      * @return static
      */
-    public static function closing (Money $amount, DateTimeImmutable $date) {
+    public static function closing(Money $amount, DateTimeImmutable $date)
+    {
         return new static (self::TYPE_CLOSING, $amount, $date);
     }
-
 }

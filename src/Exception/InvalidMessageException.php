@@ -1,6 +1,10 @@
 <?php
 namespace Genkgo\Camt\Exception;
 
-class InvalidMessageException extends AbstractException {
-
+/**
+ * Class InvalidMessageException
+ * @package Genkgo\Camt\Exception
+ */
+class InvalidMessageException extends AbstractException
+{
 }

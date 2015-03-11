@@ -3,11 +3,22 @@ namespace Genkgo\Camt;
 
 use IBAN\Validation\IBANValidator;
 
-class Iban {
-
+/**
+ * Class Iban
+ * @package Genkgo\Camt
+ */
+class Iban
+{
+    /**
+     * @var string
+     */
     private $iban;
 
-    public function __construct($iban) {
+    /**
+     * @param string $iban
+     */
+    public function __construct($iban)
+    {
         $validator = new IBANValidator();
         if (!$validator->validate($iban)) {
             throw new \InvalidArgumentException("Unknown IBAN {$iban}");
@@ -16,15 +27,18 @@ class Iban {
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getIban()
     {
         return $this->iban;
     }
 
-    public function __toString() {
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
         return $this->iban;
     }
-
 }

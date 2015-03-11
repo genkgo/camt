@@ -1,13 +1,23 @@
 <?php
 namespace Genkgo\Camt\Camt053;
 
-class Address {
-
+/**
+ * Class Address
+ * @package Genkgo\Camt\Camt053
+ */
+class Address
+{
+    /**
+     * @var string
+     */
     private $country;
+    /**
+     * @var array
+     */
     private $addressLines = [];
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getCountry()
     {
@@ -15,7 +25,7 @@ class Address {
     }
 
     /**
-     * @param mixed $country
+     * @param string $country
      * @return static
      */
     public function setCountry($country)
@@ -48,13 +58,10 @@ class Address {
      * @param string $addressLine
      * @return static
      */
-    public function addAddressLine ($addressLine)
+    public function addAddressLine($addressLine)
     {
         $cloned = clone $this;
         $cloned->addressLines[] = $addressLine;
         return $cloned;
     }
-
-
-
 }

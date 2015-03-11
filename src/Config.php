@@ -5,25 +5,26 @@ namespace Genkgo\Camt;
  * Class Config
  * @package Genkgo\Camt
  */
-class Config {
-
+class Config
+{
     /**
-     * @var array
+     * @var MessageFormatInterface[]
      */
     private $messageFormats = [];
 
     /**
      * @param MessageFormatInterface $messageFormat
      */
-    public function addMessageFormat (MessageFormatInterface $messageFormat) {
+    public function addMessageFormat(MessageFormatInterface $messageFormat)
+    {
         $this->messageFormats[] = $messageFormat;
     }
 
     /**
      * @return MessageFormatInterface[]
      */
-    public function getMessageFormats () {
+    public function getMessageFormats()
+    {
         return $this->messageFormats;
     }
-
 }

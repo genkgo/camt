@@ -5,8 +5,8 @@ namespace Genkgo\Camt\Camt053;
  * Class RelatedParty
  * @package Genkgo\Camt\Camt053
  */
-class RelatedParty {
-
+class RelatedParty
+{
     /**
      * @var Creditor
      */
@@ -20,7 +20,8 @@ class RelatedParty {
      * @param Creditor $creditor
      * @param Account $account
      */
-    public function __construct (Creditor $creditor, Account $account) {
+    public function __construct(Creditor $creditor, Account $account)
+    {
         $this->creditor = $creditor;
         $this->account = $account;
     }
@@ -40,6 +41,4 @@ class RelatedParty {
     {
         return $this->account;
     }
-
-
 }

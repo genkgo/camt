@@ -9,8 +9,8 @@ use Money\Money;
  * Class Entry
  * @package Genkgo\Camt\Camt053
  */
-class Entry {
-
+class Entry
+{
     /**
      * @var Money
      */
@@ -67,7 +67,8 @@ class Entry {
     /**
      * @param EntryTransactionDetail $detail
      */
-    public function addTransactionDetail (EntryTransactionDetail $detail) {
+    public function addTransactionDetail(EntryTransactionDetail $detail)
+    {
         $this->transactionDetails[] = $detail;
     }
 
@@ -82,12 +83,12 @@ class Entry {
     /**
      * @return EntryTransactionDetail
      */
-    public function getFirstTransactionDetails() {
+    public function getFirstTransactionDetails()
+    {
         if (isset($this->transactionDetails[0])) {
             return $this->transactionDetails[0];
         } else {
             throw new BadMethodCallException('There are no transaction details at all for this entry');
         }
     }
-
 }

@@ -8,21 +8,24 @@ use Genkgo\Camt\Config;
 use Genkgo\Camt\Exception\ReaderException;
 use Genkgo\Camt\Reader;
 
-class ReaderTest extends AbstractTestCase {
-
-    protected function getDefaultConfig () {
+class ReaderTest extends AbstractTestCase
+{
+    protected function getDefaultConfig()
+    {
         $config = new Config();
         $config->addMessageFormat(new \Genkgo\Camt\Camt053\MessageFormat());
         return $config;
     }
 
-    public function testReadEmptyDocument () {
+    public function testReadEmptyDocument()
+    {
         $this->setExpectedException(ReaderException::class);
         $reader = new Reader($this->getDefaultConfig());
         $reader->readDom(new DOMDocument('1.0', 'UTF-8'));
     }
 
-    public function testReadWrongFormat () {
+    public function testReadWrongFormat()
+    {
         $this->setExpectedException(ReaderException::class);
 
         $dom = new DOMDocument('1.0', 'UTF-8');
@@ -34,10 +37,10 @@ class ReaderTest extends AbstractTestCase {
         $reader->readDom($dom);
     }
 
-    public function testReadFile () {
+    public function testReadFile()
+    {
         $reader = new Reader($this->getDefaultConfig());
         $message = $reader->readFile(__DIR__.'/Camt053/Stubs/camt053.minimal.xml');
         $this->assertInstanceOf(Message::class, $message);
     }
-
 }

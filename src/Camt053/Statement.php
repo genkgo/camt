@@ -5,8 +5,8 @@ namespace Genkgo\Camt\Camt053;
  * Class Statement
  * @package Genkgo\Camt\Camt053
  */
-class Statement {
-
+class Statement
+{
     /**
      * @var
      */
@@ -67,30 +67,32 @@ class Statement {
     /**
      * @param Balance $balance
      */
-    public function addBalance (Balance $balance) {
+    public function addBalance(Balance $balance)
+    {
         $this->balances[] = $balance;
     }
 
     /**
      * @return Balance[]
      */
-    public function getBalances () {
+    public function getBalances()
+    {
         return $this->balances;
     }
 
     /**
      * @param Entry $entry
      */
-    public function addEntry (Entry $entry) {
+    public function addEntry(Entry $entry)
+    {
         $this->entries[] = $entry;
     }
 
     /**
      * @return Entry[]
      */
-    public function getEntries () {
+    public function getEntries()
+    {
         return $this->entries;
     }
-
-
 }

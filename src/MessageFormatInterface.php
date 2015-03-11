@@ -3,14 +3,30 @@ namespace Genkgo\Camt;
 
 use DOMDocument;
 
-interface MessageFormatInterface {
-
+/**
+ * Interface MessageFormatInterface
+ * @package Genkgo\Camt
+ */
+interface MessageFormatInterface
+{
+    /**
+     * @return string
+     */
     public function getXmlNs();
 
+    /**
+     * @return string
+     */
     public function getMsgId();
 
+    /**
+     * @return string
+     */
     public function getName();
 
-    public function getMessage (DOMDocument $document);
-
+    /**
+     * @param DOMDocument $document
+     * @return mixed
+     */
+    public function getMessage(DOMDocument $document);
 }

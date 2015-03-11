@@ -3,6 +3,10 @@ namespace Genkgo\Camt\Exception;
 
 use Exception;
 
-abstract class AbstractException extends Exception {
-
+/**
+ * Class AbstractException
+ * @package Genkgo\Camt\Exception
+ */
+abstract class AbstractException extends Exception
+{
 }

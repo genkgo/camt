@@ -14,8 +14,8 @@ use SimpleXMLElement;
  * Class Message
  * @package Genkgo\Camt\Camt053
  */
-class Message {
-
+class Message
+{
     /**
      * @var SimpleXMLElement[]
      */
@@ -33,7 +33,8 @@ class Message {
      * @param DOMDocument $document
      * @throws InvalidMessageException
      */
-    public function __construct(DOMDocument $document) {
+    public function __construct(DOMDocument $document)
+    {
         $this->validate($document);
         $this->document = simplexml_import_dom($document);
     }
@@ -41,7 +42,8 @@ class Message {
     /**
      * @return GroupHeader
      */
-    public function getGroupHeader() {
+    public function getGroupHeader()
+    {
         if ($this->groupHeader === null) {
             $groupHeaderXml = $this->document->BkToCstmrStmt->GrpHdr;
 
@@ -57,7 +59,8 @@ class Message {
     /**
      * @return Statement[]
      */
-    public function getStatements() {
+    public function getStatements()
+    {
         if ($this->statements === null) {
             $this->statements = [];
 
@@ -74,13 +77,16 @@ class Message {
 
                 $this->statements[] = $statement;
             }
-
         }
 
         return $this->statements;
     }
 
-    public function getEntries () {
+    /**
+     * @return EntryIterator|Entry[]
+     */
+    public function getEntries()
+    {
         return new EntryIterator($this);
     }
 
@@ -155,7 +161,8 @@ class Message {
      * @param DOMDocument $document
      * @throws InvalidMessageException
      */
-    private function validate (DOMDocument $document) {
+    private function validate(DOMDocument $document)
+    {
         libxml_use_internal_errors(true);
         $valid = $document->schemaValidate(dirname(dirname(__DIR__)).'/assets/camt.053.001.02.xsd');
         $errors = libxml_get_errors();
@@ -224,8 +231,6 @@ class Message {
             }
 
             $entry->addTransactionDetail($detail);
-
         }
     }
-
 }

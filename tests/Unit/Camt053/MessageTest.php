@@ -7,15 +7,17 @@ use Genkgo\Camt\Camt053\Message;
 use Genkgo\Camt\Camt053\Statement;
 use Genkgo\Camt\Exception\InvalidMessageException;
 
-class MessageTest extends AbstractTestCase {
-
-    protected function getDefaultDocument () {
+class MessageTest extends AbstractTestCase
+{
+    protected function getDefaultDocument()
+    {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $dom->load(__DIR__.'/Stubs/camt053.minimal.xml');
         return $dom;
     }
 
-    public function testWrongDocument () {
+    public function testWrongDocument()
+    {
         $this->setExpectedException(InvalidMessageException::class);
 
         $dom = new \DOMDocument('1.0', 'UTF-8');
@@ -23,7 +25,8 @@ class MessageTest extends AbstractTestCase {
         new Message($dom);
     }
 
-    public function testGroupHeader () {
+    public function testGroupHeader()
+    {
         $message = new Message($this->getDefaultDocument());
         $groupHeader = $message->getGroupHeader();
 
@@ -32,7 +35,8 @@ class MessageTest extends AbstractTestCase {
         $this->assertEquals(new \DateTimeImmutable('2015-03-10T18:43:50+00:00'), $groupHeader->getCreatedOn());
     }
 
-    public function testStatements () {
+    public function testStatements()
+    {
         $message = new Message($this->getDefaultDocument());
         $statements = $message->getStatements();
 
@@ -45,7 +49,8 @@ class MessageTest extends AbstractTestCase {
         }
     }
 
-    public function testBalance () {
+    public function testBalance()
+    {
         $message = new Message($this->getDefaultDocument());
         $statements = $message->getStatements();
 
@@ -70,7 +75,8 @@ class MessageTest extends AbstractTestCase {
         }
     }
 
-    public function testEntries () {
+    public function testEntries()
+    {
         $message = new Message($this->getDefaultDocument());
         $statements = $message->getStatements();
 
@@ -93,7 +99,7 @@ class MessageTest extends AbstractTestCase {
                     foreach ($parties as $party) {
                         $this->assertEquals('Company Name', $party->getCreditor()->getName());
                         $this->assertEquals('NL', $party->getCreditor()->getAddress()->getCountry());
-                        $this->assertEquals([] , $party->getCreditor()->getAddress()->getAddressLines());
+                        $this->assertEquals([], $party->getCreditor()->getAddress()->getAddressLines());
                         $this->assertEquals('NL56AGDH9619008421', (string) $party->getAccount()->getIban());
                     }
 
@@ -107,9 +113,7 @@ class MessageTest extends AbstractTestCase {
                     $remittanceInformation = $detail->getRemittanceInformation();
                     $this->assertEquals('Transaction Description', $remittanceInformation->getMessage());
                 }
-
             }
         }
     }
-
 }

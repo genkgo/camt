@@ -5,8 +5,8 @@ namespace Genkgo\Camt\Camt053;
  * Class RemittanceInformation
  * @package Genkgo\Camt\Camt053
  */
-class RemittanceInformation {
-
+class RemittanceInformation
+{
     /**
      * @var string
      */
@@ -24,10 +24,10 @@ class RemittanceInformation {
      * @param $message
      * @return static
      */
-    public static function fromUnstructured ($message) {
+    public static function fromUnstructured($message)
+    {
         $information = new static;
         $information->message = $message;
         return $information;
     }
-
 }

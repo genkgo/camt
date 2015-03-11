@@ -5,8 +5,8 @@ namespace Genkgo\Camt\Camt053;
  * Class Reference
  * @package Genkgo\Camt\Camt053
  */
-class Reference {
-
+class Reference
+{
     /**
      * @var string
      */
@@ -42,6 +42,4 @@ class Reference {
     {
         return $this->endToEndId;
     }
-
-
 }

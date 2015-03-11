@@ -5,43 +5,46 @@ namespace Genkgo\Camt\Camt053;
  * Class Creditor
  * @package Genkgo\Camt\Camt053
  */
-class Creditor {
-
+class Creditor
+{
     /**
-     * @var
+     * @var string
      */
     private $name;
     /**
-     * @var
+     * @var Address
      */
     private $address;
 
     /**
      * @param $name
      */
-    public function __construct ($name) {
+    public function __construct($name)
+    {
         $this->name = $name;
     }
 
     /**
      * @param Address $address
      */
-    public function setAddress (Address $address) {
+    public function setAddress(Address $address)
+    {
         $this->address = $address;
     }
 
     /**
      * @return Address|null
      */
-    public function getAddress () {
+    public function getAddress()
+    {
         return $this->address;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getName () {
+    public function getName()
+    {
         return $this->name;
     }
-
 }
