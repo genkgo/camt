@@ -188,49 +188,73 @@ class Message
         $detailsXml = $entryXml->NtryDtls->TxDtls;
         foreach ($detailsXml as $detailXml) {
             $detail = new EntryTransactionDetail();
-            if (isset($detailXml->Refs->EndToEndId)) {
-                $endToEndId = (string)$detailXml->Refs->EndToEndId;
-                if (isset($detailXml->Refs->MndtId)) {
-                    $mandateId = (string)$detailXml->Refs->MndtId;
-                } else {
-                    $mandateId = null;
-                }
-                $detail->addReference(new Reference($endToEndId, $mandateId));
-            }
+            $this->addReferencesToTransactionDetails($detailXml, $detail);
+            $this->addRelatedPartiesToTransactionDetails($detailXml, $detail);
+            $this->addRemittanceInformationToTransactionDetails($detailXml, $detail);
+            $entry->addTransactionDetail($detail);
+        }
+    }
 
-            if (isset($detailXml->RltdPties)) {
-                foreach ($detailXml->RltdPties as $relatedPartyXml) {
-                    $creditor = new Creditor((string)$relatedPartyXml->Cdtr->Nm);
-                    if (isset($relatedPartyXml->Cdtr->PstlAdr)) {
-                        $address = new Address();
-                        if (isset($relatedPartyXml->Cdtr->PstlAdr->Ctry)) {
-                            $address = $address->setCountry($relatedPartyXml->Cdtr->PstlAdr->Ctry);
+    /**
+     * @param SimpleXMLElement $detailXml
+     * @param EntryTransactionDetail $detail
+     */
+    private function addRelatedPartiesToTransactionDetails(SimpleXMLElement $detailXml, EntryTransactionDetail $detail)
+    {
+        if (isset($detailXml->RltdPties)) {
+            foreach ($detailXml->RltdPties as $relatedPartyXml) {
+                $creditor = new Creditor((string)$relatedPartyXml->Cdtr->Nm);
+                if (isset($relatedPartyXml->Cdtr->PstlAdr)) {
+                    $address = new Address();
+                    if (isset($relatedPartyXml->Cdtr->PstlAdr->Ctry)) {
+                        $address = $address->setCountry($relatedPartyXml->Cdtr->PstlAdr->Ctry);
+                    }
+                    if (isset($relatedPartyXml->Cdtr->PstlAdr->AdrLine)) {
+                        foreach ($relatedPartyXml->Cdtr->PstlAdr->AdrLine as $line) {
+                            $address = $address->addAddressLine((string)$line);
                         }
-                        if (isset($relatedPartyXml->Cdtr->PstlAdr->AdrLine)) {
-                            foreach ($relatedPartyXml->Cdtr->PstlAdr->AdrLine as $line) {
-                                $address = $address->addAddressLine((string)$line);
-                            }
-                        }
-
-                        $creditor->setAddress($address);
                     }
 
-                    $account = new Account(new Iban((string)$relatedPartyXml->CdtrAcct->Id->IBAN));
-                    $relatedParty = new RelatedParty($creditor, $account);
-                    $detail->addRelatedParty($relatedParty);
+                    $creditor->setAddress($address);
                 }
-            }
 
-            if (isset($detailXml->RmtInf)) {
-                if (isset($detailXml->RmtInf->Ustrd)) {
-                    $remittanceInformation = RemittanceInformation::fromUnstructured(
-                        (string)$detailXml->RmtInf->Ustrd
-                    );
-                    $detail->setRemittanceInformation($remittanceInformation);
-                }
+                $account = new Account(new Iban((string)$relatedPartyXml->CdtrAcct->Id->IBAN));
+                $relatedParty = new RelatedParty($creditor, $account);
+                $detail->addRelatedParty($relatedParty);
             }
+        }
+    }
 
-            $entry->addTransactionDetail($detail);
+    /**
+     * @param SimpleXMLElement $detailXml
+     * @param EntryTransactionDetail $detail
+     */
+    private function addReferencesToTransactionDetails(SimpleXMLElement $detailXml, EntryTransactionDetail $detail)
+    {
+        if (isset($detailXml->Refs->EndToEndId)) {
+            $endToEndId = (string)$detailXml->Refs->EndToEndId;
+            if (isset($detailXml->Refs->MndtId)) {
+                $mandateId = (string)$detailXml->Refs->MndtId;
+            } else {
+                $mandateId = null;
+            }
+            $detail->addReference(new Reference($endToEndId, $mandateId));
+        }
+    }
+
+    /**
+     * @param SimpleXMLElement $detailXml
+     * @param EntryTransactionDetail $detail
+     */
+    private function addRemittanceInformationToTransactionDetails(SimpleXMLElement $detailXml, EntryTransactionDetail $detail)
+    {
+        if (isset($detailXml->RmtInf)) {
+            if (isset($detailXml->RmtInf->Ustrd)) {
+                $remittanceInformation = RemittanceInformation::fromUnstructured(
+                    (string)$detailXml->RmtInf->Ustrd
+                );
+                $detail->setRemittanceInformation($remittanceInformation);
+            }
         }
     }
 }
