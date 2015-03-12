@@ -1,7 +1,7 @@
 <?php
 namespace Genkgo\Camt\Camt053;
 
-use DOMDocument;
+use Genkgo\Camt\DecoderInterface;
 use Genkgo\Camt\MessageFormatInterface;
 
 /**
@@ -35,11 +35,10 @@ class MessageFormat implements MessageFormatInterface
     }
 
     /**
-     * @param DOMDocument $document
-     * @return Message
+     * @return DecoderInterface
      */
-    public function getMessage(DOMDocument $document)
+    public function getDecoder()
     {
-        return new Message($document);
+        return new Decoder();
     }
 }

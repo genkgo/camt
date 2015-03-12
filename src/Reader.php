@@ -36,7 +36,7 @@ class Reader
 
         $xmlNs = $document->documentElement->getAttribute('xmlns');
         $messageFormat = $this->getMessageFormatForXmlNs($xmlNs);
-        return $messageFormat->getMessage($document);
+        return $messageFormat->getDecoder()->decode($document);
     }
 
     /**

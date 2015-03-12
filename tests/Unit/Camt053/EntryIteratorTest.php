@@ -2,21 +2,21 @@
 namespace Genkgo\Camt\Unit\Camt053;
 
 use Genkgo\Camt\AbstractTestCase;
+use Genkgo\Camt\Camt053\Decoder;
 use Genkgo\Camt\Camt053\Entry;
-use Genkgo\Camt\Camt053\Message;
 
 class EntryIteratorTest extends AbstractTestCase
 {
-    protected function getDefaultDocument()
+    protected function getDefaultMessage()
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $dom->load(__DIR__.'/Stubs/camt053.multi.statement.xml');
-        return $dom;
+        return (new Decoder())->decode($dom);
     }
 
     public function testMultipleStatements()
     {
-        $message = new Message($this->getDefaultDocument());
+        $message = $this->getDefaultMessage();
         $entries = $message->getEntries();
 
         $item = 0;

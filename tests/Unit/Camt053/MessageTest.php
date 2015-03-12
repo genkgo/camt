@@ -2,6 +2,7 @@
 namespace Genkgo\Camt\Unit\Camt053;
 
 use Genkgo\Camt\AbstractTestCase;
+use Genkgo\Camt\Camt053\Decoder;
 use Genkgo\Camt\Camt053\GroupHeader;
 use Genkgo\Camt\Camt053\Message;
 use Genkgo\Camt\Camt053\Statement;
@@ -9,11 +10,11 @@ use Genkgo\Camt\Exception\InvalidMessageException;
 
 class MessageTest extends AbstractTestCase
 {
-    protected function getDefaultDocument()
+    protected function getDefaultMessage()
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $dom->load(__DIR__.'/Stubs/camt053.minimal.xml');
-        return $dom;
+        return (new Decoder())->decode($dom);
     }
 
     public function testWrongDocument()
@@ -22,12 +23,12 @@ class MessageTest extends AbstractTestCase
 
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $dom->load(__DIR__.'/Stubs/camt053.wrong.xml');
-        new Message($dom);
+        (new Decoder())->decode($dom);
     }
 
     public function testGroupHeader()
     {
-        $message = new Message($this->getDefaultDocument());
+        $message = $this->getDefaultMessage();
         $groupHeader = $message->getGroupHeader();
 
         $this->assertInstanceOf(GroupHeader::class, $groupHeader);
@@ -37,7 +38,7 @@ class MessageTest extends AbstractTestCase
 
     public function testStatements()
     {
-        $message = new Message($this->getDefaultDocument());
+        $message = $this->getDefaultMessage();
         $statements = $message->getStatements();
 
         $this->assertCount(1, $statements);
@@ -51,7 +52,7 @@ class MessageTest extends AbstractTestCase
 
     public function testBalance()
     {
-        $message = new Message($this->getDefaultDocument());
+        $message = $this->getDefaultMessage();
         $statements = $message->getStatements();
 
         $this->assertCount(1, $statements);
@@ -77,7 +78,7 @@ class MessageTest extends AbstractTestCase
 
     public function testEntries()
     {
-        $message = new Message($this->getDefaultDocument());
+        $message = $this->getDefaultMessage();
         $statements = $message->getStatements();
 
         $this->assertCount(1, $statements);

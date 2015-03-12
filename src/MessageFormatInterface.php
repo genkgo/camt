@@ -25,8 +25,7 @@ interface MessageFormatInterface
     public function getName();
 
     /**
-     * @param DOMDocument $document
-     * @return mixed
+     * @return DecoderInterface
      */
-    public function getMessage(DOMDocument $document);
+    public function getDecoder();
 }
