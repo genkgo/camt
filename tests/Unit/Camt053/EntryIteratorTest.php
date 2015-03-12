@@ -26,15 +26,15 @@ class EntryIteratorTest extends AbstractTestCase
                 $this->assertEquals(885, $entry->getAmount()->getAmount());
                 $this->assertEquals(
                     'Transaction Description 1',
-                    $entry->getFirstTransactionDetails()->getRemittanceInformation()->getMessage()
+                    $entry->getTransactionDetail()->getRemittanceInformation()->getMessage()
                 );
                 $this->assertEquals(
                     'Company Name 1',
-                    $entry->getFirstTransactionDetails()->getFirstRelatedParty()->getCreditor()->getName()
+                    $entry->getTransactionDetail()->getRelatedParty()->getCreditor()->getName()
                 );
                 $this->assertEquals(
                     '000000001',
-                    $entry->getFirstTransactionDetails()->getFirstReference()->getEndToEndId()
+                    $entry->getTransactionDetail()->getReference()->getEndToEndId()
                 );
             }
 
@@ -42,15 +42,15 @@ class EntryIteratorTest extends AbstractTestCase
                 $this->assertEquals(-700, $entry->getAmount()->getAmount());
                 $this->assertEquals(
                     'Transaction Description 2',
-                    $entry->getFirstTransactionDetails()->getRemittanceInformation()->getMessage()
+                    $entry->getTransactionDetail()->getRemittanceInformation()->getMessage()
                 );
                 $this->assertEquals(
                     'Company Name 2',
-                    $entry->getFirstTransactionDetails()->getFirstRelatedParty()->getCreditor()->getName()
+                    $entry->getTransactionDetail()->getRelatedParty()->getCreditor()->getName()
                 );
                 $this->assertEquals(
                     '000000002',
-                    $entry->getFirstTransactionDetails()->getFirstReference()->getEndToEndId()
+                    $entry->getTransactionDetail()->getReference()->getEndToEndId()
                 );
             }
 

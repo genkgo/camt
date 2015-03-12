@@ -42,7 +42,7 @@ class EntryTransactionDetail
      * @return Reference
      * @throws BadMethodCallException
      */
-    public function getFirstReference()
+    public function getReference()
     {
         if (isset($this->references[0])) {
             return $this->references[0];
@@ -71,7 +71,7 @@ class EntryTransactionDetail
      * @return RelatedParty
      * @throws BadMethodCallException
      */
-    public function getFirstRelatedParty()
+    public function getRelatedParty()
     {
         if (isset($this->relatedParties[0])) {
             return $this->relatedParties[0];

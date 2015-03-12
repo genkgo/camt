@@ -83,7 +83,7 @@ class Entry
     /**
      * @return EntryTransactionDetail
      */
-    public function getFirstTransactionDetails()
+    public function getTransactionDetail()
     {
         if (isset($this->transactionDetails[0])) {
             return $this->transactionDetails[0];
