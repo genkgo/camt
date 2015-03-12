@@ -39,7 +39,7 @@ class ReaderTest extends AbstractTestCase
 
     public function testReadFile()
     {
-        $reader = new Reader($this->getDefaultConfig());
+        $reader = new Reader(Config::getDefault());
         $message = $reader->readFile(__DIR__.'/Camt053/Stubs/camt053.minimal.xml');
         $this->assertInstanceOf(Message::class, $message);
     }

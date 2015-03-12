@@ -5,6 +5,10 @@ namespace Genkgo\Camt;
  * Class Config
  * @package Genkgo\Camt
  */
+/**
+ * Class Config
+ * @package Genkgo\Camt
+ */
 class Config
 {
     /**
@@ -26,5 +30,14 @@ class Config
     public function getMessageFormats()
     {
         return $this->messageFormats;
+    }
+
+    /**
+     * @return static
+     */
+    public static function getDefault () {
+        $config = new static;
+        $config->addMessageFormat(new Camt053\MessageFormat());
+        return $config;
     }
 }

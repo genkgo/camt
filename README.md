@@ -30,9 +30,10 @@ Read a CAMT file, and loop through its statements and entries.
 
 ```php
 <?php
+use Genkgo\Camt\Config;
 use Genkgo\Camt\Reader;
 
-$reader = new Reader($this->getDefaultConfig());
+$reader = new Reader(Config::getDefault()));
 $message = $reader->readFile(__DIR__.'/Camt053/Stubs/camt053.minimal.xml');
 $statements = $message->getStatements();
 foreach ($statements as $statement) {
