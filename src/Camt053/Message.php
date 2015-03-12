@@ -57,6 +57,4 @@ class Message
     {
         return new EntryIterator($this);
     }
-
-
 }

@@ -10,8 +10,8 @@ use Money\Currency;
 use Money\Money;
 use SimpleXMLElement;
 
-class Decoder implements DecoderInterface {
-
+class Decoder implements DecoderInterface
+{
     /**
      * @var SimpleXMLElement[]
      */
@@ -44,7 +44,8 @@ class Decoder implements DecoderInterface {
      * @return Message
      * @throws InvalidMessageException
      */
-    public function decode (DOMDocument $document) {
+    public function decode(DOMDocument $document)
+    {
         $this->validate($document);
         $this->document = simplexml_import_dom($document);
 
@@ -240,5 +241,4 @@ class Decoder implements DecoderInterface {
 
         $message->setStatements($statements);
     }
-
 }
