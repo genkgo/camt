@@ -20,7 +20,7 @@ class RelatedParty
      * @param Creditor $creditor
      * @param Account $account
      */
-    public function __construct(Creditor $creditor, Account $account)
+    public function __construct(Creditor $creditor, Account $account = null)
     {
         $this->creditor = $creditor;
         $this->account = $account;

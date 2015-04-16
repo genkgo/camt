@@ -164,7 +164,12 @@ class Decoder implements DecoderInterface
                     $creditor->setAddress($address);
                 }
 
-                $account = new Account(new Iban((string)$relatedPartyXml->CdtrAcct->Id->IBAN));
+                if (isset($relatedPartyXml->CdtrAcct->Id->IBAN) && $ibanCode = (string) $relatedPartyXml->CdtrAcct->Id->IBAN) {
+                    $account = new Account(new Iban($ibanCode));
+                } else {
+                    $account = null;
+                }
+
                 $relatedParty = new RelatedParty($creditor, $account);
                 $detail->addRelatedParty($relatedParty);
             }
