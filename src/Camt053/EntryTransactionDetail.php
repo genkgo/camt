@@ -89,10 +89,13 @@ class EntryTransactionDetail
     }
 
     /**
-     * @return RemittanceInformation|null
+     * @return RemittanceInformation
      */
     public function getRemittanceInformation()
     {
+        if ($this->remittanceInformation === null) {
+            throw new BadMethodCallException();
+        }
         return $this->remittanceInformation;
     }
 }

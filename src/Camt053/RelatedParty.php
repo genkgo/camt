@@ -1,5 +1,6 @@
 <?php
 namespace Genkgo\Camt\Camt053;
+use BadMethodCallException;
 
 /**
  * Class RelatedParty
@@ -39,6 +40,9 @@ class RelatedParty
      */
     public function getAccount()
     {
+        if ($this->account === null) {
+            throw new BadMethodCallException();
+        }
         return $this->account;
     }
 }
