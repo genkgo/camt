@@ -9,30 +9,30 @@ use BadMethodCallException;
 class RelatedParty
 {
     /**
-     * @var Creditor
+     * @var RelatedPartyTypeInterface
      */
-    private $creditor;
+    private $relatedPartyDetails;
     /**
      * @var Account
      */
     private $account;
 
     /**
-     * @param Creditor $creditor
+     * @param RelatedPartyTypeInterface $relatedPartyDetails
      * @param Account $account
      */
-    public function __construct(Creditor $creditor, Account $account = null)
+    public function __construct(RelatedPartyTypeInterface $relatedPartyDetails, Account $account = null)
     {
-        $this->creditor = $creditor;
+        $this->relatedPartyDetails = $relatedPartyDetails;
         $this->account = $account;
     }
 
     /**
-     * @return Creditor
+     * @return RelatedPartyTypeInterface
      */
-    public function getCreditor()
+    public function getRelatedPartyType()
     {
-        return $this->creditor;
+        return $this->relatedPartyDetails;
     }
 
     /**

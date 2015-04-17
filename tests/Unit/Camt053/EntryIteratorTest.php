@@ -30,7 +30,7 @@ class EntryIteratorTest extends AbstractTestCase
                 );
                 $this->assertEquals(
                     'Company Name 1',
-                    $entry->getTransactionDetail()->getRelatedParty()->getCreditor()->getName()
+                    $entry->getTransactionDetail()->getRelatedParty()->getRelatedPartyType()->getName()
                 );
                 $this->assertEquals(
                     '000000001',
@@ -46,7 +46,7 @@ class EntryIteratorTest extends AbstractTestCase
                 );
                 $this->assertEquals(
                     'Company Name 2',
-                    $entry->getTransactionDetail()->getRelatedParty()->getCreditor()->getName()
+                    $entry->getTransactionDetail()->getRelatedParty()->getRelatedPartyType()->getName()
                 );
                 $this->assertEquals(
                     '000000002',

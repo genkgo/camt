@@ -98,9 +98,9 @@ class MessageTest extends AbstractTestCase
                     $parties = $detail->getRelatedParties();
                     $this->assertCount(1, $parties);
                     foreach ($parties as $party) {
-                        $this->assertEquals('Company Name', $party->getCreditor()->getName());
-                        $this->assertEquals('NL', $party->getCreditor()->getAddress()->getCountry());
-                        $this->assertEquals([], $party->getCreditor()->getAddress()->getAddressLines());
+                        $this->assertEquals('Company Name', $party->getRelatedPartyType()->getName());
+                        $this->assertEquals('NL', $party->getRelatedPartyType()->getAddress()->getCountry());
+                        $this->assertEquals([], $party->getRelatedPartyType()->getAddress()->getAddressLines());
                         $this->assertEquals('NL56AGDH9619008421', (string) $party->getAccount()->getIban());
                     }
 

@@ -2,10 +2,10 @@
 namespace Genkgo\Camt\Camt053;
 
 /**
- * Class Creditor
+ * Class Debtor
  * @package Genkgo\Camt\Camt053
  */
-class Creditor implements RelatedPartyTypeInterface
+class Debtor implements RelatedPartyTypeInterface
 {
     /**
      * @var string
