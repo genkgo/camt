@@ -100,6 +100,7 @@ class Decoder implements DecoderInterface
      */
     private function addEntriesToStatement(SimpleXMLElement $statementXml, Statement $statement)
     {
+        $index = 0;
         $entriesXml = $statementXml->Ntry;
         foreach ($entriesXml as $entryXml) {
             $amount = Money::stringToUnits((string) $entryXml->Amt);
@@ -112,18 +113,25 @@ class Decoder implements DecoderInterface
             }
 
             $entry = new Entry(
+                $statement,
+                $index,
                 new Money($amount, new Currency($currency)),
                 new DateTimeImmutable($bookingDate),
                 new DateTimeImmutable($valueDate)
             );
 
-            if (isset($entryXml->RvslInd) && $entryXml->RvslInd === 'true') {
+            if (isset($entryXml->RvslInd) && (string) $entryXml->RvslInd === 'true') {
                 $entry->setReversalIndicator(true);
+            }
+
+            if (isset($entryXml->NtryRef) && (string) $entryXml->NtryRef) {
+                $entry->setReference((string) $entryXml->NtryRef);
             }
 
             $this->addTransactionDetailsToEntry($entryXml, $entry);
 
             $statement->addEntry($entry);
+            $index++;
         }
     }
 

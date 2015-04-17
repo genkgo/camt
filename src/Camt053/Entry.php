@@ -12,6 +12,10 @@ use Money\Money;
 class Entry
 {
     /**
+     * @var Statement
+     */
+    private $statement;
+    /**
      * @var Money
      */
     private $amount;
@@ -31,17 +35,37 @@ class Entry
      * @var bool
      */
     private $reversalIndicator = false;
+    /**
+     * @var string
+     */
+    private $reference;
+    /**
+     * @var int
+     */
+    private $index;
 
     /**
+     * @param Statement $statement
+     * @param int $index
      * @param Money $amount
      * @param DateTimeImmutable $bookingDate
      * @param DateTimeImmutable $valueDate
      */
-    public function __construct(Money $amount, DateTimeImmutable $bookingDate, DateTimeImmutable $valueDate)
+    public function __construct(Statement $statement, $index, Money $amount, DateTimeImmutable $bookingDate, DateTimeImmutable $valueDate)
     {
+        $this->statement = $statement;
+        $this->index = $index;
         $this->amount = $amount;
         $this->bookingDate = $bookingDate;
         $this->valueDate = $valueDate;
+    }
+
+    /**
+     * @return Statement
+     */
+    public function getStatement()
+    {
+        return $this->statement;
     }
 
     /**
@@ -96,6 +120,9 @@ class Entry
         }
     }
 
+    /**
+     * @return bool
+     */
     public function getReversalIndicator ()
     {
         return $this->reversalIndicator;
@@ -107,5 +134,29 @@ class Entry
     public function setReversalIndicator($reversalIndicator)
     {
         $this->reversalIndicator = $reversalIndicator;
+    }
+
+    /**
+     * @return string
+     */
+    public function getReference()
+    {
+        return $this->reference;
+    }
+
+    /**
+     * @param string $reference
+     */
+    public function setReference($reference)
+    {
+        $this->reference = $reference;
+    }
+
+    /**
+     * @return int
+     */
+    public function getIndex()
+    {
+        return $this->index;
     }
 }
