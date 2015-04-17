@@ -149,28 +149,40 @@ class Decoder implements DecoderInterface
     {
         if (isset($detailXml->RltdPties)) {
             foreach ($detailXml->RltdPties as $relatedPartyXml) {
-                $creditor = new Creditor((string)$relatedPartyXml->Cdtr->Nm);
-                if (isset($relatedPartyXml->Cdtr->PstlAdr)) {
+
+                if (isset($relatedPartyXml->Cdtr)) {
+                    $relatedPartyTypeXml = $relatedPartyXml->Cdtr;
+                    $relatedPartyTypeAccountXml = $relatedPartyXml->CdtrAcct;
+                    $relatedPartyType = $creditor = new Creditor((string) $relatedPartyTypeXml->Nm);
+                } elseif (isset($relatedPartyXml->Dbtr)) {
+                    $relatedPartyTypeXml = $relatedPartyXml->Dbtr;
+                    $relatedPartyTypeAccountXml = $relatedPartyXml->DbtrAcct;
+                    $relatedPartyType = $creditor = new Debtor((string) $relatedPartyTypeXml->Nm);
+                } else {
+                    continue;
+                }
+
+                if (isset($relatedPartyTypeXml->PstlAdr)) {
                     $address = new Address();
-                    if (isset($relatedPartyXml->Cdtr->PstlAdr->Ctry)) {
-                        $address = $address->setCountry($relatedPartyXml->Cdtr->PstlAdr->Ctry);
+                    if (isset($relatedPartyTypeXml->PstlAdr->Ctry)) {
+                        $address = $address->setCountry($relatedPartyTypeXml->PstlAdr->Ctry);
                     }
-                    if (isset($relatedPartyXml->Cdtr->PstlAdr->AdrLine)) {
-                        foreach ($relatedPartyXml->Cdtr->PstlAdr->AdrLine as $line) {
+                    if (isset($relatedPartyTypeXml->PstlAdr->AdrLine)) {
+                        foreach ($relatedPartyTypeXml->PstlAdr->AdrLine as $line) {
                             $address = $address->addAddressLine((string)$line);
                         }
                     }
 
-                    $creditor->setAddress($address);
+                    $relatedPartyType->setAddress($address);
                 }
 
-                if (isset($relatedPartyXml->CdtrAcct->Id->IBAN) && $ibanCode = (string) $relatedPartyXml->CdtrAcct->Id->IBAN) {
+                if (isset($relatedPartyTypeAccountXml->Id->IBAN) && $ibanCode = (string) $relatedPartyTypeAccountXml->Id->IBAN) {
                     $account = new Account(new Iban($ibanCode));
                 } else {
                     $account = null;
                 }
 
-                $relatedParty = new RelatedParty($creditor, $account);
+                $relatedParty = new RelatedParty($relatedPartyType, $account);
                 $detail->addRelatedParty($relatedParty);
             }
         }
