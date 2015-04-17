@@ -117,6 +117,10 @@ class Decoder implements DecoderInterface
                 new DateTimeImmutable($valueDate)
             );
 
+            if (isset($entryXml->RvslInd) && $entryXml->RvslInd === 'true') {
+                $entry->setReversalIndicator(true);
+            }
+
             $this->addTransactionDetailsToEntry($entryXml, $entry);
 
             $statement->addEntry($entry);

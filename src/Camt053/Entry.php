@@ -27,6 +27,10 @@ class Entry
      * @var EntryTransactionDetail[]
      */
     private $transactionDetails = [];
+    /**
+     * @var bool
+     */
+    private $reversalIndicator = false;
 
     /**
      * @param Money $amount
@@ -90,5 +94,18 @@ class Entry
         } else {
             throw new BadMethodCallException('There are no transaction details at all for this entry');
         }
+    }
+
+    public function getReversalIndicator ()
+    {
+        return $this->reversalIndicator;
+    }
+
+    /**
+     * @param boolean $reversalIndicator
+     */
+    public function setReversalIndicator($reversalIndicator)
+    {
+        $this->reversalIndicator = $reversalIndicator;
     }
 }
