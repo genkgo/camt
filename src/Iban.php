@@ -41,4 +41,13 @@ class Iban
     {
         return $this->iban;
     }
+
+    public function equals($iban)
+    {
+        if ($iban === $this->iban) {
+            return true;
+        }
+
+        return preg_replace('/[^A-Za-z0-9]/', '', $iban) === $this->iban;
+    }
 }

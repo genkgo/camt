@@ -46,6 +46,14 @@ class Balance
     }
 
     /**
+     * @return DateTimeImmutable
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
      * @return Money
      */
     public function getAmount()
