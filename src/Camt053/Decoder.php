@@ -128,14 +128,16 @@ class Decoder implements DecoderInterface
                 $entry->setReference((string) $entryXml->NtryRef);
             }
 
+            if (isset($entryXml->Btch->PmtInfId) && (string) $entryXml->Btch->PmtInfId) {
+                $entry->setBatch((string) $entryXml->Btch->PmtInfId);
+            }
+
             $this->addTransactionDetailsToEntry($entryXml, $entry);
 
             $statement->addEntry($entry);
             $index++;
         }
     }
-
-
 
     /**
      * @param SimpleXMLElement $entryXml
@@ -270,4 +272,5 @@ class Decoder implements DecoderInterface
 
         $message->setStatements($statements);
     }
+
 }

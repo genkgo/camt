@@ -43,6 +43,10 @@ class Entry
      * @var int
      */
     private $index;
+    /**
+     * @var string
+     */
+    private $batchPaymentId;
 
     /**
      * @param Statement $statement
@@ -158,5 +162,21 @@ class Entry
     public function getIndex()
     {
         return $this->index;
+    }
+
+    /**
+     * @param string $batchPaymentId
+     */
+    public function setBatchPaymentId($batchPaymentId)
+    {
+        $this->batchPaymentId = $batchPaymentId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getBatchPaymentId()
+    {
+        return $this->batchPaymentId;
     }
 }
