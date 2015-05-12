@@ -128,8 +128,8 @@ class Decoder implements DecoderInterface
                 $entry->setReference((string) $entryXml->NtryRef);
             }
 
-            if (isset($entryXml->Btch->PmtInfId) && (string) $entryXml->Btch->PmtInfId) {
-                $entry->setBatch((string) $entryXml->Btch->PmtInfId);
+            if (isset($entryXml->NtryDtls->Btch->PmtInfId) && (string) $entryXml->NtryDtls->Btch->PmtInfId) {
+                $entry->setBatchPaymentId((string) $entryXml->NtryDtls->Btch->PmtInfId);
             }
 
             $this->addTransactionDetailsToEntry($entryXml, $entry);
