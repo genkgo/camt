@@ -21,6 +21,10 @@ class EntryTransactionDetail
      * @var
      */
     private $remittanceInformation;
+    /**
+     * @var
+     */
+    private $returnInformation;
 
     /**
      * @param Reference $reference
@@ -97,5 +101,13 @@ class EntryTransactionDetail
             throw new BadMethodCallException();
         }
         return $this->remittanceInformation;
+    }
+
+    public function getReturnInformation(){
+        return $this->returnInformation;
+    }
+
+    public function setReturnInformation(ReturnInformation $information){
+        $this->returnInformation = $information;
     }
 }

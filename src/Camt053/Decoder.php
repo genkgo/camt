@@ -151,6 +151,7 @@ class Decoder implements DecoderInterface
             $this->addReferencesToTransactionDetails($detailXml, $detail);
             $this->addRelatedPartiesToTransactionDetails($detailXml, $detail);
             $this->addRemittanceInformationToTransactionDetails($detailXml, $detail);
+            $this->addReturnInformationToTransactionDetails($detailXml, $detail);
             $entry->addTransactionDetail($detail);
         }
     }
@@ -231,6 +232,23 @@ class Decoder implements DecoderInterface
                     (string)$detailXml->RmtInf->Ustrd
                 );
                 $detail->setRemittanceInformation($remittanceInformation);
+            }
+        }
+    }
+
+    /**
+     * @param SimpleXMLElement $detailXml
+     * @param EntryTransactionDetail $detail
+     */
+    private function addReturnInformationToTransactionDetails(SimpleXMLElement $detailXml, EntryTransactionDetail $detail)
+    {
+        if (isset($detailXml->RtrInf)) {
+            if (isset($detailXml->RtrInf->Rsn->Cd)) {
+                $remittanceInformation = ReturnInformation::fromUnstructured(
+                    (string)$detailXml->RtrInf->Rsn->Cd,
+                    (string)$detailXml->RtrInf->AddtlInf
+                );
+                $detail->setReturnInformation($remittanceInformation);
             }
         }
     }
