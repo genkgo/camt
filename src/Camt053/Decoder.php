@@ -146,12 +146,14 @@ class Decoder implements DecoderInterface
     private function addTransactionDetailsToEntry(SimpleXMLElement $entryXml, Entry $entry)
     {
         $detailsXml = $entryXml->NtryDtls->TxDtls;
-        foreach ($detailsXml as $detailXml) {
-            $detail = new EntryTransactionDetail();
-            $this->addReferencesToTransactionDetails($detailXml, $detail);
-            $this->addRelatedPartiesToTransactionDetails($detailXml, $detail);
-            $this->addRemittanceInformationToTransactionDetails($detailXml, $detail);
-            $entry->addTransactionDetail($detail);
+        if ($detailsXml) {
+            foreach ($detailsXml as $detailXml) {
+                $detail = new EntryTransactionDetail();
+                $this->addReferencesToTransactionDetails($detailXml, $detail);
+                $this->addRelatedPartiesToTransactionDetails($detailXml, $detail);
+                $this->addRemittanceInformationToTransactionDetails($detailXml, $detail);
+                $entry->addTransactionDetail($detail);
+            }
         }
     }
 
