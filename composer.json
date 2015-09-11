@@ -2,7 +2,7 @@
   "name" : "genkgo/camt",
   "description": "Library to read CAMT files (XML containing bank statements). Currently only CAMT.053 is supported.",
   "require" : {
-    "php" : ">=5.5",
+    "php" : ">=5.4",
     "jschaedl/iban": "~1.1.0",
     "mathiasverraes/money": "~1.2.1"
   },
@@ -12,10 +12,13 @@
   },
   "autoload" : {
     "psr-4" : {
-      "Genkgo\\Camt\\" : [
-        "src",
-        "tests"
-      ]
+      "Genkgo\\Camt\\" : ["src"]
+    },
+    "files": ["src/_php5.4.php"]
+  },
+  "autoload-dev": {
+    "psr-4" : {
+      "Genkgo\\Camt\\" : ["tests"]
     }
   }
 }

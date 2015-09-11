@@ -19,7 +19,7 @@ class MessageTest extends AbstractTestCase
 
     public function testWrongDocument()
     {
-        $this->setExpectedException(InvalidMessageException::class);
+        $this->setExpectedException('\Genkgo\Camt\Exception\InvalidMessageException');
 
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $dom->load(__DIR__.'/Stubs/camt053.wrong.xml');
@@ -31,7 +31,7 @@ class MessageTest extends AbstractTestCase
         $message = $this->getDefaultMessage();
         $groupHeader = $message->getGroupHeader();
 
-        $this->assertInstanceOf(GroupHeader::class, $groupHeader);
+        $this->assertInstanceOf('\Genkgo\Camt\Camt053\GroupHeader', $groupHeader);
         $this->assertEquals('CAMT053RIB000000000001', $groupHeader->getMessageId());
         $this->assertEquals(new \DateTimeImmutable('2015-03-10T18:43:50+00:00'), $groupHeader->getCreatedOn());
     }
@@ -43,7 +43,7 @@ class MessageTest extends AbstractTestCase
 
         $this->assertCount(1, $statements);
         foreach ($statements as $statement) {
-            $this->assertInstanceOf(Statement::class, $statement);
+            $this->assertInstanceOf('\Genkgo\Camt\Camt053\Statement', $statement);
             $this->assertEquals('253EURNL26VAYB8060476890', $statement->getId());
             $this->assertEquals('NL26VAYB8060476890', (string) $statement->getAccount()->getIban());
             $this->assertEquals(new \DateTimeImmutable('2015-03-10T18:43:50+00:00'), $statement->getCreatedOn());

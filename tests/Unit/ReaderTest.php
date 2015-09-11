@@ -19,14 +19,14 @@ class ReaderTest extends AbstractTestCase
 
     public function testReadEmptyDocument()
     {
-        $this->setExpectedException(ReaderException::class);
+        $this->setExpectedException('\Genkgo\Camt\Exception\ReaderException');
         $reader = new Reader($this->getDefaultConfig());
         $reader->readDom(new DOMDocument('1.0', 'UTF-8'));
     }
 
     public function testReadWrongFormat()
     {
-        $this->setExpectedException(ReaderException::class);
+        $this->setExpectedException('Genkgo\Camt\Exception\ReaderException');
 
         $dom = new DOMDocument('1.0', 'UTF-8');
         $root = $dom->createElement('Document');
@@ -41,6 +41,6 @@ class ReaderTest extends AbstractTestCase
     {
         $reader = new Reader(Config::getDefault());
         $message = $reader->readFile(__DIR__.'/Camt053/Stubs/camt053.minimal.xml');
-        $this->assertInstanceOf(Message::class, $message);
+        $this->assertInstanceOf('Genkgo\Camt\Camt053\Message', $message);
     }
 }
