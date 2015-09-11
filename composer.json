@@ -12,10 +12,12 @@
   },
   "autoload" : {
     "psr-4" : {
-      "Genkgo\\Camt\\" : [
-        "src",
-        "tests"
-      ]
+      "Genkgo\\Camt\\" : "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4" : {
+      "Genkgo\\Camt\\" : "tests"
     }
   }
 }
