@@ -12,7 +12,8 @@
   },
   "autoload" : {
     "psr-4" : {
-      "Genkgo\\Camt\\" : "src"
+      "Genkgo\\Camt\\" : "src",
+      "files": ["src/_php5.4.php"]
     }
   },
   "autoload-dev": {
