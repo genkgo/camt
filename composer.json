@@ -12,13 +12,13 @@
   },
   "autoload" : {
     "psr-4" : {
-      "Genkgo\\Camt\\" : "src",
-      "files": ["src/_php5.4.php"]
-    }
+      "Genkgo\\Camt\\" : ["src"]
+    },
+    "files": ["src/_php5.4.php"]
   },
   "autoload-dev": {
     "psr-4" : {
-      "Genkgo\\Camt\\" : "tests"
+      "Genkgo\\Camt\\" : ["tests"]
     }
   }
 }
