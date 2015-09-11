@@ -20,7 +20,7 @@ if (version_compare(PHP_VERSION, '5.5.0', '<'))
 		}
 
 		public function __call($name, $arguments) {
-			$result = call_user_func([clone $this->datetime, $name], $arguments);
+			$result = call_user_func_array([clone $this->datetime, $name], $arguments);
 			if ($result instanceof \DateTime)
 			{
 				$self = new self();
