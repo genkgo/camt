@@ -18,13 +18,26 @@ class Decoder implements DecoderInterface
     private $document;
 
     /**
+     * Path to the schema definition
+     * @var string
+     */
+    protected $schemeDefinitionPath;
+
+    /**
+     * @param $schemeDefinitionPath
+     */
+    public function __construct($schemeDefinitionPath) {
+        $this->schemeDefinitionPath = $schemeDefinitionPath;
+    }
+
+    /**
      * @param DOMDocument $document
      * @throws InvalidMessageException
      */
     private function validate(DOMDocument $document)
     {
         libxml_use_internal_errors(true);
-        $valid = $document->schemaValidate(dirname(dirname(__DIR__)).'/assets/camt.053.001.02.xsd');
+        $valid = $document->schemaValidate(dirname(dirname(__DIR__)).$this->schemeDefinitionPath);
         $errors = libxml_get_errors();
         libxml_clear_errors();
 
@@ -64,7 +77,7 @@ class Decoder implements DecoderInterface
     {
         $balancesXml = $statementXml->Bal;
         foreach ($balancesXml as $balanceXml) {
-            $amount = Money::stringToUnits((string)$balanceXml->Amt);
+            $amount = Money::stringToUnits((string) $balanceXml->Amt);
             $currency = (string)$balanceXml->Amt['Ccy'];
             $date = (string)$balanceXml->Dt->Dt;
 

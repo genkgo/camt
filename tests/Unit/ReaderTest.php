@@ -13,7 +13,7 @@ class ReaderTest extends AbstractTestCase
     protected function getDefaultConfig()
     {
         $config = new Config();
-        $config->addMessageFormat(new \Genkgo\Camt\Camt053\MessageFormat());
+        $config->addMessageFormat(new Message\Camt053V02());
         return $config;
     }
 

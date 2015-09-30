@@ -14,7 +14,7 @@ class MessageTest extends AbstractTestCase
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $dom->load(__DIR__.'/Stubs/camt053.minimal.xml');
-        return (new Decoder())->decode($dom);
+        return (new Decoder('/assets/camt.053.001.02.xsd'))->decode($dom);
     }
 
     public function testWrongDocument()
@@ -23,7 +23,7 @@ class MessageTest extends AbstractTestCase
 
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $dom->load(__DIR__.'/Stubs/camt053.wrong.xml');
-        (new Decoder())->decode($dom);
+        (new Decoder('/assets/camt.053.001.02.xsd'))->decode($dom);
     }
 
     public function testGroupHeader()

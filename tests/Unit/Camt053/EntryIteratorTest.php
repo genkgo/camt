@@ -11,7 +11,7 @@ class EntryIteratorTest extends AbstractTestCase
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $dom->load(__DIR__.'/Stubs/camt053.multi.statement.xml');
-        return (new Decoder())->decode($dom);
+        return (new Decoder('/assets/camt.053.001.02.xsd'))->decode($dom);
     }
 
     public function testMultipleStatements()
