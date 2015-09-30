@@ -18,11 +18,11 @@ class EntryTransactionDetail
      */
     private $relatedParties = [];
     /**
-     * @var
+     * @var RemittanceInformation
      */
     private $remittanceInformation;
     /**
-     * @var
+     * @var ReturnInformation
      */
     private $returnInformation;
 
@@ -103,10 +103,16 @@ class EntryTransactionDetail
         return $this->remittanceInformation;
     }
 
+    /**
+     * @return ReturnInformation|null
+     */
     public function getReturnInformation(){
         return $this->returnInformation;
     }
 
+    /**
+     * @param ReturnInformation $information
+     */
     public function setReturnInformation(ReturnInformation $information){
         $this->returnInformation = $information;
     }
