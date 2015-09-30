@@ -322,7 +322,7 @@ class Decoder implements DecoderInterface
         $sign = "(?P<sign>[-\+])?";
         $digits = "(?P<digits>\d*)";
         $separator = "(?P<separator>[.,])?";
-        $decimals = "(?P<decimal1>\d)?(?P<decimal2>\d)";
+        $decimals = "(?P<decimal1>\d)?(?P<decimal2>\d)?(?P<decimal3>\d)?(?P<decimal4>\d)?(?P<decimal5>\d)";
         $pattern = "/^".$sign.$digits.$separator.$decimals."$/";
 
         if (!preg_match($pattern, trim($string), $matches)) {
@@ -333,6 +333,9 @@ class Decoder implements DecoderInterface
         $units .= $matches['digits'];
         $units .= isset($matches['decimal1']) ? $matches['decimal1'] : "0";
         $units .= isset($matches['decimal2']) ? $matches['decimal2'] : "0";
+        $units .= isset($matches['decimal3']) ? $matches['decimal3'] : "0";
+        $units .= isset($matches['decimal4']) ? $matches['decimal4'] : "0";
+        $units .= isset($matches['decimal5']) ? $matches['decimal5'] : "0";
 
         return (int) $units;
     }
