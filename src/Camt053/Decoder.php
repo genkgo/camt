@@ -6,7 +6,7 @@ use DOMDocument;
 use Genkgo\Camt\DecoderInterface;
 use Genkgo\Camt\Exception\InvalidMessageException;
 use Genkgo\Camt\Iban;
-use InvalidArgumentException;
+use Genkgo\Camt\Util\StringToUnits;
 use Money\Currency;
 use Money\Money;
 use SimpleXMLElement;
@@ -78,7 +78,7 @@ class Decoder implements DecoderInterface
     {
         $balancesXml = $statementXml->Bal;
         foreach ($balancesXml as $balanceXml) {
-            $amount = $this->stringToUnits((string) $balanceXml->Amt);
+            $amount = StringToUnits::convert((string) $balanceXml->Amt);
             $currency = (string)$balanceXml->Amt['Ccy'];
             $date = (string)$balanceXml->Dt->Dt;
 
@@ -117,7 +117,7 @@ class Decoder implements DecoderInterface
         $index = 0;
         $entriesXml = $statementXml->Ntry;
         foreach ($entriesXml as $entryXml) {
-            $amount = $this->stringToUnits((string) $entryXml->Amt);
+            $amount = StringToUnits::convert((string) $entryXml->Amt);
             $currency = (string)$entryXml->Amt['Ccy'];
             $bookingDate = (string)$entryXml->BookgDt->Dt;
             $valueDate = (string)$entryXml->ValDt->Dt;
@@ -305,39 +305,6 @@ class Decoder implements DecoderInterface
         }
 
         $message->setStatements($statements);
-    }
-
-    /**
-     * Converts a string value with an amount into an integer.
-     * Supports up to 5 decimals points.
-     *
-     * Credit goes to the mathiasverraes/money library
-     *
-     * @param $string
-     * @throws \Money\InvalidArgumentException
-     * @return int
-     */
-    private function stringToUnits($string)
-    {
-        $sign = "(?P<sign>[-\+])?";
-        $digits = "(?P<digits>\d*)";
-        $separator = "(?P<separator>[.,])?";
-        $decimals = "(?P<decimal1>\d)?(?P<decimal2>\d)?(?P<decimal3>\d)?(?P<decimal4>\d)?(?P<decimal5>\d)";
-        $pattern = "/^".$sign.$digits.$separator.$decimals."$/";
-
-        if (!preg_match($pattern, trim($string), $matches)) {
-            throw new InvalidArgumentException("The value could not be parsed as money");
-        }
-
-        $units = $matches['sign'] == "-" ? "-" : "";
-        $units .= $matches['digits'];
-        $units .= isset($matches['decimal1']) ? $matches['decimal1'] : "0";
-        $units .= isset($matches['decimal2']) ? $matches['decimal2'] : "0";
-        $units .= isset($matches['decimal3']) ? $matches['decimal3'] : "0";
-        $units .= isset($matches['decimal4']) ? $matches['decimal4'] : "0";
-        $units .= isset($matches['decimal5']) ? $matches['decimal5'] : "0";
-
-        return (int) $units;
     }
 
 }
