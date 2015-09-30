@@ -3,6 +3,7 @@ namespace Genkgo\Camt;
 
 use DOMDocument;
 use Genkgo\Camt\Exception\ReaderException;
+use Genkgo\Camt\Camt053\Message;
 
 /**
  * Class Reader
@@ -25,7 +26,7 @@ class Reader
 
     /**
      * @param DOMDocument $document
-     * @return mixed
+     * @return mixed|Message
      * @throws ReaderException
      */
     public function readDom(DOMDocument $document)
@@ -41,7 +42,7 @@ class Reader
 
     /**
      * @param $string
-     * @return mixed
+     * @return mixed|Message
      * @throws ReaderException
      */
     public function readString($string)
@@ -53,7 +54,7 @@ class Reader
 
     /**
      * @param $file
-     * @return mixed
+     * @return mixed|Message
      * @throws ReaderException
      */
     public function readFile($file)
