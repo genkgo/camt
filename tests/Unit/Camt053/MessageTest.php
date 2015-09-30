@@ -26,6 +26,20 @@ class MessageTest extends AbstractTestCase
         (new Decoder('/assets/camt.053.001.02.xsd'))->decode($dom);
     }
 
+    public function testFiveDecimalsStatement()
+    {
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $dom->load(__DIR__.'/Stubs/camt053.five.decimals.xml');
+        return (new Decoder('/assets/camt.053.001.02.xsd'))->decode($dom);
+    }
+
+    public function testV3Document()
+    {
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $dom->load(__DIR__.'/Stubs/camt053.v3.xml');
+        return (new Decoder('/assets/camt.053.001.03.xsd'))->decode($dom);
+    }
+
     public function testGroupHeader()
     {
         $message = $this->getDefaultMessage();
