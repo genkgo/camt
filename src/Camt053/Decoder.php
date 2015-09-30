@@ -70,7 +70,7 @@ class Decoder implements DecoderInterface
     {
         $balancesXml = $statementXml->Bal;
         foreach ($balancesXml as $balanceXml) {
-            $amount = Money::stringToUnits((string)round($balanceXml->Amt, 2));
+            $amount = Money::stringToUnits((string) round($balanceXml->Amt, 2));
             $currency = (string)$balanceXml->Amt['Ccy'];
             $date = (string)$balanceXml->Dt->Dt;
 
