@@ -18,13 +18,19 @@ class Decoder implements DecoderInterface
     private $document;
 
     /**
+     * Path to the schema definition
+     * @var string
+     */
+    protected $schemeDefinitionPath = '/assets/camt.053.001.02.xsd';
+
+    /**
      * @param DOMDocument $document
      * @throws InvalidMessageException
      */
     private function validate(DOMDocument $document)
     {
         libxml_use_internal_errors(true);
-        $valid = $document->schemaValidate(dirname(dirname(__DIR__)).'/assets/camt.053.001.02.xsd');
+        $valid = $document->schemaValidate(dirname(dirname(__DIR__)).$this->schemeDefinitionPath);
         $errors = libxml_get_errors();
         libxml_clear_errors();
 
@@ -64,7 +70,7 @@ class Decoder implements DecoderInterface
     {
         $balancesXml = $statementXml->Bal;
         foreach ($balancesXml as $balanceXml) {
-            $amount = Money::stringToUnits((string)$balanceXml->Amt);
+            $amount = Money::stringToUnits((string) round($balanceXml->Amt, 2));
             $currency = (string)$balanceXml->Amt['Ccy'];
             $date = (string)$balanceXml->Dt->Dt;
 
@@ -103,7 +109,7 @@ class Decoder implements DecoderInterface
         $index = 0;
         $entriesXml = $statementXml->Ntry;
         foreach ($entriesXml as $entryXml) {
-            $amount = Money::stringToUnits((string) $entryXml->Amt);
+            $amount = Money::stringToUnits((string) round($entryXml->Amt, 2));
             $currency = (string)$entryXml->Amt['Ccy'];
             $bookingDate = (string)$entryXml->BookgDt->Dt;
             $valueDate = (string)$entryXml->ValDt->Dt;
