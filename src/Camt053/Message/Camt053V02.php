@@ -1,21 +1,22 @@
 <?php
-namespace Genkgo\Camt\Camt053V03;
+namespace Genkgo\Camt\Camt053\Message;
 
+use Genkgo\Camt\Camt053\Decoder;
 use Genkgo\Camt\DecoderInterface;
 use Genkgo\Camt\MessageFormatInterface;
 
 /**
  * Class MessageFormat
- * @package Genkgo\Camt\Camt053V3
+ * @package Genkgo\Camt\Camt053
  */
-class MessageFormat implements MessageFormatInterface
+final class Camt053V02 implements MessageFormatInterface
 {
     /**
      * @return string
      */
     public function getXmlNs()
     {
-        return 'urn:iso:std:iso:20022:tech:xsd:camt.053.001.03';
+        return 'urn:iso:std:iso:20022:tech:xsd:camt.053.001.02';
     }
 
     /**
@@ -23,7 +24,7 @@ class MessageFormat implements MessageFormatInterface
      */
     public function getMsgId()
     {
-        return 'camt.053.001.03';
+        return 'camt.053.001.02';
     }
 
     /**
@@ -31,7 +32,7 @@ class MessageFormat implements MessageFormatInterface
      */
     public function getName()
     {
-        return 'BankToCustomerStatementV03';
+        return 'BankToCustomerStatementV02';
     }
 
     /**
@@ -39,6 +40,6 @@ class MessageFormat implements MessageFormatInterface
      */
     public function getDecoder()
     {
-        return new Decoder();
+        return new Decoder('/assets/camt.053.001.02.xsd');
     }
 }

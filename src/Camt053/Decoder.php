@@ -21,7 +21,14 @@ class Decoder implements DecoderInterface
      * Path to the schema definition
      * @var string
      */
-    protected $schemeDefinitionPath = '/assets/camt.053.001.02.xsd';
+    protected $schemeDefinitionPath;
+
+    /**
+     * @param $schemeDefinitionPath
+     */
+    public function __construct($schemeDefinitionPath) {
+        $this->schemeDefinitionPath = $schemeDefinitionPath;
+    }
 
     /**
      * @param DOMDocument $document
@@ -70,7 +77,7 @@ class Decoder implements DecoderInterface
     {
         $balancesXml = $statementXml->Bal;
         foreach ($balancesXml as $balanceXml) {
-            $amount = Money::stringToUnits((string) round($balanceXml->Amt, 2));
+            $amount = Money::stringToUnits((string) $balanceXml->Amt);
             $currency = (string)$balanceXml->Amt['Ccy'];
             $date = (string)$balanceXml->Dt->Dt;
 
@@ -109,7 +116,7 @@ class Decoder implements DecoderInterface
         $index = 0;
         $entriesXml = $statementXml->Ntry;
         foreach ($entriesXml as $entryXml) {
-            $amount = Money::stringToUnits((string) round($entryXml->Amt, 2));
+            $amount = Money::stringToUnits((string) $entryXml->Amt);
             $currency = (string)$entryXml->Amt['Ccy'];
             $bookingDate = (string)$entryXml->BookgDt->Dt;
             $valueDate = (string)$entryXml->ValDt->Dt;
