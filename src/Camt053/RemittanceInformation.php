@@ -13,12 +13,9 @@ class RemittanceInformation
     private $message;
 
     /**
-     * @return string
+     * @var CreditorReferenceInformation
      */
-    public function getMessage()
-    {
-        return $this->message;
-    }
+    private $creditorReferenceInformation;
 
     /**
      * @param $message
@@ -29,5 +26,30 @@ class RemittanceInformation
         $information = new static;
         $information->message = $message;
         return $information;
+    }
+
+    /**
+     * @return CreditorReferenceInformation
+     */
+    public function getCreditorReferenceInformation()
+    {
+        return $this->creditorReferenceInformation;
+    }
+
+    /**
+     * @param CreditorReferenceInformation $creditorReferenceInformation
+     */
+    public function setCreditorReferenceInformation($creditorReferenceInformation)
+    {
+        $this->creditorReferenceInformation = $creditorReferenceInformation;
+        $this->message = $creditorReferenceInformation->getRef();
+    }
+
+    /**
+     * @return string
+     */
+    public function getMessage()
+    {
+        return $this->message;
     }
 }

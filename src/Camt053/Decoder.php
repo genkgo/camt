@@ -248,6 +248,15 @@ class Decoder implements DecoderInterface
                     (string)$detailXml->RmtInf->Ustrd
                 );
                 $detail->setRemittanceInformation($remittanceInformation);
+            } elseif (isset($detailXml->RmtInf->Strd)) {
+                if (isset($detailXml->RmtInf->Strd->CdtrRefInf) && isset($detailXml->RmtInf->Strd->CdtrRefInf->Ref)) {
+                    $creditorReferenceInformation = CreditorReferenceInformation::fromUnstructured(
+                        (string)$detailXml->RmtInf->Strd->CdtrRefInf->Ref
+                    );
+                    $remittanceInformation = new RemittanceInformation();
+                    $remittanceInformation->setCreditorReferenceInformation($creditorReferenceInformation);
+                    $detail->setRemittanceInformation($remittanceInformation);
+                }
             }
         }
     }
