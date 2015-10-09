@@ -25,6 +25,10 @@ class EntryTransactionDetail
      * @var ReturnInformation
      */
     private $returnInformation;
+    /**
+     * @var AdditionalTransactionInformation
+     */
+    private $additionalTransactionInformation;
 
     /**
      * @param Reference $reference
@@ -115,5 +119,23 @@ class EntryTransactionDetail
      */
     public function setReturnInformation(ReturnInformation $information){
         $this->returnInformation = $information;
+    }
+
+    /**
+     * @param AdditionalTransactionInformation $additionalTransactionInformation
+     */
+    public function setAdditionalTransactionInformation(AdditionalTransactionInformation $additionalTransactionInformation)
+    {
+        $this->additionalTransactionInformation = $additionalTransactionInformation;
+    }
+
+    /**
+     * @return AdditionalTransactionInformation
+     */
+    public function getAdditionalTransactionInformation () {
+        if ($this->additionalTransactionInformation === null) {
+            throw new BadMethodCallException();
+        }
+        return $this->additionalTransactionInformation;
     }
 }

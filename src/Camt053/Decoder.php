@@ -171,6 +171,7 @@ class Decoder implements DecoderInterface
                 $this->addRelatedPartiesToTransactionDetails($detailXml, $detail);
                 $this->addRemittanceInformationToTransactionDetails($detailXml, $detail);
                 $this->addReturnInformationToTransactionDetails($detailXml, $detail);
+                $this->addAdditionalTransactionInformation($detailXml, $detail);
                 $entry->addTransactionDetail($detail);
             }
         }
@@ -299,7 +300,7 @@ class Decoder implements DecoderInterface
     /**
      * @param Message $message
      */
-    private function addStatementsToMessage($message)
+    private function addStatementsToMessage(Message $message)
     {
         $statements = [];
 
@@ -318,6 +319,20 @@ class Decoder implements DecoderInterface
         }
 
         $message->setStatements($statements);
+    }
+
+    /**
+     * @param SimpleXMLElement $detailXml
+     * @param EntryTransactionDetail $detail
+     */
+    private function addAdditionalTransactionInformation(SimpleXMLElement $detailXml, EntryTransactionDetail $detail)
+    {
+        if (isset($detailXml->AddtlTxInf)) {
+            $additionalInformation = new AdditionalTransactionInformation(
+                (string) $detailXml->AddtlTxInf
+            );
+            $detail->setAdditionalTransactionInformation($additionalInformation);
+        }
     }
 
 }

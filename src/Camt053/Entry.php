@@ -170,7 +170,7 @@ class Entry
     }
 
     /**
-     * @param string accountServicerReference
+     * @param string $accountServicerReference
      */
     public function setAccountServicerReference($accountServicerReference)
     {
