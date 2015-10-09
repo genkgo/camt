@@ -40,6 +40,10 @@ class Entry
      */
     private $reference;
     /**
+     * @var string
+     */
+    private $accountServicerReference;
+    /**
      * @var int
      */
     private $index;
@@ -154,6 +158,23 @@ class Entry
     public function setReference($reference)
     {
         $this->reference = $reference;
+    }
+
+    /**
+     * Unique reference as assigned by the account servicing institution to unambiguously identify the entry.
+     * @return string
+     */
+    public function getAccountServicerReference()
+    {
+        return $this->accountServicerReference;
+    }
+
+    /**
+     * @param string accountServicerReference
+     */
+    public function setAccountServicerReference($accountServicerReference)
+    {
+        $this->accountServicerReference = $accountServicerReference;
     }
 
     /**

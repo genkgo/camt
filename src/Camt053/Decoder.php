@@ -142,6 +142,10 @@ class Decoder implements DecoderInterface
                 $entry->setReference((string) $entryXml->NtryRef);
             }
 
+            if (isset($entryXml->AcctSvcrRef) && (string) $entryXml->AcctSvcrRef) {
+                $entry->setAccountServicerReference((string) $entryXml->AcctSvcrRef);
+            }
+
             if (isset($entryXml->NtryDtls->Btch->PmtInfId) && (string) $entryXml->NtryDtls->Btch->PmtInfId) {
                 $entry->setBatchPaymentId((string) $entryXml->NtryDtls->Btch->PmtInfId);
             }
