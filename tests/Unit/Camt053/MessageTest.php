@@ -17,6 +17,13 @@ class MessageTest extends AbstractTestCase
         return (new Decoder('/assets/camt.053.001.02.xsd'))->decode($dom);
     }
 
+    protected function getV3Message()
+    {
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $dom->load(__DIR__.'/Stubs/camt053.v3.xml');
+        return (new Decoder('/assets/camt.053.001.03.xsd'))->decode($dom);
+    }
+
     public function testWrongDocument()
     {
         $this->setExpectedException(InvalidMessageException::class);
@@ -24,6 +31,20 @@ class MessageTest extends AbstractTestCase
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $dom->load(__DIR__.'/Stubs/camt053.wrong.xml');
         (new Decoder('/assets/camt.053.001.02.xsd'))->decode($dom);
+    }
+
+    public function testFiveDecimalsStatement()
+    {
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $dom->load(__DIR__.'/Stubs/camt053.five.decimals.xml');
+        (new Decoder('/assets/camt.053.001.02.xsd'))->decode($dom);
+    }
+
+    public function testV3Document()
+    {
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $dom->load(__DIR__.'/Stubs/camt053.v3.xml');
+        (new Decoder('/assets/camt.053.001.03.xsd'))->decode($dom);
     }
 
     public function testGroupHeader()
@@ -113,6 +134,27 @@ class MessageTest extends AbstractTestCase
 
                     $remittanceInformation = $detail->getRemittanceInformation();
                     $this->assertEquals('Transaction Description', $remittanceInformation->getMessage());
+                }
+            }
+        }
+    }
+
+    public function testStructuredMessage()
+    {
+        $message = $this->getV3Message();
+        $statements = $message->getStatements();
+
+        $this->assertCount(1, $statements);
+        foreach ($statements as $statement) {
+            $entries = $statement->getEntries();
+            $this->assertCount(1, $entries);
+
+            foreach ($entries as $entry) {
+                $details = $entry->getTransactionDetails();
+                $this->assertCount(1, $details);
+                foreach ($details as $detail) {
+                    $remittanceInformation = $detail->getRemittanceInformation();
+                    $this->assertEquals('4654654654654654', $remittanceInformation->getMessage());
                 }
             }
         }

@@ -6,6 +6,7 @@ use DOMDocument;
 use Genkgo\Camt\DecoderInterface;
 use Genkgo\Camt\Exception\InvalidMessageException;
 use Genkgo\Camt\Iban;
+use Genkgo\Camt\Util\StringToUnits;
 use Money\Currency;
 use Money\Money;
 use SimpleXMLElement;
@@ -77,7 +78,7 @@ class Decoder implements DecoderInterface
     {
         $balancesXml = $statementXml->Bal;
         foreach ($balancesXml as $balanceXml) {
-            $amount = Money::stringToUnits((string) $balanceXml->Amt);
+            $amount = StringToUnits::convert((string) $balanceXml->Amt);
             $currency = (string)$balanceXml->Amt['Ccy'];
             $date = (string)$balanceXml->Dt->Dt;
 
@@ -116,7 +117,7 @@ class Decoder implements DecoderInterface
         $index = 0;
         $entriesXml = $statementXml->Ntry;
         foreach ($entriesXml as $entryXml) {
-            $amount = Money::stringToUnits((string) $entryXml->Amt);
+            $amount = StringToUnits::convert((string) $entryXml->Amt);
             $currency = (string)$entryXml->Amt['Ccy'];
             $bookingDate = (string)$entryXml->BookgDt->Dt;
             $valueDate = (string)$entryXml->ValDt->Dt;
@@ -247,6 +248,15 @@ class Decoder implements DecoderInterface
                     (string)$detailXml->RmtInf->Ustrd
                 );
                 $detail->setRemittanceInformation($remittanceInformation);
+            } elseif (isset($detailXml->RmtInf->Strd)) {
+                if (isset($detailXml->RmtInf->Strd->CdtrRefInf) && isset($detailXml->RmtInf->Strd->CdtrRefInf->Ref)) {
+                    $creditorReferenceInformation = CreditorReferenceInformation::fromUnstructured(
+                        (string)$detailXml->RmtInf->Strd->CdtrRefInf->Ref
+                    );
+                    $remittanceInformation = new RemittanceInformation();
+                    $remittanceInformation->setCreditorReferenceInformation($creditorReferenceInformation);
+                    $detail->setRemittanceInformation($remittanceInformation);
+                }
             }
         }
     }
