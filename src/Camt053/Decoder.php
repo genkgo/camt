@@ -27,7 +27,8 @@ class Decoder implements DecoderInterface
     /**
      * @param $schemeDefinitionPath
      */
-    public function __construct($schemeDefinitionPath) {
+    public function __construct($schemeDefinitionPath)
+    {
         $this->schemeDefinitionPath = $schemeDefinitionPath;
     }
 
@@ -185,7 +186,6 @@ class Decoder implements DecoderInterface
     {
         if (isset($detailXml->RltdPties)) {
             foreach ($detailXml->RltdPties as $relatedPartyXml) {
-
                 if (isset($relatedPartyXml->Cdtr)) {
                     $relatedPartyTypeXml = $relatedPartyXml->Cdtr;
                     $relatedPartyTypeAccountXml = $relatedPartyXml->CdtrAcct;
@@ -334,5 +334,4 @@ class Decoder implements DecoderInterface
             $detail->setAdditionalTransactionInformation($additionalInformation);
         }
     }
-
 }
