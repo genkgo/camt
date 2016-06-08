@@ -3,7 +3,8 @@ namespace Genkgo\Camt\Util;
 
 use InvalidArgumentException;
 
-final class StringToUnits {
+final class StringToUnits
+{
 
     /**
      * Converts a string value with an amount into an integer.
@@ -34,5 +35,4 @@ final class StringToUnits {
 
         return (int) $units;
     }
-
 }

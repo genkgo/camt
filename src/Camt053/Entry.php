@@ -131,7 +131,7 @@ class Entry
     /**
      * @return bool
      */
-    public function getReversalIndicator ()
+    public function getReversalIndicator()
     {
         return $this->reversalIndicator;
     }

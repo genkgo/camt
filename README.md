@@ -24,6 +24,16 @@ you notice compliance oversights, please send a patch via pull request.
 [PSR-2]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md
 [PSR-4]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader.md
 
+[PHP-CS-Fixer](https://github.com/FriendsOfPHP/PHP-CS-Fixer) is used to ensure PSR coding standards are respected.
+
+To fix CS, just launch
+
+```bash
+$ ./vendor/bin/php-cs-fixer fix
+```
+
+A `.php_cs` file in the root directory excludes `vendor` directory from fixing and contains coding standards level wanted (PSR-2).
+
 ## Getting Started
 
 Read a CAMT file, and loop through its statements and entries.

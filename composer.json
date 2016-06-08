@@ -7,8 +7,9 @@
     "mathiasverraes/money": "~1.2.1"
   },
   "require-dev" : {
-    "phpunit/phpunit" : "~4.0",
-    "phpunit/phpunit-mock-objects" : "2.3.0"
+    "fabpot/php-cs-fixer": "^1.11",
+    "phpunit/phpunit": "~4.0",
+    "phpunit/phpunit-mock-objects": "2.3.0"
   },
   "autoload" : {
     "psr-4" : {

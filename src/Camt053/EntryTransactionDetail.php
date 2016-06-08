@@ -110,14 +110,16 @@ class EntryTransactionDetail
     /**
      * @return ReturnInformation|null
      */
-    public function getReturnInformation(){
+    public function getReturnInformation()
+    {
         return $this->returnInformation;
     }
 
     /**
      * @param ReturnInformation $information
      */
-    public function setReturnInformation(ReturnInformation $information){
+    public function setReturnInformation(ReturnInformation $information)
+    {
         $this->returnInformation = $information;
     }
 
@@ -132,7 +134,8 @@ class EntryTransactionDetail
     /**
      * @return AdditionalTransactionInformation
      */
-    public function getAdditionalTransactionInformation () {
+    public function getAdditionalTransactionInformation()
+    {
         if ($this->additionalTransactionInformation === null) {
             throw new BadMethodCallException();
         }

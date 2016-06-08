@@ -1,5 +1,6 @@
 <?php
 namespace Genkgo\Camt\Camt053;
+
 use BadMethodCallException;
 
 /**

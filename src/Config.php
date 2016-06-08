@@ -34,7 +34,8 @@ class Config
     /**
      * @return static
      */
-    public static function getDefault () {
+    public static function getDefault()
+    {
         $config = new static;
         $config->addMessageFormat(new Camt053V02());
         $config->addMessageFormat(new Camt053V03());

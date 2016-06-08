@@ -5,7 +5,8 @@ namespace Genkgo\Camt\Camt053;
  * Interface RelatedPartyTypeInterface
  * @package Genkgo\Camt\Camt053
  */
-interface RelatedPartyTypeInterface {
+interface RelatedPartyTypeInterface
+{
 
     /**
      * @param Address $address
@@ -22,5 +23,4 @@ interface RelatedPartyTypeInterface {
      * @return mixed
      */
     public function getName();
-
 }
