@@ -2,6 +2,19 @@
 
 Library to read CAMT files. Currently only CAMT.053 is supported.
 
+### Supported Versions
+
+#### Camt 053
+
+| Version           | Supported          |
+| :---------------: | :----------------: |
+| camt.053.001.01   |                    |
+| camt.053.001.02   | :heavy_check_mark: |
+| camt.053.001.03   | :heavy_check_mark: |
+| camt.053.001.04   |                    |
+| camt.053.001.05   |                    |
+| camt.053.001.06   |                    |
+
 ### Installation
 
 Requires PHP 5.5 or later. There are no plans to support PHP 5.4 or PHP 5.3. In case this is an obstacle for you,
