@@ -1,11 +1,11 @@
 <?php
+
 namespace Genkgo\Camt\Unit\Camt053;
 
 use Genkgo\Camt\AbstractTestCase;
 use Genkgo\Camt\Camt053\Decoder;
-use Genkgo\Camt\Camt053\GroupHeader;
-use Genkgo\Camt\Camt053\Message;
-use Genkgo\Camt\Camt053\Statement;
+use Genkgo\Camt\Camt053\MessageFormat;
+use Genkgo\Camt\Camt053\DTO;
 use Genkgo\Camt\Exception\InvalidMessageException;
 
 class MessageTest extends AbstractTestCase
@@ -14,14 +14,16 @@ class MessageTest extends AbstractTestCase
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $dom->load(__DIR__.'/Stubs/camt053.minimal.xml');
-        return (new Decoder('/assets/camt.053.001.02.xsd'))->decode($dom);
+
+        return (new MessageFormat\Camt053V02)->getDecoder()->decode($dom);
     }
 
     protected function getV3Message()
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $dom->load(__DIR__.'/Stubs/camt053.v3.xml');
-        return (new Decoder('/assets/camt.053.001.03.xsd'))->decode($dom);
+
+        return (new MessageFormat\Camt053V03)->getDecoder()->decode($dom);
     }
 
     public function testWrongDocument()
@@ -30,21 +32,22 @@ class MessageTest extends AbstractTestCase
 
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $dom->load(__DIR__.'/Stubs/camt053.wrong.xml');
-        (new Decoder('/assets/camt.053.001.02.xsd'))->decode($dom);
+
+        return (new MessageFormat\Camt053V02)->getDecoder()->decode($dom);
     }
 
     public function testFiveDecimalsStatement()
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $dom->load(__DIR__.'/Stubs/camt053.five.decimals.xml');
-        (new Decoder('/assets/camt.053.001.02.xsd'))->decode($dom);
+        (new MessageFormat\Camt053V02)->getDecoder()->decode($dom);
     }
 
     public function testV3Document()
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $dom->load(__DIR__.'/Stubs/camt053.v3.xml');
-        (new Decoder('/assets/camt.053.001.03.xsd'))->decode($dom);
+        (new MessageFormat\Camt053V03)->getDecoder()->decode($dom);
     }
 
     public function testGroupHeader()
@@ -52,7 +55,7 @@ class MessageTest extends AbstractTestCase
         $message = $this->getDefaultMessage();
         $groupHeader = $message->getGroupHeader();
 
-        $this->assertInstanceOf(GroupHeader::class, $groupHeader);
+        $this->assertInstanceOf(DTO\GroupHeader::class, $groupHeader);
         $this->assertEquals('CAMT053RIB000000000001', $groupHeader->getMessageId());
         $this->assertEquals(new \DateTimeImmutable('2015-03-10T18:43:50+00:00'), $groupHeader->getCreatedOn());
     }
@@ -64,7 +67,7 @@ class MessageTest extends AbstractTestCase
 
         $this->assertCount(1, $statements);
         foreach ($statements as $statement) {
-            $this->assertInstanceOf(Statement::class, $statement);
+            $this->assertInstanceOf(DTO\Statement::class, $statement);
             $this->assertEquals('253EURNL26VAYB8060476890', $statement->getId());
             $this->assertEquals('NL26VAYB8060476890', (string) $statement->getAccount()->getIban());
             $this->assertEquals(new \DateTimeImmutable('2015-03-10T18:43:50+00:00'), $statement->getCreatedOn());

@@ -1,9 +1,11 @@
 <?php
+
 namespace Genkgo\Camt\Unit;
 
 use DOMDocument;
 use Genkgo\Camt\AbstractTestCase;
-use Genkgo\Camt\Camt053\Message;
+use Genkgo\Camt\Camt053\DTO;
+use Genkgo\Camt\Camt053\MessageFormat;
 use Genkgo\Camt\Config;
 use Genkgo\Camt\Exception\ReaderException;
 use Genkgo\Camt\Reader;
@@ -13,7 +15,7 @@ class ReaderTest extends AbstractTestCase
     protected function getDefaultConfig()
     {
         $config = new Config();
-        $config->addMessageFormat(new Message\Camt053V02());
+        $config->addMessageFormat(new MessageFormat\Camt053V02());
         return $config;
     }
 
@@ -41,6 +43,6 @@ class ReaderTest extends AbstractTestCase
     {
         $reader = new Reader(Config::getDefault());
         $message = $reader->readFile(__DIR__.'/Camt053/Stubs/camt053.minimal.xml');
-        $this->assertInstanceOf(Message::class, $message);
+        $this->assertInstanceOf(DTO\Message::class, $message);
     }
 }

@@ -1,11 +1,12 @@
 <?php
-namespace Genkgo\Camt\Camt053;
+
+namespace Genkgo\Camt\Camt053\DTO;
 
 /**
- * Class Creditor
+ * Class Debtor
  * @package Genkgo\Camt\Camt053
  */
-class Creditor implements RelatedPartyTypeInterface
+class Debtor implements RelatedPartyTypeInterface
 {
     /**
      * @var string
