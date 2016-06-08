@@ -201,7 +201,7 @@ class Decoder implements DecoderInterface
                 if (isset($relatedPartyTypeXml->PstlAdr)) {
                     $address = new Address();
                     if (isset($relatedPartyTypeXml->PstlAdr->Ctry)) {
-                        $address = $address->setCountry($relatedPartyTypeXml->PstlAdr->Ctry);
+                        $address = $address->setCountry((string) $relatedPartyTypeXml->PstlAdr->Ctry);
                     }
                     if (isset($relatedPartyTypeXml->PstlAdr->AdrLine)) {
                         foreach ($relatedPartyTypeXml->PstlAdr->AdrLine as $line) {
@@ -307,7 +307,7 @@ class Decoder implements DecoderInterface
         $statementsXml = $this->document->BkToCstmrStmt->Stmt;
         foreach ($statementsXml as $statementXml) {
             $statement = new Statement(
-                $statementXml->Id,
+                (string) $statementXml->Id,
                 new DateTimeImmutable((string)$statementXml->CreDtTm),
                 new Account(new Iban((string)$statementXml->Acct->Id->IBAN))
             );

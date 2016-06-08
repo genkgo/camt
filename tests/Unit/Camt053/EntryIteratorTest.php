@@ -33,6 +33,10 @@ class EntryIteratorTest extends AbstractTestCase
                     $entry->getTransactionDetail()->getRelatedParty()->getRelatedPartyType()->getName()
                 );
                 $this->assertEquals(
+                    'NL',
+                    $entry->getTransactionDetail()->getRelatedParty()->getRelatedPartyType()->getAddress()->getCountry()
+                );
+                $this->assertEquals(
                     '000000001',
                     $entry->getTransactionDetail()->getReference()->getEndToEndId()
                 );
@@ -47,6 +51,10 @@ class EntryIteratorTest extends AbstractTestCase
                 $this->assertEquals(
                     'Company Name 2',
                     $entry->getTransactionDetail()->getRelatedParty()->getRelatedPartyType()->getName()
+                );
+                $this->assertEquals(
+                    'FR',
+                    $entry->getTransactionDetail()->getRelatedParty()->getRelatedPartyType()->getAddress()->getCountry()
                 );
                 $this->assertEquals(
                     '000000002',
