@@ -1,8 +1,9 @@
 <?php
+
 namespace Genkgo\Camt;
 
-use Genkgo\Camt\Camt053\Message\Camt053V02;
-use Genkgo\Camt\Camt053\Message\Camt053V03;
+use Genkgo\Camt\Camt053\MessageFormat\Camt053V02;
+use Genkgo\Camt\Camt053\MessageFormat\Camt053V03;
 
 /**
  * Class Config

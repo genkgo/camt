@@ -1,5 +1,6 @@
 <?php
-namespace Genkgo\Camt\Camt053;
+
+namespace Genkgo\Camt\Camt053\DTO;
 
 /**
  * Class Reference
@@ -18,8 +19,8 @@ class Reference
     private $mandateId;
 
     /**
-     * @param $endToEndId
-     * @param $mandateId
+     * @param string $endToEndId
+     * @param string $mandateId
      */
     public function __construct($endToEndId, $mandateId = null)
     {
@@ -36,7 +37,7 @@ class Reference
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getEndToEndId()
     {
