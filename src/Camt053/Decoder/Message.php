@@ -73,8 +73,8 @@ class Message
         $xmlOtherIdentification = $xmlStatement->Acct->Id->Othr;
         $otherAccount = new DTO\OtherAccount((string) $xmlOtherIdentification->Id);
 
-        if (isset($otherIdentification->SchmeNm)) {
-            if (isset($otherIdentification->SchmeNm->Cd)) {
+        if (isset($xmlOtherIdentification->SchmeNm)) {
+            if (isset($xmlOtherIdentification->SchmeNm->Cd)) {
                 $otherAccount->setSchemeName((string) $xmlOtherIdentification->SchmeNm->Cd);
             }
 
@@ -83,7 +83,7 @@ class Message
             }
         }
 
-        if (isset($otherIdentification->Issr)) {
+        if (isset($xmlOtherIdentification->Issr)) {
             $otherAccount->setIssuer($xmlOtherIdentification->Issr);
         }
 

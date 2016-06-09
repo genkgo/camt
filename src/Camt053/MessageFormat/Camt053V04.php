@@ -8,16 +8,16 @@ use Genkgo\Camt\MessageFormatInterface;
 
 /**
  * Class MessageFormat
- * @package Genkgo\Camt\Camt053V3
+ * @package Genkgo\Camt\Camt053
  */
-final class Camt053V03 implements MessageFormatInterface
+final class Camt053V04 implements MessageFormatInterface
 {
     /**
      * @return string
      */
     public function getXmlNs()
     {
-        return 'urn:iso:std:iso:20022:tech:xsd:camt.053.001.03';
+        return 'urn:iso:std:iso:20022:tech:xsd:camt.053.001.04';
     }
 
     /**
@@ -25,7 +25,7 @@ final class Camt053V03 implements MessageFormatInterface
      */
     public function getMsgId()
     {
-        return 'camt.053.001.03';
+        return 'camt.053.001.04';
     }
 
     /**
@@ -33,7 +33,7 @@ final class Camt053V03 implements MessageFormatInterface
      */
     public function getName()
     {
-        return 'BankToCustomerStatementV03';
+        return 'BankToCustomerStatementV04';
     }
 
     /**

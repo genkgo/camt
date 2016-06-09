@@ -14,18 +14,35 @@ class EntryTransactionDetail
      */
     public function addReferences(DTO\EntryTransactionDetail $detail, SimpleXMLElement $xmlDetail)
     {
-        if (false === isset($xmlDetail->Refs->EndToEndId)) {
+        if (false === isset($xmlDetail->Refs)) {
             return;
         }
 
-        $endToEndId = (string)$xmlDetail->Refs->EndToEndId;
-        $mandateId = null;
+        $refs = $xmlDetail->Refs;
+        $reference = new DTO\Reference();
 
-        if (isset($xmlDetail->Refs->MndtId)) {
-            $mandateId = (string)$xmlDetail->Refs->MndtId;
+        $reference->setMessageId(isset($refs->MsgId) ? (string) $refs->MsgId : null);
+        $reference->setAccountServiceReference(isset($refs->AcctSvcrRef) ? (string) $refs->AcctSvcrRef : null);
+        $reference->setPaymentInformationId(isset($refs->PmtInfId) ? (string) $refs->PmtInfId : null);
+        $reference->setInstructionId(isset($refs->InstrId) ? (string) $refs->InstrId : null);
+        $reference->setEndToEndId(isset($refs->EndToEndId) ? (string) $refs->EndToEndId : null);
+        $reference->setTransactionId(isset($refs->TxId) ? (string) $refs->TxId : null);
+        $reference->setMandateId(isset($refs->MndtId) ? (string) $refs->MndtId : null);
+        $reference->setChequeNumber(isset($refs->ChqNb) ? (string) $refs->ChqNb : null);
+        $reference->setClearingSystemReference(isset($refs->ClrSysRef) ? (string) $refs->ClrSysRef : null);
+        $reference->setAccountOwnerTransactionId(isset($refs->AcctOwnrTxId) ? (string) $refs->AcctOwnrTxId : null);
+        $reference->setAccountServicerTransactionId(isset($refs->AcctSvcrTxId) ? (string) $refs->AcctSvcrTxId : null);
+        $reference->setMarketInfrastructureTransactionId(isset($refs->MktInfrstrctrTxId) ? (string) $refs->MktInfrstrctrTxId : null);
+        $reference->setProcessingId(isset($refs->PrcgId) ? (string) $refs->PrcgId : null);
+
+        foreach ($refs->Prtry as $xmlProprietary) {
+            $type = isset($xmlProprietary->Tp) ? (string) $xmlProprietary->Tp : null;
+            $subReference = isset($xmlProprietary->Ref) ? (string) $xmlProprietary->Ref : null;
+
+            $reference->addProprietary(new DTO\ProprietaryReference($type, $subReference));
         }
 
-        $detail->addReference(new DTO\Reference($endToEndId, $mandateId));
+        $detail->addReference($reference);
     }
 
     /**
@@ -65,12 +82,7 @@ class EntryTransactionDetail
                 $relatedPartyType->setAddress($address);
             }
 
-            $acount = null;
-            if (isset($xmlRelatedPartyTypeAccount->Id->IBAN) && $ibanCode = (string) $xmlRelatedPartyTypeAccount->Id->IBAN) {
-                $account = new DTO\IbanAccount(new Iban($ibanCode));
-            }
-
-            $relatedParty = new DTO\RelatedParty($relatedPartyType, $account);
+            $relatedParty = new DTO\RelatedParty($relatedPartyType, $this->getRelatedPartyAccount($xmlRelatedPartyTypeAccount));
             $detail->addRelatedParty($relatedParty);
         }
     }
@@ -134,5 +146,44 @@ class EntryTransactionDetail
             );
             $detail->setAdditionalTransactionInformation($additionalInformation);
         }
+    }
+
+    /**
+     * @param SimpleXMLElement $xmlDetail
+     *
+     * @return DTO\Account|null
+     */
+    private function getRelatedPartyAccount(SimpleXMLElement $xmlRelatedPartyTypeAccount)
+    {
+        if (false === isset($xmlRelatedPartyTypeAccount->Id)) {
+            return;
+        }
+
+        if (isset($xmlRelatedPartyTypeAccount->Id->IBAN) && $ibanCode = (string) $xmlRelatedPartyTypeAccount->Id->IBAN) {
+            return new DTO\IbanAccount(new Iban($ibanCode));
+        }
+
+        if (false === isset($xmlRelatedPartyTypeAccount->Id->Othr)) {
+            return;
+        }
+
+        $xmlOtherIdentification = $xmlRelatedPartyTypeAccount->Id->Othr;
+        $otherAccount = new DTO\OtherAccount((string) $xmlOtherIdentification->Id);
+
+        if (isset($xmlOtherIdentification->SchmeNm)) {
+            if (isset($xmlOtherIdentification->SchmeNm->Cd)) {
+                $otherAccount->setSchemeName((string) $xmlOtherIdentification->SchmeNm->Cd);
+            }
+
+            if (isset($xmlOtherIdentification->SchmeNm->Prtry)) {
+                $otherAccount->setSchemeName((string) $xmlOtherIdentification->SchmeNm->Prtry);
+            }
+        }
+
+        if (isset($xmlOtherIdentification->Issr)) {
+            $otherAccount->setIssuer((string) $xmlOtherIdentification->Issr);
+        }
+
+        return $otherAccount;
     }
 }

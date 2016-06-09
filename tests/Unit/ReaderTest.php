@@ -16,6 +16,7 @@ class ReaderTest extends AbstractTestCase
     {
         $config = new Config();
         $config->addMessageFormat(new MessageFormat\Camt053V02());
+
         return $config;
     }
 
@@ -42,7 +43,7 @@ class ReaderTest extends AbstractTestCase
     public function testReadFile()
     {
         $reader = new Reader(Config::getDefault());
-        $message = $reader->readFile(__DIR__.'/Camt053/Stubs/camt053.minimal.xml');
+        $message = $reader->readFile(__DIR__.'/Camt053/Stubs/camt053.v2.minimal.xml');
         $this->assertInstanceOf(DTO\Message::class, $message);
     }
 }
