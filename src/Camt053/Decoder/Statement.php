@@ -37,7 +37,10 @@ class Statement
                 $amount = $amount * -1;
             }
 
-            if ((string) $xmlBalance->Tp->CdOrPrtry->Cd === 'OPBD') {
+            if (isset($xmlBalance->Tp)
+                && isset($xmlBalance->Tp->CdOrPrtry)
+                && (string) $xmlBalance->Tp->CdOrPrtry->Cd === 'OPBD'
+            ) {
                 $balance = DTO\Balance::opening(
                     new Money(
                         $amount,

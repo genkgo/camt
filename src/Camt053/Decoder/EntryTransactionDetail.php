@@ -90,15 +90,20 @@ class EntryTransactionDetail
                 (string)$xmlDetail->RmtInf->Ustrd
             );
             $detail->setRemittanceInformation($remittanceInformation);
-        } elseif (isset($xmlDetail->RmtInf->Strd)) {
-            if (isset($xmlDetail->RmtInf->Strd->CdtrRefInf) && isset($xmlDetail->RmtInf->Strd->CdtrRefInf->Ref)) {
-                $creditorReferenceInformation = DTO\CreditorReferenceInformation::fromUnstructured(
-                    (string)$xmlDetail->RmtInf->Strd->CdtrRefInf->Ref
-                );
-                $remittanceInformation = new DTO\RemittanceInformation();
-                $remittanceInformation->setCreditorReferenceInformation($creditorReferenceInformation);
-                $detail->setRemittanceInformation($remittanceInformation);
-            }
+
+            return;
+        }
+        
+        if (isset($xmlDetail->RmtInf->Strd)
+            && isset($xmlDetail->RmtInf->Strd->CdtrRefInf)
+            && isset($xmlDetail->RmtInf->Strd->CdtrRefInf->Ref)
+        ) {
+            $creditorReferenceInformation = DTO\CreditorReferenceInformation::fromUnstructured(
+                (string)$xmlDetail->RmtInf->Strd->CdtrRefInf->Ref
+            );
+            $remittanceInformation = new DTO\RemittanceInformation();
+            $remittanceInformation->setCreditorReferenceInformation($creditorReferenceInformation);
+            $detail->setRemittanceInformation($remittanceInformation);
         }
     }
 
