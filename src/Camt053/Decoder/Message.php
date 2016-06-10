@@ -47,7 +47,7 @@ class Message
             $statement = new DTO\Statement(
                 (string) $xmlStatement->Id,
                 new DateTimeImmutable((string)$xmlStatement->CreDtTm),
-                new DTO\Account(new Iban((string)$xmlStatement->Acct->Id->IBAN))
+                $this->getAccount($xmlStatement)
             );
 
             $this->statementDecoder->addBalances($statement, $xmlStatement);
@@ -57,5 +57,36 @@ class Message
         }
 
         $message->setStatements($statements);
+    }
+
+    /**
+     * @param SimpleXMLElement $xmlStatement
+     *
+     * @return DTO\Account
+     */
+    private function getAccount(SimpleXMLElement $xmlStatement)
+    {
+        if (isset($xmlStatement->Acct->Id->IBAN)) {
+            return new DTO\IbanAccount(new Iban((string) $xmlStatement->Acct->Id->IBAN));
+        }
+
+        $xmlOtherIdentification = $xmlStatement->Acct->Id->Othr;
+        $otherAccount = new DTO\OtherAccount((string) $xmlOtherIdentification->Id);
+
+        if (isset($otherIdentification->SchmeNm)) {
+            if (isset($otherIdentification->SchmeNm->Cd)) {
+                $otherAccount->setSchemeName((string) $xmlOtherIdentification->SchmeNm->Cd);
+            }
+
+            if (isset($otherIdentification->SchmeNm->Prtry)) {
+                $otherAccount->setSchemeName((string) $xmlOtherIdentification->SchmeNm->Prtry);
+            }
+        }
+
+        if (isset($otherIdentification->Issr)) {
+            $otherAccount->setIssuer((string) $xmlOtherIdentification->Issr);
+        }
+
+        return $otherAccount;
     }
 }

@@ -67,7 +67,7 @@ class EntryTransactionDetail
 
             $acount = null;
             if (isset($xmlRelatedPartyTypeAccount->Id->IBAN) && $ibanCode = (string) $xmlRelatedPartyTypeAccount->Id->IBAN) {
-                $account = new DTO\Account(new Iban($ibanCode));
+                $account = new DTO\IbanAccount(new Iban($ibanCode));
             }
 
             $relatedParty = new DTO\RelatedParty($relatedPartyType, $account);
