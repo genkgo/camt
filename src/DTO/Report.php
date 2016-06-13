@@ -1,15 +1,12 @@
 <?php
 
-namespace Genkgo\Camt\Camt053\DTO;
-
-use Genkgo\Camt\DTO\Record;
-use Genkgo\Camt\DTO\Balance;
+namespace Genkgo\Camt\DTO;
 
 /**
- * Class Statement
- * @package Genkgo\Camt\Camt053
+ * Class Report
+ * @package Genkgo\Camt\DTO
  */
-class Statement extends Record
+class Report extends Record
 {
     /**
      * @var array

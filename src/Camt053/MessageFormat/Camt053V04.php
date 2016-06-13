@@ -2,7 +2,8 @@
 
 namespace Genkgo\Camt\Camt053\MessageFormat;
 
-use Genkgo\Camt\Camt053\Decoder;
+use Genkgo\Camt\Camt053;
+use Genkgo\Camt\Decoder;
 use Genkgo\Camt\DecoderInterface;
 use Genkgo\Camt\MessageFormatInterface;
 
@@ -43,8 +44,8 @@ final class Camt053V04 implements MessageFormatInterface
     {
         $entryTransactionDetailDecoder = new Decoder\EntryTransactionDetail();
         $entryDecoder                  = new Decoder\Entry($entryTransactionDetailDecoder);
-        $statementDecoder              = new Decoder\Statement($entryDecoder);
-        $messageDecoder                = new Decoder\Message($statementDecoder);
+        $recordDecoder                 = new Decoder\Record($entryDecoder);
+        $messageDecoder                = new Camt053\Decoder\Message($recordDecoder);
 
         return new Decoder($messageDecoder, sprintf('/assets/%s.xsd', $this->getMsgId()));
     }

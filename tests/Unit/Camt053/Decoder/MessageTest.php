@@ -3,27 +3,28 @@
 namespace Genkgo\Camt\Unit\Camt053\Decoder;
 
 use Genkgo\Camt\AbstractTestCase;
-use Genkgo\Camt\Camt053\Decoder;
-use Genkgo\Camt\Camt053\DTO;
+use Genkgo\Camt\Camt053;
+use Genkgo\Camt\DTO;
+use Genkgo\Camt\Decoder as DecoderObject;
 use Prophecy\Argument;
 use Prophecy\Prophecy\ObjectProphecy;
 
 class MessageTest extends AbstractTestCase
 {
     /** @var ObjectProphecy */
-    private $mockedStatementDecoder;
+    private $mockedRecordDecoder;
 
-    /** @var Decoder\Message */
+    /** @var DecoderObject\Message */
     private $decoder;
 
     public function setUp()
     {
-        $entry = $this->prophesize(Decoder\Entry::class);
-        $this->mockedStatementDecoder = $this
-            ->prophesize(Decoder\Statement::class)
+        $entry = $this->prophesize(DecoderObject\Entry::class);
+        $this->mockedRecordDecoder = $this
+            ->prophesize(DecoderObject\Record::class)
             ->willBeConstructedWith([$entry->reveal()])
         ;
-        $this->decoder = new Decoder\Message($this->mockedStatementDecoder->reveal());
+        $this->decoder = new Camt053\Decoder\Message($this->mockedRecordDecoder->reveal());
     }
 
     /**
@@ -44,20 +45,20 @@ class MessageTest extends AbstractTestCase
     {
         $message = $this->prophesize(DTO\Message::class);
 
-        $this->mockedStatementDecoder->addBalances(
-            Argument::type(DTO\Statement::class),
+        $this->mockedRecordDecoder->addBalances(
+            Argument::type(Camt053\DTO\Statement::class),
             Argument::type('\SimpleXMLElement')
         )->shouldBeCalled();
-        $this->mockedStatementDecoder->addEntries(
-            Argument::type(DTO\Statement::class),
+        $this->mockedRecordDecoder->addEntries(
+            Argument::type(Camt053\DTO\Statement::class),
             Argument::type('\SimpleXMLElement')
         )->shouldBeCalled();
 
-        $message->setStatements(Argument::that(function ($argument) {
-            return is_array($argument) && $argument[0] instanceof DTO\Statement;
+        $message->setRecords(Argument::that(function ($argument) {
+            return is_array($argument) && $argument[0] instanceof Camt053\DTO\Statement;
         }))->shouldBeCalled();
 
-        $this->decoder->addStatements($message->reveal(), $this->getXmlMessage());
+        $this->decoder->addRecords($message->reveal(), $this->getXmlMessage());
     }
 
     private function getXmlMessage()
