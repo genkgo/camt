@@ -1,9 +1,10 @@
 <?php
 
-namespace Genkgo\Camt\Unit\Camt053\Decoder;
+namespace Genkgo\Camt\Unit\Decoder;
 
 use Genkgo\Camt\AbstractTestCase;
 use Genkgo\Camt\Decoder;
+use Genkgo\Camt\Camt053;
 use Genkgo\Camt\DTO;
 use Prophecy\Argument;
 
@@ -18,7 +19,7 @@ class EntryTransactionDetailTest extends AbstractTestCase
         $detail->addReference(Argument::any())->shouldNotBeCalled();
 
         $xmlDetail = new \SimpleXMLElement('<content></content>');
-        (new Decoder\EntryTransactionDetail())->addReferences($detail->reveal(), $xmlDetail);
+        (new Camt053\Decoder\EntryTransactionDetail())->addReferences($detail->reveal(), $xmlDetail);
     }
 
     /**
@@ -29,7 +30,7 @@ class EntryTransactionDetailTest extends AbstractTestCase
         $detail = $this->prophesize(DTO\EntryTransactionDetail::class);
         $detail->addReference(Argument::type(DTO\Reference::class))->shouldBeCalled();
 
-        (new Decoder\EntryTransactionDetail())->addReferences($detail->reveal(), $this->getXmlDetail());
+        (new Camt053\Decoder\EntryTransactionDetail())->addReferences($detail->reveal(), $this->getXmlDetail());
     }
 
     /**
@@ -41,7 +42,7 @@ class EntryTransactionDetailTest extends AbstractTestCase
         $detail->setAdditionalTransactionInformation(Argument::any())->shouldNotBeCalled();
 
         $xmlDetail = new \SimpleXMLElement('<content></content>');
-        (new Decoder\EntryTransactionDetail())->addAdditionalTransactionInformation($detail->reveal(), $xmlDetail);
+        (new Camt053\Decoder\EntryTransactionDetail())->addAdditionalTransactionInformation($detail->reveal(), $xmlDetail);
     }
 
     /**
@@ -54,7 +55,7 @@ class EntryTransactionDetailTest extends AbstractTestCase
             Argument::type(DTO\AdditionalTransactionInformation::class)
         )->shouldBeCalled();
 
-        (new Decoder\EntryTransactionDetail())->addAdditionalTransactionInformation($detail->reveal(), $this->getXmlDetail());
+        (new Camt053\Decoder\EntryTransactionDetail())->addAdditionalTransactionInformation($detail->reveal(), $this->getXmlDetail());
     }
 
     /**
@@ -66,7 +67,7 @@ class EntryTransactionDetailTest extends AbstractTestCase
         $detail->setRemittanceInformation(Argument::any())->shouldNotBeCalled();
 
         $xmlDetail = new \SimpleXMLElement('<content></content>');
-        (new Decoder\EntryTransactionDetail())->addRemittanceInformation($detail->reveal(), $xmlDetail);
+        (new Camt053\Decoder\EntryTransactionDetail())->addRemittanceInformation($detail->reveal(), $xmlDetail);
     }
 
     /**
@@ -77,7 +78,7 @@ class EntryTransactionDetailTest extends AbstractTestCase
         $detail = $this->prophesize(DTO\EntryTransactionDetail::class);
         $detail->setRemittanceInformation(Argument::type(DTO\RemittanceInformation::class))->shouldBeCalled();
 
-        (new Decoder\EntryTransactionDetail())->addRemittanceInformation($detail->reveal(), $this->getXmlDetail());
+        (new Camt053\Decoder\EntryTransactionDetail())->addRemittanceInformation($detail->reveal(), $this->getXmlDetail());
     }
 
     /**
@@ -89,7 +90,7 @@ class EntryTransactionDetailTest extends AbstractTestCase
         $detail->setRemittanceInformation(Argument::type(DTO\RemittanceInformation::class))->shouldBeCalled();
 
         $xmlDetail = new \SimpleXMLElement('<content><RmtInf><Ustrd>Lorem</Ustrd></RmtInf></content>');
-        (new Decoder\EntryTransactionDetail())->addRemittanceInformation($detail->reveal(), $xmlDetail);
+        (new Camt053\Decoder\EntryTransactionDetail())->addRemittanceInformation($detail->reveal(), $xmlDetail);
     }
 
     /**
@@ -101,7 +102,7 @@ class EntryTransactionDetailTest extends AbstractTestCase
         $detail->setReturnInformation(Argument::any())->shouldNotBeCalled();
 
         $xmlDetail = new \SimpleXMLElement('<content></content>');
-        (new Decoder\EntryTransactionDetail())->addReturnInformation($detail->reveal(), $xmlDetail);
+        (new Camt053\Decoder\EntryTransactionDetail())->addReturnInformation($detail->reveal(), $xmlDetail);
     }
 
     /**
@@ -114,7 +115,7 @@ class EntryTransactionDetailTest extends AbstractTestCase
             Argument::type(DTO\ReturnInformation::class)
         )->shouldBeCalled();
 
-        (new Decoder\EntryTransactionDetail())->addReturnInformation($detail->reveal(), $this->getXmlDetail());
+        (new Camt053\Decoder\EntryTransactionDetail())->addReturnInformation($detail->reveal(), $this->getXmlDetail());
     }
 
     /**
@@ -126,7 +127,7 @@ class EntryTransactionDetailTest extends AbstractTestCase
         $detail->addRelatedParty(Argument::any())->shouldNotBeCalled();
 
         $xmlDetail = new \SimpleXMLElement('<content></content>');
-        (new Decoder\EntryTransactionDetail())->addRelatedParties($detail->reveal(), $xmlDetail);
+        (new Camt053\Decoder\EntryTransactionDetail())->addRelatedParties($detail->reveal(), $xmlDetail);
     }
 
     /**
@@ -137,7 +138,7 @@ class EntryTransactionDetailTest extends AbstractTestCase
         $detail = $this->prophesize(DTO\EntryTransactionDetail::class);
         $detail->addRelatedParty(Argument::type(DTO\RelatedParty::class))->shouldBeCalled();
 
-        (new Decoder\EntryTransactionDetail())->addRelatedParties($detail->reveal(), $this->getXmlDetail());
+        (new Camt053\Decoder\EntryTransactionDetail())->addRelatedParties($detail->reveal(), $this->getXmlDetail());
     }
 
     private function getXmlDetail()

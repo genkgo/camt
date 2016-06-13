@@ -71,10 +71,10 @@ class Record
         $index = 0;
         $xmlEntries = $xmlRecord->Ntry;
         foreach ($xmlEntries as $xmlEntry) {
-            $amount = StringToUnits::convert((string) $xmlEntry->Amt);
-            $currency = (string)$xmlEntry->Amt['Ccy'];
-            $bookingDate = (string)$xmlEntry->BookgDt->Dt;
-            $valueDate = (string)$xmlEntry->ValDt->Dt;
+            $amount      = StringToUnits::convert((string) $xmlEntry->Amt);
+            $currency    = (string)$xmlEntry->Amt['Ccy'];
+            $bookingDate = ((string) $xmlEntry->BookgDt->Dt) ?: (string) $xmlEntry->BookgDt->DtTm;
+            $valueDate   = ((string) $xmlEntry->ValDt->Dt) ?: (string) $xmlEntry->ValDt->DtTm;
 
             if ((string) $xmlEntry->CdtDbtInd === 'DBIT') {
                 $amount = $amount * -1;

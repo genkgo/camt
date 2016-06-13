@@ -49,11 +49,22 @@ class Reader
     {
         $dom = new DOMDocument('1.0', 'UTF-8');
         $dom->loadXML($string);
+
         return $this->readDom($dom);
     }
 
+    public function readDoc($string)
+    {
+        $string = file_get_contents($string);
+        $dom = new DOMDocument('1.0', 'UTF-8');
+        $dom->loadXML($string);
+
+        return $dom;
+    }
+
+
     /**
-     * @param $file
+     * @param  string $file
      * @return mixed|Message
      * @throws ReaderException
      */

@@ -1,6 +1,6 @@
 <?php
 
-namespace Genkgo\Camt\Unit;
+namespace Genkgo\Camt\Unit\Camt053;
 
 use Genkgo\Camt\AbstractTestCase;
 use Genkgo\Camt\Decoder;
@@ -16,7 +16,7 @@ class EndToEndTest extends AbstractTestCase
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $dom->load(__DIR__.'/Stubs/camt053.v2.minimal.xml');
 
-        return (new MessageFormat\Camt053V02)->getDecoder()->decode($dom);
+        return (new MessageFormat\V02)->getDecoder()->decode($dom);
     }
 
     protected function getV3Message()
@@ -24,7 +24,7 @@ class EndToEndTest extends AbstractTestCase
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $dom->load(__DIR__.'/Stubs/camt053.v3.xml');
 
-        return (new MessageFormat\Camt053V03)->getDecoder()->decode($dom);
+        return (new MessageFormat\V03)->getDecoder()->decode($dom);
     }
 
     protected function getV4Message()
@@ -32,7 +32,7 @@ class EndToEndTest extends AbstractTestCase
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $dom->load(__DIR__.'/Stubs/camt053.v4.xml');
 
-        return (new MessageFormat\Camt053V04)->getDecoder()->decode($dom);
+        return (new MessageFormat\V04)->getDecoder()->decode($dom);
     }
 
     public function testWrongDocument()
@@ -42,28 +42,28 @@ class EndToEndTest extends AbstractTestCase
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $dom->load(__DIR__.'/Stubs/camt053.v2.wrong.xml');
 
-        return (new MessageFormat\Camt053V02)->getDecoder()->decode($dom);
+        return (new MessageFormat\V02)->getDecoder()->decode($dom);
     }
 
     public function testFiveDecimalsStatement()
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $dom->load(__DIR__.'/Stubs/camt053.v2.five.decimals.xml');
-        (new MessageFormat\Camt053V02)->getDecoder()->decode($dom);
+        (new MessageFormat\V02)->getDecoder()->decode($dom);
     }
 
     public function testV3Document()
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $dom->load(__DIR__.'/Stubs/camt053.v3.xml');
-        (new MessageFormat\Camt053V03)->getDecoder()->decode($dom);
+        (new MessageFormat\V03)->getDecoder()->decode($dom);
     }
 
     public function testV4Document()
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $dom->load(__DIR__.'/Stubs/camt053.v4.xml');
-        (new MessageFormat\Camt053V04)->getDecoder()->decode($dom);
+        (new MessageFormat\V04)->getDecoder()->decode($dom);
     }
 
     public function testGroupHeader()

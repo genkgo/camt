@@ -15,7 +15,7 @@ class ReaderTest extends AbstractTestCase
     protected function getDefaultConfig()
     {
         $config = new Config();
-        $config->addMessageFormat(new MessageFormat\Camt053V02());
+        $config->addMessageFormat(new MessageFormat\V02());
 
         return $config;
     }

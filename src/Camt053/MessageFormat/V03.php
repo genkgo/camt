@@ -11,7 +11,7 @@ use Genkgo\Camt\MessageFormatInterface;
  * Class MessageFormat
  * @package Genkgo\Camt\Camt053V3
  */
-final class Camt053V03 implements MessageFormatInterface
+final class V03 implements MessageFormatInterface
 {
     /**
      * @return string
@@ -42,7 +42,7 @@ final class Camt053V03 implements MessageFormatInterface
      */
     public function getDecoder()
     {
-        $entryTransactionDetailDecoder = new Decoder\EntryTransactionDetail();
+        $entryTransactionDetailDecoder = new Camt053\Decoder\EntryTransactionDetail();
         $entryDecoder                  = new Decoder\Entry($entryTransactionDetailDecoder);
         $recordDecoder              = new Decoder\Record($entryDecoder);
         $messageDecoder                = new Camt053\Decoder\Message($recordDecoder);

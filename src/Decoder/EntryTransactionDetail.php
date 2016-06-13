@@ -6,7 +6,7 @@ use Genkgo\Camt\DTO;
 use \SimpleXMLElement;
 use Genkgo\Camt\Iban;
 
-class EntryTransactionDetail
+abstract class EntryTransactionDetail
 {
     /**
      * @param DTO\EntryTransactionDetail $detail
@@ -153,37 +153,5 @@ class EntryTransactionDetail
      *
      * @return DTO\Account|null
      */
-    private function getRelatedPartyAccount(SimpleXMLElement $xmlRelatedPartyTypeAccount)
-    {
-        if (false === isset($xmlRelatedPartyTypeAccount->Id)) {
-            return;
-        }
-
-        if (isset($xmlRelatedPartyTypeAccount->Id->IBAN) && $ibanCode = (string) $xmlRelatedPartyTypeAccount->Id->IBAN) {
-            return new DTO\IbanAccount(new Iban($ibanCode));
-        }
-
-        if (false === isset($xmlRelatedPartyTypeAccount->Id->Othr)) {
-            return;
-        }
-
-        $xmlOtherIdentification = $xmlRelatedPartyTypeAccount->Id->Othr;
-        $otherAccount = new DTO\OtherAccount((string) $xmlOtherIdentification->Id);
-
-        if (isset($xmlOtherIdentification->SchmeNm)) {
-            if (isset($xmlOtherIdentification->SchmeNm->Cd)) {
-                $otherAccount->setSchemeName((string) $xmlOtherIdentification->SchmeNm->Cd);
-            }
-
-            if (isset($xmlOtherIdentification->SchmeNm->Prtry)) {
-                $otherAccount->setSchemeName((string) $xmlOtherIdentification->SchmeNm->Prtry);
-            }
-        }
-
-        if (isset($xmlOtherIdentification->Issr)) {
-            $otherAccount->setIssuer((string) $xmlOtherIdentification->Issr);
-        }
-
-        return $otherAccount;
-    }
+    abstract public function getRelatedPartyAccount(SimpleXMLElement $xmlRelatedPartyTypeAccount);
 }
