@@ -11,14 +11,14 @@ use Genkgo\Camt\MessageFormatInterface;
  * Class MessageFormat
  * @package Genkgo\Camt\Camt052
  */
-final class V01 implements MessageFormatInterface
+final class V04 implements MessageFormatInterface
 {
     /**
      * @return string
      */
     public function getXmlNs()
     {
-        return 'urn:iso:std:iso:20022:tech:xsd:camt.052.001.01';
+        return 'urn:iso:std:iso:20022:tech:xsd:camt.052.001.04';
     }
 
     /**
@@ -26,7 +26,7 @@ final class V01 implements MessageFormatInterface
      */
     public function getMsgId()
     {
-        return 'camt.052.001.01';
+        return 'camt.052.001.04';
     }
 
     /**
@@ -34,7 +34,7 @@ final class V01 implements MessageFormatInterface
      */
     public function getName()
     {
-        return 'BankToCustomerAccountReportV01';
+        return 'BankToCustomerAccountReportV04';
     }
 
     /**
@@ -45,7 +45,7 @@ final class V01 implements MessageFormatInterface
         $entryTransactionDetailDecoder = new Camt052\Decoder\EntryTransactionDetail();
         $entryDecoder                  = new Decoder\Entry($entryTransactionDetailDecoder);
         $recordDecoder                 = new Decoder\Record($entryDecoder);
-        $messageDecoder                = new Camt052\Decoder\V01\Message($recordDecoder);
+        $messageDecoder                = new Camt052\Decoder\V04\Message($recordDecoder);
 
         return new Decoder($messageDecoder, sprintf('/assets/%s.xsd', $this->getMsgId()));
     }
