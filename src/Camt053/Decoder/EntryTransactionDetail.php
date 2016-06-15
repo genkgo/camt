@@ -3,7 +3,6 @@
 namespace Genkgo\Camt\Camt053\Decoder;
 
 use Genkgo\Camt\DTO;
-use Genkgo\Camt\Camt053\DTO as Camt053DTO;
 use Genkgo\Camt\Decoder\EntryTransactionDetail as BaseDecoder;
 use \SimpleXMLElement;
 use Genkgo\Camt\Iban;
@@ -28,7 +27,7 @@ class EntryTransactionDetail extends BaseDecoder
         }
 
         $xmlOtherIdentification = $xmlRelatedPartyTypeAccount->Id->Othr;
-        $otherAccount = new Camt053DTO\OtherAccount((string) $xmlOtherIdentification->Id);
+        $otherAccount = new DTO\OtherAccount((string) $xmlOtherIdentification->Id);
 
         if (isset($xmlOtherIdentification->SchmeNm)) {
             if (isset($xmlOtherIdentification->SchmeNm->Cd)) {

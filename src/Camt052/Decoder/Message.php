@@ -80,5 +80,26 @@ abstract class Message extends BaseMessageDecoder
         if (isset($xmlRecord->Acct->Id->PrtryAcct)) {
             return new Camt052DTO\ProprietaryAccount((string) $xmlRecord->Acct->Id->PrtryAcct->Id);
         }
+
+        if (isset($xmlRecord->Acct->Id->Othr)) {
+            $xmlOtherIdentification = $xmlRecord->Acct->Id->Othr;
+            $otherAccount = new DTO\OtherAccount((string) $xmlOtherIdentification->Id);
+
+            if (isset($xmlOtherIdentification->SchmeNm)) {
+                if (isset($xmlOtherIdentification->SchmeNm->Cd)) {
+                    $otherAccount->setSchemeName((string) $xmlOtherIdentification->SchmeNm->Cd);
+                }
+
+                if (isset($otherIdentification->SchmeNm->Prtry)) {
+                    $otherAccount->setSchemeName((string) $xmlOtherIdentification->SchmeNm->Prtry);
+                }
+            }
+
+            if (isset($xmlOtherIdentification->Issr)) {
+                $otherAccount->setIssuer($xmlOtherIdentification->Issr);
+            }
+
+            return $otherAccount;
+        }
     }
 }

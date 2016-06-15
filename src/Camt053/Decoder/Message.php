@@ -63,7 +63,7 @@ class Message extends BaseMessageDecoder
         }
 
         $xmlOtherIdentification = $xmlRecord->Acct->Id->Othr;
-        $otherAccount = new Camt053DTO\OtherAccount((string) $xmlOtherIdentification->Id);
+        $otherAccount = new DTO\OtherAccount((string) $xmlOtherIdentification->Id);
 
         if (isset($xmlOtherIdentification->SchmeNm)) {
             if (isset($xmlOtherIdentification->SchmeNm->Cd)) {
