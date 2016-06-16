@@ -4,7 +4,7 @@ namespace Genkgo\Camt\Unit;
 
 use DOMDocument;
 use Genkgo\Camt\AbstractTestCase;
-use Genkgo\Camt\Camt053\DTO;
+use Genkgo\Camt\DTO;
 use Genkgo\Camt\Camt053\MessageFormat;
 use Genkgo\Camt\Config;
 use Genkgo\Camt\Exception\ReaderException;
@@ -15,7 +15,7 @@ class ReaderTest extends AbstractTestCase
     protected function getDefaultConfig()
     {
         $config = new Config();
-        $config->addMessageFormat(new MessageFormat\Camt053V02());
+        $config->addMessageFormat(new MessageFormat\V02());
 
         return $config;
     }

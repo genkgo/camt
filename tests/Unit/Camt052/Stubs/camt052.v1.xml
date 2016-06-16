@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Document xmlns="urn:iso:std:iso:20022:tech:xsd:camt.052.001.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <BkToCstmrAcctRptV01>
+        <GrpHdr>
+            <MsgId>AAAASESS-FP-ACCR001</MsgId>
+            <CreDtTm>2007-10-18T12:30:00+01:00</CreDtTm>
+            <MsgPgntn>
+                <PgNb>1</PgNb>
+                <LastPgInd>true</LastPgInd>
+            </MsgPgntn>
+        </GrpHdr>
+        <Rpt>
+            <Id>AAAASESS-FP-ACCR001</Id>
+            <CreDtTm>2007-10-18T12:30:00+01:00</CreDtTm>
+            <FrToDt>
+                <FrDtTm>2007-10-18T08:00:00+01:00</FrDtTm>
+                <ToDtTm>2007-10-18T12:30:00+01:00</ToDtTm>
+            </FrToDt>
+            <Acct>
+                <Id>
+                    <PrtryAcct>
+                        <Id>50000000054910000003</Id>
+                    </PrtryAcct>
+                </Id>
+                <Ownr>
+                    <Nm>FINPETROL</Nm>
+                </Ownr>
+                <Svcr>
+                    <FinInstnId>
+                        <NmAndAdr>
+                            <Nm>AAAA BANKEN</Nm>
+                            <PstlAdr>
+                                <Ctry>SE</Ctry>
+                            </PstlAdr>
+                        </NmAndAdr>
+                    </FinInstnId>
+                </Svcr>
+            </Acct>
+            <Ntry>
+                <Amt Ccy="SEK">200000</Amt>
+                <CdtDbtInd>DBIT</CdtDbtInd>
+                <Sts>BOOK</Sts>
+                <BookgDt>
+                    <DtTm>2007-10-18T10:15:00+01:00</DtTm>
+                </BookgDt>
+                <ValDt>
+                    <Dt>2007-10-18</Dt>
+                </ValDt>
+                <AcctSvcrRef>AAAASESS-FP-ACCR-01</AcctSvcrRef>
+                <BkTxCd>
+                    <Domn>
+                        <Cd>PAYM</Cd>
+                        <Fmly>
+                            <Cd>0001</Cd>
+                            <SubFmlyCd>0003</SubFmlyCd>
+                        </Fmly>
+                    </Domn>
+                </BkTxCd>
+                <Btch>
+                    <MsgId>FINP-0055</MsgId>
+                    <PmtInfId>FINP-0055-001</PmtInfId>
+                    <NbOfTxs>20</NbOfTxs>
+                </Btch>
+            </Ntry>
+        </Rpt>
+    </BkToCstmrAcctRptV01>
+</Document>

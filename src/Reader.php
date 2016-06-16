@@ -3,7 +3,6 @@ namespace Genkgo\Camt;
 
 use DOMDocument;
 use Genkgo\Camt\Exception\ReaderException;
-use Genkgo\Camt\Camt053\Message;
 
 /**
  * Class Reader
@@ -26,7 +25,7 @@ class Reader
 
     /**
      * @param DOMDocument $document
-     * @return mixed|Message
+     * @return mixed
      * @throws ReaderException
      */
     public function readDom(DOMDocument $document)
@@ -37,23 +36,35 @@ class Reader
 
         $xmlNs = $document->documentElement->getAttribute('xmlns');
         $messageFormat = $this->getMessageFormatForXmlNs($xmlNs);
+
         return $messageFormat->getDecoder()->decode($document);
     }
 
     /**
      * @param $string
-     * @return mixed|Message
+     * @return mixed
      * @throws ReaderException
      */
     public function readString($string)
     {
         $dom = new DOMDocument('1.0', 'UTF-8');
         $dom->loadXML($string);
+
         return $this->readDom($dom);
     }
 
+    public function readDoc($string)
+    {
+        $string = file_get_contents($string);
+        $dom = new DOMDocument('1.0', 'UTF-8');
+        $dom->loadXML($string);
+
+        return $dom;
+    }
+
+
     /**
-     * @param $file
+     * @param  string $file
      * @return mixed|Message
      * @throws ReaderException
      */

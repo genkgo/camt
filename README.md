@@ -1,6 +1,6 @@
 # Genkgo.CAMT
 
-Library to read CAMT files. Currently only CAMT.053 is supported.
+Library to read CAMT files. Currently only CAMT.053 and CAMT.052 are supported for now.
 
 ### Supported Versions
 
@@ -14,6 +14,17 @@ Library to read CAMT files. Currently only CAMT.053 is supported.
 | camt.053.001.04   | :heavy_check_mark: |
 | camt.053.001.05   |                    |
 | camt.053.001.06   |                    |
+
+#### Camt 052
+
+| Version           | Supported          |
+| :---------------: | :----------------: |
+| camt.052.001.01   | :heavy_check_mark: |
+| camt.052.001.02   |                    |
+| camt.052.001.03   |                    |
+| camt.052.001.04   |                    |
+| camt.052.001.05   |                    |
+| camt.052.001.06   |                    |
 
 ### Installation
 
@@ -56,9 +67,9 @@ Read a CAMT file, and loop through its statements and entries.
 use Genkgo\Camt\Config;
 use Genkgo\Camt\Reader;
 
-$reader = new Reader(Config::getDefault()));
+$reader = new Reader(Config::getDefault());
 $message = $reader->readFile(__DIR__.'/Camt053/Stubs/camt053.v2.minimal.xml');
-$statements = $message->getStatements();
+$statements = $message->getRecords();
 foreach ($statements as $statement) {
   $entries = $statement->getEntries();
 }

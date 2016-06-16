@@ -2,6 +2,8 @@
 
 namespace Genkgo\Camt\Camt053\DTO;
 
+use Genkgo\Camt\DTO\Account;
+
 /**
  * Class OtherAccount
  * @package Genkgo\Camt\Camt053

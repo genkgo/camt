@@ -1,9 +1,9 @@
 <?php
 
-namespace Genkgo\Camt\Unit\Camt053\Decoder;
+namespace Genkgo\Camt\Unit\Camt052\Decoder;
 
 use Genkgo\Camt\AbstractTestCase;
-use Genkgo\Camt\Camt053;
+use Genkgo\Camt\Camt052;
 use Genkgo\Camt\DTO;
 use Genkgo\Camt\Decoder as DecoderObject;
 use Prophecy\Argument;
@@ -24,7 +24,7 @@ class MessageTest extends AbstractTestCase
             ->prophesize(DecoderObject\Record::class)
             ->willBeConstructedWith([$entry->reveal()])
         ;
-        $this->decoder = new Camt053\Decoder\Message($this->mockedRecordDecoder->reveal());
+        $this->decoder = new Camt052\Decoder\Message($this->mockedRecordDecoder->reveal());
     }
 
     /**
@@ -41,21 +41,21 @@ class MessageTest extends AbstractTestCase
     /**
      * @test
      */
-    public function it_adds_statements()
+    public function it_adds_reports()
     {
         $message = $this->prophesize(DTO\Message::class);
 
         $this->mockedRecordDecoder->addBalances(
-            Argument::type(Camt053\DTO\Statement::class),
+            Argument::type(Camt052\DTO\Report::class),
             Argument::type('\SimpleXMLElement')
         )->shouldBeCalled();
         $this->mockedRecordDecoder->addEntries(
-            Argument::type(Camt053\DTO\Statement::class),
+            Argument::type(Camt052\DTO\Report::class),
             Argument::type('\SimpleXMLElement')
         )->shouldBeCalled();
 
         $message->setRecords(Argument::that(function ($argument) {
-            return is_array($argument) && $argument[0] instanceof Camt053\DTO\Statement;
+            return is_array($argument) && $argument[0] instanceof Camt052\DTO\Report;
         }))->shouldBeCalled();
 
         $this->decoder->addRecords($message->reveal(), $this->getXmlMessage());
@@ -65,23 +65,24 @@ class MessageTest extends AbstractTestCase
     {
         $xmlContent = <<<XML
 <content>
-    <BkToCstmrStmt>
+    <BkToCstmrAcctRptV01>
         <GrpHdr>
             <MsgId>CAMT053RIB000000000001</MsgId>
             <CreDtTm>2015-03-10T18:43:50+00:00</CreDtTm>
         </GrpHdr>
-        <Stmt>
+        <Rpt>
             <Id>253EURNL26VAYB8060476890</Id>
             <CreDtTm>2015-03-10T18:43:50+00:00</CreDtTm>
             <Acct>
                 <Id>
-                    <IBAN>NL26VAYB8060476890</IBAN>
+                    <PrtryAcct>
+                        <Id>50000000054910000003</Id>
+                    </PrtryAcct>
                 </Id>
             </Acct>
-        </Stmt>
-    </BkToCstmrStmt>
+        </Rpt>
+    </BkToCstmrAcctRptV01>
 </content>
-
 XML;
 
         return new \SimpleXMLElement($xmlContent);
