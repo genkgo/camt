@@ -1,15 +1,15 @@
 <?php
 
-namespace Genkgo\Camt\Camt052\Decoder;
+namespace Genkgo\Camt\Camt054\Decoder;
 
 use Genkgo\Camt\Decoder\Message as BaseMessageDecoder;
+use Genkgo\Camt\Camt054\DTO as Camt054DTO;
 use Genkgo\Camt\DTO;
-use Genkgo\Camt\Camt052\DTO as Camt052DTO;
 use \SimpleXMLElement;
 use \DateTimeImmutable;
 use Genkgo\Camt\Iban;
 
-abstract class Message extends BaseMessageDecoder
+class Message extends BaseMessageDecoder
 {
     /**
      * @param DTO\Message      $message
@@ -19,21 +19,28 @@ abstract class Message extends BaseMessageDecoder
     {
         $reports = [];
 
-        $xmlReports = $this->getRootElement($document)->Rpt;
+        $xmlReports = $this->getRootElement($document)->Ntfctn;
         foreach ($xmlReports as $xmlReport) {
-            $report = new Camt052DTO\Report(
+            $report = new Camt054DTO\Notification(
                 (string) $xmlReport->Id,
                 new DateTimeImmutable((string)$xmlReport->CreDtTm),
                 $this->getAccount($xmlReport)
             );
 
-            $this->recordDecoder->addBalances($report, $xmlReport);
             $this->recordDecoder->addEntries($report, $xmlReport);
 
             $reports[] = $report;
         }
 
         $message->setRecords($reports);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getRootElement(SimpleXMLElement $document)
+    {
+        return $document->BkToCstmrDbtCdtNtfctn; 
     }
 
     /**
