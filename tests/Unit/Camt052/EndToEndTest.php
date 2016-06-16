@@ -19,6 +19,14 @@ class EndToEndTest extends AbstractTestCase
         return (new MessageFormat\V01)->getDecoder()->decode($dom);
     }
 
+    protected function getV2Message()
+    {
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $dom->load(__DIR__.'/Stubs/camt052.v2.xml');
+
+        return (new MessageFormat\V02)->getDecoder()->decode($dom);
+    }
+
     protected function getV4Message()
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
@@ -31,6 +39,7 @@ class EndToEndTest extends AbstractTestCase
     {
         $messages = [
             $this->getV1Message(),
+            $this->getV2Message(),
             $this->getV4Message(),
         ];
 
@@ -47,6 +56,7 @@ class EndToEndTest extends AbstractTestCase
     {
         $messages = [
             $this->getV1Message(),
+            $this->getV2Message(),
             $this->getV4Message(),
         ];
 
@@ -67,6 +77,7 @@ class EndToEndTest extends AbstractTestCase
     {
         $messages = [
             $this->getV1Message(),
+            $this->getV2Message(),
             $this->getV4Message(),
         ];
 
