@@ -11,7 +11,7 @@ Library to read CAMT files. Currently only CAMT.053 is supported.
 | camt.053.001.01   |                    |
 | camt.053.001.02   | :heavy_check_mark: |
 | camt.053.001.03   | :heavy_check_mark: |
-| camt.053.001.04   |                    |
+| camt.053.001.04   | :heavy_check_mark: |
 | camt.053.001.05   |                    |
 | camt.053.001.06   |                    |
 
@@ -57,7 +57,7 @@ use Genkgo\Camt\Config;
 use Genkgo\Camt\Reader;
 
 $reader = new Reader(Config::getDefault()));
-$message = $reader->readFile(__DIR__.'/Camt053/Stubs/camt053.minimal.xml');
+$message = $reader->readFile(__DIR__.'/Camt053/Stubs/camt053.v2.minimal.xml');
 $statements = $message->getStatements();
 foreach ($statements as $statement) {
   $entries = $statement->getEntries();

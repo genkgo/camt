@@ -46,6 +46,6 @@ final class Camt053V02 implements MessageFormatInterface
         $statementDecoder              = new Decoder\Statement($entryDecoder);
         $messageDecoder                = new Decoder\Message($statementDecoder);
 
-        return new Decoder($messageDecoder, '/assets/camt.053.001.02.xsd');
+        return new Decoder($messageDecoder, sprintf('/assets/%s.xsd', $this->getMsgId()));
     }
 }

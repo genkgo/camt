@@ -2,8 +2,7 @@
 
 namespace Genkgo\Camt;
 
-use Genkgo\Camt\Camt053\MessageFormat\Camt053V02;
-use Genkgo\Camt\Camt053\MessageFormat\Camt053V03;
+use Genkgo\Camt\Camt053\MessageFormat;
 
 /**
  * Class Config
@@ -38,8 +37,9 @@ class Config
     public static function getDefault()
     {
         $config = new static;
-        $config->addMessageFormat(new Camt053V02());
-        $config->addMessageFormat(new Camt053V03());
+        $config->addMessageFormat(new MessageFormat\Camt053V02());
+        $config->addMessageFormat(new MessageFormat\Camt053V03());
+        $config->addMessageFormat(new MessageFormat\Camt053V04());
         return $config;
     }
 }

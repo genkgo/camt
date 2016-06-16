@@ -32,8 +32,8 @@
                         <Cd>CLBD</Cd>
                     </CdOrPrtry>
                 </Tp>
-                <Amt Ccy="EUR">27.00</Amt>
-                <CdtDbtInd>CRDT</CdtDbtInd>
+                <Amt Ccy="SEK">27.00</Amt>
+                <CdtDbtInd>DBIT</CdtDbtInd>
                 <Dt>
                     <Dt>2014-12-31</Dt>
                 </Dt>
@@ -57,7 +57,10 @@
                 <NtryDtls>
                     <TxDtls>
                         <Refs>
-                            <EndToEndId>000000001</EndToEndId>
+                            <Prtry>
+                                <Tp>LegalSequenceNumber</Tp>
+                                <Ref>100</Ref>
+                            </Prtry>
                         </Refs>
                         <BkTxCd>
                             <Prtry>
@@ -78,7 +81,17 @@
                             </CdtrAcct>
                         </RltdPties>
                         <RmtInf>
-                            <Ustrd>Transaction Description</Ustrd>
+                            <Strd>
+                                <CdtrRefInf>
+                                    <Tp>
+                                        <CdOrPrtry>
+                                            <Cd>SCOR</Cd>
+                                        </CdOrPrtry>
+                                        <Issr>BBA</Issr>
+                                    </Tp>
+                                    <Ref>4654654654654654</Ref>
+                                </CdtrRefInf>
+                            </Strd>
                         </RmtInf>
                     </TxDtls>
                 </NtryDtls>
