@@ -39,6 +39,7 @@ class Config
     {
         $config = new static;
         $config->addMessageFormat(new Camt052\MessageFormat\V01());
+        $config->addMessageFormat(new Camt052\MessageFormat\V04());
         $config->addMessageFormat(new Camt053\MessageFormat\V02());
         $config->addMessageFormat(new Camt053\MessageFormat\V03());
         $config->addMessageFormat(new Camt053\MessageFormat\V04());

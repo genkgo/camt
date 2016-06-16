@@ -18,48 +18,72 @@ class EndToEndTest extends AbstractTestCase
 
         return (new MessageFormat\V01)->getDecoder()->decode($dom);
     }
+
+    protected function getV4Message()
+    {
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $dom->load(__DIR__.'/Stubs/camt052.v4.xml');
+
+        return (new MessageFormat\V04)->getDecoder()->decode($dom);
+    }
+
     public function testGroupHeader()
     {
-        $message = $this->getV1Message();
+        $messages = [
+            $this->getV1Message(),
+            $this->getV4Message(),
+        ];
 
-        $groupHeader = $message->getGroupHeader();
+        foreach ($messages as $message) {
+            $groupHeader = $message->getGroupHeader();
 
-        $this->assertInstanceOf(DTO\GroupHeader::class, $groupHeader);
-        $this->assertEquals('AAAASESS-FP-ACCR001', $groupHeader->getMessageId());
-        $this->assertEquals(new \DateTimeImmutable('2007-10-18T12:30:00+01:00'), $groupHeader->getCreatedOn());
+            $this->assertInstanceOf(DTO\GroupHeader::class, $groupHeader);
+            $this->assertEquals('AAAASESS-FP-ACCR001', $groupHeader->getMessageId());
+            $this->assertEquals(new \DateTimeImmutable('2007-10-18T12:30:00+01:00'), $groupHeader->getCreatedOn());
+        }
     }
 
     public function testReports()
     {
-        $message = $this->getV1Message();
+        $messages = [
+            $this->getV1Message(),
+            $this->getV4Message(),
+        ];
 
-        $reports = $message->getRecords();
+        foreach ($messages as $message) {
+            $reports = $message->getRecords();
 
-        $this->assertCount(1, $reports);
-        foreach ($reports as $report) {
-            $this->assertInstanceOf(Camt052DTO\Report::class, $report);
-            $this->assertEquals('AAAASESS-FP-ACCR001', $report->getId());
-            $this->assertEquals('50000000054910000003', $report->getAccount()->getIdentification());
-            $this->assertEquals(new \DateTimeImmutable('2007-10-18T12:30:00+01:00'), $report->getCreatedOn());
+            $this->assertCount(1, $reports);
+            foreach ($reports as $report) {
+                $this->assertInstanceOf(Camt052DTO\Report::class, $report);
+                $this->assertEquals('AAAASESS-FP-ACCR001', $report->getId());
+                $this->assertEquals('CH2801234000123456789', $report->getAccount()->getIdentification());
+                $this->assertEquals(new \DateTimeImmutable('2007-10-18T12:30:00+01:00'), $report->getCreatedOn());
+            }
         }
     }
 
     public function testEntries()
     {
-        $message = $this->getV1Message();
+        $messages = [
+            $this->getV1Message(),
+            $this->getV4Message(),
+        ];
 
-        $reports = $message->getRecords();
+        foreach ($messages as $message) {
+            $reports = $message->getRecords();
 
-        $this->assertCount(1, $reports);
-        foreach ($reports as $report) {
-            $entries = $report->getEntries();
-            $this->assertCount(1, $entries);
+            $this->assertCount(1, $reports);
+            foreach ($reports as $report) {
+                $entries = $report->getEntries();
+                $this->assertCount(1, $entries);
 
-            foreach ($entries as $entry) {
-                $this->assertEquals(-20000000, $entry->getAmount()->getAmount());
-                $this->assertEquals('SEK', $entry->getAmount()->getCurrency()->getName());
-                $this->assertEquals('2007-10-18', $entry->getBookingDate()->format('Y-m-d'));
-                $this->assertEquals('2007-10-18', $entry->getValueDate()->format('Y-m-d'));
+                foreach ($entries as $entry) {
+                    $this->assertEquals(-20000000, $entry->getAmount()->getAmount());
+                    $this->assertEquals('SEK', $entry->getAmount()->getCurrency()->getName());
+                    $this->assertEquals('2007-10-18', $entry->getBookingDate()->format('Y-m-d'));
+                    $this->assertEquals('2007-10-18', $entry->getValueDate()->format('Y-m-d'));
+                }
             }
         }
     }

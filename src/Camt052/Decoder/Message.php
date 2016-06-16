@@ -7,8 +7,9 @@ use Genkgo\Camt\Camt052\DTO as Camt052DTO;
 use Genkgo\Camt\DTO;
 use \SimpleXMLElement;
 use \DateTimeImmutable;
+use Genkgo\Camt\Iban;
 
-class Message extends BaseMessageDecoder
+abstract class Message extends BaseMessageDecoder
 {
     /**
      * @param DTO\Message      $message
@@ -16,7 +17,7 @@ class Message extends BaseMessageDecoder
      */
     public function addGroupHeader(DTO\Message $message, SimpleXMLElement $document)
     {
-        $xmlGroupHeader = $document->BkToCstmrAcctRptV01->GrpHdr;
+        $xmlGroupHeader = $this->getRootElement($document)->GrpHdr;
         $groupHeader = new DTO\GroupHeader(
             (string)$xmlGroupHeader->MsgId,
             new DateTimeImmutable((string)$xmlGroupHeader->CreDtTm)
@@ -33,7 +34,7 @@ class Message extends BaseMessageDecoder
     {
         $reports = [];
 
-        $xmlReports = $document->BkToCstmrAcctRptV01->Rpt;
+        $xmlReports = $this->getRootElement($document)->Rpt;
         foreach ($xmlReports as $xmlReport) {
             $report = new Camt052DTO\Report(
                 (string) $xmlReport->Id,
@@ -49,6 +50,13 @@ class Message extends BaseMessageDecoder
 
         $message->setRecords($reports);
     }
+
+    /**
+     * @param SimpleXMLElement $document
+     *
+     * @return SimpleXMLElement
+     */
+    abstract public function getRootElement(SimpleXMLElement $document);
 
     /**
      * @param SimpleXMLElement $xmlRecord

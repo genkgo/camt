@@ -24,7 +24,7 @@ class MessageTest extends AbstractTestCase
             ->prophesize(DecoderObject\Record::class)
             ->willBeConstructedWith([$entry->reveal()])
         ;
-        $this->decoder = new Camt052\Decoder\Message($this->mockedRecordDecoder->reveal());
+        $this->decoder = new Camt052\Decoder\V01\Message($this->mockedRecordDecoder->reveal());
     }
 
     /**
