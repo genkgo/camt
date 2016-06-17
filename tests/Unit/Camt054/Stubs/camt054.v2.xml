@@ -7,7 +7,9 @@
         </GrpHdr>
         <Ntfctn>
             <Id>AAAASESS-FP-ACCR001</Id>
+            <ElctrncSeqNb>12312</ElctrncSeqNb>
             <CreDtTm>2007-10-18T12:30:00+01:00</CreDtTm>
+            <CpyDplctInd>CODU</CpyDplctInd>
             <Acct>
                 <Id>
                     <Othr>

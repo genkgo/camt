@@ -100,8 +100,16 @@ class EndToEndTest extends AbstractTestCase
                 $this->assertEquals('253EURNL26VAYB8060476890', $statement->getId());
                 $this->assertEquals('NL26VAYB8060476890', $statement->getAccount()->getIdentification());
                 $this->assertEquals(new \DateTimeImmutable('2015-03-10T18:43:50+00:00'), $statement->getCreatedOn());
+
+                $this->assertEquals('12312', $statement->getElectronicSequenceNumber());
+                $this->assertEquals('CODU', $statement->getCopyDuplicateIndicator());
             }
         }
+
+        $statementV4 = $messages[2]->getRecords()[0];
+        $this->assertInstanceOf(DTO\Pagination::class, $statementV4->getPagination());
+        $this->assertEquals('2', $statementV4->getPagination()->getPageNumber());
+        $this->assertEquals(true, $statementV4->getPagination()->isLastPage());
     }
 
     public function testBalance()

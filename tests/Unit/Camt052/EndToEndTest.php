@@ -69,6 +69,8 @@ class EndToEndTest extends AbstractTestCase
                 $this->assertEquals('AAAASESS-FP-ACCR001', $report->getId());
                 $this->assertEquals('CH2801234000123456789', $report->getAccount()->getIdentification());
                 $this->assertEquals(new \DateTimeImmutable('2007-10-18T12:30:00+01:00'), $report->getCreatedOn());
+                $this->assertEquals('12312', $report->getElectronicSequenceNumber());
+                $this->assertEquals('CODU', $report->getCopyDuplicateIndicator());
             }
         }
     }
@@ -97,5 +99,10 @@ class EndToEndTest extends AbstractTestCase
                 }
             }
         }
+
+        $reportV4 = $messages[2]->getRecords()[0];
+        $this->assertInstanceOf(DTO\Pagination::class, $reportV4->getPagination());
+        $this->assertEquals('2', $reportV4->getPagination()->getPageNumber());
+        $this->assertEquals(true, $reportV4->getPagination()->isLastPage());
     }
 }

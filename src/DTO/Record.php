@@ -24,6 +24,21 @@ abstract class Record
     protected $account;
 
     /**
+     * @var Pagination|null
+     */
+    protected $pagination;
+
+    /**
+     * @var string|null
+     */
+    protected $electronicSequenceNumber;
+
+    /**
+     * @var string|null
+     */
+    protected $copyDuplicateIndicator;
+
+    /**
      * @var array
      */
     protected $entries = [];
@@ -62,6 +77,54 @@ abstract class Record
     public function getAccount()
     {
         return $this->account;
+    }
+
+    /**
+     * @return Pagination
+     */
+    public function getPagination()
+    {
+        return $this->pagination;
+    }
+    
+    /**
+     * @param Pagination $pagination
+     */
+    public function setPagination(Pagination $pagination)
+    {
+        $this->pagination = $pagination;
+    }
+
+    /**
+     * @return string
+     */
+    public function getElectronicSequenceNumber()
+    {
+        return $this->electronicSequenceNumber;
+    }
+    
+    /**
+     * @param string $electronicSequenceNumber
+     */
+    public function setElectronicSequenceNumber($electronicSequenceNumber)
+    {
+        $this->electronicSequenceNumber = $electronicSequenceNumber;
+    }
+
+    /**
+     * @param string $copyDuplicateIndicator
+     */
+    public function getCopyDuplicateIndicator()
+    {
+        return $this->copyDuplicateIndicator;
+    }
+    
+    /**
+     * @return string
+     */
+    public function setCopyDuplicateIndicator($copyDuplicateIndicator)
+    {
+        $this->copyDuplicateIndicator = $copyDuplicateIndicator;
     }
 
     /**

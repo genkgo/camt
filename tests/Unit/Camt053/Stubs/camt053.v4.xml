@@ -11,11 +11,17 @@
         </GrpHdr>
         <Stmt>
             <Id>253EURNL26VAYB8060476890</Id>
+            <StmtPgntn>
+                <PgNb>2</PgNb>
+                <LastPgInd>true</LastPgInd>
+            </StmtPgntn>
+            <ElctrncSeqNb>12312</ElctrncSeqNb>
             <CreDtTm>2015-03-10T18:43:50+00:00</CreDtTm>
             <FrToDt>
                 <FrDtTm>2010-10-18T08:00:00+01:00</FrDtTm>
                 <ToDtTm>2010-10-18T17:00:00+01:00</ToDtTm>
             </FrToDt>
+            <CpyDplctInd>CODU</CpyDplctInd>
             <Acct>
                 <Id>
                     <Othr>

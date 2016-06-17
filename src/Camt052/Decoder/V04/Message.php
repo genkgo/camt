@@ -15,6 +15,6 @@ class Message extends BaseMessageDecoder
      */
     public function getRootElement(SimpleXMLElement $document)
     {
-        return $document->BkToCstmrAcctRpt; 
+        return $document->BkToCstmrAcctRpt;
     }
 }

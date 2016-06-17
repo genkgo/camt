@@ -10,8 +10,9 @@
         </GrpHdr>
         <Stmt>
             <Id>253EURNL26VAYB8060476890</Id>
-            <ElctrncSeqNb>001</ElctrncSeqNb>
+            <ElctrncSeqNb>12312</ElctrncSeqNb>
             <CreDtTm>2015-03-10T18:43:50+00:00</CreDtTm>
+            <CpyDplctInd>CODU</CpyDplctInd>
             <Acct>
                 <Id>
                     <Othr>
