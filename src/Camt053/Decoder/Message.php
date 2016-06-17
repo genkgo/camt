@@ -15,26 +15,11 @@ class Message extends BaseMessageDecoder
      * @param DTO\Message      $message
      * @param SimpleXMLElement $document
      */
-    public function addGroupHeader(DTO\Message $message, SimpleXMLElement $document)
-    {
-        $xmlGroupHeader = $document->BkToCstmrStmt->GrpHdr;
-        $groupHeader = new DTO\GroupHeader(
-            (string)$xmlGroupHeader->MsgId,
-            new DateTimeImmutable((string)$xmlGroupHeader->CreDtTm)
-        );
-
-        $message->setGroupHeader($groupHeader);
-    }
-
-    /**
-     * @param DTO\Message      $message
-     * @param SimpleXMLElement $document
-     */
     public function addRecords(DTO\Message $message, SimpleXMLElement $document)
     {
         $statements = [];
 
-        $xmlStatements = $document->BkToCstmrStmt->Stmt;
+        $xmlStatements = $this->getRootElement($document)->Stmt;
         foreach ($xmlStatements as $xmlStatement) {
             $statement = new Camt053DTO\Statement(
                 (string) $xmlStatement->Id,
@@ -49,6 +34,14 @@ class Message extends BaseMessageDecoder
         }
 
         $message->setRecords($statements);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getRootElement(SimpleXMLElement $document)
+    {
+        return $document->BkToCstmrStmt; 
     }
 
     /**

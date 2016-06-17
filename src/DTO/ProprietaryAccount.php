@@ -1,12 +1,12 @@
 <?php
 
-namespace Genkgo\Camt\Camt052\DTO;
+namespace Genkgo\Camt\DTO;
 
 use Genkgo\Camt\DTO\Account;
 
 /**
  * Class ProprietaryAccount
- * @package Genkgo\Camt\Camt052
+ * @package Genkgo\Camt
  */
 class ProprietaryAccount extends Account
 {

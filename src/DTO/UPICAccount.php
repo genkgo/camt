@@ -1,6 +1,6 @@
 <?php
 
-namespace Genkgo\Camt\Camt052\DTO;
+namespace Genkgo\Camt\DTO;
 
 use Genkgo\Camt\DTO\Account;
 

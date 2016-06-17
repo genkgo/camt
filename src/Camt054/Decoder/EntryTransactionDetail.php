@@ -1,6 +1,6 @@
 <?php
 
-namespace Genkgo\Camt\Camt052\Decoder;
+namespace Genkgo\Camt\Camt054\Decoder;
 
 use Genkgo\Camt\DTO;
 use Genkgo\Camt\Decoder\EntryTransactionDetail as BaseDecoder;

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:iso:std:iso:20022:tech:xsd:camt.054.001.02">
+    <BkToCstmrDbtCdtNtfctn>
+        <GrpHdr>
+            <MsgId>AAAASESS-FP-ACCR001</MsgId>
+            <CreDtTm>2007-10-18T12:30:00+01:00</CreDtTm>
+        </GrpHdr>
+        <Ntfctn>
+            <Id>AAAASESS-FP-ACCR001</Id>
+            <CreDtTm>2007-10-18T12:30:00+01:00</CreDtTm>
+            <Acct>
+                <Id>
+                    <Othr>
+                        <Id>CH2801234000123456789</Id>
+                    </Othr>
+                </Id>
+                <Ownr>
+                    <Nm>FINPETROL</Nm>
+                </Ownr>
+                <Svcr>
+                    <FinInstnId>
+                        <Nm>AAAA BANKEN</Nm>
+                        <PstlAdr>
+                            <Ctry>SE</Ctry>
+                        </PstlAdr>
+                    </FinInstnId>
+                </Svcr>
+            </Acct>
+            <Ntry>
+                <Amt Ccy="SEK">200000</Amt>
+                <CdtDbtInd>DBIT</CdtDbtInd>
+                <Sts>BOOK</Sts>
+                <BookgDt>
+                    <DtTm>2007-10-18T13:15:00+01:00</DtTm>
+                </BookgDt>
+                <ValDt>
+                    <Dt>2007-10-18</Dt>
+                </ValDt>
+                <AcctSvcrRef>AAAASESS-FP-ACCR001</AcctSvcrRef>
+                <BkTxCd>
+                    <Domn>
+                        <Cd>PAYM</Cd>
+                        <Fmly>
+                            <Cd>0001</Cd>
+                            <SubFmlyCd>0005</SubFmlyCd>
+                        </Fmly>
+                    </Domn>
+                </BkTxCd>
+                <NtryDtls>
+                    <TxDtls>
+                        <Refs>
+                            <EndToEndId>MUELL/FINP/RA12345</EndToEndId>
+                        </Refs>
+                        <RltdPties>
+                            <Dbtr>
+                                <Nm>MUELLER</Nm>
+                            </Dbtr>
+                        </RltdPties>
+                    </TxDtls>
+                </NtryDtls>
+            </Ntry>
+        </Ntfctn>
+    </BkToCstmrDbtCdtNtfctn>
+</Document>

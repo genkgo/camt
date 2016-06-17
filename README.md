@@ -1,8 +1,19 @@
 # Genkgo.CAMT
 
-Library to read CAMT files. Currently only CAMT.053 and CAMT.052 are supported for now.
+Library to read CAMT files. Currently only CAMT.052, CAMT.053 and CAMT.054 are supported.
 
 ### Supported Versions
+
+#### Camt 052
+
+| Version           | Supported          |
+| :---------------: | :----------------: |
+| camt.052.001.01   | :heavy_check_mark: |
+| camt.052.001.02   | :heavy_check_mark: |
+| camt.052.001.03   |                    |
+| camt.052.001.04   | :heavy_check_mark: |
+| camt.052.001.05   |                    |
+| camt.052.001.06   |                    |
 
 #### Camt 053
 
@@ -15,16 +26,17 @@ Library to read CAMT files. Currently only CAMT.053 and CAMT.052 are supported f
 | camt.053.001.05   |                    |
 | camt.053.001.06   |                    |
 
-#### Camt 052
+#### Camt 054
 
 | Version           | Supported          |
 | :---------------: | :----------------: |
-| camt.052.001.01   | :heavy_check_mark: |
-| camt.052.001.02   |                    |
-| camt.052.001.03   |                    |
-| camt.052.001.04   | :heavy_check_mark: |
-| camt.052.001.05   |                    |
-| camt.052.001.06   |                    |
+| camt.054.001.01   |                    |
+| camt.054.001.02   | :heavy_check_mark: |
+| camt.054.001.03   |                    |
+| camt.054.001.04   |                    |
+| camt.054.001.05   |                    |
+| camt.054.001.06   |                    |
+
 
 ### Installation
 
