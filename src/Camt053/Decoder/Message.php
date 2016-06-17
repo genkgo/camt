@@ -27,6 +27,20 @@ class Message extends BaseMessageDecoder
                 $this->getAccount($xmlStatement)
             );
 
+            if (isset($xmlStatement->StmtPgntn)) {
+                $statement->setPagination(new DTO\Pagination(
+                    (string) $xmlStatement->StmtPgntn->PgNb,
+                    ('true' === (string) $xmlStatement->StmtPgntn->LastPgInd) ? true : false
+                ));
+            }
+
+            if (isset($xmlStatement->ElctrncSeqNb)) {
+                $statement->setElectronicSequenceNumber($xmlStatement->ElctrncSeqNb);
+            }
+            if (isset($xmlStatement->CpyDplctInd)) {
+                $statement->setCopyDuplicateIndicator($xmlStatement->CpyDplctInd);
+            }
+
             $this->recordDecoder->addBalances($statement, $xmlStatement);
             $this->recordDecoder->addEntries($statement, $xmlStatement);
 
@@ -41,7 +55,7 @@ class Message extends BaseMessageDecoder
      */
     public function getRootElement(SimpleXMLElement $document)
     {
-        return $document->BkToCstmrStmt; 
+        return $document->BkToCstmrStmt;
     }
 
     /**

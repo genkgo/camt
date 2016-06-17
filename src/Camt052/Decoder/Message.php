@@ -27,6 +27,20 @@ abstract class Message extends BaseMessageDecoder
                 $this->getAccount($xmlReport)
             );
 
+            if (isset($xmlReport->RptPgntn)) {
+                $report->setPagination(new DTO\Pagination(
+                    (string) $xmlReport->RptPgntn->PgNb,
+                    ('true' === (string) $xmlReport->RptPgntn->LastPgInd) ? true : false
+                ));
+            }
+
+            if (isset($xmlReport->ElctrncSeqNb)) {
+                $report->setElectronicSequenceNumber($xmlReport->ElctrncSeqNb);
+            }
+            if (isset($xmlReport->CpyDplctInd)) {
+                $report->setCopyDuplicateIndicator($xmlReport->CpyDplctInd);
+            }
+
             $this->recordDecoder->addBalances($report, $xmlReport);
             $this->recordDecoder->addEntries($report, $xmlReport);
 

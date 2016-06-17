@@ -17,22 +17,36 @@ class Message extends BaseMessageDecoder
      */
     public function addRecords(DTO\Message $message, SimpleXMLElement $document)
     {
-        $reports = [];
+        $notifications = [];
 
-        $xmlReports = $this->getRootElement($document)->Ntfctn;
-        foreach ($xmlReports as $xmlReport) {
-            $report = new Camt054DTO\Notification(
-                (string) $xmlReport->Id,
-                new DateTimeImmutable((string)$xmlReport->CreDtTm),
-                $this->getAccount($xmlReport)
+        $xmlNotifications = $this->getRootElement($document)->Ntfctn;
+        foreach ($xmlNotifications as $xmlNotification) {
+            $notification = new Camt054DTO\Notification(
+                (string) $xmlNotification->Id,
+                new DateTimeImmutable((string)$xmlNotification->CreDtTm),
+                $this->getAccount($xmlNotification)
             );
 
-            $this->recordDecoder->addEntries($report, $xmlReport);
+            if (isset($xmlNotification->NtfctnPgntn)) {
+                $notification->setPagination(new DTO\Pagination(
+                    (string) $xmlNotification->NtfctnPgntn->PgNb,
+                    ('true' === (string) $xmlNotification->NtfctnPgntn->LastPgInd) ? true : false
+                ));
+            }
 
-            $reports[] = $report;
+            if (isset($xmlNotification->ElctrncSeqNb)) {
+                $notification->setElectronicSequenceNumber($xmlNotification->ElctrncSeqNb);
+            }
+            if (isset($xmlNotification->CpyDplctInd)) {
+                $notification->setCopyDuplicateIndicator($xmlNotification->CpyDplctInd);
+            }
+
+            $this->recordDecoder->addEntries($notification, $xmlNotification);
+
+            $notifications[] = $notification;
         }
 
-        $message->setRecords($reports);
+        $message->setRecords($notifications);
     }
 
     /**
@@ -40,7 +54,7 @@ class Message extends BaseMessageDecoder
      */
     public function getRootElement(SimpleXMLElement $document)
     {
-        return $document->BkToCstmrDbtCdtNtfctn; 
+        return $document->BkToCstmrDbtCdtNtfctn;
     }
 
     /**

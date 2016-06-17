@@ -12,12 +12,17 @@
     </GrpHdr>
     <Rpt>
       <Id>AAAASESS-FP-ACCR001</Id>
-      <ElctrncSeqNb>1</ElctrncSeqNb>
+      <RptPgntn>
+          <PgNb>2</PgNb>
+          <LastPgInd>true</LastPgInd>
+      </RptPgntn>
+      <ElctrncSeqNb>12312</ElctrncSeqNb>
       <CreDtTm>2007-10-18T12:30:00+01:00</CreDtTm>
       <FrToDt>
         <FrDtTm>2016-06-14T00:00:00.000+02:00</FrDtTm>
         <ToDtTm>2016-06-14T23:00:00.000+02:00</ToDtTm>
       </FrToDt>
+      <CpyDplctInd>CODU</CpyDplctInd>
       <Acct>
         <Id>
           <IBAN>CH2801234000123456789</IBAN>

@@ -11,13 +11,14 @@ use Genkgo\Camt\Iterator\EntryIterator;
 class Message
 {
     /**
-     * @var
+     * @var GroupHeader
      */
     private $groupHeader;
+
     /**
-     * @var
+     * @var Record[]
      */
-    private $records;
+    private $records = [];
 
     /**
      * @return GroupHeader
