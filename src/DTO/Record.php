@@ -2,6 +2,8 @@
 
 namespace Genkgo\Camt\DTO;
 
+use DateTimeImmutable;
+
 /**
  * Class Record
  * @package Genkgo\Camt\DTO
@@ -14,7 +16,7 @@ abstract class Record
     protected $id;
 
     /**
-     * @var \DateTimeImmutable
+     * @var DateTimeImmutable
      */
     protected $createdOn;
 
@@ -36,7 +38,22 @@ abstract class Record
     /**
      * @var string|null
      */
+    protected $legalSequenceNumber;
+
+    /**
+     * @var string|null
+     */
     protected $copyDuplicateIndicator;
+
+    /**
+     * @var DateTimeImmutable|null
+     */
+    protected $fromDate;
+
+    /**
+     * @var DateTimeImmutable|null
+     */
+    protected $toDate;
 
     /**
      * @var array
@@ -44,11 +61,16 @@ abstract class Record
     protected $entries = [];
 
     /**
+     * @var string|null
+     */
+    protected $additionalInformation;
+
+    /**
      * @param string $id
-     * @param \DateTimeImmutable $createdOn
+     * @param DateTimeImmutable $createdOn
      * @param Account $account
      */
-    public function __construct($id, \DateTimeImmutable $createdOn, Account $account)
+    public function __construct($id, DateTimeImmutable $createdOn, Account $account)
     {
         $this->id = $id;
         $this->createdOn = $createdOn;
@@ -64,7 +86,7 @@ abstract class Record
     }
 
     /**
-     * @return \DateTimeImmutable
+     * @return DateTimeImmutable
      */
     public function getCreatedOn()
     {
@@ -112,6 +134,22 @@ abstract class Record
     }
 
     /**
+     * @return string
+     */
+    public function getLegalSequenceNumber()
+    {
+        return $this->legalSequenceNumber;
+    }
+    
+    /**
+     * @param string $legalSequenceNumber
+     */
+    public function setLegalSequenceNumber($legalSequenceNumber)
+    {
+        $this->legalSequenceNumber = $legalSequenceNumber;
+    }
+
+    /**
      * @param string $copyDuplicateIndicator
      */
     public function getCopyDuplicateIndicator()
@@ -128,6 +166,38 @@ abstract class Record
     }
 
     /**
+     * @return DateTimeImmutable|null
+     */
+    public function getFromDate()
+    {
+        return $this->fromDate;
+    }
+    
+    /**
+     * @param DateTimeImmutable $fromDate
+     */
+    public function setFromDate(DateTimeImmutable $fromDate)
+    {
+        $this->fromDate = $fromDate;
+    }
+
+    /**
+     * @return DateTimeImmutable|null
+     */
+    public function getToDate()
+    {
+        return $this->toDate;
+    }
+    
+    /**
+     * @param DateTimeImmutable $toDate
+     */
+    public function setToDate(DateTimeImmutable $toDate)
+    {
+        $this->toDate = $toDate;
+    }
+
+    /**
      * @param Entry $entry
      */
     public function addEntry(Entry $entry)
@@ -141,5 +211,21 @@ abstract class Record
     public function getEntries()
     {
         return $this->entries;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getAdditionalInformation()
+    {
+        return $this->additionalInformation;
+    }
+
+    /**
+     * @param string
+     */
+    public function setAdditionalInformation($additionalInformation)
+    {
+        $this->additionalInformation = $additionalInformation;
     }
 }

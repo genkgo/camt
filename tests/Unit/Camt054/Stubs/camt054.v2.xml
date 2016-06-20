@@ -8,7 +8,12 @@
         <Ntfctn>
             <Id>AAAASESS-FP-ACCR001</Id>
             <ElctrncSeqNb>12312</ElctrncSeqNb>
+            <LglSeqNb>12312</LglSeqNb>
             <CreDtTm>2007-10-18T12:30:00+01:00</CreDtTm>
+            <FrToDt>
+                <FrDtTm>2007-10-18T08:00:00+01:00</FrDtTm>
+                <ToDtTm>2007-10-18T12:30:00+01:00</ToDtTm>
+            </FrToDt>
             <CpyDplctInd>CODU</CpyDplctInd>
             <Acct>
                 <Id>
@@ -61,6 +66,7 @@
                     </TxDtls>
                 </NtryDtls>
             </Ntry>
+            <AddtlNtfctnInf>Additional Information</AddtlNtfctnInf>
         </Ntfctn>
     </BkToCstmrDbtCdtNtfctn>
 </Document>

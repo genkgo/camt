@@ -8,6 +8,7 @@
         <Stmt>
             <Id>253EURNL26VAYB8060476890</Id>
             <ElctrncSeqNb>12312</ElctrncSeqNb>
+            <LglSeqNb>12312</LglSeqNb>
             <CreDtTm>2015-03-10T18:43:50+00:00</CreDtTm>
             <CpyDplctInd>CODU</CpyDplctInd>
             <Acct>
@@ -85,6 +86,7 @@
                     </TxDtls>
                 </NtryDtls>
             </Ntry>
+            <AddtlStmtInf>Additional Information</AddtlStmtInf>
         </Stmt>
     </BkToCstmrStmt>
 </Document>

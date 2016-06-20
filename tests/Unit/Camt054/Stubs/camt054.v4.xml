@@ -9,23 +9,24 @@
         <LastPgInd>true</LastPgInd>
       </MsgPgntn>
       <OrgnlBizQry>
-          <MsgId>SomeMessageId</MsgId>
-          <MsgNmId>SomeMessageNameId</MsgNmId>
-          <CreDtTm>2010-10-18T12:30:00+01:00</CreDtTm>
+        <MsgId>SomeMessageId</MsgId>
+        <MsgNmId>SomeMessageNameId</MsgNmId>
+        <CreDtTm>2010-10-18T12:30:00+01:00</CreDtTm>
       </OrgnlBizQry>
       <AddtlInf>TEST</AddtlInf>
     </GrpHdr>
     <Ntfctn>
       <Id>AAAASESS-FP-ACCR001</Id>
       <NtfctnPgntn>
-          <PgNb>2</PgNb>
-          <LastPgInd>true</LastPgInd>
+        <PgNb>2</PgNb>
+        <LastPgInd>true</LastPgInd>
       </NtfctnPgntn>
       <ElctrncSeqNb>12312</ElctrncSeqNb>
+      <LglSeqNb>12312</LglSeqNb>
       <CreDtTm>2007-10-18T12:30:00+01:00</CreDtTm>
       <FrToDt>
-        <FrDtTm>2016-06-17T00:00:00.000+02:00</FrDtTm>
-        <ToDtTm>2016-06-17T23:00:00.000+02:00</ToDtTm>
+        <FrDtTm>2007-10-18T08:00:00+01:00</FrDtTm>
+        <ToDtTm>2007-10-18T12:30:00+01:00</ToDtTm>
       </FrToDt>
       <CpyDplctInd>CODU</CpyDplctInd>
       <Acct>
@@ -219,6 +220,7 @@
         </NtryDtls>
         <AddtlNtryInf>Order</AddtlNtryInf>
       </Ntry>
+      <AddtlNtfctnInf>Additional Information</AddtlNtfctnInf>
     </Ntfctn>
   </BkToCstmrDbtCdtNtfctn>
 </Document>
