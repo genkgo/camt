@@ -74,7 +74,11 @@ class EndToEndTest extends AbstractTestCase
                 $this->assertEquals('CH2801234000123456789', $notification->getAccount()->getIdentification());
                 $this->assertEquals(new DateTimeImmutable('2007-10-18T12:30:00+01:00'), $notification->getCreatedOn());
                 $this->assertEquals('12312', $notification->getElectronicSequenceNumber());
+                $this->assertEquals('12312', $notification->getLegalSequenceNumber());
                 $this->assertEquals('CODU', $notification->getCopyDuplicateIndicator());
+                $this->assertEquals(new DateTimeImmutable('2007-10-18T08:00:00+01:00'), $notification->getFromDate());
+                $this->assertEquals(new DateTimeImmutable('2007-10-18T12:30:00+01:00'), $notification->getToDate());
+                $this->assertEquals('Additional Information', $notification->getAdditionalInformation());
             }
         }
 

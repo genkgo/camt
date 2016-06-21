@@ -34,13 +34,11 @@ class Message extends BaseMessageDecoder
                 ));
             }
 
-            if (isset($xmlStatement->ElctrncSeqNb)) {
-                $statement->setElectronicSequenceNumber($xmlStatement->ElctrncSeqNb);
-            }
-            if (isset($xmlStatement->CpyDplctInd)) {
-                $statement->setCopyDuplicateIndicator($xmlStatement->CpyDplctInd);
+            if (isset($xmlStatement->AddtlStmtInf)) {
+                $statement->setAdditionalInformation((string) $xmlStatement->AddtlStmtInf);
             }
 
+            $this->addCommonRecordInformation($statement, $xmlStatement);
             $this->recordDecoder->addBalances($statement, $xmlStatement);
             $this->recordDecoder->addEntries($statement, $xmlStatement);
 

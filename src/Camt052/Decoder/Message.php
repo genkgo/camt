@@ -34,13 +34,11 @@ abstract class Message extends BaseMessageDecoder
                 ));
             }
 
-            if (isset($xmlReport->ElctrncSeqNb)) {
-                $report->setElectronicSequenceNumber($xmlReport->ElctrncSeqNb);
-            }
-            if (isset($xmlReport->CpyDplctInd)) {
-                $report->setCopyDuplicateIndicator($xmlReport->CpyDplctInd);
+            if (isset($xmlReport->AddtlRptInf)) {
+                $report->setAdditionalInformation((string) $xmlReport->AddtlRptInf);
             }
 
+            $this->addCommonRecordInformation($report, $xmlReport);
             $this->recordDecoder->addBalances($report, $xmlReport);
             $this->recordDecoder->addEntries($report, $xmlReport);
 

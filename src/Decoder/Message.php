@@ -35,6 +35,27 @@ abstract class Message
     }
 
     /**
+     * @param DTO\Record       $record
+     * @param SimpleXMLElement $xmlRecord
+     */
+    public function addCommonRecordInformation(DTO\Record $record, SimpleXMLElement $xmlRecord)
+    {
+        if (isset($xmlRecord->ElctrncSeqNb)) {
+            $record->setElectronicSequenceNumber((string) $xmlRecord->ElctrncSeqNb);
+        }
+        if (isset($xmlRecord->CpyDplctInd)) {
+            $record->setCopyDuplicateIndicator((string) $xmlRecord->CpyDplctInd);
+        }
+        if (isset($xmlRecord->LglSeqNb)) {
+            $record->setLegalSequenceNumber((string) $xmlRecord->LglSeqNb);
+        }
+        if (isset($xmlRecord->FrToDt)) {
+            $record->setFromDate(new DateTimeImmutable((string) $xmlRecord->FrToDt->FrDtTm));
+            $record->setToDate(new DateTimeImmutable((string) $xmlRecord->FrToDt->ToDtTm));
+        }
+    }
+
+    /**
      * @param DTO\Message      $message
      * @param SimpleXMLElement $document
      */

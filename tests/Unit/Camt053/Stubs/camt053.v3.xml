@@ -11,7 +11,12 @@
         <Stmt>
             <Id>253EURNL26VAYB8060476890</Id>
             <ElctrncSeqNb>12312</ElctrncSeqNb>
+            <LglSeqNb>12312</LglSeqNb>
             <CreDtTm>2015-03-10T18:43:50+00:00</CreDtTm>
+            <FrToDt>
+                <FrDtTm>2007-10-18T08:00:00+01:00</FrDtTm>
+                <ToDtTm>2007-10-18T12:30:00+01:00</ToDtTm>
+            </FrToDt>
             <CpyDplctInd>CODU</CpyDplctInd>
             <Acct>
                 <Id>
@@ -63,18 +68,6 @@
                     <Dt>2014-12-31</Dt>
                 </Dt>
             </Bal>
-            <TxsSummry>
-                <TtlNtries>
-                    <NbOfNtries>1</NbOfNtries>
-                    <Sum>388.410</Sum>
-                    <TtlNetNtryAmt>388.410</TtlNetNtryAmt>
-                    <CdtDbtInd>CRDT</CdtDbtInd>
-                </TtlNtries>
-                <TtlCdtNtries>
-                    <NbOfNtries>1</NbOfNtries>
-                    <Sum>105.750</Sum>
-                </TtlCdtNtries>
-            </TxsSummry>
             <Ntry>
                 <Amt Ccy="EUR">8.85</Amt>
                 <CdtDbtInd>CRDT</CdtDbtInd>
@@ -171,6 +164,7 @@
                     </TxDtls>
                 </NtryDtls>
             </Ntry>
+            <AddtlStmtInf>Additional Information</AddtlStmtInf>
         </Stmt>
     </BkToCstmrStmt>
 </Document>

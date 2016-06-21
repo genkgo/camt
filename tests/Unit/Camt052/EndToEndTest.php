@@ -2,6 +2,7 @@
 
 namespace Genkgo\Camt\Unit\Camt052;
 
+use \DateTimeImmutable;
 use Genkgo\Camt\AbstractTestCase;
 use Genkgo\Camt\Decoder;
 use Genkgo\Camt\Camt052\MessageFormat;
@@ -48,7 +49,7 @@ class EndToEndTest extends AbstractTestCase
 
             $this->assertInstanceOf(DTO\GroupHeader::class, $groupHeader);
             $this->assertEquals('AAAASESS-FP-ACCR001', $groupHeader->getMessageId());
-            $this->assertEquals(new \DateTimeImmutable('2007-10-18T12:30:00+01:00'), $groupHeader->getCreatedOn());
+            $this->assertEquals(new DateTimeImmutable('2007-10-18T12:30:00+01:00'), $groupHeader->getCreatedOn());
         }
     }
 
@@ -68,9 +69,13 @@ class EndToEndTest extends AbstractTestCase
                 $this->assertInstanceOf(Camt052DTO\Report::class, $report);
                 $this->assertEquals('AAAASESS-FP-ACCR001', $report->getId());
                 $this->assertEquals('CH2801234000123456789', $report->getAccount()->getIdentification());
-                $this->assertEquals(new \DateTimeImmutable('2007-10-18T12:30:00+01:00'), $report->getCreatedOn());
+                $this->assertEquals(new DateTimeImmutable('2007-10-18T12:30:00+01:00'), $report->getCreatedOn());
                 $this->assertEquals('12312', $report->getElectronicSequenceNumber());
+                $this->assertEquals('12312', $report->getLegalSequenceNumber());
                 $this->assertEquals('CODU', $report->getCopyDuplicateIndicator());
+                $this->assertEquals(new DateTimeImmutable('2007-10-18T08:00:00+01:00'), $report->getFromDate());
+                $this->assertEquals(new DateTimeImmutable('2007-10-18T12:30:00+01:00'), $report->getToDate());
+                $this->assertEquals('Additional Information', $report->getAdditionalInformation());
             }
         }
     }

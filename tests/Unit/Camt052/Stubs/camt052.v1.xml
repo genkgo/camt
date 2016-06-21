@@ -12,6 +12,7 @@
         <Rpt>
             <Id>AAAASESS-FP-ACCR001</Id>
             <ElctrncSeqNb>12312</ElctrncSeqNb>
+            <LglSeqNb>12312</LglSeqNb>
             <CreDtTm>2007-10-18T12:30:00+01:00</CreDtTm>
             <FrToDt>
                 <FrDtTm>2007-10-18T08:00:00+01:00</FrDtTm>
@@ -64,6 +65,7 @@
                     <NbOfTxs>20</NbOfTxs>
                 </Btch>
             </Ntry>
+            <AddtlRptInf>Additional Information</AddtlRptInf>
         </Rpt>
     </BkToCstmrAcctRptV01>
 </Document>

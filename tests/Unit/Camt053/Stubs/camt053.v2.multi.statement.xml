@@ -8,7 +8,12 @@
         <Stmt>
             <Id>253EURNL26VAYB8060476890</Id>
             <ElctrncSeqNb>12312</ElctrncSeqNb>
+            <LglSeqNb>12312</LglSeqNb>
             <CreDtTm>2015-03-10T18:43:50+00:00</CreDtTm>
+            <FrToDt>
+                <FrDtTm>2007-10-18T08:00:00+01:00</FrDtTm>
+                <ToDtTm>2007-10-18T12:30:00+01:00</ToDtTm>
+            </FrToDt>
             <CpyDplctInd>CODU</CpyDplctInd>
             <Acct>
                 <Id>
@@ -164,6 +169,7 @@
                     </TxDtls>
                 </NtryDtls>
             </Ntry>
+            <AddtlStmtInf>Additional Information</AddtlStmtInf>
         </Stmt>
     </BkToCstmrStmt>
 </Document>
