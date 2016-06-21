@@ -2,6 +2,8 @@
 
 namespace Genkgo\Camt\DTO;
 
+use DateTimeImmutable;
+
 /**
  * Class GroupHeader
  * @package Genkgo\Camt\DTO
@@ -12,16 +14,22 @@ class GroupHeader
      * @var string
      */
     private $messageId;
+
     /**
-     * @var \DateTimeImmutable
+     * @var DateTimeImmutable
      */
     private $createdOn;
 
     /**
-     * @param $messageId
-     * @param \DateTimeImmutable $createdOn
+     * @var string|null
      */
-    public function __construct($messageId, \DateTimeImmutable $createdOn)
+    private $additionalInformation;
+
+    /**
+     * @param $messageId
+     * @param DateTimeImmutable $createdOn
+     */
+    public function __construct($messageId, DateTimeImmutable $createdOn)
     {
         $this->messageId = $messageId;
         $this->createdOn = $createdOn;
@@ -36,10 +44,26 @@ class GroupHeader
     }
 
     /**
-     * @return \DateTimeImmutable
+     * @return DateTimeImmutable
      */
     public function getCreatedOn()
     {
         return $this->createdOn;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getAdditionalInformation()
+    {
+        return $this->additionalInformation;
+    }
+    
+    /**
+     * @param string $additionalInformation
+     */
+    public function setAdditionalInformation($additionalInformation)
+    {
+        $this->additionalInformation = $additionalInformation;
     }
 }

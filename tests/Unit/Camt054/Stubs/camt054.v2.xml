@@ -4,6 +4,7 @@
         <GrpHdr>
             <MsgId>AAAASESS-FP-ACCR001</MsgId>
             <CreDtTm>2007-10-18T12:30:00+01:00</CreDtTm>
+            <AddtlInf>Group header additional information</AddtlInf>
         </GrpHdr>
         <Ntfctn>
             <Id>AAAASESS-FP-ACCR001</Id>

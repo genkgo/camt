@@ -39,6 +39,10 @@ class Message extends BaseMessage
             $groupHeader->setOriginalBusinessQuery($originalBusinessQuery);
         }
 
+        if (isset($xmlGroupHeader->AddtlInf)) {
+            $groupHeader->setAdditionalInformation((string) $xmlGroupHeader->AddtlInf);
+        }
+
         $message->setGroupHeader($groupHeader);
     }
 }
