@@ -4,6 +4,14 @@
         <GrpHdr>
             <MsgId>CAMT053RIB000000000001</MsgId>
             <CreDtTm>2015-03-10T18:43:50+00:00</CreDtTm>
+            <MsgRcpt>
+                <Nm>COMPANY BVBA</Nm>
+                <PstlAdr>
+                    <StrtNm>12 Oxford Street</StrtNm>
+                    <Ctry>UK</Ctry>
+                </PstlAdr>
+                <CtryOfRes>NL</CtryOfRes>
+            </MsgRcpt>
             <MsgPgntn>
                 <PgNb>1</PgNb>
                 <LastPgInd>true</LastPgInd>

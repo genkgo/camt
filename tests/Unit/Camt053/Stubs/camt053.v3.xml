@@ -6,6 +6,11 @@
             <CreDtTm>2015-03-10T18:43:50+00:00</CreDtTm>
             <MsgRcpt>
                 <Nm>COMPANY BVBA</Nm>
+                <PstlAdr>
+                    <StrtNm>12 Oxford Street</StrtNm>
+                    <Ctry>UK</Ctry>
+                </PstlAdr>
+                <CtryOfRes>NL</CtryOfRes>
             </MsgRcpt>
             <AddtlInf>Group header additional information</AddtlInf>
         </GrpHdr>
@@ -107,6 +112,7 @@
                             <Dbtr>
                                 <Nm>NAME NAME</Nm>
                                 <PstlAdr>
+                                    <Ctry>NL</Ctry>
                                     <AdrLine>ADDR ADDR 10</AdrLine>
                                     <AdrLine>2000 ANTWERPEN</AdrLine>
                                 </PstlAdr>

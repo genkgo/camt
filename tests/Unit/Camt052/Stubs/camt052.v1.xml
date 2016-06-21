@@ -4,6 +4,14 @@
         <GrpHdr>
             <MsgId>AAAASESS-FP-ACCR001</MsgId>
             <CreDtTm>2007-10-18T12:30:00+01:00</CreDtTm>
+            <MsgRcpt>
+                <Nm>COMPANY BVBA</Nm>
+                <PstlAdr>
+                    <StrtNm>12 Oxford Street</StrtNm>
+                    <Ctry>UK</Ctry>
+                </PstlAdr>
+                <CtryOfRes>NL</CtryOfRes>
+            </MsgRcpt>
             <MsgPgntn>
                 <PgNb>1</PgNb>
                 <LastPgInd>true</LastPgInd>
