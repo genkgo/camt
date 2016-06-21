@@ -13,7 +13,7 @@
         <MsgNmId>SomeMessageNameId</MsgNmId>
         <CreDtTm>2010-10-18T12:30:00+01:00</CreDtTm>
       </OrgnlBizQry>
-      <AddtlInf>TEST</AddtlInf>
+      <AddtlInf>Group header additional information</AddtlInf>
     </GrpHdr>
     <Ntfctn>
       <Id>AAAASESS-FP-ACCR001</Id>

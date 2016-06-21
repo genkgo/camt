@@ -8,7 +8,7 @@
         <PgNb>1</PgNb>
         <LastPgInd>true</LastPgInd>
       </MsgPgntn>
-      <AddtlInf>TEST</AddtlInf>
+      <AddtlInf>Group header additional information</AddtlInf>
     </GrpHdr>
     <Rpt>
       <Id>AAAASESS-FP-ACCR001</Id>

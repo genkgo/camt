@@ -31,6 +31,10 @@ abstract class Message
             new DateTimeImmutable((string)$xmlGroupHeader->CreDtTm)
         );
 
+        if (isset($xmlGroupHeader->AddtlInf)) {
+            $groupHeader->setAdditionalInformation((string) $xmlGroupHeader->AddtlInf);
+        }
+
         $message->setGroupHeader($groupHeader);
     }
 

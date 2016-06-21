@@ -81,6 +81,7 @@ class EndToEndTest extends AbstractTestCase
             $this->assertInstanceOf(DTO\GroupHeader::class, $groupHeader);
             $this->assertEquals('CAMT053RIB000000000001', $groupHeader->getMessageId());
             $this->assertEquals(new DateTimeImmutable('2015-03-10T18:43:50+00:00'), $groupHeader->getCreatedOn());
+            $this->assertEquals('Group header additional information', $groupHeader->getAdditionalInformation());
         }
     }
 

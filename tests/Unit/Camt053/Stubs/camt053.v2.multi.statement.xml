@@ -4,6 +4,7 @@
         <GrpHdr>
             <MsgId>CAMT053RIB000000000001</MsgId>
             <CreDtTm>2015-03-10T18:43:50+00:00</CreDtTm>
+            <AddtlInf>Group header additional information</AddtlInf>
         </GrpHdr>
         <Stmt>
             <Id>253EURNL26VAYB8060476890</Id>
