@@ -26,6 +26,11 @@ class GroupHeader
     private $additionalInformation;
 
     /**
+     * @var Recipient|null
+     */
+    private $messageRecipient;
+
+    /**
      * @param $messageId
      * @param DateTimeImmutable $createdOn
      */
@@ -65,5 +70,21 @@ class GroupHeader
     public function setAdditionalInformation($additionalInformation)
     {
         $this->additionalInformation = $additionalInformation;
+    }
+
+    /**
+     * @return Recipient|null
+     */
+    public function getMessageRecipient()
+    {
+        return $this->messageRecipient;
+    }
+    
+    /**
+     * @param Recipient $messageRecipient
+     */
+    public function setMessageRecipient(Recipient $messageRecipient)
+    {
+        $this->messageRecipient = $messageRecipient;
     }
 }

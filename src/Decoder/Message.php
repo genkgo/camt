@@ -6,6 +6,7 @@ use DateTimeImmutable;
 use SimpleXMLElement;
 use Genkgo\Camt\DTO;
 use Genkgo\Camt\Iban;
+use Genkgo\Camt\Decoder\Factory\DTO as DTOFactory;
 
 abstract class Message
 {
@@ -33,6 +34,12 @@ abstract class Message
 
         if (isset($xmlGroupHeader->AddtlInf)) {
             $groupHeader->setAdditionalInformation((string) $xmlGroupHeader->AddtlInf);
+        }
+
+        if (isset($xmlGroupHeader->MsgRcpt)) {
+            $groupHeader->setMessageRecipient(
+                DTOFactory\Recipient::createFromXml($xmlGroupHeader->MsgRcpt)
+            );
         }
 
         $message->setGroupHeader($groupHeader);

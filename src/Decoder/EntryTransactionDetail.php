@@ -4,6 +4,7 @@ namespace Genkgo\Camt\Decoder;
 
 use Genkgo\Camt\DTO;
 use \SimpleXMLElement;
+use Genkgo\Camt\Decoder\Factory\DTO as DTOFactory;
 use Genkgo\Camt\Iban;
 
 abstract class EntryTransactionDetail
@@ -69,38 +70,7 @@ abstract class EntryTransactionDetail
             }
 
             if (isset($xmlRelatedPartyType->PstlAdr)) {
-                $address = new DTO\Address();
-                if (isset($xmlRelatedPartyType->PstlAdr->Ctry)) {
-                    $address = $address->setCountry((string) $xmlRelatedPartyType->PstlAdr->Ctry);
-                }
-                if (isset($xmlRelatedPartyType->PstlAdr->CtrySubDvsn)) {
-                    $address = $address->setCountrySubDivision((string) $xmlRelatedPartyType->PstlAdr->CtrySubDvsn);
-                }
-                if (isset($xmlRelatedPartyType->PstlAdr->Dept)) {
-                    $address = $address->setDepartment((string) $xmlRelatedPartyType->PstlAdr->Dept);
-                }
-                if (isset($xmlRelatedPartyType->PstlAdr->SubDept)) {
-                    $address = $address->setSubDepartment((string) $xmlRelatedPartyType->PstlAdr->SubDept);
-                }
-                if (isset($xmlRelatedPartyType->PstlAdr->StrtNm)) {
-                    $address = $address->setStreetName((string) $xmlRelatedPartyType->PstlAdr->StrtNm);
-                }
-                if (isset($xmlRelatedPartyType->PstlAdr->BldgNb)) {
-                    $address = $address->setBuildingNumber((string) $xmlRelatedPartyType->PstlAdr->BldgNb);
-                }
-                if (isset($xmlRelatedPartyType->PstlAdr->PstCd)) {
-                    $address = $address->setPostCode((string) $xmlRelatedPartyType->PstlAdr->PstCd);
-                }
-                if (isset($xmlRelatedPartyType->PstlAdr->TwnNm)) {
-                    $address = $address->setTownName((string) $xmlRelatedPartyType->PstlAdr->TwnNm);
-                }
-                if (isset($xmlRelatedPartyType->PstlAdr->AdrLine)) {
-                    foreach ($xmlRelatedPartyType->PstlAdr->AdrLine as $line) {
-                        $address = $address->addAddressLine((string)$line);
-                    }
-                }
-
-                $relatedPartyType->setAddress($address);
+                $relatedPartyType->setAddress(DTOFactory\Address::createFromXml($xmlRelatedPartyType->PstlAdr));
             }
 
             $relatedParty = new DTO\RelatedParty($relatedPartyType, $this->getRelatedPartyAccount($xmlRelatedPartyTypeAccount));
