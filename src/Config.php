@@ -4,6 +4,7 @@ namespace Genkgo\Camt;
 
 use Genkgo\Camt\Camt052;
 use Genkgo\Camt\Camt053;
+use Genkgo\Camt\Camt054;
 
 /**
  * Class Config
@@ -43,6 +44,9 @@ class Config
         $config->addMessageFormat(new Camt053\MessageFormat\V02());
         $config->addMessageFormat(new Camt053\MessageFormat\V03());
         $config->addMessageFormat(new Camt053\MessageFormat\V04());
+        $config->addMessageFormat(new Camt054\MessageFormat\V02());
+        $config->addMessageFormat(new Camt054\MessageFormat\V04());
+
         return $config;
     }
 }

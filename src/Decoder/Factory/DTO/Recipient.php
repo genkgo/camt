@@ -28,6 +28,14 @@ class Recipient
         if (isset($xmlRecipient->CtctDtls)) {
             $recipient->setContactDetails(ContactDetails::createFromXml($xmlRecipient->CtctDtls));
         }
+        if (isset($xmlRecipient->Id)) {
+            if (isset($xmlRecipient->Id->OrgId)) {
+                $recipient->setIdentification(OrganisationIdentification::createFromXml($xmlRecipient->Id->OrgId));
+            }
+            if (isset($xmlRecipient->Id->PrvtId)) {
+                $recipient->setIdentification(PersonIdentification::createFromXml($xmlRecipient->Id->PrvtId));
+            }
+        }
 
         return $recipient;
     }

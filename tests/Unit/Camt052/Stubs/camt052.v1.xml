@@ -10,6 +10,18 @@
                     <StrtNm>12 Oxford Street</StrtNm>
                     <Ctry>UK</Ctry>
                 </PstlAdr>
+                <Id>
+                    <OrgId>
+                        <BIC>DABAIE2D</BIC>
+                        <IBEI>BCBDFHJNP8</IBEI>
+                        <BEI>BTDTRSBA</BEI>
+                        <EANGLN>4839402843123</EANGLN>
+                        <PrtryId>
+                            <Id>Some other Id</Id>
+                            <Issr>Some other Issuer</Issr>
+                        </PrtryId>
+                    </OrgId>
+                </Id>
                 <CtryOfRes>NL</CtryOfRes>
             </MsgRcpt>
             <MsgPgntn>
