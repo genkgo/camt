@@ -10,6 +10,15 @@
           <StrtNm>12 Oxford Street</StrtNm>
           <Ctry>UK</Ctry>
         </PstlAdr>
+        <Id>
+          <OrgId>
+            <AnyBIC>DABAIE2D</AnyBIC>
+            <Othr>
+                <Id>Some other Id</Id>
+                <Issr>Some other Issuer</Issr>
+            </Othr>
+          </OrgId>
+        </Id>
         <CtryOfRes>NL</CtryOfRes>
       </MsgRcpt>
       <MsgPgntn>

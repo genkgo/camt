@@ -69,6 +69,26 @@ class MessageTest extends AbstractTestCase
         <GrpHdr>
             <MsgId>CAMT053RIB000000000001</MsgId>
             <CreDtTm>2015-03-10T18:43:50+00:00</CreDtTm>
+            <MsgRcpt>
+                <Nm>COMPANY BVBA</Nm>
+                <PstlAdr>
+                    <StrtNm>12 Oxford Street</StrtNm>
+                    <Ctry>UK</Ctry>
+                </PstlAdr>
+                <Id>
+                    <OrgId>
+                        <BIC>DABAIE2D</BIC>
+                        <IBEI>BCBDFHJNP8</IBEI>
+                        <BEI>BTDTRSBA</BEI>
+                        <EANGLN>4839402843123</EANGLN>
+                        <PrtryId>
+                            <Id>Some other Id</Id>
+                            <Issr>Some other Issuer</Issr>
+                        </PrtryId>
+                    </OrgId>
+                </Id>
+                <CtryOfRes>NL</CtryOfRes>
+            </MsgRcpt>
         </GrpHdr>
         <Rpt>
             <Id>253EURNL26VAYB8060476890</Id>

@@ -5,8 +5,8 @@ namespace Genkgo\Camt\Camt053\Decoder;
 use Genkgo\Camt\Decoder\Message as BaseMessageDecoder;
 use Genkgo\Camt\Camt053\DTO as Camt053DTO;
 use Genkgo\Camt\DTO;
-use \SimpleXMLElement;
-use \DateTimeImmutable;
+use SimpleXMLElement;
+use DateTimeImmutable;
 use Genkgo\Camt\Iban;
 
 class Message extends BaseMessageDecoder

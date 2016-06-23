@@ -25,6 +25,11 @@ class Recipient implements RelatedPartyTypeInterface
     private $contactDetails;
 
     /**
+     * @var Identification|null
+     */
+    private $identification;
+
+    /**
      * @return Address|null
      */
     public function getAddress()
@@ -86,5 +91,21 @@ class Recipient implements RelatedPartyTypeInterface
     public function setContactDetails(ContactDetails $contactDetails)
     {
         $this->contactDetails = $contactDetails;
+    }
+
+    /**
+     * @return Identification|null
+     */
+    public function getIdentification()
+    {
+        return $this->identification;
+    }
+    
+    /**
+     * @param Identification $identification
+     */
+    public function setIdentification(Identification $identification)
+    {
+        $this->identification = $identification;
     }
 }

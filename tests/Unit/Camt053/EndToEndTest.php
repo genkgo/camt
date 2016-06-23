@@ -89,6 +89,11 @@ class EndToEndTest extends AbstractTestCase
             $this->assertInstanceOf(DTO\Address::class, $msgRecipient->getAddress());
             $this->assertEquals('12 Oxford Street', $msgRecipient->getAddress()->getStreetName());
             $this->assertEquals('UK', $msgRecipient->getAddress()->getCountry());
+            $this->assertInstanceOf(DTO\Identification::class, $msgRecipient->getIdentification());
+            $this->assertInstanceOf(DTO\OrganisationIdentification::class, $msgRecipient->getIdentification());
+            $this->assertEquals('DABAIE2D', $msgRecipient->getIdentification()->getBic());
+            $this->assertEquals('Some other Id', $msgRecipient->getIdentification()->getOtherId());
+            $this->assertEquals('Some other Issuer', $msgRecipient->getIdentification()->getOtherIssuer());
         }
     }
 
