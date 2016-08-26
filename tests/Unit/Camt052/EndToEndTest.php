@@ -188,4 +188,45 @@ class EndToEndTest extends AbstractTestCase
             }
         }
     }
+
+    public function testRelatedParties()
+    {
+        $messages = [
+            $this->getV2Message(),
+        ];
+
+        foreach ($messages as $message) {
+            $reports = $message->getRecords();
+
+            $this->assertCount(1, $reports);
+            foreach ($reports as $report) {
+                $entries = $report->getEntries();
+                $this->assertCount(1, $entries);
+
+                foreach ($entries as $entry) {
+                    $details = $entry->getTransactionDetails();
+                    $this->assertCount(1, $details);
+
+                    foreach ($details as $detail) {
+                        $parties = $detail->getRelatedParties();
+                        $this->assertCount(2, $parties);
+
+                        foreach ($parties as $party) {
+                            if ($party->getRelatedPartyType() instanceof DTO\Creditor) {
+                                $this->assertEquals('Company Name', $party->getRelatedPartyType()->getName());
+                                $this->assertEquals('NL', $party->getRelatedPartyType()->getAddress()->getCountry());
+                                $this->assertEquals([], $party->getRelatedPartyType()->getAddress()->getAddressLines());
+                                $this->assertEquals('NL56AGDH9619008421', (string)$party->getAccount()->getIdentification());
+                            } else if ($party->getRelatedPartyType() instanceof DTO\Debtor) {
+                                $this->assertEquals('NAME NAME', $party->getRelatedPartyType()->getName());
+                                $this->assertEquals('NL', $party->getRelatedPartyType()->getAddress()->getCountry());
+                                $this->assertEquals(['ADDR ADDR 10', '2000 ANTWERPEN'], $party->getRelatedPartyType()->getAddress()->getAddressLines());
+                                $this->assertEquals('NL56AGDH9619008421', (string)$party->getAccount()->getIdentification());
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
