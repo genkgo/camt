@@ -52,6 +52,10 @@ class Entry
      * @var string
      */
     private $batchPaymentId;
+    /**
+     * @var string
+     */
+    private $additionalInfo;
 
     /**
      * @param Record $record
@@ -60,13 +64,14 @@ class Entry
      * @param DateTimeImmutable $bookingDate
      * @param DateTimeImmutable $valueDate
      */
-    public function __construct(Record $record, $index, Money $amount, DateTimeImmutable $bookingDate, DateTimeImmutable $valueDate)
+    public function __construct(Record $record, $index, Money $amount, DateTimeImmutable $bookingDate, DateTimeImmutable $valueDate, $additionalInfo)
     {
         $this->record = $record;
         $this->index = $index;
         $this->amount = $amount;
         $this->bookingDate = $bookingDate;
         $this->valueDate = $valueDate;
+        $this->additionalInfo = $additionalInfo;
     }
 
     /**
@@ -200,5 +205,21 @@ class Entry
     public function getBatchPaymentId()
     {
         return $this->batchPaymentId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAdditionalInfo()
+    {
+        return $this->additionalInfo;
+    }
+
+    /**
+     * @param string $additionalInfo
+     */
+    public function setAdditionalInfo($additionalInfo)
+    {
+        $this->additionalInfo = $additionalInfo;
     }
 }
