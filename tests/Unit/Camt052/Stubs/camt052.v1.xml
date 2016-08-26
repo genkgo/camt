@@ -85,6 +85,7 @@
                     <PmtInfId>FINP-0055-001</PmtInfId>
                     <NbOfTxs>20</NbOfTxs>
                 </Btch>
+                <AddtlNtryInf>Credit</AddtlNtryInf>
             </Ntry>
             <AddtlRptInf>Additional Information</AddtlRptInf>
         </Rpt>

@@ -82,6 +82,7 @@
                         <NbOfTxs>20</NbOfTxs>
                     </Btch>
                 </NtryDtls>
+                <AddtlNtryInf>Credit</AddtlNtryInf>
             </Ntry>
             <AddtlRptInf>Additional Information</AddtlRptInf>
         </Rpt>

@@ -75,6 +75,7 @@ class Record
             $currency    = (string)$xmlEntry->Amt['Ccy'];
             $bookingDate = ((string) $xmlEntry->BookgDt->Dt) ?: (string) $xmlEntry->BookgDt->DtTm;
             $valueDate   = ((string) $xmlEntry->ValDt->Dt) ?: (string) $xmlEntry->ValDt->DtTm;
+            $additionalInfo = ((string) $xmlEntry->AddtlNtryInf) ?: (string) $xmlEntry->AddtlNtryInf;
 
             if ((string) $xmlEntry->CdtDbtInd === 'DBIT') {
                 $amount = $amount * -1;
@@ -85,7 +86,8 @@ class Record
                 $index,
                 new Money($amount, new Currency($currency)),
                 new DateTimeImmutable($bookingDate),
-                new DateTimeImmutable($valueDate)
+                new DateTimeImmutable($valueDate),
+                $additionalInfo
             );
 
             if (isset($xmlEntry->RvslInd) && (string) $xmlEntry->RvslInd === 'true') {
