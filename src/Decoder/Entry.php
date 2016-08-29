@@ -30,6 +30,7 @@ class Entry
                 $detail = new DTO\EntryTransactionDetail();
                 $this->entryTransactionDetailDecoder->addReferences($detail, $xmlDetail);
                 $this->entryTransactionDetailDecoder->addRelatedParties($detail, $xmlDetail);
+                $this->entryTransactionDetailDecoder->addRelatedAgents($detail, $xmlDetail);
                 $this->entryTransactionDetailDecoder->addRemittanceInformation($detail, $xmlDetail);
                 $this->entryTransactionDetailDecoder->addReturnInformation($detail, $xmlDetail);
                 $this->entryTransactionDetailDecoder->addAdditionalTransactionInformation($detail, $xmlDetail);

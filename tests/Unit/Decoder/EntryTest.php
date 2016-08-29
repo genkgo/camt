@@ -48,6 +48,10 @@ class EntryTest extends AbstractTestCase
             Argument::type(DTO\EntryTransactionDetail::class),
             Argument::type('\SimpleXMLElement')
         )->shouldBeCalled();
+        $this->mockedEntryTransactionDetailDecoder->addRelatedAgents(
+            Argument::type(DTO\EntryTransactionDetail::class),
+            Argument::type('\SimpleXMLElement')
+        )->shouldBeCalled();
         $this->mockedEntryTransactionDetailDecoder->addRemittanceInformation(
             Argument::type(DTO\EntryTransactionDetail::class),
             Argument::type('\SimpleXMLElement')

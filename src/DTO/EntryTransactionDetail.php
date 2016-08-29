@@ -19,6 +19,10 @@ class EntryTransactionDetail
      */
     private $relatedParties = [];
     /**
+     * @var RelatedAgent[]
+     */
+    private $relatedAgents = [];
+    /**
      * @var RemittanceInformation
      */
     private $remittanceInformation;
@@ -86,6 +90,35 @@ class EntryTransactionDetail
             return $this->relatedParties[0];
         } else {
             throw new BadMethodCallException('There are no related parties at all for this transaction');
+        }
+    }
+
+    /**
+     * @param RelatedAgent $relatedAgent
+     */
+    public function addRelatedAgent(RelatedAgent $relatedAgent)
+    {
+        $this->relatedAgents[] = $relatedAgent;
+    }
+
+    /**
+     * @return RelatedAgent[]
+     */
+    public function getRelatedAgents()
+    {
+        return $this->relatedAgents;
+    }
+
+    /**
+     * @return RelatedAgent
+     * @throws BadMethodCallException
+     */
+    public function getRelatedAgent()
+    {
+        if (isset($this->relatedAgents[0])) {
+            return $this->relatedAgents[0];
+        } else {
+            throw new BadMethodCallException('There are no related agents at all for this transaction');
         }
     }
 

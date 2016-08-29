@@ -81,6 +81,22 @@
                         <PmtInfId>FINP-0055-001</PmtInfId>
                         <NbOfTxs>20</NbOfTxs>
                     </Btch>
+                    <TxDtls>
+                        <RltdAgts>
+                            <DbtrAgt>
+                                <FinInstnId>
+                                    <BIC>BANKCHZHXXX</BIC>
+                                    <Nm>Some bank</Nm>
+                                </FinInstnId>
+                            </DbtrAgt>
+                            <CdtrAgt>
+                                <FinInstnId>
+                                    <BIC>BANKCHZHXXX</BIC>
+                                    <Nm>Some bank</Nm>
+                                </FinInstnId>
+                            </CdtrAgt>
+                        </RltdAgts>
+                    </TxDtls>
                 </NtryDtls>
                 <AddtlNtryInf>Credit</AddtlNtryInf>
             </Ntry>
