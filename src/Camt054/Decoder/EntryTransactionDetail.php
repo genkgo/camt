@@ -33,5 +33,26 @@ class EntryTransactionDetail extends BaseDecoder
         if (isset($xmlRelatedPartyTypeAccount->Id->PrtryAcct)) {
             return new DTO\ProprietaryAccount((string) $xmlRelatedPartyTypeAccount->Id->PrtryAcct->Id);
         }
+
+        if (isset($xmlRelatedPartyTypeAccount->Id->Othr)) {
+            $xmlOtherIdentification = $xmlRelatedPartyTypeAccount->Id->Othr;
+            $otherAccount = new DTO\OtherAccount((string) $xmlOtherIdentification->Id);
+
+            if (isset($xmlOtherIdentification->SchmeNm)) {
+                if (isset($xmlOtherIdentification->SchmeNm->Cd)) {
+                    $otherAccount->setSchemeName((string) $xmlOtherIdentification->SchmeNm->Cd);
+                }
+
+                if (isset($xmlOtherIdentification->SchmeNm->Prtry)) {
+                    $otherAccount->setSchemeName((string) $xmlOtherIdentification->SchmeNm->Prtry);
+                }
+            }
+
+            if (isset($xmlOtherIdentification->Issr)) {
+                $otherAccount->setIssuer($xmlOtherIdentification->Issr);
+            }
+
+            return $otherAccount;
+        }
     }
 }

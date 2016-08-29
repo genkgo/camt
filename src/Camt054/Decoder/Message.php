@@ -87,7 +87,7 @@ class Message extends BaseMessageDecoder
                     $otherAccount->setSchemeName((string) $xmlOtherIdentification->SchmeNm->Cd);
                 }
 
-                if (isset($otherIdentification->SchmeNm->Prtry)) {
+                if (isset($xmlOtherIdentification->SchmeNm->Prtry)) {
                     $otherAccount->setSchemeName((string) $xmlOtherIdentification->SchmeNm->Prtry);
                 }
             }
