@@ -74,6 +74,10 @@
                             <SubFmlyCd>0003</SubFmlyCd>
                         </Fmly>
                     </Domn>
+                    <Prtry>
+                        <Cd>XXXX+000+0000+000</Cd>
+                        <Issr>ZKA</Issr>
+                    </Prtry>
                 </BkTxCd>
                 <NtryDtls>
                     <Btch>

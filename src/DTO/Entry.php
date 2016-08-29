@@ -56,6 +56,10 @@ class Entry
      * @var string
      */
     private $additionalInfo;
+    /**
+     * @var BankTransactionCode
+     */
+    private $bankTransactionCode;
 
     /**
      * @param Record $record
@@ -221,5 +225,21 @@ class Entry
     public function setAdditionalInfo($additionalInfo)
     {
         $this->additionalInfo = $additionalInfo;
+    }
+
+    /**
+     * @return BankTransactionCode
+     */
+    public function getBankTransactionCode()
+    {
+        return $this->bankTransactionCode;
+    }
+
+    /**
+     * @param BankTransactionCode $bankTransactionCode
+     */
+    public function setBankTransactionCode($bankTransactionCode)
+    {
+        $this->bankTransactionCode = $bankTransactionCode;
     }
 }

@@ -106,6 +106,22 @@ class Record
                 $entry->setBatchPaymentId((string) $xmlEntry->NtryDtls->Btch->PmtInfId);
             }
 
+
+            if(isset($xmlEntry->BkTxCd)) {
+                $bankTransactionCode = new DTO\BankTransactionCode();
+
+                if(isset($xmlEntry->BkTxCd->Prtry)) {
+                    $proprietaryBankTransactionCode = new DTO\ProprietaryBankTransactionCode(
+                        (string)$xmlEntry->BkTxCd->Prtry->Cd,
+                        (string)$xmlEntry->BkTxCd->Prtry->Issr
+                    );
+
+                    $bankTransactionCode->setProprietary($proprietaryBankTransactionCode);
+                }
+
+                $entry->setBankTransactionCode($bankTransactionCode);
+            }
+
             $this->entryDecoder->addTransactionDetails($entry, $xmlEntry);
 
             $record->addEntry($entry);

@@ -229,4 +229,30 @@ class EndToEndTest extends AbstractTestCase
             }
         }
     }
+
+    public function testProprietaryBankTransactionCode()
+    {
+        $messages = [
+            $this->getV2Message()
+        ];
+
+        foreach ($messages as $message) {
+            $reports = $message->getRecords();
+
+            $this->assertCount(1, $reports);
+            foreach ($reports as $report) {
+                $entries = $report->getEntries();
+                $this->assertCount(1, $entries);
+
+                /** @var DTO\Entry $entry */
+                foreach ($entries as $entry) {
+                    $this->assertInstanceOf(DTO\BankTransactionCode::class, $entry->getBankTransactionCode());
+                    $this->assertInstanceOf(DTO\ProprietaryBankTransactionCode::class, $entry->getBankTransactionCode()->getProprietary());
+
+                    $this->assertEquals('XXXX+000+0000+000', $entry->getBankTransactionCode()->getProprietary()->getCode());
+                    $this->assertEquals('ZKA', $entry->getBankTransactionCode()->getProprietary()->getIssuer());
+                }
+            }
+        }
+    }
 }
