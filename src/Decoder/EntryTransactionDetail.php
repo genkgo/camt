@@ -82,6 +82,31 @@ abstract class EntryTransactionDetail
      * @param DTO\EntryTransactionDetail $detail
      * @param SimpleXMLElement           $xmlDetail
      */
+    public function addRelatedAgents(DTO\EntryTransactionDetail $detail, SimpleXMLElement $xmlDetail)
+    {
+        if (false === isset($xmlDetail->RltdAgts)) {
+            return;
+        }
+
+        foreach ($xmlDetail->RltdAgts as $xmlRelatedAgent) {
+            if(isset($xmlRelatedAgent->CdtrAgt)) {
+                $agent = new DTO\CreditorAgent((string)$xmlRelatedAgent->CdtrAgt->FinInstnId->Nm, (string)$xmlRelatedAgent->CdtrAgt->FinInstnId->BIC);
+                $relatedAgent =  new DTO\RelatedAgent($agent);
+                $detail->addRelatedAgent($relatedAgent);
+            }
+
+            if(isset($xmlRelatedAgent->DbtrAgt)) {
+                $agent = new DTO\DebtorAgent((string)$xmlRelatedAgent->DbtrAgt->FinInstnId->Nm, (string)$xmlRelatedAgent->DbtrAgt->FinInstnId->BIC);
+                $relatedAgent =  new DTO\RelatedAgent($agent);
+                $detail->addRelatedAgent($relatedAgent);
+            }
+        }
+    }
+
+    /**
+     * @param DTO\EntryTransactionDetail $detail
+     * @param SimpleXMLElement           $xmlDetail
+     */
     public function addRemittanceInformation(DTO\EntryTransactionDetail $detail, SimpleXMLElement $xmlDetail)
     {
         if (false === isset($xmlDetail->RmtInf)) {

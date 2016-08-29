@@ -124,4 +124,34 @@ class EndToEndTest extends AbstractTestCase
         $this->assertEquals('2', $reportV4->getPagination()->getPageNumber());
         $this->assertEquals(true, $reportV4->getPagination()->isLastPage());
     }
+
+    public function testRelatedAgents()
+    {
+        $messages = [
+            $this->getV2Message(),
+        ];
+
+        foreach ($messages as $message) {
+            $reports = $message->getRecords();
+
+            $this->assertCount(1, $reports);
+            foreach ($reports as $report) {
+                $entries = $report->getEntries();
+                $this->assertCount(1, $entries);
+
+                /** @var \Genkgo\Camt\DTO\Entry $entry */
+                foreach ($entries as $entry) {
+                    $this->assertCount(1, $entry->getTransactionDetails());
+                    foreach($entry->getTransactionDetails() as $detail) {
+                        $this->assertCount(2, $detail->getRelatedAgents());
+
+                        foreach($detail->getRelatedAgents() as $relatedAgent) {
+                            $this->assertEquals('BANKCHZHXXX', $relatedAgent->getRelatedAgentType()->getBIC());
+                            $this->assertEquals('Some bank', $relatedAgent->getRelatedAgentType()->getName());
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
