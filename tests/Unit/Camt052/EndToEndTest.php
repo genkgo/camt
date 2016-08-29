@@ -251,6 +251,15 @@ class EndToEndTest extends AbstractTestCase
 
                     $this->assertEquals('XXXX+000+0000+000', $entry->getBankTransactionCode()->getProprietary()->getCode());
                     $this->assertEquals('ZKA', $entry->getBankTransactionCode()->getProprietary()->getIssuer());
+
+                    $this->assertCount(1, $entry->getTransactionDetails());
+                    foreach($entry->getTransactionDetails() as $details) {
+                        $this->assertInstanceOf(DTO\BankTransactionCode::class, $details->getBankTransactionCode());
+                        $this->assertInstanceOf(DTO\ProprietaryBankTransactionCode::class, $details->getBankTransactionCode()->getProprietary());
+
+                    $this->assertEquals('XXXX+000+0000+000', $details->getBankTransactionCode()->getProprietary()->getCode());
+                    $this->assertEquals('ZKA', $details->getBankTransactionCode()->getProprietary()->getIssuer());
+                    }
                 }
             }
         }

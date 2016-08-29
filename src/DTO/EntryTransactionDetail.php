@@ -36,6 +36,11 @@ class EntryTransactionDetail
     private $additionalTransactionInformation;
 
     /**
+     * @var BankTransactionCode
+     */
+    private $bankTransactionCode;
+
+    /**
      * @param Reference $reference
      */
     public function addReference(Reference $reference)
@@ -174,5 +179,21 @@ class EntryTransactionDetail
             throw new BadMethodCallException();
         }
         return $this->additionalTransactionInformation;
+    }
+
+    /**
+     * @return BankTransactionCode
+     */
+    public function getBankTransactionCode()
+    {
+        return $this->bankTransactionCode;
+    }
+
+    /**
+     * @param BankTransactionCode $bankTransactionCode
+     */
+    public function setBankTransactionCode($bankTransactionCode)
+    {
+        $this->bankTransactionCode = $bankTransactionCode;
     }
 }

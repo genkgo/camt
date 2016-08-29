@@ -34,6 +34,7 @@ class Entry
                 $this->entryTransactionDetailDecoder->addRemittanceInformation($detail, $xmlDetail);
                 $this->entryTransactionDetailDecoder->addReturnInformation($detail, $xmlDetail);
                 $this->entryTransactionDetailDecoder->addAdditionalTransactionInformation($detail, $xmlDetail);
+                $this->entryTransactionDetailDecoder->addBankTransactionCode($detail, $xmlDetail);
 
                 $entry->addTransactionDetail($detail);
             }
