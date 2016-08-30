@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:iso:std:iso:20022:tech:xsd:camt.052.001.02">
+    <BkToCstmrAcctRpt>
+        <GrpHdr>
+            <MsgId>AAAASESS-FP-ACCR001</MsgId>
+            <CreDtTm>2007-10-18T12:30:00+01:00</CreDtTm>
+            <MsgRcpt>
+                <Nm>COMPANY BVBA</Nm>
+                <PstlAdr>
+                    <StrtNm>12 Oxford Street</StrtNm>
+                    <Ctry>UK</Ctry>
+                </PstlAdr>
+                <Id>
+                    <OrgId>
+                        <BICOrBEI>DABAIE2D</BICOrBEI>
+                        <Othr>
+                            <Id>Some other Id</Id>
+                            <Issr>Some other Issuer</Issr>
+                        </Othr>
+                    </OrgId>
+                </Id>
+                <CtryOfRes>NL</CtryOfRes>
+            </MsgRcpt>
+            <MsgPgntn>
+                <PgNb>1</PgNb>
+                <LastPgInd>true</LastPgInd>
+            </MsgPgntn>
+            <AddtlInf>Group header additional information</AddtlInf>
+        </GrpHdr>
+        <Rpt>
+            <Id>AAAASESS-FP-ACCR001</Id>
+            <ElctrncSeqNb>12312</ElctrncSeqNb>
+            <LglSeqNb>12312</LglSeqNb>
+            <CreDtTm>2007-10-18T12:30:00+01:00</CreDtTm>
+            <FrToDt>
+                <FrDtTm>2007-10-18T08:00:00+01:00</FrDtTm>
+                <ToDtTm>2007-10-18T12:30:00+01:00</ToDtTm>
+            </FrToDt>
+            <CpyDplctInd>CODU</CpyDplctInd>
+            <Acct>
+                <Id>
+                    <Othr>
+                        <Id>CH2801234000123456789</Id>
+                    </Othr>
+                </Id>
+                <Ownr>
+                    <Nm>FINPETROL</Nm>
+                </Ownr>
+                <Svcr>
+                    <FinInstnId>
+                        <Nm>AAAA BANKEN</Nm>
+                        <PstlAdr>
+                            <Ctry>SE</Ctry>
+                        </PstlAdr>
+                    </FinInstnId>
+                </Svcr>
+            </Acct>
+            <Ntry>
+                <Amt Ccy="SEK">200000</Amt>
+                <CdtDbtInd>DBIT</CdtDbtInd>
+                <Sts>BOOK</Sts>
+                <BookgDt>
+                    <DtTm>2007-10-18T10:15:00+01:00</DtTm>
+                </BookgDt>
+                <ValDt>
+                    <Dt>2007-10-18</Dt>
+                </ValDt>
+                <AcctSvcrRef>AAAASESS-FP-ACCR-01</AcctSvcrRef>
+                <BkTxCd>
+                    <Domn>
+                        <Cd>PAYM</Cd>
+                        <Fmly>
+                            <Cd>0001</Cd>
+                            <SubFmlyCd>0003</SubFmlyCd>
+                        </Fmly>
+                    </Domn>
+                    <Prtry>
+                        <Cd>XXXX+000+0000+000</Cd>
+                        <Issr>ZKA</Issr>
+                    </Prtry>
+                </BkTxCd>
+                <NtryDtls>
+                    <Btch>
+                        <MsgId>FINP-0055</MsgId>
+                        <PmtInfId>FINP-0055-001</PmtInfId>
+                        <NbOfTxs>20</NbOfTxs>
+                    </Btch>
+                    <TxDtls>
+                        <BkTxCd>
+                            <Prtry>
+                                <Cd>XXXX+000+0000+000</Cd>
+                                <Issr>ZKA</Issr>
+                            </Prtry>
+                        </BkTxCd>
+                        <RltdPties>
+                            <Dbtr>
+                                <Nm>NAME NAME</Nm>
+                                <PstlAdr>
+                                    <Ctry>NL</Ctry>
+                                    <AdrLine>ADDR ADDR 10</AdrLine>
+                                    <AdrLine>2000 ANTWERPEN</AdrLine>
+                                </PstlAdr>
+                            </Dbtr>
+                            <DbtrAcct>
+                                <Id>
+                                    <Othr>
+                                        <Id>1111111111</Id>
+                                    </Othr>
+                                </Id>
+                            </DbtrAcct>
+                            <Cdtr>
+                                <Nm>Company Name</Nm>
+                                <PstlAdr>
+                                    <Ctry>NL</Ctry>
+                                </PstlAdr>
+                                <Id>
+                                    <OrgId>
+                                        <Othr>
+                                            <Id>455454654</Id>
+                                            <Issr>KBO-BCE</Issr>
+                                        </Othr>
+                                    </OrgId>
+                                </Id>
+                            </Cdtr>
+                            <CdtrAcct>
+                                <Id>
+                                    <Othr>
+                                        <Id>0000000000</Id>
+                                    </Othr>
+                                </Id>
+                            </CdtrAcct>
+                        </RltdPties>
+                        <RltdAgts>
+                            <DbtrAgt>
+                                <FinInstnId>
+                                    <BIC>BANKCHZHXXX</BIC>
+                                    <Nm>Some bank</Nm>
+                                </FinInstnId>
+                            </DbtrAgt>
+                            <CdtrAgt>
+                                <FinInstnId>
+                                    <BIC>BANKCHZHXXX</BIC>
+                                    <Nm>Some bank</Nm>
+                                </FinInstnId>
+                            </CdtrAgt>
+                        </RltdAgts>
+                    </TxDtls>
+                </NtryDtls>
+                <AddtlNtryInf>Credit</AddtlNtryInf>
+            </Ntry>
+            <AddtlRptInf>Additional Information</AddtlRptInf>
+        </Rpt>
+    </BkToCstmrAcctRpt>
+</Document>

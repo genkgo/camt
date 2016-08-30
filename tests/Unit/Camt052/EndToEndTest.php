@@ -28,6 +28,14 @@ class EndToEndTest extends AbstractTestCase
         return (new MessageFormat\V02)->getDecoder()->decode($dom);
     }
 
+    protected function getV2OtherAccountMessage()
+    {
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $dom->load(__DIR__.'/Stubs/camt052.v2.other-account.xml');
+
+        return (new MessageFormat\V02)->getDecoder()->decode($dom);
+    }
+
     protected function getV4Message()
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
@@ -149,6 +157,32 @@ class EndToEndTest extends AbstractTestCase
                             $this->assertEquals('BANKCHZHXXX', $relatedAgent->getRelatedAgentType()->getBIC());
                             $this->assertEquals('Some bank', $relatedAgent->getRelatedAgentType()->getName());
                         }
+                    }
+                }
+            }
+        }
+    }
+
+    public function testOtherAccount()
+    {
+        $messages = [
+            $this->getV2OtherAccountMessage()
+        ];
+
+        foreach ($messages as $message) {
+            $reports = $message->getRecords();
+
+            $this->assertCount(1, $reports);
+            foreach ($reports as $report) {
+                $entries = $report->getEntries();
+                $this->assertCount(1, $entries);
+
+                /** @var DTO\Entry $entry */
+                foreach ($entries as $entry) {
+                    $parties = $entry->getTransactionDetail()->getRelatedParties();
+
+                    foreach($parties as $party) {
+                        $this->assertInstanceOf(DTO\OtherAccount::class,$party->getAccount());
                     }
                 }
             }
