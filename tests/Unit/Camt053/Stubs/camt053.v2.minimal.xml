@@ -93,16 +93,38 @@
                             </Prtry>
                         </BkTxCd>
                         <RltdPties>
+                            <Dbtr>
+                                <Nm>NAME NAME</Nm>
+                                <PstlAdr>
+                                    <Ctry>NL</Ctry>
+                                    <AdrLine>ADDR ADDR 10</AdrLine>
+                                    <AdrLine>2000 ANTWERPEN</AdrLine>
+                                </PstlAdr>
+                            </Dbtr>
+                            <DbtrAcct>
+                                <Id>
+                                    <IBAN>NL56AGDH9619008421</IBAN>
+                                </Id>
+                            </DbtrAcct>
                             <Cdtr>
                                 <Nm>Company Name</Nm>
                                 <PstlAdr>
                                     <Ctry>NL</Ctry>
                                 </PstlAdr>
+                                <Id>
+                                    <OrgId>
+                                        <Othr>
+                                            <Id>455454654</Id>
+                                            <Issr>KBO-BCE</Issr>
+                                        </Othr>
+                                    </OrgId>
+                                </Id>
                             </Cdtr>
                             <CdtrAcct>
                                 <Id>
                                     <IBAN>NL56AGDH9619008421</IBAN>
                                 </Id>
+                                <Ccy>EUR</Ccy>
                             </CdtrAcct>
                         </RltdPties>
                         <RmtInf>

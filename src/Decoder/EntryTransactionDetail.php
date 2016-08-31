@@ -57,25 +57,43 @@ abstract class EntryTransactionDetail
         }
 
         foreach ($xmlDetail->RltdPties as $xmlRelatedParty) {
+
             if (isset($xmlRelatedParty->Cdtr)) {
                 $xmlRelatedPartyType = $xmlRelatedParty->Cdtr;
                 $xmlRelatedPartyTypeAccount = $xmlRelatedParty->CdtrAcct;
                 $relatedPartyType = $creditor = new DTO\Creditor((string) $xmlRelatedPartyType->Nm);
-            } elseif (isset($xmlRelatedParty->Dbtr)) {
+
+                $this->addRelatedParty($detail, $xmlRelatedPartyType, $relatedPartyType, $xmlRelatedPartyTypeAccount);
+            }
+
+            if (isset($xmlRelatedParty->Dbtr)) {
                 $xmlRelatedPartyType = $xmlRelatedParty->Dbtr;
                 $xmlRelatedPartyTypeAccount = $xmlRelatedParty->DbtrAcct;
-                $relatedPartyType = $creditor = new DTO\Debtor((string) $xmlRelatedPartyType->Nm);
-            } else {
-                continue;
-            }
+                $relatedPartyType = $debtor = new DTO\Debtor((string) $xmlRelatedPartyType->Nm);
 
-            if (isset($xmlRelatedPartyType->PstlAdr)) {
-                $relatedPartyType->setAddress(DTOFactory\Address::createFromXml($xmlRelatedPartyType->PstlAdr));
+                $this->addRelatedParty($detail, $xmlRelatedPartyType, $relatedPartyType, $xmlRelatedPartyTypeAccount);
             }
-
-            $relatedParty = new DTO\RelatedParty($relatedPartyType, $this->getRelatedPartyAccount($xmlRelatedPartyTypeAccount));
-            $detail->addRelatedParty($relatedParty);
         }
+    }
+
+    /**
+     * @param DTO\EntryTransactionDetail $detail
+     * @param $xmlRelatedPartyType
+     * @param $relatedPartyType
+     * @param $xmlRelatedPartyTypeAccount
+     * @return DTO\RelatedParty
+     */
+    protected function addRelatedParty(DTO\EntryTransactionDetail $detail, $xmlRelatedPartyType, $relatedPartyType, $xmlRelatedPartyTypeAccount)
+    {
+        if (isset($xmlRelatedPartyType->PstlAdr)) {
+            $relatedPartyType->setAddress(DTOFactory\Address::createFromXml($xmlRelatedPartyType->PstlAdr));
+        }
+
+        $relatedParty = new DTO\RelatedParty($relatedPartyType, $this->getRelatedPartyAccount($xmlRelatedPartyTypeAccount));
+
+        $detail->addRelatedParty($relatedParty);
+
+        return $relatedParty;
     }
 
     /**
@@ -170,4 +188,5 @@ abstract class EntryTransactionDetail
      * @return DTO\Account|null
      */
     abstract public function getRelatedPartyAccount(SimpleXMLElement $xmlRelatedPartyTypeAccount);
+
 }
