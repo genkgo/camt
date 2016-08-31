@@ -6,7 +6,6 @@ use Genkgo\Camt\Util\StringToUnits;
 
 class StringToUnitsTest extends AbstractTestCase
 {
-
     public function testOneDecimals()
     {
         $this->assertEquals('1810', StringToUnits::convert('18.1'));

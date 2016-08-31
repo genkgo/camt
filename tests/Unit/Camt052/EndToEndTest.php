@@ -150,10 +150,10 @@ class EndToEndTest extends AbstractTestCase
                 /** @var \Genkgo\Camt\DTO\Entry $entry */
                 foreach ($entries as $entry) {
                     $this->assertCount(1, $entry->getTransactionDetails());
-                    foreach($entry->getTransactionDetails() as $detail) {
+                    foreach ($entry->getTransactionDetails() as $detail) {
                         $this->assertCount(2, $detail->getRelatedAgents());
 
-                        foreach($detail->getRelatedAgents() as $relatedAgent) {
+                        foreach ($detail->getRelatedAgents() as $relatedAgent) {
                             $this->assertEquals('BANKCHZHXXX', $relatedAgent->getRelatedAgentType()->getBIC());
                             $this->assertEquals('Some bank', $relatedAgent->getRelatedAgentType()->getName());
                         }
@@ -181,8 +181,8 @@ class EndToEndTest extends AbstractTestCase
                 foreach ($entries as $entry) {
                     $parties = $entry->getTransactionDetail()->getRelatedParties();
 
-                    foreach($parties as $party) {
-                        $this->assertInstanceOf(DTO\OtherAccount::class,$party->getAccount());
+                    foreach ($parties as $party) {
+                        $this->assertInstanceOf(DTO\OtherAccount::class, $party->getAccount());
                     }
                 }
             }
@@ -217,13 +217,49 @@ class EndToEndTest extends AbstractTestCase
                                 $this->assertEquals('NL', $party->getRelatedPartyType()->getAddress()->getCountry());
                                 $this->assertEquals([], $party->getRelatedPartyType()->getAddress()->getAddressLines());
                                 $this->assertEquals('NL56AGDH9619008421', (string)$party->getAccount()->getIdentification());
-                            } else if ($party->getRelatedPartyType() instanceof DTO\Debtor) {
+                            } elseif ($party->getRelatedPartyType() instanceof DTO\Debtor) {
                                 $this->assertEquals('NAME NAME', $party->getRelatedPartyType()->getName());
                                 $this->assertEquals('NL', $party->getRelatedPartyType()->getAddress()->getCountry());
                                 $this->assertEquals(['ADDR ADDR 10', '2000 ANTWERPEN'], $party->getRelatedPartyType()->getAddress()->getAddressLines());
                                 $this->assertEquals('NL56AGDH9619008421', (string)$party->getAccount()->getIdentification());
                             }
                         }
+                    }
+                }
+            }
+        }
+    }
+
+    public function testProprietaryBankTransactionCode()
+    {
+        $messages = [
+            $this->getV2Message()
+        ];
+
+        foreach ($messages as $message) {
+            $reports = $message->getRecords();
+
+            $this->assertCount(1, $reports);
+            foreach ($reports as $report) {
+                $entries = $report->getEntries();
+                $this->assertCount(1, $entries);
+
+                /** @var DTO\Entry $entry */
+                foreach ($entries as $entry) {
+                    $this->assertInstanceOf(DTO\BankTransactionCode::class, $entry->getBankTransactionCode());
+                    $this->assertInstanceOf(DTO\ProprietaryBankTransactionCode::class, $entry->getBankTransactionCode()->getProprietary());
+
+                    $this->assertEquals('XXXX+000+0000+000', $entry->getBankTransactionCode()->getProprietary()->getCode());
+                    $this->assertEquals('ZKA', $entry->getBankTransactionCode()->getProprietary()->getIssuer());
+
+                    $this->assertCount(1, $entry->getTransactionDetails());
+
+                    foreach ($entry->getTransactionDetails() as $details) {
+                        $this->assertInstanceOf(DTO\BankTransactionCode::class, $details->getBankTransactionCode());
+                        $this->assertInstanceOf(DTO\ProprietaryBankTransactionCode::class, $details->getBankTransactionCode()->getProprietary());
+
+                        $this->assertEquals('XXXX+000+0000+000', $details->getBankTransactionCode()->getProprietary()->getCode());
+                        $this->assertEquals('ZKA', $details->getBankTransactionCode()->getProprietary()->getIssuer());
                     }
                 }
             }

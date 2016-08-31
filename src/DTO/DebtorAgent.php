@@ -1,10 +1,9 @@
 <?php
 namespace Genkgo\Camt\DTO;
 
-
 class DebtorAgent implements RelatedAgentTypeInterface
 {
-   /**
+    /**
      * @var mixed
      */
     private $name;

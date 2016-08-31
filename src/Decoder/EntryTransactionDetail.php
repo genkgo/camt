@@ -57,7 +57,6 @@ abstract class EntryTransactionDetail
         }
 
         foreach ($xmlDetail->RltdPties as $xmlRelatedParty) {
-
             if (isset($xmlRelatedParty->Cdtr)) {
                 $xmlRelatedPartyType = $xmlRelatedParty->Cdtr;
                 $xmlRelatedPartyTypeAccount = $xmlRelatedParty->CdtrAcct;
@@ -107,13 +106,13 @@ abstract class EntryTransactionDetail
         }
 
         foreach ($xmlDetail->RltdAgts as $xmlRelatedAgent) {
-            if(isset($xmlRelatedAgent->CdtrAgt)) {
+            if (isset($xmlRelatedAgent->CdtrAgt)) {
                 $agent = new DTO\CreditorAgent((string)$xmlRelatedAgent->CdtrAgt->FinInstnId->Nm, (string)$xmlRelatedAgent->CdtrAgt->FinInstnId->BIC);
                 $relatedAgent =  new DTO\RelatedAgent($agent);
                 $detail->addRelatedAgent($relatedAgent);
             }
 
-            if(isset($xmlRelatedAgent->DbtrAgt)) {
+            if (isset($xmlRelatedAgent->DbtrAgt)) {
                 $agent = new DTO\DebtorAgent((string)$xmlRelatedAgent->DbtrAgt->FinInstnId->Nm, (string)$xmlRelatedAgent->DbtrAgt->FinInstnId->BIC);
                 $relatedAgent =  new DTO\RelatedAgent($agent);
                 $detail->addRelatedAgent($relatedAgent);
@@ -139,7 +138,7 @@ abstract class EntryTransactionDetail
 
             return;
         }
-        
+
         if (isset($xmlDetail->RmtInf->Strd)
             && isset($xmlDetail->RmtInf->Strd->CdtrRefInf)
             && isset($xmlDetail->RmtInf->Strd->CdtrRefInf->Ref)
@@ -183,10 +182,33 @@ abstract class EntryTransactionDetail
     }
 
     /**
+     * @param DTO\EntryTransactionDetail $detail
+     * @param SimpleXMLElement           $xmlDetail
+     */
+    public function addBankTransactionCode(DTO\EntryTransactionDetail $detail, SimpleXMLElement $xmlDetail)
+    {
+        $bankTransactionCode = new DTO\BankTransactionCode();
+
+        if (isset($xmlDetail->BkTxCd)) {
+            $bankTransactionCode = new DTO\BankTransactionCode();
+
+            if (isset($xmlDetail->BkTxCd->Prtry)) {
+                $proprietaryBankTransactionCode = new DTO\ProprietaryBankTransactionCode(
+                    (string)$xmlDetail->BkTxCd->Prtry->Cd,
+                    (string)$xmlDetail->BkTxCd->Prtry->Issr
+                );
+
+                $bankTransactionCode->setProprietary($proprietaryBankTransactionCode);
+            }
+        }
+
+        $detail->setBankTransactionCode($bankTransactionCode);
+    }
+
+    /**
      * @param SimpleXMLElement $xmlDetail
      *
      * @return DTO\Account|null
      */
     abstract public function getRelatedPartyAccount(SimpleXMLElement $xmlRelatedPartyTypeAccount);
-
 }

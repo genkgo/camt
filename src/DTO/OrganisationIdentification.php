@@ -286,5 +286,4 @@ class OrganisationIdentification extends Identification
         $this->issuer = $issuer;
         $this->identification = $issuer;
     }
-
 }

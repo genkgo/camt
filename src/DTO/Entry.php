@@ -16,46 +16,61 @@ class Entry
      * @var Record
      */
     private $record;
+
     /**
      * @var Money
      */
     private $amount;
+
     /**
      * @var DateTimeImmutable
      */
     private $bookingDate;
+
     /**
      * @var DateTimeImmutable
      */
     private $valueDate;
+
     /**
      * @var EntryTransactionDetail[]
      */
     private $transactionDetails = [];
+
     /**
      * @var bool
      */
     private $reversalIndicator = false;
+
     /**
      * @var string
      */
     private $reference;
+
     /**
      * @var string
      */
     private $accountServicerReference;
+
     /**
      * @var int
      */
     private $index;
+
     /**
      * @var string
      */
     private $batchPaymentId;
+
     /**
      * @var string
      */
     private $additionalInfo;
+
+    /**
+     * @var BankTransactionCode
+     */
+    private $bankTransactionCode;
 
     /**
      * @param Record $record
@@ -221,5 +236,21 @@ class Entry
     public function setAdditionalInfo($additionalInfo)
     {
         $this->additionalInfo = $additionalInfo;
+    }
+
+    /**
+     * @return BankTransactionCode
+     */
+    public function getBankTransactionCode()
+    {
+        return $this->bankTransactionCode;
+    }
+
+    /**
+     * @param BankTransactionCode $bankTransactionCode
+     */
+    public function setBankTransactionCode(BankTransactionCode $bankTransactionCode)
+    {
+        $this->bankTransactionCode = $bankTransactionCode;
     }
 }

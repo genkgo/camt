@@ -1,7 +1,6 @@
 <?php
 namespace Genkgo\Camt\DTO;
 
-
 class CreditorAgent implements RelatedAgentTypeInterface
 {
     /**
