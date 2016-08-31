@@ -107,10 +107,10 @@ class Record
             }
 
 
-            if(isset($xmlEntry->BkTxCd)) {
+            if (isset($xmlEntry->BkTxCd)) {
                 $bankTransactionCode = new DTO\BankTransactionCode();
 
-                if(isset($xmlEntry->BkTxCd->Prtry)) {
+                if (isset($xmlEntry->BkTxCd->Prtry)) {
                     $proprietaryBankTransactionCode = new DTO\ProprietaryBankTransactionCode(
                         (string)$xmlEntry->BkTxCd->Prtry->Cd,
                         (string)$xmlEntry->BkTxCd->Prtry->Issr

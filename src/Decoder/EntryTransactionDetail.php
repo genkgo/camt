@@ -57,7 +57,6 @@ abstract class EntryTransactionDetail
         }
 
         foreach ($xmlDetail->RltdPties as $xmlRelatedParty) {
-
             if (isset($xmlRelatedParty->Cdtr)) {
                 $xmlRelatedPartyType = $xmlRelatedParty->Cdtr;
                 $xmlRelatedPartyTypeAccount = $xmlRelatedParty->CdtrAcct;
@@ -107,13 +106,13 @@ abstract class EntryTransactionDetail
         }
 
         foreach ($xmlDetail->RltdAgts as $xmlRelatedAgent) {
-            if(isset($xmlRelatedAgent->CdtrAgt)) {
+            if (isset($xmlRelatedAgent->CdtrAgt)) {
                 $agent = new DTO\CreditorAgent((string)$xmlRelatedAgent->CdtrAgt->FinInstnId->Nm, (string)$xmlRelatedAgent->CdtrAgt->FinInstnId->BIC);
                 $relatedAgent =  new DTO\RelatedAgent($agent);
                 $detail->addRelatedAgent($relatedAgent);
             }
 
-            if(isset($xmlRelatedAgent->DbtrAgt)) {
+            if (isset($xmlRelatedAgent->DbtrAgt)) {
                 $agent = new DTO\DebtorAgent((string)$xmlRelatedAgent->DbtrAgt->FinInstnId->Nm, (string)$xmlRelatedAgent->DbtrAgt->FinInstnId->BIC);
                 $relatedAgent =  new DTO\RelatedAgent($agent);
                 $detail->addRelatedAgent($relatedAgent);
@@ -212,5 +211,4 @@ abstract class EntryTransactionDetail
      * @return DTO\Account|null
      */
     abstract public function getRelatedPartyAccount(SimpleXMLElement $xmlRelatedPartyTypeAccount);
-
 }

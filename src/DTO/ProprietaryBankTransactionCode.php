@@ -1,23 +1,15 @@
 <?php
-/**
- * Created by IntelliJ IDEA.
- * User: bdudelsack
- * Date: 29.08.16
- * Time: 13:18
- */
-
 namespace Genkgo\Camt\DTO;
-
 
 class ProprietaryBankTransactionCode
 {
     /** @var string */
     private $code;
+
     /** @var string */
     private $issuer;
 
     /**
-     * ProprietaryBankTransactionCode constructor.
      * @param string $code
      * @param string $issuer
      */
