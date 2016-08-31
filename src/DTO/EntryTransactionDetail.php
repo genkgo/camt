@@ -192,7 +192,7 @@ class EntryTransactionDetail
     /**
      * @param BankTransactionCode $bankTransactionCode
      */
-    public function setBankTransactionCode($bankTransactionCode)
+    public function setBankTransactionCode(BankTransactionCode $bankTransactionCode)
     {
         $this->bankTransactionCode = $bankTransactionCode;
     }
