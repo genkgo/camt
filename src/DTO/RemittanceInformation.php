@@ -19,17 +19,6 @@ class RemittanceInformation
     private $creditorReferenceInformation;
 
     /**
-     * @param $message
-     * @return static
-     */
-    public static function fromUnstructured($message)
-    {
-        $information = new static;
-        $information->message = $message;
-        return $information;
-    }
-
-    /**
      * @return CreditorReferenceInformation
      */
     public function getCreditorReferenceInformation()
@@ -43,7 +32,6 @@ class RemittanceInformation
     public function setCreditorReferenceInformation($creditorReferenceInformation)
     {
         $this->creditorReferenceInformation = $creditorReferenceInformation;
-        $this->message = $creditorReferenceInformation->getRef();
     }
 
     /**
@@ -53,4 +41,13 @@ class RemittanceInformation
     {
         return $this->message;
     }
+
+    /**
+     * @param $message
+     */
+    public function setMessage($message)
+    {
+        $this->message = $message;
+    }
+
 }

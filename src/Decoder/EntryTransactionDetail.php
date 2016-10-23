@@ -130,24 +130,27 @@ abstract class EntryTransactionDetail
             return;
         }
 
-        if (isset($xmlDetail->RmtInf->Ustrd)) {
-            $remittanceInformation = DTO\RemittanceInformation::fromUnstructured(
-                (string)$xmlDetail->RmtInf->Ustrd
-            );
-            $detail->setRemittanceInformation($remittanceInformation);
-
-            return;
-        }
-
-        if (isset($xmlDetail->RmtInf->Strd)
-            && isset($xmlDetail->RmtInf->Strd->CdtrRefInf)
-            && isset($xmlDetail->RmtInf->Strd->CdtrRefInf->Ref)
+        if (isset($xmlDetail->RmtInf->Ustrd) || (isset($xmlDetail->RmtInf->Strd)
+                                                 && isset($xmlDetail->RmtInf->Strd->CdtrRefInf)
+                                                 && isset($xmlDetail->RmtInf->Strd->CdtrRefInf->Ref))
         ) {
-            $creditorReferenceInformation = DTO\CreditorReferenceInformation::fromUnstructured(
-                (string)$xmlDetail->RmtInf->Strd->CdtrRefInf->Ref
-            );
+            
             $remittanceInformation = new DTO\RemittanceInformation();
-            $remittanceInformation->setCreditorReferenceInformation($creditorReferenceInformation);
+
+            if (isset($xmlDetail->RmtInf->Ustrd)) {
+                $remittanceInformation->setMessage((string)$xmlDetail->RmtInf->Ustrd);
+            }
+
+            if (isset($xmlDetail->RmtInf->Strd)
+                && isset($xmlDetail->RmtInf->Strd->CdtrRefInf)
+                && isset($xmlDetail->RmtInf->Strd->CdtrRefInf->Ref)
+            ) {
+                $creditorReferenceInformation = DTO\CreditorReferenceInformation::fromUnstructured(
+                    (string)$xmlDetail->RmtInf->Strd->CdtrRefInf->Ref
+                );
+                $remittanceInformation->setCreditorReferenceInformation($creditorReferenceInformation);
+                
+            }
             $detail->setRemittanceInformation($remittanceInformation);
         }
     }
