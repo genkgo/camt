@@ -41,6 +41,11 @@ class EntryTransactionDetail
     private $bankTransactionCode;
 
     /**
+     * @var AmountDetails
+     */
+    private $amountDetails;
+
+    /**
      * @param Reference $reference
      */
     public function addReference(Reference $reference)
@@ -196,4 +201,23 @@ class EntryTransactionDetail
     {
         $this->bankTransactionCode = $bankTransactionCode;
     }
+
+
+    /**
+     * @return AmountDetails
+     */
+    public function getAmountDetails()
+    {
+        return $this->amountDetails;
+    }
+
+    /**
+     * @param AmountDetails $amountDetails
+     */
+    public function setAmountDetails(AmountDetails $amountDetails)
+    {
+        $this->amountDetails = $amountDetails;
+    }
+
+
 }
