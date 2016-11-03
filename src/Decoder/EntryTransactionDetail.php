@@ -215,12 +215,10 @@ abstract class EntryTransactionDetail
      */
     public function addAmountDetails(DTO\EntryTransactionDetail $detail, SimpleXMLElement $xmlDetail, $CdtDbtInd)
     {
-
         if (isset($xmlDetail->AmtDtls)) {
             $amountDetails = new DTO\AmountDetails();
 
             if (isset($xmlDetail->AmtDtls->TxAmt) && isset($xmlDetail->AmtDtls->TxAmt->Amt)) {
-
                 $amount = StringToUnits::convert((string) $xmlDetail->AmtDtls->TxAmt->Amt);
                 
                 if ((string) $CdtDbtInd === 'DBIT') {
@@ -228,11 +226,9 @@ abstract class EntryTransactionDetail
                 }
 
                 $money = new Money(
-                                    $amount,
-                                    new Currency( 
-                                        (string) $xmlDetail->AmtDtls->TxAmt->Amt['Ccy'] 
-                                    )
-                                );
+                    $amount,
+                    new Currency((string) $xmlDetail->AmtDtls->TxAmt->Amt['Ccy'])
+                );
                 $amountDetails->setAmount($money);
             }
             $detail->setAmountDetails($amountDetails);
