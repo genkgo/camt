@@ -6,6 +6,9 @@ use Genkgo\Camt\DTO;
 use \SimpleXMLElement;
 use Genkgo\Camt\Decoder\Factory\DTO as DTOFactory;
 use Genkgo\Camt\Iban;
+use Money\Money;
+use Money\Currency;
+use Genkgo\Camt\Util\StringToUnits;
 
 abstract class EntryTransactionDetail
 {
@@ -203,6 +206,33 @@ abstract class EntryTransactionDetail
         }
 
         $detail->setBankTransactionCode($bankTransactionCode);
+    }
+
+    /**
+     * @param DTO\EntryTransactionDetail $detail
+     * @param SimpleXMLElement           $xmlDetail
+     * @param SimpleXMLElement           $CdtDbtInd
+     */
+    public function addAmountDetails(DTO\EntryTransactionDetail $detail, SimpleXMLElement $xmlDetail, $CdtDbtInd)
+    {
+        if (isset($xmlDetail->AmtDtls)) {
+            $amountDetails = new DTO\AmountDetails();
+
+            if (isset($xmlDetail->AmtDtls->TxAmt) && isset($xmlDetail->AmtDtls->TxAmt->Amt)) {
+                $amount = StringToUnits::convert((string) $xmlDetail->AmtDtls->TxAmt->Amt);
+                
+                if ((string) $CdtDbtInd === 'DBIT') {
+                    $amount = $amount * -1;
+                }
+
+                $money = new Money(
+                    $amount,
+                    new Currency((string) $xmlDetail->AmtDtls->TxAmt->Amt['Ccy'])
+                );
+                $amountDetails->setAmount($money);
+            }
+            $detail->setAmountDetails($amountDetails);
+        }
     }
 
     /**
