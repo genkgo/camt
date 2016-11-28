@@ -105,7 +105,10 @@ class Record
             if (isset($xmlEntry->NtryDtls->Btch->PmtInfId) && (string) $xmlEntry->NtryDtls->Btch->PmtInfId) {
                 $entry->setBatchPaymentId((string) $xmlEntry->NtryDtls->Btch->PmtInfId);
             }
-
+            
+            if (isset($xmlEntry->NtryDtls->TxDtls->Refs->PmtInfId) && (string) $xmlEntry->NtryDtls->TxDtls->Refs->PmtInfId) {
+                $entry->setBatchPaymentId((string) $xmlEntry->NtryDtls->TxDtls->Refs->PmtInfId);
+            }
 
             if (isset($xmlEntry->BkTxCd)) {
                 $bankTransactionCode = new DTO\BankTransactionCode();
