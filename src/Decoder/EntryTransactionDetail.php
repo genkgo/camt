@@ -243,7 +243,7 @@ abstract class EntryTransactionDetail
     public function addAmount(DTO\EntryTransactionDetail $detail, SimpleXMLElement $xmlDetail, $CdtDbtInd)
     {
         if (isset($xmlDetail->Amt)) {
-            $amountDetails = new DTO\AmountDetails();
+            $amountDetails = new DTO\Amount();
 
                 $amount = StringToUnits::convert((string) $xmlDetail->Amt);
 
