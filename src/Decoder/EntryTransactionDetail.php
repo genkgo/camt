@@ -234,7 +234,33 @@ abstract class EntryTransactionDetail
             $detail->setAmountDetails($amountDetails);
         }
     }
+    
+    /**
+     * @param DTO\EntryTransactionDetail $detail
+     * @param SimpleXMLElement           $xmlDetail
+     * @param SimpleXMLElement           $CdtDbtInd
+     */
+    public function addAmount(DTO\EntryTransactionDetail $detail, SimpleXMLElement $xmlDetail, $CdtDbtInd)
+    {
+        if (isset($xmlDetail->Amt)) {
+            $amountDetails = new DTO\AmountDetails();
 
+                $amount = StringToUnits::convert((string) $xmlDetail->Amt);
+
+                if ((string) $CdtDbtInd === 'DBIT') {
+                    $amount = $amount * -1;
+                }
+
+                $money = new Money(
+                    $amount,
+                    new Currency((string) $xmlDetail->Amt['Ccy'])
+                );
+                $amountDetails->setAmount($money);
+            }
+            $detail->setAmount($amountDetails);
+        }
+    }
+    
     /**
      * @param SimpleXMLElement $xmlDetail
      *
