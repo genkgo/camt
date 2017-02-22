@@ -219,5 +219,20 @@ class EntryTransactionDetail
         $this->amountDetails = $amountDetails;
     }
 
+    /**
+     * @return Amount
+     */
+    public function getAmount()
+    {
+        return $this->amount;
+    }
+
+    /**
+     * @param Amount $amount
+     */
+    public function setAmount(Amount $amount)
+    {
+        $this->amount = $amount;
+    }    
 
 }
