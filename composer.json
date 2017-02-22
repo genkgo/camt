@@ -1,18 +1,18 @@
 {
   "name" : "genkgo/camt",
   "description": "Library to read CAMT files (XML containing bank statements). Currently only CAMT.053 is supported.",
-  "require" : {
-    "php" : ">=5.5",
-    "jschaedl/iban": "~1.1.0",
-    "mathiasverraes/money": "~1.2.1",
-    "genkgo/camt": "dev-postfinance-compatibility"
-  },
   "repositories": [
     {
        "type": "vcs",
        "url": "https://github.com/teslina/camt"
     }
   ],  
+  "require" : {
+    "php" : ">=5.5",
+    "jschaedl/iban": "~1.1.0",
+    "mathiasverraes/money": "~1.2.1",
+    "genkgo/camt": "dev-postfinance-compatibility"
+  },
   "require-dev" : {
     "fabpot/php-cs-fixer": "^1.11",
     "phpunit/phpunit": "~4.0",
