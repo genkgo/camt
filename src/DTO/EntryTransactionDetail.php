@@ -27,6 +27,10 @@ class EntryTransactionDetail
      */
     private $remittanceInformation;
     /**
+     * @var RelatedDates
+     */
+    private $relatedDates;
+    /**
      * @var ReturnInformation
      */
     private $returnInformation;
@@ -44,6 +48,11 @@ class EntryTransactionDetail
      * @var AmountDetails
      */
     private $amountDetails;
+
+    /**
+     * @var Amount
+     */
+    private $amount;
 
     /**
      * @param Reference $reference
@@ -150,6 +159,22 @@ class EntryTransactionDetail
         }
         return $this->remittanceInformation;
     }
+    
+    /**
+     * @param RelatedDates $relatedDates
+     */
+    public function setRelatedDates(RelatedDates $relatedDates)
+    {
+        $this->relatedDates = $relatedDates;
+    }
+
+    /**
+     * @return RelatedDates
+     */
+    public function getRelatedDates()
+    {
+        return $this->relatedDates;
+    }    
 
     /**
      * @return ReturnInformation|null

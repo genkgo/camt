@@ -9,6 +9,7 @@ use Genkgo\Camt\Iban;
 use Money\Money;
 use Money\Currency;
 use Genkgo\Camt\Util\StringToUnits;
+use \DateTimeImmutable;
 
 abstract class EntryTransactionDetail
 {
@@ -154,6 +155,27 @@ abstract class EntryTransactionDetail
             $detail->setRemittanceInformation($remittanceInformation);
         }
     }
+    
+    /**
+     * @param DTO\EntryTransactionDetail $detail
+     * @param SimpleXMLElement           $xmlDetail
+     */
+    public function addRelatedDates(DTO\EntryTransactionDetail $detail, SimpleXMLElement $xmlDetail)
+    {
+        if (false === isset($xmlDetail->RltdDts)) {
+            return;
+        }
+
+        if (isset($xmlDetail->RltdDts->AccptncDtTm)) {
+            $RelatedDates = DTO\RelatedDates::fromUnstructured(
+                new DateTimeImmutable( (string) $xmlDetail->RltdDts->AccptncDtTm )
+            );
+            $detail->setRelatedDates($RelatedDates);
+            return;
+        }
+    }
+    
+    
 
     /**
      * @param DTO\EntryTransactionDetail $detail
