@@ -229,6 +229,51 @@ abstract class EntryTransactionDetail
 
         $detail->setBankTransactionCode($bankTransactionCode);
     }
+    
+    /**
+     * @param DTO\EntryTransactionDetail $detail
+     * @param SimpleXMLElement           $xmlDetail
+     */
+    public function addCharges(DTO\EntryTransactionDetail $detail, SimpleXMLElement $xmlDetail)
+    {
+            if (isset($xmlDetail->Chrgs)) {
+                $charges = new DTO\Charges();
+
+                if (isset($xmlDetail->Chrgs->TtlChrgsAndTaxAmt) && (string) $xmlDetail->Chrgs->TtlChrgsAndTaxAmt) {
+                    $amount      = StringToUnits::convert((string) $xmlDetail->Chrgs->TtlChrgsAndTaxAmt);
+                    $currency    = (string)$xmlDetail->Chrgs->TtlChrgsAndTaxAmt['Ccy'];
+
+                    $charges->setTotalChargesAndTaxAmount(new Money($amount, new Currency($currency)));
+                }
+                
+                $chargesRecords = $xmlDetail->Chrgs->Rcrd;
+                if ($chargesRecords) {
+                    foreach ($chargesRecords as $chargesRecord) {
+                        
+                        $chargesDetail = new DTO\ChargesRecord();
+                        
+                        if(isset($chargesRecord->Amt) && (string) $chargesRecord->Amt) {
+                            $amount      = StringToUnits::convert((string) $chargesRecord->Amt);
+                            $currency    = (string)$chargesRecord->Amt['Ccy'];
+
+                            if ((string) $chargesRecord->CdtDbtInd === 'DBIT') {
+                                $amount = $amount * -1;
+                            }
+                            
+                            $chargesDetail->setAmount(new Money($amount, new Currency($currency)));
+                        }
+                        if (isset($chargesRecord->CdtDbtInd) && (string) $chargesRecord->CdtDbtInd === 'true') {
+                            $chargesDetail->setChargesIncluded­Indicator(true);
+                        }
+                        if (isset($chargesRecord->Tp->Prtry->Id) && (string) $chargesRecord->Tp->Prtry->Id) {
+                            $chargesDetail->setIdentification((string) $chargesRecord->Tp->Prtry->Id);
+                        }
+                        $charges->addRecord($chargesDetail);
+                    }
+                }
+                $detail->setCharges($charges);
+            }        
+    }    
 
     /**
      * @param DTO\EntryTransactionDetail $detail

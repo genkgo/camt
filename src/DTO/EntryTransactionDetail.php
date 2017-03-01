@@ -227,6 +227,21 @@ class EntryTransactionDetail
         $this->bankTransactionCode = $bankTransactionCode;
     }
 
+    /**
+     * @return Charges
+     */
+    public function getCharges()
+    {
+        return $this->charges;
+    }
+
+    /**
+     * @param Charges $charges
+     */
+    public function setCharges(Charges $charges)
+    {
+        $this->charges = $charges;
+    }
 
     /**
      * @return AmountDetails
