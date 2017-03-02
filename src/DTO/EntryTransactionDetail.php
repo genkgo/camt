@@ -45,6 +45,11 @@ class EntryTransactionDetail
     private $bankTransactionCode;
 
     /**
+     * @var Charges
+     */
+    private $charges;
+
+    /**
      * @var AmountDetails
      */
     private $amountDetails;
