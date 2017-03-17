@@ -50,6 +50,13 @@ class Message extends BaseMessage
             $groupHeader->setAdditionalInformation((string) $xmlGroupHeader->AddtlInf);
         }
 
+        if (isset($xmlGroupHeader->MsgPgntn)) {
+            $groupHeader->setPagination(new DTO\Pagination(
+                (string) $xmlGroupHeader->MsgPgntn->PgNb,
+                ('true' === (string) $xmlGroupHeader->MsgPgntn->LastPgInd) ? true : false
+            ));
+        }
+
         $message->setGroupHeader($groupHeader);
     }
 }

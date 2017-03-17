@@ -21,6 +21,10 @@
                 </Id>
                 <CtryOfRes>NL</CtryOfRes>
             </MsgRcpt>
+            <MsgPgntn>
+              <PgNb>1</PgNb>
+              <LastPgInd>true</LastPgInd>
+            </MsgPgntn>
             <AddtlInf>Group header additional information</AddtlInf>
         </GrpHdr>
         <Ntfctn>
