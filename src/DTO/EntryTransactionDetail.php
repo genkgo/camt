@@ -27,6 +27,10 @@ class EntryTransactionDetail
      */
     private $remittanceInformation;
     /**
+     * @var RelatedDates
+     */
+    private $relatedDates;
+    /**
      * @var ReturnInformation
      */
     private $returnInformation;
@@ -41,9 +45,19 @@ class EntryTransactionDetail
     private $bankTransactionCode;
 
     /**
+     * @var Charges
+     */
+    private $charges;
+
+    /**
      * @var AmountDetails
      */
     private $amountDetails;
+
+    /**
+     * @var Amount
+     */
+    private $amount;
 
     /**
      * @param Reference $reference
@@ -150,6 +164,22 @@ class EntryTransactionDetail
         }
         return $this->remittanceInformation;
     }
+    
+    /**
+     * @param RelatedDates $relatedDates
+     */
+    public function setRelatedDates(RelatedDates $relatedDates)
+    {
+        $this->relatedDates = $relatedDates;
+    }
+
+    /**
+     * @return RelatedDates
+     */
+    public function getRelatedDates()
+    {
+        return $this->relatedDates;
+    }    
 
     /**
      * @return ReturnInformation|null
@@ -202,6 +232,21 @@ class EntryTransactionDetail
         $this->bankTransactionCode = $bankTransactionCode;
     }
 
+    /**
+     * @return Charges
+     */
+    public function getCharges()
+    {
+        return $this->charges;
+    }
+
+    /**
+     * @param Charges $charges
+     */
+    public function setCharges(Charges $charges)
+    {
+        $this->charges = $charges;
+    }
 
     /**
      * @return AmountDetails
@@ -219,5 +264,20 @@ class EntryTransactionDetail
         $this->amountDetails = $amountDetails;
     }
 
+    /**
+     * @return Amount
+     */
+    public function getAmount()
+    {
+        return $this->amount;
+    }
+
+    /**
+     * @param Amount $amount
+     */
+    public function setAmount(Amount $amount)
+    {
+        $this->amount = $amount;
+    }    
 
 }

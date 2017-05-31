@@ -42,6 +42,9 @@ class EndToEndTest extends AbstractTestCase
             $this->assertEquals('AAAASESS-FP-ACCR001', $groupHeader->getMessageId());
             $this->assertEquals(new DateTimeImmutable('2007-10-18T12:30:00+01:00'), $groupHeader->getCreatedOn());
             $this->assertEquals('Group header additional information', $groupHeader->getAdditionalInformation());
+            $this->assertInstanceOf(DTO\Pagination::class, $groupHeader->getPagination());
+            $this->assertEquals('1', $groupHeader->getPagination()->getPageNumber());
+            $this->assertEquals(true, $groupHeader->getPagination()->isLastPage());
             $msgRecipient = $groupHeader->getMessageRecipient();
             $this->assertInstanceOf(DTO\Recipient::class, $msgRecipient);
             $this->assertEquals('COMPANY BVBA', $msgRecipient->getName());

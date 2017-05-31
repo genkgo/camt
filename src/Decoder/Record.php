@@ -125,6 +125,44 @@ class Record
                 $entry->setBankTransactionCode($bankTransactionCode);
             }
 
+            if (isset($xmlEntry->Chrgs)) {
+                $charges = new DTO\Charges();
+
+                if (isset($xmlEntry->Chrgs->TtlChrgsAndTaxAmt) && (string) $xmlEntry->Chrgs->TtlChrgsAndTaxAmt) {
+                    $amount      = StringToUnits::convert((string) $xmlEntry->Chrgs->TtlChrgsAndTaxAmt);
+                    $currency    = (string)$xmlEntry->Chrgs->TtlChrgsAndTaxAmt['Ccy'];
+
+                    $charges->setTotalChargesAndTaxAmount(new Money($amount, new Currency($currency)));
+                }
+                
+                $chargesRecords = $xmlEntry->Chrgs->Rcrd;
+                if ($chargesRecords) {
+                    foreach ($chargesRecords as $chargesRecord) {
+                        
+                        $chargesDetail = new DTO\ChargesRecord();
+                        
+                        if(isset($chargesRecord->Amt) && (string) $chargesRecord->Amt) {
+                            $amount      = StringToUnits::convert((string) $chargesRecord->Amt);
+                            $currency    = (string)$chargesRecord->Amt['Ccy'];
+
+                            if ((string) $chargesRecord->CdtDbtInd === 'DBIT') {
+                                $amount = $amount * -1;
+                            }
+                            
+                            $chargesDetail->setAmount(new Money($amount, new Currency($currency)));
+                        }
+                        if (isset($chargesRecord->CdtDbtInd) && (string) $chargesRecord->CdtDbtInd === 'true') {
+                            $chargesDetail->setChargesIncluded­Indicator(true);
+                        }
+                        if (isset($chargesRecord->Tp->Prtry->Id) && (string) $chargesRecord->Tp->Prtry->Id) {
+                            $chargesDetail->setIdentification((string) $chargesRecord->Tp->Prtry->Id);
+                        }
+                        $charges->addRecord($chargesDetail);
+                    }
+                }
+                $entry->setCharges($charges);
+            }
+            
             $this->entryDecoder->addTransactionDetails($entry, $xmlEntry);
 
             $record->addEntry($entry);

@@ -141,6 +141,53 @@ class EntryTransactionDetailTest extends AbstractTestCase
         (new Camt053\Decoder\EntryTransactionDetail())->addRelatedParties($detail->reveal(), $this->getXmlDetail());
     }
 
+    /**
+     * @test
+     */
+    public function it_does_not_add_related_dates_if_there_is_none_in_xml()
+    {
+        $detail = $this->prophesize(DTO\EntryTransactionDetail::class);
+        $detail->setRelatedDates(Argument::any())->shouldNotBeCalled();
+
+        $xmlDetail = new \SimpleXMLElement('<content></content>');
+        (new Camt053\Decoder\EntryTransactionDetail())->addRelatedDates($detail->reveal(), $xmlDetail);
+    }
+
+    /**
+     * @test
+     */
+    public function it_adds_related_dates_if_is_present_in_xml()
+    {
+        $detail = $this->prophesize(DTO\EntryTransactionDetail::class);
+        $detail->setRelatedDates(Argument::type(DTO\RelatedDates::class))->shouldBeCalled();
+
+        (new Camt053\Decoder\EntryTransactionDetail())->addRelatedDates($detail->reveal(), $this->getXmlDetail());
+    }
+
+    /**
+     * @test
+     */
+    public function it_does_not_add_charges_if_there_is_none_in_xml()
+    {
+        $detail = $this->prophesize(DTO\EntryTransactionDetail::class);
+        $detail->setCharges(Argument::any())->shouldNotBeCalled();
+
+        $xmlDetail = new \SimpleXMLElement('<content></content>');
+        (new Camt053\Decoder\EntryTransactionDetail())->addCharges($detail->reveal(), $xmlDetail);
+    }
+
+    /**
+     * @test
+     */
+    public function it_adds_charges_if_is_present_in_xml()
+    {
+        $detail = $this->prophesize(DTO\EntryTransactionDetail::class);
+        $detail->setCharges(Argument::type(DTO\Charges::class))->shouldBeCalled();
+
+        (new Camt053\Decoder\EntryTransactionDetail())->addCharges($detail->reveal(), $this->getXmlDetail());
+    }    
+
+    
     private function getXmlDetail()
     {
         $xmlContent = <<<XML
@@ -164,6 +211,32 @@ class EntryTransactionDetailTest extends AbstractTestCase
             <Cd>lorem</Cd>
         </Strd>
     </RmtInf>
+    <RltdDts>
+      <AccptncDtTm>2017-02-27T15:23:45.446</AccptncDtTm>
+    </RltdDts>
+    <Chrgs>
+      <TtlChrgsAndTaxAmt Ccy="CHF">1.79</TtlChrgsAndTaxAmt>
+      <Rcrd>
+        <Amt Ccy="CHF">1.75</Amt>
+        <CdtDbtInd>DBIT</CdtDbtInd>
+        <ChrgInclInd>false</ChrgInclInd>
+        <Tp>
+          <Prtry>
+            <Id>2</Id>
+          </Prtry>
+        </Tp>
+      </Rcrd>
+      <Rcrd>
+        <Amt Ccy="CHF">0.04</Amt>
+        <CdtDbtInd>DBIT</CdtDbtInd>
+        <ChrgInclInd>false</ChrgInclInd>
+        <Tp>
+          <Prtry>
+            <Id>4</Id>
+          </Prtry>
+        </Tp>
+      </Rcrd>
+    </Chrgs>    
     <RltdPties>
         <Cdtr>
             <Nm>Lorem</Nm>

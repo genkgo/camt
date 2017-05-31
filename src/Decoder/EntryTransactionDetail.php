@@ -9,6 +9,7 @@ use Genkgo\Camt\Iban;
 use Money\Money;
 use Money\Currency;
 use Genkgo\Camt\Util\StringToUnits;
+use \DateTimeImmutable;
 
 abstract class EntryTransactionDetail
 {
@@ -154,6 +155,27 @@ abstract class EntryTransactionDetail
             $detail->setRemittanceInformation($remittanceInformation);
         }
     }
+    
+    /**
+     * @param DTO\EntryTransactionDetail $detail
+     * @param SimpleXMLElement           $xmlDetail
+     */
+    public function addRelatedDates(DTO\EntryTransactionDetail $detail, SimpleXMLElement $xmlDetail)
+    {
+        if (false === isset($xmlDetail->RltdDts)) {
+            return;
+        }
+
+        if (isset($xmlDetail->RltdDts->AccptncDtTm)) {
+            $RelatedDates = DTO\RelatedDates::fromUnstructured(
+                new DateTimeImmutable( (string) $xmlDetail->RltdDts->AccptncDtTm )
+            );
+            $detail->setRelatedDates($RelatedDates);
+            return;
+        }
+    }
+    
+    
 
     /**
      * @param DTO\EntryTransactionDetail $detail
@@ -207,6 +229,51 @@ abstract class EntryTransactionDetail
 
         $detail->setBankTransactionCode($bankTransactionCode);
     }
+    
+    /**
+     * @param DTO\EntryTransactionDetail $detail
+     * @param SimpleXMLElement           $xmlDetail
+     */
+    public function addCharges(DTO\EntryTransactionDetail $detail, SimpleXMLElement $xmlDetail)
+    {
+            if (isset($xmlDetail->Chrgs)) {
+                $charges = new DTO\Charges();
+
+                if (isset($xmlDetail->Chrgs->TtlChrgsAndTaxAmt) && (string) $xmlDetail->Chrgs->TtlChrgsAndTaxAmt) {
+                    $amount      = StringToUnits::convert((string) $xmlDetail->Chrgs->TtlChrgsAndTaxAmt);
+                    $currency    = (string)$xmlDetail->Chrgs->TtlChrgsAndTaxAmt['Ccy'];
+
+                    $charges->setTotalChargesAndTaxAmount(new Money($amount, new Currency($currency)));
+                }
+                
+                $chargesRecords = $xmlDetail->Chrgs->Rcrd;
+                if ($chargesRecords) {
+                    foreach ($chargesRecords as $chargesRecord) {
+                        
+                        $chargesDetail = new DTO\ChargesRecord();
+                        
+                        if(isset($chargesRecord->Amt) && (string) $chargesRecord->Amt) {
+                            $amount      = StringToUnits::convert((string) $chargesRecord->Amt);
+                            $currency    = (string)$chargesRecord->Amt['Ccy'];
+
+                            if ((string) $chargesRecord->CdtDbtInd === 'DBIT') {
+                                $amount = $amount * -1;
+                            }
+                            
+                            $chargesDetail->setAmount(new Money($amount, new Currency($currency)));
+                        }
+                        if (isset($chargesRecord->CdtDbtInd) && (string) $chargesRecord->CdtDbtInd === 'true') {
+                            $chargesDetail->setChargesIncluded­Indicator(true);
+                        }
+                        if (isset($chargesRecord->Tp->Prtry->Id) && (string) $chargesRecord->Tp->Prtry->Id) {
+                            $chargesDetail->setIdentification((string) $chargesRecord->Tp->Prtry->Id);
+                        }
+                        $charges->addRecord($chargesDetail);
+                    }
+                }
+                $detail->setCharges($charges);
+            }        
+    }    
 
     /**
      * @param DTO\EntryTransactionDetail $detail
@@ -234,7 +301,33 @@ abstract class EntryTransactionDetail
             $detail->setAmountDetails($amountDetails);
         }
     }
+    
+    /**
+     * @param DTO\EntryTransactionDetail $detail
+     * @param SimpleXMLElement           $xmlDetail
+     * @param SimpleXMLElement           $CdtDbtInd
+     */
+    public function addAmount(DTO\EntryTransactionDetail $detail, SimpleXMLElement $xmlDetail, $CdtDbtInd)
+    {
+        if (isset($xmlDetail->Amt)) {
+            $amountDetails = new DTO\Amount();
 
+                $amount = StringToUnits::convert((string) $xmlDetail->Amt);
+
+                if ((string) $CdtDbtInd === 'DBIT') {
+                    $amount = $amount * -1;
+                }
+
+                $money = new Money(
+                    $amount,
+                    new Currency((string) $xmlDetail->Amt['Ccy'])
+                );
+                $amountDetails->setAmount($money);
+
+            $detail->setAmount($amountDetails);
+        }
+    }
+    
     /**
      * @param SimpleXMLElement $xmlDetail
      *

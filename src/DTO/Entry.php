@@ -73,6 +73,11 @@ class Entry
     private $bankTransactionCode;
 
     /**
+     * @var Charges
+     */
+    private $charges;
+
+    /**
      * @param Record $record
      * @param int $index
      * @param Money $amount
@@ -253,4 +258,21 @@ class Entry
     {
         $this->bankTransactionCode = $bankTransactionCode;
     }
+    
+    /**
+     * @return Charges
+     */
+    public function getCharges()
+    {
+        return $this->charges;
+    }
+
+    /**
+     * @param Charges $charges
+     */
+    public function setCharges(Charges $charges)
+    {
+        $this->charges = $charges;
+    }
+    
 }

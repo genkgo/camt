@@ -31,6 +31,12 @@ class GroupHeader
     private $messageRecipient;
 
     /**
+     * @var Pagination
+     */
+    private $pagination;
+
+    
+    /**
      * @param $messageId
      * @param DateTimeImmutable $createdOn
      */
@@ -87,4 +93,20 @@ class GroupHeader
     {
         $this->messageRecipient = $messageRecipient;
     }
+
+    /**
+     * @return Pagination
+     */
+    public function getPagination()
+    {
+        return $this->pagination;
+    }
+    
+    /**
+     * @param Pagination $pagination
+     */
+    public function setPagination(Pagination $pagination)
+    {
+        $this->pagination = $pagination;
+    }    
 }
