@@ -2,6 +2,7 @@
 namespace Genkgo\Camt;
 
 use DOMDocument;
+use Genkgo\Camt\DTO\Message;
 use Genkgo\Camt\Exception\ReaderException;
 
 /**
