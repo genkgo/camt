@@ -13,16 +13,16 @@ abstract class Message
      */
     protected $recordDecoder;
     /**
-     * @var Date
+     * @var DateDecoderInterface
      */
     protected $dateDecoder;
 
     /**
      * Message constructor.
      * @param Record $recordDecoder
-     * @param Date $dateDecoder
+     * @param DateDecoderInterface $dateDecoder
      */
-    public function __construct(Record $recordDecoder, Date $dateDecoder)
+    public function __construct(Record $recordDecoder, DateDecoderInterface $dateDecoder)
     {
         $this->recordDecoder = $recordDecoder;
         $this->dateDecoder = $dateDecoder;

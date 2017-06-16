@@ -1,7 +1,7 @@
 <?php
 namespace Genkgo\Camt\Decoder;
 
-class Date
+class Date implements DateDecoderInterface
 {
     /**
      * @var

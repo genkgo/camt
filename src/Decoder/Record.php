@@ -15,16 +15,16 @@ class Record
      */
     private $entryDecoder;
     /**
-     * @var Date
+     * @var DateDecoderInterface
      */
     private $dateDecoder;
 
     /**
      * Record constructor.
      * @param Entry $entryDecoder
-     * @param Date $dateDecoder
+     * @param DateDecoderInterface $dateDecoder
      */
-    public function __construct(Entry $entryDecoder, Date $dateDecoder)
+    public function __construct(Entry $entryDecoder, DateDecoderInterface $dateDecoder)
     {
         $this->entryDecoder = $entryDecoder;
         $this->dateDecoder = $dateDecoder;

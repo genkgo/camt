@@ -12,15 +12,15 @@ use Genkgo\Camt\Util\StringToUnits;
 abstract class EntryTransactionDetail
 {
     /**
-     * @var Date
+     * @var DateDecoderInterface
      */
     private $dateDecoder;
 
     /**
      * EntryTransactionDetail constructor.
-     * @param Date $dateDecoder
+     * @param DateDecoderInterface $dateDecoder
      */
-    public function __construct(Date $dateDecoder)
+    public function __construct(DateDecoderInterface $dateDecoder)
     {
         $this->dateDecoder = $dateDecoder;
     }
