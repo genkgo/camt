@@ -6,7 +6,6 @@ use Genkgo\Camt\Decoder\Message as BaseMessageDecoder;
 use Genkgo\Camt\Camt054\DTO as Camt054DTO;
 use Genkgo\Camt\DTO;
 use \SimpleXMLElement;
-use \DateTimeImmutable;
 use Genkgo\Camt\Iban;
 
 class Message extends BaseMessageDecoder
@@ -23,7 +22,7 @@ class Message extends BaseMessageDecoder
         foreach ($xmlNotifications as $xmlNotification) {
             $notification = new Camt054DTO\Notification(
                 (string) $xmlNotification->Id,
-                new DateTimeImmutable((string)$xmlNotification->CreDtTm),
+                $this->dateDecoder->decode((string)$xmlNotification->CreDtTm),
                 $this->getAccount($xmlNotification)
             );
 

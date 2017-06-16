@@ -7,7 +7,6 @@ use Genkgo\Camt\Util\StringToUnits;
 use Money\Money;
 use Money\Currency;
 use \SimpleXMLElement;
-use \DateTimeImmutable;
 
 class Record
 {
@@ -15,10 +14,20 @@ class Record
      * @var Entry
      */
     private $entryDecoder;
+    /**
+     * @var Date
+     */
+    private $dateDecoder;
 
-    public function __construct(Entry $entryDecoder)
+    /**
+     * Record constructor.
+     * @param Entry $entryDecoder
+     * @param Date $dateDecoder
+     */
+    public function __construct(Entry $entryDecoder, Date $dateDecoder)
     {
         $this->entryDecoder = $entryDecoder;
+        $this->dateDecoder = $dateDecoder;
     }
 
     /**
@@ -46,7 +55,7 @@ class Record
                         $amount,
                         new Currency($currency)
                     ),
-                    new DateTimeImmutable($date)
+                    $this->dateDecoder->decode($date)
                 );
             } else {
                 $balance = DTO\Balance::closing(
@@ -54,7 +63,7 @@ class Record
                         $amount,
                         new Currency($currency)
                     ),
-                    new DateTimeImmutable($date)
+                    $this->dateDecoder->decode($date)
                 );
             }
 
@@ -85,8 +94,8 @@ class Record
                 $record,
                 $index,
                 new Money($amount, new Currency($currency)),
-                new DateTimeImmutable($bookingDate),
-                new DateTimeImmutable($valueDate),
+                $this->dateDecoder->decode($bookingDate),
+                $this->dateDecoder->decode($valueDate),
                 $additionalInfo
             );
 

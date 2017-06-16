@@ -24,7 +24,7 @@ class RecordTest extends AbstractTestCase
             ->prophesize(Decoder\Entry::class)
             ->willBeConstructedWith([$entryTransactionDetail->reveal()])
         ;
-        $this->decoder = new Decoder\Record($this->mockedEntryDecoder->reveal());
+        $this->decoder = new Decoder\Record($this->mockedEntryDecoder->reveal(), new Decoder\Date());
     }
 
     /**

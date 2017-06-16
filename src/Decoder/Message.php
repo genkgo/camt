@@ -2,10 +2,8 @@
 
 namespace Genkgo\Camt\Decoder;
 
-use DateTimeImmutable;
 use SimpleXMLElement;
 use Genkgo\Camt\DTO;
-use Genkgo\Camt\Iban;
 use Genkgo\Camt\Decoder\Factory\DTO as DTOFactory;
 
 abstract class Message
@@ -14,10 +12,20 @@ abstract class Message
      * @var Record
      */
     protected $recordDecoder;
+    /**
+     * @var Date
+     */
+    protected $dateDecoder;
 
-    public function __construct(Record $recordDecoder)
+    /**
+     * Message constructor.
+     * @param Record $recordDecoder
+     * @param Date $dateDecoder
+     */
+    public function __construct(Record $recordDecoder, Date $dateDecoder)
     {
         $this->recordDecoder = $recordDecoder;
+        $this->dateDecoder = $dateDecoder;
     }
 
     /**
@@ -29,7 +37,7 @@ abstract class Message
         $xmlGroupHeader = $this->getRootElement($document)->GrpHdr;
         $groupHeader = new DTO\GroupHeader(
             (string)$xmlGroupHeader->MsgId,
-            new DateTimeImmutable((string)$xmlGroupHeader->CreDtTm)
+            $this->dateDecoder->decode((string)$xmlGroupHeader->CreDtTm)
         );
 
         if (isset($xmlGroupHeader->AddtlInf)) {
@@ -68,8 +76,8 @@ abstract class Message
             $record->setLegalSequenceNumber((string) $xmlRecord->LglSeqNb);
         }
         if (isset($xmlRecord->FrToDt)) {
-            $record->setFromDate(new DateTimeImmutable((string) $xmlRecord->FrToDt->FrDtTm));
-            $record->setToDate(new DateTimeImmutable((string) $xmlRecord->FrToDt->ToDtTm));
+            $record->setFromDate($this->dateDecoder->decode((string) $xmlRecord->FrToDt->FrDtTm));
+            $record->setToDate($this->dateDecoder->decode((string) $xmlRecord->FrToDt->ToDtTm));
         }
     }
 

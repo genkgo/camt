@@ -3,7 +3,6 @@
 namespace Genkgo\Camt\Camt054\Decoder\V04;
 
 use SimpleXMLElement;
-use DateTimeImmutable;
 use Genkgo\Camt\Camt054\Decoder\Message as BaseMessage;
 use Genkgo\Camt\Camt054\DTO\V04 as Camt054V04DTO;
 use Genkgo\Camt\DTO;
@@ -19,7 +18,7 @@ class Message extends BaseMessage
         $xmlGroupHeader = $this->getRootElement($document)->GrpHdr;
         $groupHeader = new Camt054V04DTO\GroupHeader(
             (string)$xmlGroupHeader->MsgId,
-            new DateTimeImmutable((string)$xmlGroupHeader->CreDtTm)
+            $this->dateDecoder->decode((string)$xmlGroupHeader->CreDtTm)
         );
 
         if (isset($xmlGroupHeader->OrgnlBizQry)) {
@@ -29,7 +28,7 @@ class Message extends BaseMessage
 
             if (isset($xmlGroupHeader->OrgnlBizQry->CreDtTm)) {
                 $originalBusinessQuery->setCreatedOn(
-                    new DateTimeImmutable((string) $xmlGroupHeader->OrgnlBizQry->CreDtTm)
+                    $this->dateDecoder->decode((string) $xmlGroupHeader->OrgnlBizQry->CreDtTm)
                 );
             }
 

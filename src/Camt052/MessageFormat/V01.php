@@ -42,10 +42,10 @@ final class V01 implements MessageFormatInterface
      */
     public function getDecoder()
     {
-        $entryTransactionDetailDecoder = new Camt052\Decoder\EntryTransactionDetail();
+        $entryTransactionDetailDecoder = new Camt052\Decoder\EntryTransactionDetail(new Decoder\Date());
         $entryDecoder                  = new Decoder\Entry($entryTransactionDetailDecoder);
-        $recordDecoder                 = new Decoder\Record($entryDecoder);
-        $messageDecoder                = new Camt052\Decoder\V01\Message($recordDecoder);
+        $recordDecoder                 = new Decoder\Record($entryDecoder, new Decoder\Date());
+        $messageDecoder                = new Camt052\Decoder\V01\Message($recordDecoder, new Decoder\Date());
 
         return new Decoder($messageDecoder, sprintf('/assets/%s.xsd', $this->getMsgId()));
     }

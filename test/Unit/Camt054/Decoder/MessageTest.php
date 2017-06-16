@@ -22,9 +22,9 @@ class MessageTest extends AbstractTestCase
         $entry = $this->prophesize(DecoderObject\Entry::class);
         $this->mockedRecordDecoder = $this
             ->prophesize(DecoderObject\Record::class)
-            ->willBeConstructedWith([$entry->reveal()])
+            ->willBeConstructedWith([$entry->reveal(), new DecoderObject\Date()])
         ;
-        $this->decoder = new Camt054\Decoder\Message($this->mockedRecordDecoder->reveal());
+        $this->decoder = new Camt054\Decoder\Message($this->mockedRecordDecoder->reveal(), new DecoderObject\Date());
     }
 
     /**

@@ -5,14 +5,26 @@ namespace Genkgo\Camt\Decoder;
 use Genkgo\Camt\DTO;
 use \SimpleXMLElement;
 use Genkgo\Camt\Decoder\Factory\DTO as DTOFactory;
-use Genkgo\Camt\Iban;
 use Money\Money;
 use Money\Currency;
 use Genkgo\Camt\Util\StringToUnits;
-use \DateTimeImmutable;
 
 abstract class EntryTransactionDetail
 {
+    /**
+     * @var Date
+     */
+    private $dateDecoder;
+
+    /**
+     * EntryTransactionDetail constructor.
+     * @param Date $dateDecoder
+     */
+    public function __construct(Date $dateDecoder)
+    {
+        $this->dateDecoder = $dateDecoder;
+    }
+
     /**
      * @param DTO\EntryTransactionDetail $detail
      * @param SimpleXMLElement           $xmlDetail
@@ -168,7 +180,7 @@ abstract class EntryTransactionDetail
 
         if (isset($xmlDetail->RltdDts->AccptncDtTm)) {
             $RelatedDates = DTO\RelatedDates::fromUnstructured(
-                new DateTimeImmutable( (string) $xmlDetail->RltdDts->AccptncDtTm )
+                $this->dateDecoder->decode((string) $xmlDetail->RltdDts->AccptncDtTm )
             );
             $detail->setRelatedDates($RelatedDates);
             return;
