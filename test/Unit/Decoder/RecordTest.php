@@ -1,8 +1,8 @@
 <?php
 
-namespace Genkgo\Camt\Unit\Decoder;
+namespace Genkgo\TestCamt\Unit\Decoder;
 
-use Genkgo\Camt\AbstractTestCase;
+use Genkgo\TestCamt\AbstractTestCase;
 use Genkgo\Camt\Decoder;
 use Genkgo\Camt\DTO;
 use Genkgo\Camt\Camt053;

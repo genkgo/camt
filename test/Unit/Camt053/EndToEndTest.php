@@ -1,10 +1,10 @@
 <?php
 
-namespace Genkgo\Camt\Unit\Camt053;
+namespace Genkgo\TestCamt\Unit\Camt053;
 
 use DateTimeImmutable;
-use Genkgo\Camt\AbstractTestCase;
-use Genkgo\Camt\Decoder;
+use Genkgo\Camt\DTO\Message;
+use Genkgo\TestCamt\AbstractTestCase;
 use Genkgo\Camt\Camt053\MessageFormat;
 use Genkgo\Camt\Camt053\DTO as Camt053DTO;
 use Genkgo\Camt\DTO;
@@ -38,7 +38,7 @@ class EndToEndTest extends AbstractTestCase
 
     public function testWrongDocument()
     {
-        $this->setExpectedException(InvalidMessageException::class);
+        $this->expectException(InvalidMessageException::class);
 
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $dom->load(__DIR__.'/Stubs/camt053.v2.wrong.xml');
@@ -50,21 +50,21 @@ class EndToEndTest extends AbstractTestCase
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $dom->load(__DIR__.'/Stubs/camt053.v2.five.decimals.xml');
-        (new MessageFormat\V02)->getDecoder()->decode($dom);
+        $this->assertInstanceOf(Message::class, (new MessageFormat\V02)->getDecoder()->decode($dom));
     }
 
     public function testV3Document()
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $dom->load(__DIR__.'/Stubs/camt053.v3.xml');
-        (new MessageFormat\V03)->getDecoder()->decode($dom);
+        $this->assertInstanceOf(Message::class, (new MessageFormat\V03)->getDecoder()->decode($dom));
     }
 
     public function testV4Document()
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $dom->load(__DIR__.'/Stubs/camt053.v4.xml');
-        (new MessageFormat\V04)->getDecoder()->decode($dom);
+        $this->assertInstanceOf(Message::class, (new MessageFormat\V04)->getDecoder()->decode($dom));
     }
 
     public function testGroupHeader()

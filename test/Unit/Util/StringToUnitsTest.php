@@ -1,7 +1,7 @@
 <?php
-namespace Genkgo\Camt\Unit\Util;
+namespace Genkgo\TestCamt\Unit\Util;
 
-use Genkgo\Camt\AbstractTestCase;
+use Genkgo\TestCamt\AbstractTestCase;
 use Genkgo\Camt\Util\StringToUnits;
 
 class StringToUnitsTest extends AbstractTestCase

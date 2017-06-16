@@ -1,14 +1,12 @@
 <?php
 
-namespace Genkgo\Camt\Unit\Camt052;
+namespace Genkgo\TestCamt\Unit\Camt052;
 
 use \DateTimeImmutable;
-use Genkgo\Camt\AbstractTestCase;
-use Genkgo\Camt\Decoder;
+use Genkgo\TestCamt\AbstractTestCase;
 use Genkgo\Camt\Camt052\MessageFormat;
 use Genkgo\Camt\Camt052\DTO as Camt052DTO;
 use Genkgo\Camt\DTO;
-use Genkgo\Camt\Exception\InvalidMessageException;
 
 class EndToEndTest extends AbstractTestCase
 {

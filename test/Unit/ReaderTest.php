@@ -1,9 +1,9 @@
 <?php
 
-namespace Genkgo\Camt\Unit;
+namespace Genkgo\TestCamt\Unit;
 
 use DOMDocument;
-use Genkgo\Camt\AbstractTestCase;
+use Genkgo\TestCamt\AbstractTestCase;
 use Genkgo\Camt\DTO;
 use Genkgo\Camt\Camt053\MessageFormat;
 use Genkgo\Camt\Config;
@@ -22,14 +22,14 @@ class ReaderTest extends AbstractTestCase
 
     public function testReadEmptyDocument()
     {
-        $this->setExpectedException(ReaderException::class);
+        $this->expectException(ReaderException::class);
         $reader = new Reader($this->getDefaultConfig());
         $reader->readDom(new DOMDocument('1.0', 'UTF-8'));
     }
 
     public function testReadWrongFormat()
     {
-        $this->setExpectedException(ReaderException::class);
+        $this->expectException(ReaderException::class);
 
         $dom = new DOMDocument('1.0', 'UTF-8');
         $root = $dom->createElement('Document');
