@@ -12,37 +12,39 @@ class EntryTransactionDetail extends BaseDecoder
     /**
      * {@inheritdoc}
      */
-    public function getRelatedPartyAccount(SimpleXMLElement $xmlRelatedPartyTypeAccount)
+    public function getRelatedPartyAccount(SimpleXMLElement $xmlRelatedPartyTypeAccount = null)
     {
-        if (false === isset($xmlRelatedPartyTypeAccount->Id)) {
-            return;
-        }
-
-        if (isset($xmlRelatedPartyTypeAccount->Id->IBAN) && $ibanCode = (string) $xmlRelatedPartyTypeAccount->Id->IBAN) {
-            return new DTO\IbanAccount(new Iban($ibanCode));
-        }
-
-        if (false === isset($xmlRelatedPartyTypeAccount->Id->Othr)) {
-            return;
-        }
-
-        $xmlOtherIdentification = $xmlRelatedPartyTypeAccount->Id->Othr;
-        $otherAccount = new DTO\OtherAccount((string) $xmlOtherIdentification->Id);
-
-        if (isset($xmlOtherIdentification->SchmeNm)) {
-            if (isset($xmlOtherIdentification->SchmeNm->Cd)) {
-                $otherAccount->setSchemeName((string) $xmlOtherIdentification->SchmeNm->Cd);
+        if($xmlRelatedPartyTypeAccount){
+            if (false === isset($xmlRelatedPartyTypeAccount->Id)) {
+                return;
             }
 
-            if (isset($xmlOtherIdentification->SchmeNm->Prtry)) {
-                $otherAccount->setSchemeName((string) $xmlOtherIdentification->SchmeNm->Prtry);
+            if (isset($xmlRelatedPartyTypeAccount->Id->IBAN) && $ibanCode = (string) $xmlRelatedPartyTypeAccount->Id->IBAN) {
+                return new DTO\IbanAccount(new Iban($ibanCode));
             }
-        }
 
-        if (isset($xmlOtherIdentification->Issr)) {
-            $otherAccount->setIssuer((string) $xmlOtherIdentification->Issr);
-        }
+            if (false === isset($xmlRelatedPartyTypeAccount->Id->Othr)) {
+                return;
+            }
 
-        return $otherAccount;
+            $xmlOtherIdentification = $xmlRelatedPartyTypeAccount->Id->Othr;
+            $otherAccount = new DTO\OtherAccount((string) $xmlOtherIdentification->Id);
+
+            if (isset($xmlOtherIdentification->SchmeNm)) {
+                if (isset($xmlOtherIdentification->SchmeNm->Cd)) {
+                    $otherAccount->setSchemeName((string) $xmlOtherIdentification->SchmeNm->Cd);
+                }
+
+                if (isset($xmlOtherIdentification->SchmeNm->Prtry)) {
+                    $otherAccount->setSchemeName((string) $xmlOtherIdentification->SchmeNm->Prtry);
+                }
+            }
+
+            if (isset($xmlOtherIdentification->Issr)) {
+                $otherAccount->setIssuer((string) $xmlOtherIdentification->Issr);
+            }
+
+            return $otherAccount;
+        }
     }
 }
