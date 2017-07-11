@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:iso:std:iso:20022:tech:xsd:camt.053.001.02">
+    <BkToCstmrStmt>
+        <GrpHdr>
+            <MsgId>CAMT053RIB000000000001</MsgId>
+            <CreDtTm>2015-03-10T18:43:50+00:00</CreDtTm>
+            <MsgRcpt>
+                <Nm>COMPANY BVBA</Nm>
+                <PstlAdr>
+                    <StrtNm>12 Oxford Street</StrtNm>
+                    <Ctry>UK</Ctry>
+                </PstlAdr>
+                <Id>
+                    <OrgId>
+                        <BICOrBEI>DABAIE2D</BICOrBEI>
+                        <Othr>
+                            <Id>Some other Id</Id>
+                            <Issr>Some other Issuer</Issr>
+                        </Othr>
+                    </OrgId>
+                </Id>
+                <CtryOfRes>NL</CtryOfRes>
+            </MsgRcpt>
+            <AddtlInf>Group header additional information</AddtlInf>
+        </GrpHdr>
+        <Stmt>
+            <Id>253EURNL26VAYB8060476890</Id>
+            <ElctrncSeqNb>12312</ElctrncSeqNb>
+            <LglSeqNb>12312</LglSeqNb>
+            <CreDtTm>2015-03-10T18:43:50+00:00</CreDtTm>
+            <FrToDt>
+                <FrDtTm>2007-10-18T08:00:00+01:00</FrDtTm>
+                <ToDtTm>2007-10-18T12:30:00+01:00</ToDtTm>
+            </FrToDt>
+            <CpyDplctInd>CODU</CpyDplctInd>
+            <Acct>
+                <Id>
+                    <IBAN>NL26VAYB8060476890</IBAN>
+                </Id>
+                <Ccy>EUR</Ccy>
+            </Acct>
+            <Bal>
+                <Tp>
+                    <CdOrPrtry>
+                        <Cd>OPBD</Cd>
+                    </CdOrPrtry>
+                </Tp>
+                <Amt Ccy="EUR">18.15</Amt>
+                <CdtDbtInd>CRDT</CdtDbtInd>
+                <Dt>
+                    <Dt>2014-12-30</Dt>
+                </Dt>
+            </Bal>
+            <Bal>
+                <Tp>
+                    <CdOrPrtry>
+                        <Cd>CLBD</Cd>
+                    </CdOrPrtry>
+                </Tp>
+                <Amt Ccy="SEK">27.00</Amt>
+                <CdtDbtInd>DBIT</CdtDbtInd>
+                <Dt>
+                    <Dt>2014-12-31</Dt>
+                </Dt>
+            </Bal>
+            <Ntry>
+                <Amt Ccy="EUR">8.85</Amt>
+                <CdtDbtInd>CRDT</CdtDbtInd>
+                <RvslInd>false</RvslInd>
+                <Sts>BOOK</Sts>
+                <BookgDt>
+                    <Dt>2014-12-31</Dt>
+                </BookgDt>
+                <ValDt>
+                    <Dt>2015-01-02</Dt>
+                </ValDt>
+                <BkTxCd>
+                    <Prtry>
+                        <Cd>544</Cd>
+                    </Prtry>
+                </BkTxCd>
+                <NtryDtls>
+                    <TxDtls>
+                        <Refs>
+                            <Prtry>
+                                <Tp>LegalSequenceNumber</Tp>
+                                <Ref>100</Ref>
+                            </Prtry>
+                        </Refs>
+                        <BkTxCd>
+                            <Prtry>
+                                <Cd>544</Cd>
+                            </Prtry>
+                        </BkTxCd>
+                        <RltdPties>
+                            <UltmtDbtr>
+                                <Nm>DEBTOR NAME NM</Nm>
+                                <PstlAdr>
+                                    <AdrLine>DEBTOR NAME</AdrLine>
+                                    <AdrLine>DEBTOR ADD</AdrLine>
+                                </PstlAdr>
+                            </UltmtDbtr>
+                            <UltmtCdtr>
+                                <Nm>CREDITOR NAME NM</Nm>
+                                <PstlAdr>
+                                    <AdrLine>CREDITOR NAME</AdrLine>
+                                    <AdrLine>CREDITOR ADD</AdrLine>
+                                </PstlAdr>
+                            </UltmtCdtr>
+                        </RltdPties>
+                        <RmtInf>
+                            <Strd>
+                                <CdtrRefInf>
+                                    <Tp>
+                                        <CdOrPrtry>
+                                            <Cd>SCOR</Cd>
+                                        </CdOrPrtry>
+                                        <Issr>BBA</Issr>
+                                    </Tp>
+                                    <Ref>4654654654654654</Ref>
+                                </CdtrRefInf>
+                            </Strd>
+                        </RmtInf>
+                    </TxDtls>
+                </NtryDtls>
+            </Ntry>
+            <AddtlStmtInf>Additional Information</AddtlStmtInf>
+        </Stmt>
+    </BkToCstmrStmt>
+</Document>
