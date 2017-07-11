@@ -8,7 +8,7 @@ class Charges
     /** @var Money */
     private $totalChargesAndTaxAmount;
     
-    /** @var ChargesRecords[] */
+    /** @var ChargesRecord[] */
     private $records = [];
 
     /**
@@ -36,7 +36,7 @@ class Charges
     }
 
     /**
-     * @return Records[]
+     * @return ChargesRecord[]
      */
     public function getRecords()
     {
