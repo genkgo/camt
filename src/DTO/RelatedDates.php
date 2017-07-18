@@ -2,6 +2,8 @@
 
 namespace Genkgo\Camt\DTO;
 
+use DateTimeImmutable;
+
 /**
  * Class RelatedDates
  * @package Genkgo\Camt\DTO
@@ -10,12 +12,12 @@ class RelatedDates
 {
     
     /**
-     * @var AcceptanceDateTime
+     * @var DateTimeImmutable
      */
     private $acceptanceDateTime;
 
     /**
-     * @return AcceptanceDateTime
+     * @return DateTimeImmutable
      */
     public function getAcceptanceDateTime()
     {
