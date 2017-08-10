@@ -121,6 +121,9 @@ class EndToEndTest extends AbstractTestCase
                     $this->assertEquals('SEK', $entry->getAmount()->getCurrency()->getName());
                     $this->assertEquals('2007-10-18', $entry->getBookingDate()->format('Y-m-d'));
                     $this->assertEquals('2007-10-18', $entry->getValueDate()->format('Y-m-d'));
+                    $this->assertEquals('PMNT', $entry->getBankTransactionCode()->getDomain()->getCode());
+                    $this->assertEquals('ICDT', $entry->getBankTransactionCode()->getDomain()->getFamily()->getCode());
+                    $this->assertEquals('DMCT', $entry->getBankTransactionCode()->getDomain()->getFamily()->getSubFamilyCode());
                 }
             }
         }

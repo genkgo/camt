@@ -68,10 +68,10 @@
                 <AcctSvcrRef>AAAASESS-FP-ACCR001</AcctSvcrRef>
                 <BkTxCd>
                     <Domn>
-                        <Cd>PAYM</Cd>
+                        <Cd>PMNT</Cd>
                         <Fmly>
-                            <Cd>0001</Cd>
-                            <SubFmlyCd>0005</SubFmlyCd>
+                            <Cd>ICDT</Cd>
+                            <SubFmlyCd>DMCT</SubFmlyCd>
                         </Fmly>
                     </Domn>
                 </BkTxCd>

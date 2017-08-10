@@ -185,7 +185,7 @@ abstract class EntryTransactionDetail
             $detail->setRemittanceInformation($remittanceInformation);
         }
     }
-    
+
     /**
      * @param DTO\EntryTransactionDetail $detail
      * @param SimpleXMLElement           $xmlDetail
@@ -204,8 +204,8 @@ abstract class EntryTransactionDetail
             return;
         }
     }
-    
-    
+
+
 
     /**
      * @param DTO\EntryTransactionDetail $detail
@@ -255,11 +255,28 @@ abstract class EntryTransactionDetail
 
                 $bankTransactionCode->setProprietary($proprietaryBankTransactionCode);
             }
+
+            if (isset($xmlDetail->BkTxCd->Domn)) {
+                $domainBankTransactionCode = new DTO\DomainBankTransactionCode(
+                    (string)$xmlDetail->BkTxCd->Domn->Cd
+                );
+
+                if (isset($xmlDetail->BkTxCd->Domn->Fmly)) {
+                    $domainFamilyBankTransactionCode = new DTO\DomainFamilyBankTransactionCode(
+                        (string)$xmlDetail->BkTxCd->Domn->Fmly->Cd,
+                        (string)$xmlDetail->BkTxCd->Domn->Fmly->SubFmlyCd
+                    );
+
+                    $domainBankTransactionCode->setFamily($domainFamilyBankTransactionCode);
+                }
+
+                $bankTransactionCode->setDomain($domainBankTransactionCode);
+            }
         }
 
         $detail->setBankTransactionCode($bankTransactionCode);
     }
-    
+
     /**
      * @param DTO\EntryTransactionDetail $detail
      * @param SimpleXMLElement           $xmlDetail
@@ -275,13 +292,13 @@ abstract class EntryTransactionDetail
 
                     $charges->setTotalChargesAndTaxAmount(new Money($amount, new Currency($currency)));
                 }
-                
+
                 $chargesRecords = $xmlDetail->Chrgs->Rcrd;
                 if ($chargesRecords) {
                     foreach ($chargesRecords as $chargesRecord) {
-                        
+
                         $chargesDetail = new DTO\ChargesRecord();
-                        
+
                         if(isset($chargesRecord->Amt) && (string) $chargesRecord->Amt) {
                             $amount      = StringToUnits::convert((string) $chargesRecord->Amt);
                             $currency    = (string)$chargesRecord->Amt['Ccy'];
@@ -289,7 +306,7 @@ abstract class EntryTransactionDetail
                             if ((string) $chargesRecord->CdtDbtInd === 'DBIT') {
                                 $amount = $amount * -1;
                             }
-                            
+
                             $chargesDetail->setAmount(new Money($amount, new Currency($currency)));
                         }
                         if (isset($chargesRecord->CdtDbtInd) && (string) $chargesRecord->CdtDbtInd === 'true') {
@@ -302,8 +319,8 @@ abstract class EntryTransactionDetail
                     }
                 }
                 $detail->setCharges($charges);
-            }        
-    }    
+            }
+    }
 
     /**
      * @param DTO\EntryTransactionDetail $detail
@@ -317,7 +334,7 @@ abstract class EntryTransactionDetail
 
             if (isset($xmlDetail->AmtDtls->TxAmt) && isset($xmlDetail->AmtDtls->TxAmt->Amt)) {
                 $amount = StringToUnits::convert((string) $xmlDetail->AmtDtls->TxAmt->Amt);
-                
+
                 if ((string) $CdtDbtInd === 'DBIT') {
                     $amount = $amount * -1;
                 }
@@ -331,7 +348,7 @@ abstract class EntryTransactionDetail
             $detail->setAmountDetails($amountDetails);
         }
     }
-    
+
     /**
      * @param DTO\EntryTransactionDetail $detail
      * @param SimpleXMLElement           $xmlDetail
@@ -357,7 +374,7 @@ abstract class EntryTransactionDetail
             $detail->setAmount($amountDetails);
         }
     }
-    
+
     /**
      * @param SimpleXMLElement $xmlDetail
      *
