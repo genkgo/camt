@@ -128,4 +128,41 @@ class EndToEndTest extends AbstractTestCase
             }
         }
     }
+
+    public function testTransactionDetails()
+    {
+        $messages = [
+            $this->getV2Message(),
+            $this->getV4Message(),
+        ];
+
+        foreach ($messages as $message) {
+            $notifications = $message->getRecords();
+
+            $this->assertCount(1, $notifications);
+            foreach ($notifications as $notification) {
+                $entries = $notification->getEntries();
+                $this->assertCount(1, $entries);
+                foreach ($entries as $entry) {
+                    $transactionDetails = $entry->getTransactionDetails();
+                    $this->assertCount(2, $transactionDetails);
+                    foreach ($transactionDetails as $index=>$transactionDetail) {
+                        if($index === 0) {
+                            // Legacy : The first message comes from unstructured block
+                            $this->assertEquals('Unstructured Remittance Information V1', $transactionDetail->getRemittanceInformation()->getMessage());
+                        } else {
+                            // Legacy : The second one from the ISR ref number located in the structured information because unstructured block is not present
+                            $this->assertEquals('ISR ref number V2', $transactionDetail->getRemittanceInformation()->getMessage());
+                        }
+
+                        // Check structured and unstructured blocks
+                        $this->assertEquals('ISR ref number V'.($index+1), $transactionDetail->getRemittanceInformation()->getStructuredRemittanceInformation()->getCreditorReferenceInformation()->getRef());
+                        $this->assertEquals('ISR Reference', $transactionDetail->getRemittanceInformation()->getStructuredRemittanceInformation()->getCreditorReferenceInformation()->getProprietary());
+                        $this->assertEquals(null, $transactionDetail->getRemittanceInformation()->getStructuredRemittanceInformation()->getCreditorReferenceInformation()->getCode());
+                        $this->assertEquals('Additional Remittance Information V'.($index+1), $transactionDetail->getRemittanceInformation()->getStructuredRemittanceInformation()->getAdditionalRemittanceInformation());
+                    }
+                }
+            }
+        }
+    }
 }
