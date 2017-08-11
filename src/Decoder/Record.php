@@ -114,7 +114,7 @@ class Record
             if (isset($xmlEntry->NtryDtls->Btch->PmtInfId) && (string) $xmlEntry->NtryDtls->Btch->PmtInfId) {
                 $entry->setBatchPaymentId((string) $xmlEntry->NtryDtls->Btch->PmtInfId);
             }
-            
+
             if (isset($xmlEntry->NtryDtls->TxDtls->Refs->PmtInfId) && (string) $xmlEntry->NtryDtls->TxDtls->Refs->PmtInfId) {
                 $entry->setBatchPaymentId((string) $xmlEntry->NtryDtls->TxDtls->Refs->PmtInfId);
             }
@@ -131,6 +131,23 @@ class Record
                     $bankTransactionCode->setProprietary($proprietaryBankTransactionCode);
                 }
 
+                if (isset($xmlEntry->BkTxCd->Domn)) {
+                    $domainBankTransactionCode = new DTO\DomainBankTransactionCode(
+                        (string)$xmlEntry->BkTxCd->Domn->Cd
+                    );
+
+                    if (isset($xmlEntry->BkTxCd->Domn->Fmly)) {
+                        $domainFamilyBankTransactionCode = new DTO\DomainFamilyBankTransactionCode(
+                            (string)$xmlEntry->BkTxCd->Domn->Fmly->Cd,
+                            (string)$xmlEntry->BkTxCd->Domn->Fmly->SubFmlyCd
+                        );
+
+                        $domainBankTransactionCode->setFamily($domainFamilyBankTransactionCode);
+                    }
+
+                    $bankTransactionCode->setDomain($domainBankTransactionCode);
+                }
+
                 $entry->setBankTransactionCode($bankTransactionCode);
             }
 
@@ -143,13 +160,13 @@ class Record
 
                     $charges->setTotalChargesAndTaxAmount(new Money($amount, new Currency($currency)));
                 }
-                
+
                 $chargesRecords = $xmlEntry->Chrgs->Rcrd;
                 if ($chargesRecords) {
                     foreach ($chargesRecords as $chargesRecord) {
-                        
+
                         $chargesDetail = new DTO\ChargesRecord();
-                        
+
                         if(isset($chargesRecord->Amt) && (string) $chargesRecord->Amt) {
                             $amount      = StringToUnits::convert((string) $chargesRecord->Amt);
                             $currency    = (string)$chargesRecord->Amt['Ccy'];
@@ -157,7 +174,7 @@ class Record
                             if ((string) $chargesRecord->CdtDbtInd === 'DBIT') {
                                 $amount = $amount * -1;
                             }
-                            
+
                             $chargesDetail->setAmount(new Money($amount, new Currency($currency)));
                         }
                         if (isset($chargesRecord->CdtDbtInd) && (string) $chargesRecord->CdtDbtInd === 'true') {
@@ -171,7 +188,7 @@ class Record
                 }
                 $entry->setCharges($charges);
             }
-            
+
             $this->entryDecoder->addTransactionDetails($entry, $xmlEntry);
 
             $record->addEntry($entry);
