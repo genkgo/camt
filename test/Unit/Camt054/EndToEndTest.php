@@ -150,9 +150,11 @@ class EndToEndTest extends AbstractTestCase
                         if($index === 0) {
                             // Legacy : The first message comes from unstructured block
                             $this->assertEquals('Unstructured Remittance Information V1', $transactionDetail->getRemittanceInformation()->getMessage());
+                            $this->assertEquals('Unstructured Remittance Information V1', $transactionDetail->getRemittanceInformation()->getUnstructuredRemittanceInformation()->getMessage());
                         } else {
                             // Legacy : The second one from the ISR ref number located in the structured information because unstructured block is not present
                             $this->assertEquals('ISR ref number V2', $transactionDetail->getRemittanceInformation()->getMessage());
+                            $this->assertEquals(null, $transactionDetail->getRemittanceInformation()->getUnstructuredRemittanceInformation());
                         }
 
                         // Check structured and unstructured blocks
