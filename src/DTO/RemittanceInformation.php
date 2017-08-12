@@ -2,6 +2,8 @@
 
 namespace Genkgo\Camt\DTO;
 
+use BadMethodCallException;
+
 /**
  * Class RemittanceInformation
  * @package Genkgo\Camt\DTO
@@ -19,14 +21,14 @@ class RemittanceInformation
     private $creditorReferenceInformation;
 
     /**
-     * @var StructuredRemittanceInformation
+     * @var StructuredRemittanceInformation[]
      */
-    private $structuredRemittanceInformation;
+    private $structuredBlocks = [];
 
     /**
-     * @var UnstructuredRemittanceInformation
+     * @var UnstructuredRemittanceInformation[]
      */
-    private $unstructuredRemittanceInformation;
+    private $unstructuredBlocks = [];
 
     /**
      * @param $message
@@ -57,6 +59,7 @@ class RemittanceInformation
     }
 
     /**
+     * @deprecated Use getStructuredBlocks method instead
      * @return string
      */
     public function getMessage()
@@ -65,6 +68,7 @@ class RemittanceInformation
     }
 
     /**
+     * @deprecated Use addStructuredBlock method instead
      * @param string $message
      */
     public function setMessage($message)
@@ -73,36 +77,58 @@ class RemittanceInformation
     }
 
     /**
-     * @return StructuredRemittanceInformation
-     */
-    public function getStructuredRemittanceInformation()
-    {
-        return $this->structuredRemittanceInformation;
-    }
-
-    /**
      * @param StructuredRemittanceInformation $structuredRemittanceInformation
      */
-    public function setStructuredRemittanceInformation(
-            StructuredRemittanceInformation $structuredRemittanceInformation)
+    public function addStructuredBlock(StructuredRemittanceInformation $structuredRemittanceInformation)
     {
-        $this->structuredRemittanceInformation = $structuredRemittanceInformation;
+        return $this->structuredBlocks[] = $structuredRemittanceInformation;
     }
 
     /**
-     * @return UnstructuredRemittanceInformation
+     * @return StructuredRemittanceInformation[]
      */
-    public function getUnstructuredRemittanceInformation()
+    public function getStructuredBlocks()
     {
-        return $this->unstructuredRemittanceInformation;
+        return $this->structuredBlocks;
+    }
+
+    /**
+     * @return StructuredRemittanceInformation
+     */
+    public function getStructuredBlock()
+    {
+        if(isset($this->structuredBlocks[0])) {
+            return $this->structuredBlocks[0];
+        } else {
+            throw new BadMethodCallException('There are no structured block at all for this remittance information');
+        }
     }
 
     /**
      * @param UnstructuredRemittanceInformation $unstructuredRemittanceInformation
      */
-    public function setUnstructuredRemittanceInformation(
-            UnstructuredRemittanceInformation $unstructuredRemittanceInformation)
+    public function addUnstructuredBlock(UnstructuredRemittanceInformation $unstructuredRemittanceInformation)
     {
-        $this->unstructuredRemittanceInformation = $unstructuredRemittanceInformation;
+        return $this->unstructuredBlocks[] = $unstructuredRemittanceInformation;
+    }
+
+    /**
+     * @return UnstructuredRemittanceInformation[]
+     */
+    public function getUnstructuredBlocks()
+    {
+        return $this->unstructuredBlocks;
+    }
+
+    /**
+     * @return UnstructuredRemittanceInformation
+     */
+    public function getUnstructuredBlock()
+    {
+        if(isset($this->unstructuredBlocks[0])) {
+            return $this->unstructuredBlocks[0];
+        } else {
+            throw new BadMethodCallException('There are no unstructured block at all for this remittance information');
+        }
     }
 }
