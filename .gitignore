@@ -3,4 +3,3 @@
 /vendor/
 /tests/build/
 .project
-composer.lock
