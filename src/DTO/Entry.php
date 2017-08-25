@@ -81,17 +81,12 @@ class Entry
      * @param Record $record
      * @param int $index
      * @param Money $amount
-     * @param DateTimeImmutable $bookingDate
-     * @param DateTimeImmutable $valueDate
      */
-    public function __construct(Record $record, $index, Money $amount, DateTimeImmutable $bookingDate, DateTimeImmutable $valueDate, $additionalInfo)
+    public function __construct(Record $record, $index, Money $amount)
     {
         $this->record = $record;
         $this->index = $index;
         $this->amount = $amount;
-        $this->bookingDate = $bookingDate;
-        $this->valueDate = $valueDate;
-        $this->additionalInfo = $additionalInfo;
     }
 
     /**
@@ -258,7 +253,7 @@ class Entry
     {
         $this->bankTransactionCode = $bankTransactionCode;
     }
-    
+
     /**
      * @return Charges
      */
@@ -274,5 +269,20 @@ class Entry
     {
         $this->charges = $charges;
     }
-    
+
+    /**
+     * @param \DateTimeImmutable $date
+     */
+    public function setBookingDate(\DateTimeImmutable $date)
+    {
+        $this->bookingDate = $date;
+    }
+
+    /**
+     * @param \DateTimeImmutable $date
+     */
+    public function setValueDate(\DateTimeImmutable $date)
+    {
+        $this->valueDate = $date;
+    }
 }

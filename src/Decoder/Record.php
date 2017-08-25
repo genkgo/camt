@@ -93,11 +93,18 @@ class Record
             $entry = new DTO\Entry(
                 $record,
                 $index,
-                new Money($amount, new Currency($currency)),
-                $this->dateDecoder->decode($bookingDate),
-                $this->dateDecoder->decode($valueDate),
-                $additionalInfo
+                new Money($amount, new Currency($currency))
             );
+
+            if ($bookingDate) {
+              $entry->setBookingDate($this->dateDecoder->decode($bookingDate));
+            }
+
+            if ($valueDate) {
+              $entry->setValueDate($this->dateDecoder->decode($valueDate));
+            }
+
+            $entry->setAdditionalInfo($additionalInfo);
 
             if (isset($xmlEntry->RvslInd) && (string) $xmlEntry->RvslInd === 'true') {
                 $entry->setReversalIndicator(true);
