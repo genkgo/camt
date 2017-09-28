@@ -46,28 +46,29 @@ class Record
                 $amount = $amount * -1;
             }
 
-            if (isset($xmlBalance->Tp)
-                && isset($xmlBalance->Tp->CdOrPrtry)
-                && (string) $xmlBalance->Tp->CdOrPrtry->Cd === 'OPBD'
-            ) {
-                $balance = DTO\Balance::opening(
-                    new Money(
-                        $amount,
-                        new Currency($currency)
-                    ),
-                    $this->dateDecoder->decode($date)
-                );
-            } else {
-                $balance = DTO\Balance::closing(
-                    new Money(
-                        $amount,
-                        new Currency($currency)
-                    ),
-                    $this->dateDecoder->decode($date)
-                );
-            }
+            if (isset($xmlBalance->Tp) && isset($xmlBalance->Tp->CdOrPrtry)) {
+                $code = (string) $xmlBalance->Tp->CdOrPrtry->Cd;
 
-            $record->addBalance($balance);
+                if (in_array($code, ['OPBD', 'PRCD'])) {
+                    $balance = DTO\Balance::opening(
+                        new Money(
+                            $amount,
+                            new Currency($currency)
+                        ),
+                        $this->dateDecoder->decode($date)
+                    );
+                } elseif ($code === 'CLBD') {
+                    $balance = DTO\Balance::closing(
+                        new Money(
+                            $amount,
+                            new Currency($currency)
+                        ),
+                        $this->dateDecoder->decode($date)
+                    );
+                }
+
+                $record->addBalance($balance);
+            }
         }
     }
 
@@ -164,10 +165,9 @@ class Record
                 $chargesRecords = $xmlEntry->Chrgs->Rcrd;
                 if ($chargesRecords) {
                     foreach ($chargesRecords as $chargesRecord) {
-
                         $chargesDetail = new DTO\ChargesRecord();
 
-                        if(isset($chargesRecord->Amt) && (string) $chargesRecord->Amt) {
+                        if (isset($chargesRecord->Amt) && (string) $chargesRecord->Amt) {
                             $amount      = StringToUnits::convert((string) $chargesRecord->Amt);
                             $currency    = (string)$chargesRecord->Amt['Ccy'];
 
