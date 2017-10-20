@@ -50,24 +50,22 @@ class Record
                 $code = (string) $xmlBalance->Tp->CdOrPrtry->Cd;
 
                 if (in_array($code, ['OPBD', 'PRCD'])) {
-                    $balance = DTO\Balance::opening(
+                    $record->addBalance(DTO\Balance::opening(
                         new Money(
                             $amount,
                             new Currency($currency)
                         ),
                         $this->dateDecoder->decode($date)
-                    );
+                    ));
                 } elseif ($code === 'CLBD') {
-                    $balance = DTO\Balance::closing(
+                    $record->addBalance(DTO\Balance::closing(
                         new Money(
                             $amount,
                             new Currency($currency)
                         ),
                         $this->dateDecoder->decode($date)
-                    );
+                    ));
                 }
-
-                $record->addBalance($balance);
             }
         }
     }
