@@ -159,13 +159,13 @@ class EndToEndTest extends AbstractTestCase
                 foreach ($balances as $item => $balance) {
                     if ($item === 0) {
                         $this->assertEquals(1815, $balance->getAmount()->getAmount());
-                        $this->assertEquals('EUR', $balance->getAmount()->getCurrency()->getName());
+                        $this->assertEquals('EUR', $balance->getAmount()->getCurrency()->getCode());
                         $this->assertEquals('opening', $balance->getType());
                     }
 
                     if ($item === 1) {
                         $this->assertEquals(-2700, $balance->getAmount()->getAmount());
-                        $this->assertEquals('SEK', $balance->getAmount()->getCurrency()->getName());
+                        $this->assertEquals('SEK', $balance->getAmount()->getCurrency()->getCode());
                         $this->assertEquals('closing', $balance->getType());
                     }
                 }
@@ -192,7 +192,7 @@ class EndToEndTest extends AbstractTestCase
 
                 foreach ($entries as $entry) {
                     $this->assertEquals(885, $entry->getAmount()->getAmount());
-                    $this->assertEquals('EUR', $entry->getAmount()->getCurrency()->getName());
+                    $this->assertEquals('EUR', $entry->getAmount()->getCurrency()->getCode());
                     $this->assertEquals('2014-12-31', $entry->getBookingDate()->format('Y-m-d'));
                     $this->assertEquals('2015-01-02', $entry->getValueDate()->format('Y-m-d'));
 

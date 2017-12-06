@@ -1,13 +1,8 @@
 <?php
 namespace Genkgo\Camt;
 
-use DateTimeImmutable;
 use DOMDocument;
-use Genkgo\Camt\DecoderInterface;
 use Genkgo\Camt\Exception\InvalidMessageException;
-use Genkgo\Camt\Util\StringToUnits;
-use Money\Currency;
-use Money\Money;
 use SimpleXMLElement;
 
 /**

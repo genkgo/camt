@@ -4,7 +4,7 @@
     "require": {
         "php": "^7.0",
         "jschaedl/iban": "~1.1.0",
-        "moneyphp/money": "~1.2.1"
+        "moneyphp/money": "^3"
     },
     "require-dev": {
         "fabpot/php-cs-fixer": "^1.11",
