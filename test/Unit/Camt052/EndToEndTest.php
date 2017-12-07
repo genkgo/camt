@@ -116,7 +116,7 @@ class EndToEndTest extends AbstractTestCase
 
                 foreach ($entries as $entry) {
                     $this->assertEquals(-20000000, $entry->getAmount()->getAmount());
-                    $this->assertEquals('SEK', $entry->getAmount()->getCurrency()->getName());
+                    $this->assertEquals('SEK', $entry->getAmount()->getCurrency()->getCode());
                     $this->assertEquals('2007-10-18', $entry->getBookingDate()->format('Y-m-d'));
                     $this->assertEquals('2007-10-18', $entry->getValueDate()->format('Y-m-d'));
                     $this->assertEquals('Credit', $entry->getAdditionalInfo());
