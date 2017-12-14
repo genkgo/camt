@@ -43,7 +43,7 @@ class Reader
         $xmlNs = $document->documentElement->getAttribute('xmlns');
         $this->messageFormat = $this->getMessageFormatForXmlNs($xmlNs);
 
-        return $this->messageFormat->getDecoder()->decode($document);
+        return $this->messageFormat->getDecoder()->decode($document, $this->config->getXsdValidation());
     }
 
     /**

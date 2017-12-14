@@ -1,4 +1,5 @@
 <?php
+
 namespace Genkgo\Camt;
 
 use DOMDocument;
@@ -7,6 +8,7 @@ use SimpleXMLElement;
 
 /**
  * Class Decoder
+ *
  * @package Genkgo\Camt
  */
 class Decoder implements DecoderInterface
@@ -23,6 +25,7 @@ class Decoder implements DecoderInterface
 
     /**
      * Path to the schema definition
+     *
      * @var string
      */
     protected $schemeDefinitionPath;
@@ -39,12 +42,13 @@ class Decoder implements DecoderInterface
 
     /**
      * @param DOMDocument $document
+     *
      * @throws InvalidMessageException
      */
     private function validate(DOMDocument $document)
     {
         libxml_use_internal_errors(true);
-        $valid = $document->schemaValidate(dirname(__DIR__).$this->schemeDefinitionPath);
+        $valid  = $document->schemaValidate(dirname(__DIR__) . $this->schemeDefinitionPath);
         $errors = libxml_get_errors();
         libxml_clear_errors();
 
@@ -61,12 +65,16 @@ class Decoder implements DecoderInterface
 
     /**
      * @param DOMDocument $document
-     * @return Message
-     * @throws InvalidMessageException
+     * @param bool        $xsdValidation
+     *
+     * @return DTO\Message
      */
-    public function decode(DOMDocument $document)
+    public function decode(DOMDocument $document, $xsdValidation = true)
     {
-        $this->validate($document);
+        if ($xsdValidation === true) {
+            $this->validate($document);
+        }
+
         $this->document = simplexml_import_dom($document);
 
         $message = new DTO\Message();

@@ -82,9 +82,27 @@ $reader = new Reader(Config::getDefault());
 $message = $reader->readFile(__DIR__.'/Camt053/Stubs/camt053.v2.minimal.xml');
 $statements = $message->getRecords();
 foreach ($statements as $statement) {
-  $entries = $statement->getEntries();
+    $entries = $statement->getEntries();
 }
 ```
+
+
+
+### XSD validation
+   
+This library provides a XSD validation for each supported CAMT format. The validation is executed by default. But in some cases, you might want to disable it.
+
+```php
+<?php
+use Genkgo\Camt\Config;
+use Genkgo\Camt\Reader;
+
+$config = Config::getDefault();
+$config->disableXsdValidation();
+
+$reader = new Reader($config);
+```
+   
 
 ## Contributing
 

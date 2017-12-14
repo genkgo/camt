@@ -2,7 +2,7 @@
 namespace Genkgo\Camt;
 
 use DOMDocument;
-use Genkgo\Camt\Camt053\Message;
+use Genkgo\Camt\DTO\Message;
 
 interface DecoderInterface
 {
@@ -10,5 +10,5 @@ interface DecoderInterface
      * @param DOMDocument $document
      * @return mixed|Message
      */
-    public function decode(DOMDocument $document);
+    public function decode(DOMDocument $document, $xsdValidation = true);
 }

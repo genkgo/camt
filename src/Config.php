@@ -18,6 +18,11 @@ class Config
     private $messageFormats = [];
 
     /**
+     * @var bool
+     */
+    private $xsdValidation = true;
+
+    /**
      * @param MessageFormatInterface $messageFormat
      */
     public function addMessageFormat(MessageFormatInterface $messageFormat)
@@ -31,6 +36,19 @@ class Config
     public function getMessageFormats()
     {
         return $this->messageFormats;
+    }
+
+    public function disableXsdValidation()
+    {
+        $this->xsdValidation = false;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getXsdValidation()
+    {
+        return $this->xsdValidation;
     }
 
     /**
