@@ -46,4 +46,15 @@ class ReaderTest extends AbstractTestCase
         $message = $reader->readFile(__DIR__.'/Camt053/Stubs/camt053.v2.minimal.xml');
         $this->assertInstanceOf(DTO\Message::class, $message);
     }
+
+
+    public function testReadFileWithNoXsdValidation()
+    {
+        $config = Config::getDefault();
+        $config->disableXsdValidation();
+
+        $reader = new Reader($config);
+        $message = $reader->readFile(__DIR__.'/Camt053/Stubs/camt053.v2.minimal.xml');
+        $this->assertInstanceOf(DTO\Message::class, $message);
+    }
 }
