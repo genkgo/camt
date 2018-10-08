@@ -1,7 +1,7 @@
 <?php
 namespace Genkgo\Camt;
 
-use IBAN\Validation\IBANValidator;
+use Iban\Validation\Validator as IBANValidator;
 
 /**
  * Class Iban
