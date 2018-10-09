@@ -2,8 +2,8 @@
     "name": "genkgo/camt",
     "description": "Library to read CAMT files (XML containing bank statements).",
     "require": {
-        "php": "^7.1",
-        "jschaedl/iban-validation": "^1.1",
+        "php": "^7.0",
+        "globalcitizen/php-iban": "^2.6",
         "moneyphp/money": "^3"
     },
     "require-dev": {
