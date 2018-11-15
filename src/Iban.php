@@ -1,7 +1,7 @@
 <?php
 namespace Genkgo\Camt;
 
-use IBAN\Validation\IBANValidator;
+use Iban\Validation\Validator;
 
 /**
  * Class Iban
@@ -19,7 +19,7 @@ class Iban
      */
     public function __construct($iban)
     {
-        $validator = new IBANValidator();
+        $validator = new Validator();
         if (!$validator->validate($iban)) {
             throw new \InvalidArgumentException("Unknown IBAN {$iban}");
         }

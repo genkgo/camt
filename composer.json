@@ -3,8 +3,8 @@
     "description": "Library to read CAMT files (XML containing bank statements).",
     "require": {
         "php": "^7.0",
-        "jschaedl/iban": "~1.1.0",
-        "moneyphp/money": "^3"
+        "moneyphp/money": "^3",
+        "jschaedl/iban-validation": "^1.1"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^1.11",
