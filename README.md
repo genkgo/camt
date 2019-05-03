@@ -40,8 +40,7 @@ Library to read CAMT files. Currently only CAMT.052, CAMT.053 and CAMT.054 are s
 
 ### Installation
 
-Requires PHP 5.5 or later. There are no plans to support PHP 5.4 or PHP 5.3. In case this is an obstacle for you,
-conversion should be no problem. The library is very small.
+Requires PHP 7.0 or later. In case this is an obstacle for you, conversion should be no problem. The library is very small.
 
 It is installable and autoloadable via Composer as [genkgo/camt](https://packagist.org/packages/genkgo/camt).
 
