@@ -25,7 +25,7 @@ class ChargesRecord
      */
     public function getAmount()
     {
-        return $this->amount;  
+        return $this->amount;
     }
 
     /**
@@ -67,5 +67,4 @@ class ChargesRecord
     {
         $this->identification = $identification;
     }
-    
 }

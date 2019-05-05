@@ -97,7 +97,7 @@ class RemittanceInformation
      */
     public function getStructuredBlock()
     {
-        if(isset($this->structuredBlocks[0])) {
+        if (isset($this->structuredBlocks[0])) {
             return $this->structuredBlocks[0];
         } else {
             throw new BadMethodCallException('There are no structured block at all for this remittance information');
@@ -125,7 +125,7 @@ class RemittanceInformation
      */
     public function getUnstructuredBlock()
     {
-        if(isset($this->unstructuredBlocks[0])) {
+        if (isset($this->unstructuredBlocks[0])) {
             return $this->unstructuredBlocks[0];
         } else {
             throw new BadMethodCallException('There are no unstructured block at all for this remittance information');

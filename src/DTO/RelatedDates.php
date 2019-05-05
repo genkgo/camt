@@ -35,5 +35,4 @@ class RelatedDates
         $information->acceptanceDateTime = $acceptanceDateTime;
         return $information;
     }
-
 }

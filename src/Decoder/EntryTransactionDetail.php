@@ -169,8 +169,8 @@ abstract class EntryTransactionDetail
 
         // Unstructured blocks
         $xmlDetailsUnstructuredBlocks = $xmlDetail->RmtInf->Ustrd;
-        if($xmlDetailsUnstructuredBlocks) {
-            foreach($xmlDetailsUnstructuredBlocks as $xmlDetailsUnstructuredBlock) {
+        if ($xmlDetailsUnstructuredBlocks) {
+            foreach ($xmlDetailsUnstructuredBlocks as $xmlDetailsUnstructuredBlock) {
                 $unstructuredRemittanceInformation = new DTO\UnstructuredRemittanceInformation(
                     (string)$xmlDetailsUnstructuredBlock
                 );
@@ -178,7 +178,7 @@ abstract class EntryTransactionDetail
                 $remittanceInformation->addUnstructuredBlock($unstructuredRemittanceInformation);
 
                 // Legacy : use the very first unstructured block
-                if($remittanceInformation->getMessage() === null ) {
+                if ($remittanceInformation->getMessage() === null) {
                     $unstructuredBlockExists = true;
                     $remittanceInformation->setMessage(
                         (string)$xmlDetailsUnstructuredBlock
@@ -189,26 +189,26 @@ abstract class EntryTransactionDetail
 
         // Strutcured blocks
         $xmlDetailsStructuredBlocks = $xmlDetail->RmtInf->Strd;
-        if($xmlDetailsStructuredBlocks) {
-            foreach($xmlDetailsStructuredBlocks as $xmlDetailsStructuredBlock) {
+        if ($xmlDetailsStructuredBlocks) {
+            foreach ($xmlDetailsStructuredBlocks as $xmlDetailsStructuredBlock) {
                 $structuredRemittanceInformation = new DTO\StructuredRemittanceInformation();
 
-                if(isset($xmlDetailsStructuredBlock->AddtlRmtInf)) {
+                if (isset($xmlDetailsStructuredBlock->AddtlRmtInf)) {
                     $structuredRemittanceInformation->setAdditionalRemittanceInformation(
                         (string)$xmlDetailsStructuredBlock->AddtlRmtInf
                     );
                 }
 
-                if(isset($xmlDetailsStructuredBlock->CdtrRefInf)) {
+                if (isset($xmlDetailsStructuredBlock->CdtrRefInf)) {
                     $creditorReferenceInformation = new DTO\CreditorReferenceInformation();
 
-                    if(isset($xmlDetailsStructuredBlock->CdtrRefInf->Ref)) {
+                    if (isset($xmlDetailsStructuredBlock->CdtrRefInf->Ref)) {
                         $creditorReferenceInformation->setRef(
                             (string)$xmlDetailsStructuredBlock->CdtrRefInf->Ref
                         );
                     }
 
-                    if(isset($xmlDetailsStructuredBlock->CdtrRefInf->Tp)
+                    if (isset($xmlDetailsStructuredBlock->CdtrRefInf->Tp)
                             && isset($xmlDetailsStructuredBlock->CdtrRefInf->Tp->CdOrPrtry)
                             && isset($xmlDetailsStructuredBlock->CdtrRefInf->Tp->CdOrPrtry->Prtry)) {
                         $creditorReferenceInformation->setProprietary(
@@ -216,7 +216,7 @@ abstract class EntryTransactionDetail
                         );
                     }
 
-                    if(isset($xmlDetailsStructuredBlock->CdtrRefInf->Tp)
+                    if (isset($xmlDetailsStructuredBlock->CdtrRefInf->Tp)
                             && isset($xmlDetailsStructuredBlock->CdtrRefInf->Tp->CdOrPrtry)
                             && isset($xmlDetailsStructuredBlock->CdtrRefInf->Tp->CdOrPrtry->Cd)) {
                         $creditorReferenceInformation->setCode(
@@ -228,7 +228,7 @@ abstract class EntryTransactionDetail
 
                     // Legacy : do not overwrite message if already defined above
                     // and no creditor reference is already defined
-                    if(false === $unstructuredBlockExists
+                    if (false === $unstructuredBlockExists
                             && $remittanceInformation->getCreditorReferenceInformation() === null) {
                         $remittanceInformation->setCreditorReferenceInformation($creditorReferenceInformation);
                     }
@@ -253,7 +253,7 @@ abstract class EntryTransactionDetail
 
         if (isset($xmlDetail->RltdDts->AccptncDtTm)) {
             $RelatedDates = DTO\RelatedDates::fromUnstructured(
-                $this->dateDecoder->decode((string) $xmlDetail->RltdDts->AccptncDtTm )
+                $this->dateDecoder->decode((string) $xmlDetail->RltdDts->AccptncDtTm)
             );
             $detail->setRelatedDates($RelatedDates);
             return;
@@ -336,43 +336,42 @@ abstract class EntryTransactionDetail
      */
     public function addCharges(DTO\EntryTransactionDetail $detail, SimpleXMLElement $xmlDetail)
     {
-            if (isset($xmlDetail->Chrgs)) {
-                $charges = new DTO\Charges();
+        if (isset($xmlDetail->Chrgs)) {
+            $charges = new DTO\Charges();
 
-                if (isset($xmlDetail->Chrgs->TtlChrgsAndTaxAmt) && (string) $xmlDetail->Chrgs->TtlChrgsAndTaxAmt) {
-                    $amount      = StringToUnits::convert((string) $xmlDetail->Chrgs->TtlChrgsAndTaxAmt);
-                    $currency    = (string)$xmlDetail->Chrgs->TtlChrgsAndTaxAmt['Ccy'];
+            if (isset($xmlDetail->Chrgs->TtlChrgsAndTaxAmt) && (string) $xmlDetail->Chrgs->TtlChrgsAndTaxAmt) {
+                $amount      = StringToUnits::convert((string) $xmlDetail->Chrgs->TtlChrgsAndTaxAmt);
+                $currency    = (string)$xmlDetail->Chrgs->TtlChrgsAndTaxAmt['Ccy'];
 
-                    $charges->setTotalChargesAndTaxAmount(new Money($amount, new Currency($currency)));
-                }
-
-                $chargesRecords = $xmlDetail->Chrgs->Rcrd;
-                if ($chargesRecords) {
-                    foreach ($chargesRecords as $chargesRecord) {
-
-                        $chargesDetail = new DTO\ChargesRecord();
-
-                        if(isset($chargesRecord->Amt) && (string) $chargesRecord->Amt) {
-                            $amount      = StringToUnits::convert((string) $chargesRecord->Amt);
-                            $currency    = (string)$chargesRecord->Amt['Ccy'];
-
-                            if ((string) $chargesRecord->CdtDbtInd === 'DBIT') {
-                                $amount = $amount * -1;
-                            }
-
-                            $chargesDetail->setAmount(new Money($amount, new Currency($currency)));
-                        }
-                        if (isset($chargesRecord->CdtDbtInd) && (string) $chargesRecord->CdtDbtInd === 'true') {
-                            $chargesDetail->setChargesIncluded­Indicator(true);
-                        }
-                        if (isset($chargesRecord->Tp->Prtry->Id) && (string) $chargesRecord->Tp->Prtry->Id) {
-                            $chargesDetail->setIdentification((string) $chargesRecord->Tp->Prtry->Id);
-                        }
-                        $charges->addRecord($chargesDetail);
-                    }
-                }
-                $detail->setCharges($charges);
+                $charges->setTotalChargesAndTaxAmount(new Money($amount, new Currency($currency)));
             }
+
+            $chargesRecords = $xmlDetail->Chrgs->Rcrd;
+            if ($chargesRecords) {
+                foreach ($chargesRecords as $chargesRecord) {
+                    $chargesDetail = new DTO\ChargesRecord();
+
+                    if (isset($chargesRecord->Amt) && (string) $chargesRecord->Amt) {
+                        $amount      = StringToUnits::convert((string) $chargesRecord->Amt);
+                        $currency    = (string)$chargesRecord->Amt['Ccy'];
+
+                        if ((string) $chargesRecord->CdtDbtInd === 'DBIT') {
+                            $amount = $amount * -1;
+                        }
+
+                        $chargesDetail->setAmount(new Money($amount, new Currency($currency)));
+                    }
+                    if (isset($chargesRecord->CdtDbtInd) && (string) $chargesRecord->CdtDbtInd === 'true') {
+                        $chargesDetail->setChargesIncluded­Indicator(true);
+                    }
+                    if (isset($chargesRecord->Tp->Prtry->Id) && (string) $chargesRecord->Tp->Prtry->Id) {
+                        $chargesDetail->setIdentification((string) $chargesRecord->Tp->Prtry->Id);
+                    }
+                    $charges->addRecord($chargesDetail);
+                }
+            }
+            $detail->setCharges($charges);
+        }
     }
 
     /**
@@ -412,17 +411,17 @@ abstract class EntryTransactionDetail
         if (isset($xmlDetail->Amt)) {
             $amountDetails = new DTO\Amount();
 
-                $amount = StringToUnits::convert((string) $xmlDetail->Amt);
+            $amount = StringToUnits::convert((string) $xmlDetail->Amt);
 
-                if ((string) $CdtDbtInd === 'DBIT') {
-                    $amount = $amount * -1;
-                }
+            if ((string) $CdtDbtInd === 'DBIT') {
+                $amount = $amount * -1;
+            }
 
-                $money = new Money(
+            $money = new Money(
                     $amount,
                     new Currency((string) $xmlDetail->Amt['Ccy'])
                 );
-                $amountDetails->setAmount($money);
+            $amountDetails->setAmount($money);
 
             $detail->setAmount($amountDetails);
         }

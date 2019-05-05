@@ -16,7 +16,7 @@ class Charges
      */
     public function getTotalChargesAndTaxAmount()
     {
-        return $this->totalChargesAndTaxAmount;  
+        return $this->totalChargesAndTaxAmount;
     }
 
     /**

@@ -185,7 +185,7 @@ class EntryTransactionDetailTest extends AbstractTestCase
         $detail->setCharges(Argument::type(DTO\Charges::class))->shouldBeCalled();
 
         (new Camt053\Decoder\EntryTransactionDetail(new Date()))->addCharges($detail->reveal(), $this->getXmlDetail());
-    }    
+    }
 
     
     private function getXmlDetail()

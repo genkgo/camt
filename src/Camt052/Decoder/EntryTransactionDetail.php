@@ -15,7 +15,6 @@ class EntryTransactionDetail extends BaseDecoder
     public function getRelatedPartyAccount(SimpleXMLElement $xmlRelatedPartyTypeAccount = null)
     {
         if ($xmlRelatedPartyTypeAccount !== null) {
-
             if (false === isset($xmlRelatedPartyTypeAccount->Id)) {
                 return;
             }

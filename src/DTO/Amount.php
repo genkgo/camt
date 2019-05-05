@@ -20,7 +20,7 @@ class Amount
      */
     public function getAmount()
     {
-        return $this->amount;  
+        return $this->amount;
     }
 
     /**
@@ -30,5 +30,4 @@ class Amount
     {
         $this->amount = $money;
     }
-
 }

@@ -328,7 +328,6 @@ class EndToEndTest extends AbstractTestCase
                             default :
                                 break;
                         }
-
                     }
                 }
             }

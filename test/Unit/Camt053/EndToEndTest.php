@@ -204,23 +204,20 @@ class EndToEndTest extends AbstractTestCase
 
                         foreach ($parties as $party) {
                             if ($party->getRelatedPartyType() instanceof DTO\Creditor) {
-
-                                if($party->getRelatedPartyType() instanceof DTO\UltimateCreditor){
+                                if ($party->getRelatedPartyType() instanceof DTO\UltimateCreditor) {
                                     $this->assertEquals('CREDITOR NAME NM', $party->getRelatedPartyType()->getName());
                                     $this->assertEquals(["CREDITOR NAME", "CREDITOR ADD"], $party->getRelatedPartyType()->getAddress()->getAddressLines());
-                                }
-                                else{
+                                } else {
                                     $this->assertEquals('Company Name', $party->getRelatedPartyType()->getName());
                                     $this->assertEquals('NL', $party->getRelatedPartyType()->getAddress()->getCountry());
                                     $this->assertEquals([], $party->getRelatedPartyType()->getAddress()->getAddressLines());
                                     $this->assertEquals('NL56AGDH9619008421', (string) $party->getAccount()->getIdentification());
                                 }
                             } elseif ($party->getRelatedPartyType() instanceof DTO\Debtor) {
-                                if($party->getRelatedPartyType() instanceof DTO\UltimateDebtor){
+                                if ($party->getRelatedPartyType() instanceof DTO\UltimateDebtor) {
                                     $this->assertEquals('DEBTOR NAME NM', $party->getRelatedPartyType()->getName());
                                     $this->assertEquals(["DEBTOR NAME", "DEBTOR ADD"], $party->getRelatedPartyType()->getAddress()->getAddressLines());
-                                }
-                                else{
+                                } else {
                                     $this->assertEquals('NAME NAME', $party->getRelatedPartyType()->getName());
                                     $this->assertEquals('NL', $party->getRelatedPartyType()->getAddress()->getCountry());
                                     $this->assertEquals(['ADDR ADDR 10', '2000 ANTWERPEN'], $party->getRelatedPartyType()->getAddress()->getAddressLines());

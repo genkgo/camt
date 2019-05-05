@@ -37,5 +37,4 @@ class Date implements DateDecoderInterface
         $decoder->format = $format;
         return $decoder;
     }
-
 }

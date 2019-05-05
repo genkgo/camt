@@ -108,5 +108,5 @@ class GroupHeader
     public function setPagination(Pagination $pagination)
     {
         $this->pagination = $pagination;
-    }    
+    }
 }

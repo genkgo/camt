@@ -75,17 +75,17 @@ class EntryTest extends AbstractTestCase
         $this->mockedEntryTransactionDetailDecoder->addCharges(
             Argument::type(DTO\EntryTransactionDetail::class),
             Argument::type('\SimpleXMLElement')
-        )->shouldBeCalled();        
+        )->shouldBeCalled();
         $this->mockedEntryTransactionDetailDecoder->addAmountDetails(
             Argument::type(DTO\EntryTransactionDetail::class),
             Argument::type('\SimpleXMLElement'),
             Argument::type('\SimpleXMLElement')
-        )->shouldBeCalled();        
+        )->shouldBeCalled();
         $this->mockedEntryTransactionDetailDecoder->addAmount(
             Argument::type(DTO\EntryTransactionDetail::class),
             Argument::type('\SimpleXMLElement'),
             Argument::type('\SimpleXMLElement')
-        )->shouldBeCalled(); 
+        )->shouldBeCalled();
         $entry->addTransactionDetail(Argument::type(DTO\EntryTransactionDetail::class))->shouldBeCalled();
 
         $this->decoder->addTransactionDetails($entry->reveal(), $this->getXmlEntry());

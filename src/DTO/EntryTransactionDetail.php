@@ -179,7 +179,7 @@ class EntryTransactionDetail
     public function getRelatedDates()
     {
         return $this->relatedDates;
-    }    
+    }
 
     /**
      * @return ReturnInformation|null
@@ -278,6 +278,5 @@ class EntryTransactionDetail
     public function setAmount(Amount $amount)
     {
         $this->amount = $amount;
-    }    
-
+    }
 }

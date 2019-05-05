@@ -96,11 +96,11 @@ class Record
             );
 
             if ($bookingDate) {
-              $entry->setBookingDate($this->dateDecoder->decode($bookingDate));
+                $entry->setBookingDate($this->dateDecoder->decode($bookingDate));
             }
 
             if ($valueDate) {
-              $entry->setValueDate($this->dateDecoder->decode($valueDate));
+                $entry->setValueDate($this->dateDecoder->decode($valueDate));
             }
 
             $entry->setAdditionalInfo($additionalInfo);
