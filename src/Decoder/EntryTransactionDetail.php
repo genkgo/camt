@@ -164,26 +164,81 @@ abstract class EntryTransactionDetail
             return;
         }
 
-        if (isset($xmlDetail->RmtInf->Ustrd)) {
-            $remittanceInformation = DTO\RemittanceInformation::fromUnstructured(
-                (string)$xmlDetail->RmtInf->Ustrd
-            );
-            $detail->setRemittanceInformation($remittanceInformation);
+        $remittanceInformation = new DTO\RemittanceInformation();
+        $unstructuredBlockExists = false;
 
-            return;
+        // Unstructured blocks
+        $xmlDetailsUnstructuredBlocks = $xmlDetail->RmtInf->Ustrd;
+        if($xmlDetailsUnstructuredBlocks) {
+            foreach($xmlDetailsUnstructuredBlocks as $xmlDetailsUnstructuredBlock) {
+                $unstructuredRemittanceInformation = new DTO\UnstructuredRemittanceInformation(
+                    (string)$xmlDetailsUnstructuredBlock
+                );
+
+                $remittanceInformation->addUnstructuredBlock($unstructuredRemittanceInformation);
+
+                // Legacy : use the very first unstructured block
+                if($remittanceInformation->getMessage() === null ) {
+                    $unstructuredBlockExists = true;
+                    $remittanceInformation->setMessage(
+                        (string)$xmlDetailsUnstructuredBlock
+                    );
+                }
+            }
         }
 
-        if (isset($xmlDetail->RmtInf->Strd)
-            && isset($xmlDetail->RmtInf->Strd->CdtrRefInf)
-            && isset($xmlDetail->RmtInf->Strd->CdtrRefInf->Ref)
-        ) {
-            $creditorReferenceInformation = DTO\CreditorReferenceInformation::fromUnstructured(
-                (string)$xmlDetail->RmtInf->Strd->CdtrRefInf->Ref
-            );
-            $remittanceInformation = new DTO\RemittanceInformation();
-            $remittanceInformation->setCreditorReferenceInformation($creditorReferenceInformation);
-            $detail->setRemittanceInformation($remittanceInformation);
+        // Strutcured blocks
+        $xmlDetailsStructuredBlocks = $xmlDetail->RmtInf->Strd;
+        if($xmlDetailsStructuredBlocks) {
+            foreach($xmlDetailsStructuredBlocks as $xmlDetailsStructuredBlock) {
+                $structuredRemittanceInformation = new DTO\StructuredRemittanceInformation();
+
+                if(isset($xmlDetailsStructuredBlock->AddtlRmtInf)) {
+                    $structuredRemittanceInformation->setAdditionalRemittanceInformation(
+                        (string)$xmlDetailsStructuredBlock->AddtlRmtInf
+                    );
+                }
+
+                if(isset($xmlDetailsStructuredBlock->CdtrRefInf)) {
+                    $creditorReferenceInformation = new DTO\CreditorReferenceInformation();
+
+                    if(isset($xmlDetailsStructuredBlock->CdtrRefInf->Ref)) {
+                        $creditorReferenceInformation->setRef(
+                            (string)$xmlDetailsStructuredBlock->CdtrRefInf->Ref
+                        );
+                    }
+
+                    if(isset($xmlDetailsStructuredBlock->CdtrRefInf->Tp)
+                            && isset($xmlDetailsStructuredBlock->CdtrRefInf->Tp->CdOrPrtry)
+                            && isset($xmlDetailsStructuredBlock->CdtrRefInf->Tp->CdOrPrtry->Prtry)) {
+                        $creditorReferenceInformation->setProprietary(
+                            (string)$xmlDetailsStructuredBlock->CdtrRefInf->Tp->CdOrPrtry->Prtry
+                        );
+                    }
+
+                    if(isset($xmlDetailsStructuredBlock->CdtrRefInf->Tp)
+                            && isset($xmlDetailsStructuredBlock->CdtrRefInf->Tp->CdOrPrtry)
+                            && isset($xmlDetailsStructuredBlock->CdtrRefInf->Tp->CdOrPrtry->Cd)) {
+                        $creditorReferenceInformation->setCode(
+                            (string)$xmlDetailsStructuredBlock->CdtrRefInf->Tp->CdOrPrtry->Cd
+                        );
+                    }
+
+                    $structuredRemittanceInformation->setCreditorReferenceInformation($creditorReferenceInformation);
+
+                    // Legacy : do not overwrite message if already defined above
+                    // and no creditor reference is already defined
+                    if(false === $unstructuredBlockExists
+                            && $remittanceInformation->getCreditorReferenceInformation() === null) {
+                        $remittanceInformation->setCreditorReferenceInformation($creditorReferenceInformation);
+                    }
+                }
+
+                $remittanceInformation->addStructuredBlock($structuredRemittanceInformation);
+            }
         }
+
+        $detail->setRemittanceInformation($remittanceInformation);
     }
 
     /**
@@ -204,8 +259,6 @@ abstract class EntryTransactionDetail
             return;
         }
     }
-
-
 
     /**
      * @param DTO\EntryTransactionDetail $detail

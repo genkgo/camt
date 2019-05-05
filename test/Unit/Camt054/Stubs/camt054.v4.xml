@@ -162,7 +162,18 @@
               </CdtrAgt>
             </RltdAgts>
             <RmtInf>
-              <Ustrd>Example Remittance Information 3 - V1</Ustrd>
+              <Ustrd>Unstructured Remittance Information V1</Ustrd>
+              <Strd>
+                <CdtrRefInf>
+                  <Tp>
+                    <CdOrPrtry>
+                      <Prtry>ISR Reference</Prtry>
+                    </CdOrPrtry>
+                  </Tp>
+                  <Ref>ISR ref number V1</Ref>
+                </CdtrRefInf>
+                <AddtlRmtInf>Additional Remittance Information V1</AddtlRmtInf>                                                                
+              </Strd>              
             </RmtInf>
           </TxDtls>
           <TxDtls>
@@ -231,9 +242,111 @@
               </CdtrAgt>
             </RltdAgts>
             <RmtInf>
-              <Ustrd>Example Remittance Information 3 - V2</Ustrd>
+              <Strd>
+                <CdtrRefInf>
+                  <Tp>
+                    <CdOrPrtry>
+                      <Prtry>ISR Reference</Prtry>
+                    </CdOrPrtry>
+                  </Tp>
+                  <Ref>ISR ref number V2</Ref>
+                </CdtrRefInf>
+                <AddtlRmtInf>Additional Remittance Information V2</AddtlRmtInf>                                                                
+              </Strd>             
             </RmtInf>
           </TxDtls>
+          <TxDtls>
+            <Refs>
+              <PmtInfId>UXC06170000006PI00001</PmtInfId>
+              <InstrId>UXC06170000006PI00001II00002</InstrId>
+              <EndToEndId>UXC06170000006PI00001EE00002</EndToEndId>
+            </Refs>
+            <Amt Ccy="CHF">3.2</Amt>
+            <CdtDbtInd>CRDT</CdtDbtInd>
+            <AmtDtls>
+              <TxAmt>
+                <Amt Ccy="CHF">3.2</Amt>
+              </TxAmt>
+            </AmtDtls>
+            <BkTxCd>
+              <Domn>
+                <Cd>PMNT</Cd>
+                <Fmly>
+                  <Cd>ICDT</Cd>
+                  <SubFmlyCd>DMCT</SubFmlyCd>
+                </Fmly>
+              </Domn>
+              <Prtry>
+                <Cd>Z24</Cd>
+              </Prtry>
+            </BkTxCd>
+            <RltdPties>
+              <InitgPty>
+                <Nm>UNIFITS</Nm>
+              </InitgPty>
+              <Dbtr>
+                <Nm>UNIFITS GmbH</Nm>
+              </Dbtr>
+              <DbtrAcct>
+                <Id>
+                  <IBAN>CH2801234000123456789</IBAN>
+                </Id>
+              </DbtrAcct>
+              <Cdtr>
+                <Nm>Example Creditor 3 - V3</Nm>
+                <PstlAdr>
+                  <StrtNm>Example Street 3 - V3</StrtNm>
+                  <BldgNb>32</BldgNb>
+                  <PstCd>3232</PstCd>
+                  <TwnNm>Example Town 3 - V3</TwnNm>
+                  <Ctry>CH</Ctry>
+                </PstlAdr>
+              </Cdtr>
+              <CdtrAcct>
+                <Id>
+                  <IBAN>CH7212345003232323232</IBAN>
+                </Id>
+              </CdtrAcct>
+            </RltdPties>
+            <RltdAgts>
+              <DbtrAgt>
+                <FinInstnId>
+                  <BICFI>BANKCHZHXXX</BICFI>
+                </FinInstnId>
+              </DbtrAgt>
+              <CdtrAgt>
+                <FinInstnId>
+                  <BICFI>BANKCHBE</BICFI>
+                </FinInstnId>
+              </CdtrAgt>
+            </RltdAgts>
+            <RmtInf>
+              <Ustrd>Unstructured Remittance Information V3 block 1</Ustrd>
+              <Ustrd>Unstructured Remittance Information V3 block 2</Ustrd>
+              <Strd>
+                <CdtrRefInf>
+                  <Tp>
+                    <CdOrPrtry>
+                      <Cd>SCOR</Cd>
+                    </CdOrPrtry>
+                  </Tp>
+                  <Ref>Ref number V3 block 1</Ref>
+                </CdtrRefInf>
+                <AddtlRmtInf>Additional Remittance Information V3 block 1</AddtlRmtInf>                                                                
+              </Strd>   
+              <Strd>
+                <CdtrRefInf>
+                  <Tp>
+                    <CdOrPrtry>
+                      <Cd>SCOR</Cd>
+                    </CdOrPrtry>
+                  </Tp>
+                  <Ref>Ref number V3 block 2</Ref>
+                </CdtrRefInf>
+                <AddtlRmtInf>Additional Remittance Information V3 block 2</AddtlRmtInf>                                                                
+              </Strd>                         
+            </RmtInf>
+          </TxDtls>          
         </NtryDtls>
         <AddtlNtryInf>Order</AddtlNtryInf>
       </Ntry>

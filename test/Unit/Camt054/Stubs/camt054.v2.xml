@@ -85,7 +85,80 @@
                                 <Nm>MUELLER</Nm>
                             </Dbtr>
                         </RltdPties>
+                        <RmtInf>
+                          <Ustrd>Unstructured Remittance Information V1</Ustrd>
+                          <Strd>
+                            <CdtrRefInf>
+                              <Tp>
+                                <CdOrPrtry>
+                                  <Prtry>ISR Reference</Prtry>
+                                </CdOrPrtry>
+                              </Tp>
+                              <Ref>ISR ref number V1</Ref>
+                            </CdtrRefInf>
+                            <AddtlRmtInf>Additional Remittance Information V1</AddtlRmtInf>                                                                
+                          </Strd>              
+                        </RmtInf>                       
                     </TxDtls>
+                    <TxDtls>
+                        <Refs>
+                            <EndToEndId>MUELL/FINP/RA12345</EndToEndId>
+                        </Refs>
+                        <RltdPties>
+                            <Dbtr>
+                                <Nm>MUELLER</Nm>
+                            </Dbtr>
+                        </RltdPties>
+                        <RmtInf>
+                          <Strd>
+                            <CdtrRefInf>
+                              <Tp>
+                                <CdOrPrtry>
+                                  <Prtry>ISR Reference</Prtry>
+                                </CdOrPrtry>
+                              </Tp>
+                              <Ref>ISR ref number V2</Ref>
+                            </CdtrRefInf>
+                            <AddtlRmtInf>Additional Remittance Information V2</AddtlRmtInf>                                                                
+                          </Strd>             
+                        </RmtInf>                         
+                    </TxDtls> 
+                    <TxDtls>
+                      <Refs>
+                        <EndToEndId>MUELL/FINP/RA12345</EndToEndId>
+                      </Refs>
+                      <RltdPties>
+                        <Dbtr>
+                          <Nm>MUELLER</Nm>
+                        </Dbtr>
+                      </RltdPties>
+                        <RmtInf>
+                          <Ustrd>Unstructured Remittance Information V3 block 1</Ustrd>
+                          <Ustrd>Unstructured Remittance Information V3 block 2</Ustrd>
+                          <Strd>
+                            <CdtrRefInf>
+                              <Tp>
+                                <CdOrPrtry>
+                                  <Cd>SCOR</Cd>
+                                </CdOrPrtry>
+                              </Tp>
+                              <Ref>Ref number V3 block 1</Ref>
+                            </CdtrRefInf>
+                            <AddtlRmtInf>Additional Remittance Information V3 block 1</AddtlRmtInf>                                                                
+                          </Strd>   
+                          <Strd>
+                            <CdtrRefInf>
+                              <Tp>
+                                <CdOrPrtry>
+                                  <Cd>SCOR</Cd>
+                                </CdOrPrtry>
+                              </Tp>
+                              <Ref>Ref number V3 block 2</Ref>
+                            </CdtrRefInf>
+                            <AddtlRmtInf>Additional Remittance Information V3 block 2</AddtlRmtInf>                                                                
+                          </Strd>                         
+                        </RmtInf>                        
+                    </TxDtls>                                                            
                 </NtryDtls>
             </Ntry>
             <AddtlNtfctnInf>Additional Information</AddtlNtfctnInf>
