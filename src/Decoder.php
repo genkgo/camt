@@ -14,7 +14,7 @@ use SimpleXMLElement;
 class Decoder implements DecoderInterface
 {
     /**
-     * @var SimpleXMLElement[]
+     * @var SimpleXMLElement
      */
     private $document;
 
@@ -75,7 +75,12 @@ class Decoder implements DecoderInterface
             $this->validate($document);
         }
 
-        $this->document = simplexml_import_dom($document);
+        $document = simplexml_import_dom($document);
+        if ($document === false) {
+            throw new InvalidMessageException("Provided XML could not be parsed");
+        }
+
+        $this->document = $document;
 
         $message = new DTO\Message();
         $this->messageDecoder->addGroupHeader($message, $this->document);

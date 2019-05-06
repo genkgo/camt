@@ -16,7 +16,7 @@ class EntryTransactionDetail extends BaseDecoder
     {
         if ($xmlRelatedPartyTypeAccount !== null) {
             if (false === isset($xmlRelatedPartyTypeAccount->Id)) {
-                return;
+                return null;
             }
 
             if (isset($xmlRelatedPartyTypeAccount->Id->IBAN)) {

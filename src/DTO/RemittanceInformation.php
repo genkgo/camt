@@ -11,12 +11,12 @@ use BadMethodCallException;
 class RemittanceInformation
 {
     /**
-     * @var string
+     * @var null|string
      */
     private $message;
 
     /**
-     * @var CreditorReferenceInformation
+     * @var null|CreditorReferenceInformation
      */
     private $creditorReferenceInformation;
 
@@ -42,7 +42,7 @@ class RemittanceInformation
     }
 
     /**
-     * @return CreditorReferenceInformation
+     * @return null|CreditorReferenceInformation
      */
     public function getCreditorReferenceInformation()
     {
@@ -60,7 +60,7 @@ class RemittanceInformation
 
     /**
      * @deprecated Use getStructuredBlocks method instead
-     * @return string
+     * @return null|string
      */
     public function getMessage()
     {

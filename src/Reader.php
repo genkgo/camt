@@ -59,16 +59,6 @@ class Reader
         return $this->readDom($dom);
     }
 
-    public function readDoc($string)
-    {
-        $string = file_get_contents($string);
-        $dom = new DOMDocument('1.0', 'UTF-8');
-        $dom->loadXML($string);
-
-        return $dom;
-    }
-
-
     /**
      * @param  string $file
      * @return mixed|Message
@@ -80,7 +70,12 @@ class Reader
             throw new ReaderException("{$file} does not exists");
         }
 
-        return $this->readString(file_get_contents($file));
+        $string = file_get_contents($file);
+        if ($string === false) {
+            throw new ReaderException("Could not read file {$file}");
+        }
+
+        return $this->readString($string);
     }
 
     /**

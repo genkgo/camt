@@ -102,7 +102,7 @@ abstract class Record
     }
 
     /**
-     * @return Pagination
+     * @return null|Pagination
      */
     public function getPagination()
     {
@@ -118,7 +118,7 @@ abstract class Record
     }
 
     /**
-     * @return string
+     * @return null|string
      */
     public function getElectronicSequenceNumber()
     {
@@ -134,7 +134,7 @@ abstract class Record
     }
 
     /**
-     * @return string
+     * @return null|string
      */
     public function getLegalSequenceNumber()
     {
@@ -150,7 +150,7 @@ abstract class Record
     }
 
     /**
-     * @return string
+     * @return null|string
      */
     public function getCopyDuplicateIndicator()
     {

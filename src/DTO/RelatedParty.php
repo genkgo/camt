@@ -14,8 +14,9 @@ class RelatedParty
      * @var RelatedPartyTypeInterface
      */
     private $relatedPartyDetails;
+
     /**
-     * @var Account
+     * @var null|Account
      */
     private $account;
 
