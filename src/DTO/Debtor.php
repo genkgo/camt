@@ -18,7 +18,7 @@ class Debtor implements RelatedPartyTypeInterface
     private $address;
 
     /**
-     * @param $name
+     * @param string $name
      */
     public function __construct($name)
     {

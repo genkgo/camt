@@ -40,7 +40,7 @@ class CreditorReferenceInformation
     }
 
     /**
-     * @param $ref
+     * @param string $ref
      *
      * @return static
      */

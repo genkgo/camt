@@ -4,19 +4,19 @@ namespace Genkgo\Camt\DTO;
 class CreditorAgent implements RelatedAgentTypeInterface
 {
     /**
-     * @var mixed
+     * @var string
      */
     private $name;
 
     /**
-     * @var mixed
+     * @var string
      */
     private $BIC;
 
     /**
      * CreditorAgent constructor.
-     * @param $name
-     * @param $BIC
+     * @param string $name
+     * @param string $BIC
      */
     public function __construct($name, $BIC)
     {
@@ -25,7 +25,7 @@ class CreditorAgent implements RelatedAgentTypeInterface
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getName()
     {
@@ -33,7 +33,7 @@ class CreditorAgent implements RelatedAgentTypeInterface
     }
 
     /**
-     * @param mixed $name
+     * @param string $name
      */
     public function setName($name)
     {
@@ -41,7 +41,7 @@ class CreditorAgent implements RelatedAgentTypeInterface
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getBIC()
     {
@@ -49,7 +49,7 @@ class CreditorAgent implements RelatedAgentTypeInterface
     }
 
     /**
-     * @param mixed $BIC
+     * @param string $BIC
      */
     public function setBIC($BIC)
     {

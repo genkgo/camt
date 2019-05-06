@@ -72,6 +72,7 @@ abstract class EntryTransactionDetail
             return;
         }
 
+        /** @var SimpleXMLElement $xmlRelatedParty */
         foreach ($xmlDetail->RltdPties as $xmlRelatedParty) {
             if (isset($xmlRelatedParty->Cdtr)) {
                 $xmlRelatedPartyType = $xmlRelatedParty->Cdtr;
@@ -111,12 +112,13 @@ abstract class EntryTransactionDetail
 
     /**
      * @param DTO\EntryTransactionDetail $detail
-     * @param $xmlRelatedPartyType
-     * @param $relatedPartyType
-     * @param $xmlRelatedPartyTypeAccount
+     * @param SimpleXMLElement $xmlRelatedPartyType
+     * @param DTO\RelatedPartyTypeInterface $relatedPartyType
+     * @param SimpleXMLElement|null $xmlRelatedPartyTypeAccount
+     *
      * @return DTO\RelatedParty
      */
-    protected function addRelatedParty(DTO\EntryTransactionDetail $detail, $xmlRelatedPartyType, DTO\RelatedPartyTypeInterface $relatedPartyType, $xmlRelatedPartyTypeAccount = null)
+    protected function addRelatedParty(DTO\EntryTransactionDetail $detail, SimpleXMLElement $xmlRelatedPartyType, DTO\RelatedPartyTypeInterface $relatedPartyType, SimpleXMLElement $xmlRelatedPartyTypeAccount = null)
     {
         if (isset($xmlRelatedPartyType->PstlAdr)) {
             $relatedPartyType->setAddress(DTOFactory\Address::createFromXml($xmlRelatedPartyType->PstlAdr));
@@ -348,6 +350,8 @@ abstract class EntryTransactionDetail
 
             $chargesRecords = $xmlDetail->Chrgs->Rcrd;
             if ($chargesRecords) {
+
+                /** @var SimpleXMLElement $chargesRecord */
                 foreach ($chargesRecords as $chargesRecord) {
                     $chargesDetail = new DTO\ChargesRecord();
 

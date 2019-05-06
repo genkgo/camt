@@ -169,6 +169,8 @@ class Record
 
                 $chargesRecords = $xmlEntry->Chrgs->Rcrd;
                 if ($chargesRecords) {
+
+                    /** @var SimpleXMLElement $chargesRecord */
                     foreach ($chargesRecords as $chargesRecord) {
                         $chargesDetail = new DTO\ChargesRecord();
 

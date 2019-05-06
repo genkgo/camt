@@ -36,9 +36,9 @@ class Recipient implements RelatedPartyTypeInterface
     {
         return $this->address;
     }
-    
+
     /**
-     * @param Address|null
+     * @param Address $address
      */
     public function setAddress(Address $address)
     {
@@ -52,7 +52,7 @@ class Recipient implements RelatedPartyTypeInterface
     {
         return $this->name;
     }
-    
+
     /**
      * @param string $name
      */
@@ -68,7 +68,7 @@ class Recipient implements RelatedPartyTypeInterface
     {
         return $this->countryOfResidence;
     }
-    
+
     /**
      * @param string $countryOfResidence
      */
@@ -84,7 +84,7 @@ class Recipient implements RelatedPartyTypeInterface
     {
         return $this->contactDetails;
     }
-    
+
     /**
      * @param ContactDetails $contactDetails
      */
@@ -100,7 +100,7 @@ class Recipient implements RelatedPartyTypeInterface
     {
         return $this->identification;
     }
-    
+
     /**
      * @param Identification $identification
      */

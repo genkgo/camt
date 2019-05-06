@@ -12,7 +12,7 @@ final class StringToUnits
      *
      * Credit goes to the mathiasverraes/money library
      *
-     * @param $string
+     * @param string $string
      * @return int
      * @throws InvalidArgumentException
      */

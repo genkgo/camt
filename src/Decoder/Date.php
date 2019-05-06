@@ -4,12 +4,12 @@ namespace Genkgo\Camt\Decoder;
 class Date implements DateDecoderInterface
 {
     /**
-     * @var
+     * @var null|string
      */
     private $format;
 
     /**
-     * @param $date
+     * @param string $date
      * @return \DateTimeImmutable
      */
     public function decode($date)
@@ -28,7 +28,7 @@ class Date implements DateDecoderInterface
     }
 
     /**
-     * @param $format
+     * @param string $format
      * @return Date
      */
     public static function fromFormat($format)

@@ -4,12 +4,12 @@ namespace Genkgo\Camt\DTO;
 interface RelatedAgentTypeInterface
 {
     /**
-     * @return mixed
+     * @return string
      */
     public function getName();
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getBIC();
 }

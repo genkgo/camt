@@ -35,7 +35,7 @@ class Balance
     private $date;
 
     /**
-     * @param $type
+     * @param string $type
      * @param Money $amount
      * @param DateTimeImmutable $date
      */

@@ -31,7 +31,7 @@ class RemittanceInformation
     private $unstructuredBlocks = [];
 
     /**
-     * @param $message
+     * @param string $message
      * @return static
      */
     public static function fromUnstructured($message)

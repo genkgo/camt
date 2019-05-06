@@ -47,7 +47,7 @@ class Reader
     }
 
     /**
-     * @param $string
+     * @param string $string
      * @return mixed
      * @throws ReaderException
      */
@@ -84,7 +84,7 @@ class Reader
     }
 
     /**
-     * @param $xmlNs
+     * @param string $xmlNs
      * @return MessageFormatInterface
      * @throws ReaderException
      */

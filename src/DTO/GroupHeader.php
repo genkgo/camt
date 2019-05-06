@@ -35,9 +35,9 @@ class GroupHeader
      */
     private $pagination;
 
-    
+
     /**
-     * @param $messageId
+     * @param string $messageId
      * @param DateTimeImmutable $createdOn
      */
     public function __construct($messageId, DateTimeImmutable $createdOn)
@@ -69,7 +69,7 @@ class GroupHeader
     {
         return $this->additionalInformation;
     }
-    
+
     /**
      * @param string $additionalInformation
      */
@@ -85,7 +85,7 @@ class GroupHeader
     {
         return $this->messageRecipient;
     }
-    
+
     /**
      * @param Recipient $messageRecipient
      */
@@ -101,7 +101,7 @@ class GroupHeader
     {
         return $this->pagination;
     }
-    
+
     /**
      * @param Pagination $pagination
      */

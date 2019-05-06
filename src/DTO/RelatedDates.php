@@ -10,7 +10,7 @@ use DateTimeImmutable;
  */
 class RelatedDates
 {
-    
+
     /**
      * @var DateTimeImmutable
      */
@@ -25,7 +25,7 @@ class RelatedDates
     }
 
     /**
-     * @param $acceptanceDateTime
+     * @param DateTimeImmutable $acceptanceDateTime
      *
      * @return static
      */

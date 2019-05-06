@@ -222,7 +222,7 @@ abstract class Record
     }
 
     /**
-     * @param string
+     * @param string $additionalInformation
      */
     public function setAdditionalInformation($additionalInformation)
     {

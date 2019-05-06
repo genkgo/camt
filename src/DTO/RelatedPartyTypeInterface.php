@@ -11,17 +11,16 @@ interface RelatedPartyTypeInterface
 
     /**
      * @param Address $address
-     * @return mixed
      */
     public function setAddress(Address $address);
 
     /**
-     * @return Address
+     * @return null|Address
      */
     public function getAddress();
 
     /**
-     * @return mixed
+     * @return null|string
      */
     public function getName();
 }

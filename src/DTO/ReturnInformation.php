@@ -12,6 +12,10 @@ class ReturnInformation
      * @var string
      */
     private $code;
+
+    /**
+     * @var string
+     */
     private $additionalInformation;
 
     /**
@@ -31,8 +35,8 @@ class ReturnInformation
     }
 
     /**
-     * @param $code
-     * @param $additionalInformation
+     * @param string $code
+     * @param string $additionalInformation
      *
      * @return static
      */
