@@ -1,6 +1,7 @@
 {
     "name": "genkgo/camt",
     "description": "Library to read CAMT files (XML containing bank statements).",
+    "license": "MIT",
     "require": {
         "php": "^7.0",
         "globalcitizen/php-iban": "^2.6",
