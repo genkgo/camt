@@ -49,11 +49,19 @@ Library to read CAMT files. Currently only CAMT.052, CAMT.053 and CAMT.054 are s
 
 Requires PHP 7.0 or later. In case this is an obstacle for you, conversion should be no problem. The library is very small.
 
-It is installable and autoloadable via Composer as [genkgo/camt](https://packagist.org/packages/genkgo/camt).
+It is installable and autoloadable via Composer:
+
+```sh
+composer require genkgo/camt
+```
 
 ### Quality
 
-To run the unit tests at the command line, issue `phpunit -c tests/`. [PHPUnit](http://phpunit.de/manual/) is required.
+To run the unit tests at the command line, run:
+
+```sh
+./vendor/bin/phpunit
+```
 
 This library attempts to comply with [PSR-1][], [PSR-2][], and [PSR-4][]. If
 you notice compliance oversights, please send a patch via pull request.
@@ -64,13 +72,13 @@ you notice compliance oversights, please send a patch via pull request.
 
 [PHP-CS-Fixer](https://github.com/FriendsOfPHP/PHP-CS-Fixer) is used to ensure PSR coding standards are respected.
 
-To fix CS, just launch
+To fix CS, run:
 
-```bash
-$ ./vendor/bin/php-cs-fixer fix
+```sh
+./vendor/bin/php-cs-fixer fix
 ```
 
-A `.php_cs` file in the root directory excludes `vendor` directory from fixing and contains coding standards level wanted (PSR-2).
+A `.php_cs.dist` file in the root directory excludes `vendor` directory from fixing and contains coding standards level wanted (PSR-2).
 
 ## Getting Started
 
