@@ -108,7 +108,7 @@ abstract class Record
     {
         return $this->pagination;
     }
-    
+
     /**
      * @param Pagination $pagination
      */
@@ -124,7 +124,7 @@ abstract class Record
     {
         return $this->electronicSequenceNumber;
     }
-    
+
     /**
      * @param string $electronicSequenceNumber
      */
@@ -140,7 +140,7 @@ abstract class Record
     {
         return $this->legalSequenceNumber;
     }
-    
+
     /**
      * @param string $legalSequenceNumber
      */
@@ -150,15 +150,15 @@ abstract class Record
     }
 
     /**
-     * @param string $copyDuplicateIndicator
+     * @return string
      */
     public function getCopyDuplicateIndicator()
     {
         return $this->copyDuplicateIndicator;
     }
-    
+
     /**
-     * @return string
+     * @param string $copyDuplicateIndicator
      */
     public function setCopyDuplicateIndicator($copyDuplicateIndicator)
     {
@@ -172,7 +172,7 @@ abstract class Record
     {
         return $this->fromDate;
     }
-    
+
     /**
      * @param DateTimeImmutable $fromDate
      */
@@ -188,7 +188,7 @@ abstract class Record
     {
         return $this->toDate;
     }
-    
+
     /**
      * @param DateTimeImmutable $toDate
      */

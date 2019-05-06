@@ -3,7 +3,7 @@ namespace Genkgo\Camt\Iterator;
 
 use AppendIterator;
 use ArrayIterator;
-use Genkgo\Camt\DTO;
+use Genkgo\Camt\DTO\Message;
 
 /**
  * Class SimpleEntryIterator
@@ -14,7 +14,7 @@ class EntryIterator extends \IteratorIterator
     /**
      * @param Message $message
      */
-    public function __construct(DTO\Message $message)
+    public function __construct(Message $message)
     {
         $appendIterator = new AppendIterator();
         $records = $message->getRecords();

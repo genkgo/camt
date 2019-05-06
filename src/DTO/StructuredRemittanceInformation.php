@@ -43,7 +43,7 @@ class StructuredRemittanceInformation
     }
 
     /**
-     * @param string $creditorReferenceInformation
+     * @param CreditorReferenceInformation $creditorReferenceInformation
      */
     public function setCreditorReferenceInformation(CreditorReferenceInformation $creditorReferenceInformation)
     {

@@ -9,6 +9,7 @@ trait Mapping
     /**
      * @param object $object
      * @param SimpleXMLElement $xml
+     * @param array $mapping
      */
     public static function map($object, SimpleXMLElement $xml, array $mapping)
     {

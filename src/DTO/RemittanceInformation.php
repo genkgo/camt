@@ -81,7 +81,7 @@ class RemittanceInformation
      */
     public function addStructuredBlock(StructuredRemittanceInformation $structuredRemittanceInformation)
     {
-        return $this->structuredBlocks[] = $structuredRemittanceInformation;
+        $this->structuredBlocks[] = $structuredRemittanceInformation;
     }
 
     /**
@@ -109,7 +109,7 @@ class RemittanceInformation
      */
     public function addUnstructuredBlock(UnstructuredRemittanceInformation $unstructuredRemittanceInformation)
     {
-        return $this->unstructuredBlocks[] = $unstructuredRemittanceInformation;
+        $this->unstructuredBlocks[] = $unstructuredRemittanceInformation;
     }
 
     /**

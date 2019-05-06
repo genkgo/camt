@@ -5,7 +5,7 @@ use Money\Money;
 
 class ChargesRecord
 {
-  
+
     /** @var Money */
     private $amount;
 
@@ -13,7 +13,7 @@ class ChargesRecord
      * @var bool
      */
     private $chargesIncluded­Indicator = false;
-    
+
     /**
      * @var string
      */
@@ -35,9 +35,9 @@ class ChargesRecord
     {
         $this->amount = $money;
     }
-    
+
     /**
-     * @return ChargesIncluded­Indicator
+     * @return bool
      */
     public function getChargesIncluded­Indicator()
     {
@@ -45,7 +45,7 @@ class ChargesRecord
     }
 
     /**
-     * @param $chargesIncluded­Indicator
+     * @param bool $chargesIncluded­Indicator
      */
     public function setChargesIncluded­Indicator($chargesIncluded­Indicator)
     {
@@ -53,7 +53,7 @@ class ChargesRecord
     }
 
     /**
-     * @return Identification
+     * @return string
      */
     public function getIdentification()
     {
@@ -61,7 +61,7 @@ class ChargesRecord
     }
 
     /**
-     * @param $identification
+     * @param string $identification
      */
     public function setIdentification($identification)
     {

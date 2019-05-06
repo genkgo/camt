@@ -1,8 +1,6 @@
 <?php
 namespace Genkgo\Camt;
 
-use DOMDocument;
-
 /**
  * Interface MessageFormatInterface
  * @package Genkgo\Camt

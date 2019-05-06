@@ -46,7 +46,7 @@ class ContactDetails
     {
         return $this->namePrefix;
     }
-    
+
     /**
      * @param string $namePrefix
      */
@@ -62,7 +62,7 @@ class ContactDetails
     {
         return $this->name;
     }
-    
+
     /**
      * @param string $name
      */
@@ -78,9 +78,9 @@ class ContactDetails
     {
         return $this->phoneNumber;
     }
-    
+
     /**
-     * @param string $name
+     * @param string $phoneNumber
      */
     public function setPhoneNumber($phoneNumber)
     {
@@ -94,9 +94,9 @@ class ContactDetails
     {
         return $this->mobileNumber;
     }
-    
+
     /**
-     * @param string $name
+     * @param string $mobileNumber
      */
     public function setMobileNumber($mobileNumber)
     {
@@ -110,9 +110,9 @@ class ContactDetails
     {
         return $this->faxNumber;
     }
-    
+
     /**
-     * @param string $name
+     * @param string $faxNumber
      */
     public function setFaxNumber($faxNumber)
     {
@@ -126,9 +126,9 @@ class ContactDetails
     {
         return $this->emailAddress;
     }
-    
+
     /**
-     * @param string $name
+     * @param string $emailAddress
      */
     public function setEmailAddress($emailAddress)
     {
@@ -142,9 +142,9 @@ class ContactDetails
     {
         return $this->other;
     }
-    
+
     /**
-     * @param string $name
+     * @param string $other
      */
     public function setOther($other)
     {

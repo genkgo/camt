@@ -3,7 +3,6 @@
 namespace Genkgo\TestCamt\Unit;
 
 use Genkgo\TestCamt\AbstractTestCase;
-use Genkgo\Camt\Decoder;
 use Genkgo\Camt\Camt053\MessageFormat;
 use Genkgo\Camt\DTO;
 

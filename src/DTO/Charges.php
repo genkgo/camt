@@ -1,13 +1,14 @@
 <?php
 namespace Genkgo\Camt\DTO;
 
+use BadMethodCallException;
 use Money\Money;
 
 class Charges
 {
     /** @var Money */
     private $totalChargesAndTaxAmount;
-    
+
     /** @var ChargesRecord[] */
     private $records = [];
 

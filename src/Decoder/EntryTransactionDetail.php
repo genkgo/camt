@@ -428,7 +428,7 @@ abstract class EntryTransactionDetail
     }
 
     /**
-     * @param SimpleXMLElement $xmlDetail
+     * @param SimpleXMLElement $xmlRelatedPartyTypeAccount
      *
      * @return DTO\Account|null
      */

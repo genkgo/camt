@@ -8,6 +8,8 @@ interface DecoderInterface
 {
     /**
      * @param DOMDocument $document
+     * @param bool $xsdValidation
+     *
      * @return mixed|Message
      */
     public function decode(DOMDocument $document, $xsdValidation = true);

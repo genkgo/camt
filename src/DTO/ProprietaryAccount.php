@@ -2,8 +2,6 @@
 
 namespace Genkgo\Camt\DTO;
 
-use Genkgo\Camt\DTO\Account;
-
 /**
  * Class ProprietaryAccount
  * @package Genkgo\Camt

@@ -76,7 +76,7 @@ class OrganisationIdentification extends Identification
     {
         return $this->bic;
     }
-    
+
     /**
      * @param string $bic
      */
@@ -93,7 +93,7 @@ class OrganisationIdentification extends Identification
     {
         return $this->ibei;
     }
-    
+
     /**
      * @param string $ibei
      */
@@ -110,7 +110,7 @@ class OrganisationIdentification extends Identification
     {
         return $this->bei;
     }
-    
+
     /**
      * @param string $bei
      */
@@ -127,7 +127,7 @@ class OrganisationIdentification extends Identification
     {
         return $this->eangln;
     }
-    
+
     /**
      * @param string $eangln
      */
@@ -144,7 +144,7 @@ class OrganisationIdentification extends Identification
     {
         return $this->chipsUniversalId;
     }
-    
+
     /**
      * @param string $chipsUniversalId
      */
@@ -161,7 +161,7 @@ class OrganisationIdentification extends Identification
     {
         return $this->duns;
     }
-    
+
     /**
      * @param string $duns
      */
@@ -178,7 +178,7 @@ class OrganisationIdentification extends Identification
     {
         return $this->bankPartyId;
     }
-    
+
     /**
      * @param string $bankPartyId
      */
@@ -195,7 +195,7 @@ class OrganisationIdentification extends Identification
     {
         return $this->taxId;
     }
-    
+
     /**
      * @param string $taxId
      */
@@ -212,9 +212,9 @@ class OrganisationIdentification extends Identification
     {
         return $this->otherId;
     }
-    
+
     /**
-     * @param string $otherID
+     * @param string $otherId
      */
     public function setOtherId($otherId)
     {
@@ -229,7 +229,7 @@ class OrganisationIdentification extends Identification
     {
         return $this->otherIssuer;
     }
-    
+
     /**
      * @param string $otherIssuer
      */
@@ -245,7 +245,7 @@ class OrganisationIdentification extends Identification
     {
         return $this->otherSchemeName;
     }
-    
+
     /**
      * @param string $otherSchemeName
      */
@@ -261,7 +261,7 @@ class OrganisationIdentification extends Identification
     {
         return $this->otherType;
     }
-    
+
     /**
      * @param string $otherType
      */
@@ -277,7 +277,7 @@ class OrganisationIdentification extends Identification
     {
         return $this->issuer;
     }
-    
+
     /**
      * @param string $issuer
      */
