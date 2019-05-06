@@ -4,6 +4,8 @@
     "license": "MIT",
     "require": {
         "php": "^7.0",
+        "ext-dom": "*",
+        "ext-libxml": "*",
         "ext-simplexml": "*",
         "globalcitizen/php-iban": "^2.6",
         "moneyphp/money": "^3"
