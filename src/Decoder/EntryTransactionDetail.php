@@ -418,8 +418,8 @@ abstract class EntryTransactionDetail
             }
 
             $money = new Money(
-                    $amount,
-                    new Currency((string) $xmlDetail->Amt['Ccy'])
+                $amount,
+                new Currency((string) $xmlDetail->Amt['Ccy'])
                 );
             $amountDetails->setAmount($money);
 
