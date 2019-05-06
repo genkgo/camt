@@ -3,6 +3,7 @@
 namespace Genkgo\Camt\Decoder;
 
 use Genkgo\Camt\DTO;
+use Genkgo\Camt\DTO\RecordWithBalances;
 use Genkgo\Camt\Util\StringToUnits;
 use Money\Money;
 use Money\Currency;
@@ -31,10 +32,10 @@ class Record
     }
 
     /**
-     * @param DTO\Record       $record
+     * @param RecordWithBalances $record
      * @param SimpleXMLElement $xmlRecord
      */
-    public function addBalances(DTO\Record $record, SimpleXMLElement $xmlRecord)
+    public function addBalances(RecordWithBalances $record, SimpleXMLElement $xmlRecord)
     {
         $xmlBalances = $xmlRecord->Bal;
         foreach ($xmlBalances as $xmlBalance) {
