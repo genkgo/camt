@@ -1,5 +1,12 @@
 # Genkgo.CAMT
 
+[![Build Status](https://travis-ci.org/genkgo/camt.svg?branch=master)](https://travis-ci.org/genkgo/camt)
+[![Code Quality](https://scrutinizer-ci.com/g/genkgo/camt/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/genkgo/camt/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/genkgo/camt/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/genkgo/camt/?branch=master)
+[![Total Downloads](https://poser.pugx.org/genkgo/camt/downloads.png)](https://packagist.org/packages/genkgo/camt)
+[![Latest Stable Version](https://poser.pugx.org/genkgo/camt/v/stable.png)](https://packagist.org/packages/genkgo/camt)
+[![License](https://poser.pugx.org/genkgo/camt/license.png)](https://packagist.org/packages/genkgo/camt)
+
 Library to read CAMT files. Currently only CAMT.052, CAMT.053 and CAMT.054 are supported.
 
 ### Supported Versions
@@ -45,10 +52,6 @@ Requires PHP 7.0 or later. In case this is an obstacle for you, conversion shoul
 It is installable and autoloadable via Composer as [genkgo/camt](https://packagist.org/packages/genkgo/camt).
 
 ### Quality
-
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/genkgo/camt/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/genkgo/camt/)
-[![Code Coverage](https://scrutinizer-ci.com/g/genkgo/camt/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/genkgo/camt/)
-[![Build Status](https://travis-ci.org/genkgo/camt.png?branch=master)](https://travis-ci.org/genkgo/camt)
 
 To run the unit tests at the command line, issue `phpunit -c tests/`. [PHPUnit](http://phpunit.de/manual/) is required.
 
