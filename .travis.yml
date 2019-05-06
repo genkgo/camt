@@ -10,11 +10,12 @@ matrix:
   allow_failures:
     - php: nightly
 
-script:
-  - vendor/bin/phpunit --coverage-clover=coverage.clover
-
 before_script:
   - composer install
+
+script:
+  - ./vendor/bin/php-cs-fixer fix --diff --verbose --dry-run
+  - ./vendor/bin/phpunit --coverage-clover=coverage.clover
 
 after_script:
   - wget https://scrutinizer-ci.com/ocular.phar
