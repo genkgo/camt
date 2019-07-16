@@ -143,13 +143,13 @@ abstract class EntryTransactionDetail
 
         foreach ($xmlDetail->RltdAgts as $xmlRelatedAgent) {
             if (isset($xmlRelatedAgent->CdtrAgt)) {
-                $agent = new DTO\CreditorAgent((string)$xmlRelatedAgent->CdtrAgt->FinInstnId->Nm, (string)$xmlRelatedAgent->CdtrAgt->FinInstnId->BIC);
+                $agent = new DTO\CreditorAgent((string)$xmlRelatedAgent->CdtrAgt->FinInstnId->Nm, (string)$xmlRelatedAgent->CdtrAgt->FinInstnId->BICFI);
                 $relatedAgent =  new DTO\RelatedAgent($agent);
                 $detail->addRelatedAgent($relatedAgent);
             }
 
             if (isset($xmlRelatedAgent->DbtrAgt)) {
-                $agent = new DTO\DebtorAgent((string)$xmlRelatedAgent->DbtrAgt->FinInstnId->Nm, (string)$xmlRelatedAgent->DbtrAgt->FinInstnId->BIC);
+                $agent = new DTO\DebtorAgent((string)$xmlRelatedAgent->DbtrAgt->FinInstnId->Nm, (string)$xmlRelatedAgent->DbtrAgt->FinInstnId->BICFI);
                 $relatedAgent =  new DTO\RelatedAgent($agent);
                 $detail->addRelatedAgent($relatedAgent);
             }
