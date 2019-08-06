@@ -1,0 +1,8 @@
+parameters:
+    level: 4
+    paths:
+        - src/
+        - test/
+    inferPrivatePropertyTypeFromConstructor: true
+    ignoreErrors:
+        - '~^Call to an undefined method Prophecy\\Prophecy\\~'

@@ -171,7 +171,7 @@ abstract class EntryTransactionDetail
 
         // Unstructured blocks
         $xmlDetailsUnstructuredBlocks = $xmlDetail->RmtInf->Ustrd;
-        if ($xmlDetailsUnstructuredBlocks) {
+        if ($xmlDetailsUnstructuredBlocks !== null) {
             foreach ($xmlDetailsUnstructuredBlocks as $xmlDetailsUnstructuredBlock) {
                 $unstructuredRemittanceInformation = new DTO\UnstructuredRemittanceInformation(
                     (string)$xmlDetailsUnstructuredBlock
@@ -191,7 +191,7 @@ abstract class EntryTransactionDetail
 
         // Strutcured blocks
         $xmlDetailsStructuredBlocks = $xmlDetail->RmtInf->Strd;
-        if ($xmlDetailsStructuredBlocks) {
+        if ($xmlDetailsStructuredBlocks !== null) {
             foreach ($xmlDetailsStructuredBlocks as $xmlDetailsStructuredBlock) {
                 $structuredRemittanceInformation = new DTO\StructuredRemittanceInformation();
 
@@ -349,7 +349,7 @@ abstract class EntryTransactionDetail
             }
 
             $chargesRecords = $xmlDetail->Chrgs->Rcrd;
-            if ($chargesRecords) {
+            if ($chargesRecords !== null) {
 
                 /** @var SimpleXMLElement $chargesRecord */
                 foreach ($chargesRecords as $chargesRecord) {

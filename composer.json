@@ -2,6 +2,16 @@
     "name": "genkgo/camt",
     "description": "Library to read CAMT files (XML containing bank statements).",
     "license": "MIT",
+    "scripts": {
+        "check": [
+            "php-cs-fixer fix --ansi --dry-run --diff",
+            "phpunit --color=always",
+            "phpstan analyse --ansi"
+        ],
+        "fix": [
+            "php-cs-fixer fix --ansi"
+        ]
+    },
     "require": {
         "php": "^7.2",
         "ext-dom": "*",
@@ -12,7 +22,8 @@
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.14",
-        "phpunit/phpunit": "^8.3"
+        "phpunit/phpunit": "^8.3",
+        "phpstan/phpstan": "@stable"
     },
     "autoload": {
         "psr-4": {
