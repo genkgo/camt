@@ -40,7 +40,7 @@ abstract class EntryTransactionDetail
         $reference = new DTO\Reference();
 
         $reference->setMessageId(isset($refs->MsgId) ? (string) $refs->MsgId : null);
-        $reference->setAccountServiceReference(isset($refs->AcctSvcrRef) ? (string) $refs->AcctSvcrRef : null);
+        $reference->setAccountServicerReference(isset($refs->AcctSvcrRef) ? (string) $refs->AcctSvcrRef : null);
         $reference->setPaymentInformationId(isset($refs->PmtInfId) ? (string) $refs->PmtInfId : null);
         $reference->setInstructionId(isset($refs->InstrId) ? (string) $refs->InstrId : null);
         $reference->setEndToEndId(isset($refs->EndToEndId) ? (string) $refs->EndToEndId : null);

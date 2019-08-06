@@ -16,7 +16,7 @@ class Reference
     /**
      * @var null|string
      */
-    private $accountServiceReference;
+    private $accountServicerReference;
 
     /**
      * @var null|string
@@ -101,19 +101,19 @@ class Reference
     /**
      * @return null|string
      */
-    public function getAccountServiceReference(): ?string
+    public function getAccountServicerReference(): ?string
     {
-        return $this->accountServiceReference;
+        return $this->accountServicerReference;
     }
 
     /**
-     * @param null|string $accountServiceReference
+     * @param null|string $accountServicerReference
      *
      * @return Reference
      */
-    public function setAccountServiceReference(?string $accountServiceReference)
+    public function setAccountServicerReference(?string $accountServicerReference)
     {
-        $this->accountServiceReference = $accountServiceReference;
+        $this->accountServicerReference = $accountServicerReference;
 
         return $this;
     }
