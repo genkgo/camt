@@ -186,7 +186,7 @@ class Record
                             $chargesDetail->setAmount(new Money($amount, new Currency($currency)));
                         }
                         if (isset($chargesRecord->CdtDbtInd) && (string) $chargesRecord->CdtDbtInd === 'true') {
-                            $chargesDetail->setChargesIncluded­Indicator(true);
+                            $chargesDetail->setChargesIncludedIndicator(true);
                         }
                         if (isset($chargesRecord->Tp->Prtry->Id) && (string) $chargesRecord->Tp->Prtry->Id) {
                             $chargesDetail->setIdentification((string) $chargesRecord->Tp->Prtry->Id);

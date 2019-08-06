@@ -12,7 +12,7 @@ class ChargesRecord
     /**
      * @var bool
      */
-    private $chargesIncluded­Indicator = false;
+    private $chargesIncludedIndicator = false;
 
     /**
      * @var string
@@ -39,17 +39,17 @@ class ChargesRecord
     /**
      * @return bool
      */
-    public function getChargesIncluded­Indicator()
+    public function getChargesIncludedIndicator()
     {
-        return $this->chargesIncluded­Indicator;
+        return $this->chargesIncludedIndicator;
     }
 
     /**
-     * @param bool $chargesIncluded­Indicator
+     * @param bool $chargesIncludedIndicator
      */
-    public function setChargesIncluded­Indicator($chargesIncluded­Indicator)
+    public function setChargesIncludedIndicator($chargesIncludedIndicator)
     {
-        $this->chargesIncluded­Indicator = $chargesIncluded­Indicator;
+        $this->chargesIncludedIndicator = $chargesIncludedIndicator;
     }
 
     /**
