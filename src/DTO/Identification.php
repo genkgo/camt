@@ -5,14 +5,14 @@ namespace Genkgo\Camt\DTO;
 abstract class Identification
 {
     /**
-     * @var string|null
+     * @var null|string
      */
     protected $identification;
 
     /**
-     * @return string|null
+     * @return null|string
      */
-    public function getIdentification()
+    public function getIdentification(): ?string
     {
         return $this->identification;
     }

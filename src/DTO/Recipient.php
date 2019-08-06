@@ -5,34 +5,34 @@ namespace Genkgo\Camt\DTO;
 class Recipient implements RelatedPartyTypeInterface
 {
     /**
-     * @var Address|null
+     * @var null|Address
      */
     private $address;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     private $name;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     private $countryOfResidence;
 
     /**
-     * @var ContactDetails|null
+     * @var null|ContactDetails
      */
     private $contactDetails;
 
     /**
-     * @var Identification|null
+     * @var null|Identification
      */
     private $identification;
 
     /**
-     * @return Address|null
+     * @return null|Address
      */
-    public function getAddress()
+    public function getAddress(): ?Address
     {
         return $this->address;
     }
@@ -46,9 +46,9 @@ class Recipient implements RelatedPartyTypeInterface
     }
 
     /**
-     * @return string|null
+     * @return null|string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -62,9 +62,9 @@ class Recipient implements RelatedPartyTypeInterface
     }
 
     /**
-     * @return string|null
+     * @return null|string
      */
-    public function getCountryOfResidence()
+    public function getCountryOfResidence(): ?string
     {
         return $this->countryOfResidence;
     }
@@ -78,9 +78,9 @@ class Recipient implements RelatedPartyTypeInterface
     }
 
     /**
-     * @return ContactDetails|null
+     * @return null|ContactDetails
      */
-    public function getContactDetails()
+    public function getContactDetails():?ContactDetails
     {
         return $this->contactDetails;
     }
@@ -94,9 +94,9 @@ class Recipient implements RelatedPartyTypeInterface
     }
 
     /**
-     * @return Identification|null
+     * @return null|Identification
      */
-    public function getIdentification()
+    public function getIdentification():?Identification
     {
         return $this->identification;
     }

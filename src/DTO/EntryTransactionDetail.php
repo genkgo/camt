@@ -6,6 +6,7 @@ use BadMethodCallException;
 
 /**
  * Class EntryTransactionDetail
+ *
  * @package Genkgo\Camt\DTO
  */
 class EntryTransactionDetail
@@ -162,9 +163,10 @@ class EntryTransactionDetail
         if ($this->remittanceInformation === null) {
             throw new BadMethodCallException();
         }
+
         return $this->remittanceInformation;
     }
-    
+
     /**
      * @param RelatedDates $relatedDates
      */
@@ -182,9 +184,9 @@ class EntryTransactionDetail
     }
 
     /**
-     * @return ReturnInformation|null
+     * @return null|ReturnInformation
      */
-    public function getReturnInformation()
+    public function getReturnInformation(): ?ReturnInformation
     {
         return $this->returnInformation;
     }
@@ -213,6 +215,7 @@ class EntryTransactionDetail
         if ($this->additionalTransactionInformation === null) {
             throw new BadMethodCallException();
         }
+
         return $this->additionalTransactionInformation;
     }
 

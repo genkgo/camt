@@ -9,12 +9,12 @@ namespace Genkgo\Camt\DTO;
 class Address
 {
     /**
-     * @var string|null
+     * @var null|string
      */
     private $country;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     private $countrySubDivision;
 
@@ -24,39 +24,39 @@ class Address
     private $addressLines = [];
 
     /**
-     * @var string|null
+     * @var null|string
      */
     private $department;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     private $subDepartment;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     private $streetName;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     private $buildingNumber;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     private $postCode;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     private $townName;
 
     /**
-     * @return string|null
+     * @return null|string
      */
-    public function getCountry()
+    public function getCountry(): ?string
     {
         return $this->country;
     }
@@ -75,9 +75,9 @@ class Address
     }
 
     /**
-     * @return string|null
+     * @return null|string
      */
-    public function getCountrySubDivision()
+    public function getCountrySubDivision(): ?string
     {
         return $this->countrySubDivision;
     }
@@ -130,9 +130,9 @@ class Address
     }
 
     /**
-     * @return string|null
+     * @return null|string
      */
-    public function getDepartment()
+    public function getDepartment(): ?string
     {
         return $this->department;
     }
@@ -151,9 +151,9 @@ class Address
     }
 
     /**
-     * @return string|null
+     * @return null|string
      */
-    public function getSubDepartment()
+    public function getSubDepartment(): ?string
     {
         return $this->subDepartment;
     }
@@ -172,9 +172,9 @@ class Address
     }
 
     /**
-     * @return string|null
+     * @return null|string
      */
-    public function getStreetName()
+    public function getStreetName(): ?string
     {
         return $this->streetName;
     }
@@ -193,9 +193,9 @@ class Address
     }
 
     /**
-     * @return string|null
+     * @return null|string
      */
-    public function getBuildingNumber()
+    public function getBuildingNumber(): ?string
     {
         return $this->buildingNumber;
     }
@@ -214,9 +214,9 @@ class Address
     }
 
     /**
-     * @return string|null
+     * @return null|string
      */
-    public function getPostCode()
+    public function getPostCode(): ?string
     {
         return $this->postCode;
     }
@@ -235,9 +235,9 @@ class Address
     }
 
     /**
-     * @return string|null
+     * @return null|string
      */
-    public function getTownName()
+    public function getTownName(): ?string
     {
         return $this->townName;
     }

@@ -34,17 +34,17 @@ class Creditor implements RelatedPartyTypeInterface
     }
 
     /**
-     * @return Address|null
+     * @return null|Address
      */
-    public function getAddress()
+    public function getAddress(): ?Address
     {
         return $this->address;
     }
 
     /**
-     * @return string
+     * @return null|string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }

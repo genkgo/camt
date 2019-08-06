@@ -21,12 +21,12 @@ class GroupHeader
     private $createdOn;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     private $additionalInformation;
 
     /**
-     * @var Recipient|null
+     * @var null|Recipient
      */
     private $messageRecipient;
 
@@ -63,9 +63,9 @@ class GroupHeader
     }
 
     /**
-     * @return string|null
+     * @return null|string
      */
-    public function getAdditionalInformation()
+    public function getAdditionalInformation(): ?string
     {
         return $this->additionalInformation;
     }
@@ -79,9 +79,9 @@ class GroupHeader
     }
 
     /**
-     * @return Recipient|null
+     * @return null|Recipient
      */
-    public function getMessageRecipient()
+    public function getMessageRecipient():?Recipient
     {
         return $this->messageRecipient;
     }

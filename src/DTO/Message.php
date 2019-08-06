@@ -53,7 +53,7 @@ class Message
     }
 
     /**
-     * @return EntryIterator|Entry[]
+     * @return Entry[]|EntryIterator
      */
     public function getEntries()
     {

@@ -8,4 +8,5 @@ return PhpCsFixer\Config::create()
     ->setFinder($finder)
     ->setCacheFile(sys_get_temp_dir() . '/php-cs-fixer' . preg_replace('~\W~', '-', __DIR__))->setRules([
         '@PSR2' => true,
+        'phpdoc_types_order' => true,
     ]);

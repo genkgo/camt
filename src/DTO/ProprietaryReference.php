@@ -4,6 +4,7 @@ namespace Genkgo\Camt\DTO;
 
 /**
  * Class ProprietaryReference
+ *
  * @package Genkgo\Camt\DTO
  */
 class ProprietaryReference
@@ -22,7 +23,7 @@ class ProprietaryReference
      * @param null|string $type
      * @param null|string $reference
      */
-    public function __construct($type, $reference)
+    public function __construct(?string $type, ?string $reference)
     {
         $this->type = $type;
         $this->reference = $reference;
@@ -31,7 +32,7 @@ class ProprietaryReference
     /**
      * @return null|string
      */
-    public function getType()
+    public function getType(): ?string
     {
         return $this->type;
     }
@@ -39,7 +40,7 @@ class ProprietaryReference
     /**
      * @return null|string
      */
-    public function getReference()
+    public function getReference(): ?string
     {
         return $this->reference;
     }

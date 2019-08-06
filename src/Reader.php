@@ -61,7 +61,7 @@ class Reader
 
     /**
      * @param  string $file
-     * @return mixed|Message
+     * @return Message|mixed
      * @throws ReaderException
      */
     public function readFile($file)

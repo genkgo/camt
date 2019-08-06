@@ -6,6 +6,7 @@ use BadMethodCallException;
 
 /**
  * Class RelatedParty
+ *
  * @package Genkgo\Camt\DTO
  */
 class RelatedParty
@@ -22,9 +23,9 @@ class RelatedParty
 
     /**
      * @param RelatedPartyTypeInterface $relatedPartyDetails
-     * @param Account $account
+     * @param null|Account $account
      */
-    public function __construct(RelatedPartyTypeInterface $relatedPartyDetails, Account $account = null)
+    public function __construct(RelatedPartyTypeInterface $relatedPartyDetails, ?Account $account)
     {
         $this->relatedPartyDetails = $relatedPartyDetails;
         $this->account = $account;
@@ -46,6 +47,7 @@ class RelatedParty
         if ($this->account === null) {
             throw new BadMethodCallException();
         }
+
         return $this->account;
     }
 }

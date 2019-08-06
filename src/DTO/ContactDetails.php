@@ -5,44 +5,44 @@ namespace Genkgo\Camt\DTO;
 class ContactDetails
 {
     /**
-     * @var string|null
+     * @var null|string
      */
     private $namePrefix;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     private $name;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     private $phoneNumber;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     private $mobileNumber;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     private $faxNumber;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     private $emailAddress;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     private $other;
 
     /**
-     * @return string|null
+     * @return null|string
      */
-    public function getNamePrefix()
+    public function getNamePrefix(): ?string
     {
         return $this->namePrefix;
     }
@@ -56,9 +56,9 @@ class ContactDetails
     }
 
     /**
-     * @return string|null
+     * @return null|string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -72,9 +72,9 @@ class ContactDetails
     }
 
     /**
-     * @return string|null
+     * @return null|string
      */
-    public function getPhoneNumber()
+    public function getPhoneNumber(): ?string
     {
         return $this->phoneNumber;
     }
@@ -88,9 +88,9 @@ class ContactDetails
     }
 
     /**
-     * @return string|null
+     * @return null|string
      */
-    public function getMobileNumber()
+    public function getMobileNumber(): ?string
     {
         return $this->mobileNumber;
     }
@@ -104,9 +104,9 @@ class ContactDetails
     }
 
     /**
-     * @return string|null
+     * @return null|string
      */
-    public function getFaxNumber()
+    public function getFaxNumber(): ?string
     {
         return $this->faxNumber;
     }
@@ -120,9 +120,9 @@ class ContactDetails
     }
 
     /**
-     * @return string|null
+     * @return null|string
      */
-    public function getEmailAddress()
+    public function getEmailAddress(): ?string
     {
         return $this->emailAddress;
     }
@@ -136,9 +136,9 @@ class ContactDetails
     }
 
     /**
-     * @return string|null
+     * @return null|string
      */
-    public function getOther()
+    public function getOther(): ?string
     {
         return $this->other;
     }

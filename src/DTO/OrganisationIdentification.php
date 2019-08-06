@@ -5,74 +5,74 @@ namespace Genkgo\Camt\DTO;
 class OrganisationIdentification extends Identification
 {
     /**
-     * @var string|null
+     * @var null|string
      */
     private $bic;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     private $ibei;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     private $bei;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     private $eangln;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     private $chipsUniversalId;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     private $duns;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     private $bankPartyId;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     private $taxId;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     private $issuer;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     private $otherId;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     private $otherIssuer;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     private $otherSchemeName;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     private $otherType;
 
     /**
-     * @return string|null
+     * @return null|string
      */
-    public function getBic()
+    public function getBic(): ?string
     {
         return $this->bic;
     }
@@ -87,9 +87,9 @@ class OrganisationIdentification extends Identification
     }
 
     /**
-     * @return string|null
+     * @return null|string
      */
-    public function getIbei()
+    public function getIbei(): ?string
     {
         return $this->ibei;
     }
@@ -104,9 +104,9 @@ class OrganisationIdentification extends Identification
     }
 
     /**
-     * @return string|null
+     * @return null|string
      */
-    public function getBei()
+    public function getBei(): ?string
     {
         return $this->bei;
     }
@@ -121,9 +121,9 @@ class OrganisationIdentification extends Identification
     }
 
     /**
-     * @return string|null
+     * @return null|string
      */
-    public function getEangln()
+    public function getEangln(): ?string
     {
         return $this->eangln;
     }
@@ -138,9 +138,9 @@ class OrganisationIdentification extends Identification
     }
 
     /**
-     * @return string|null
+     * @return null|string
      */
-    public function getChipsUniversalId()
+    public function getChipsUniversalId(): ?string
     {
         return $this->chipsUniversalId;
     }
@@ -155,9 +155,9 @@ class OrganisationIdentification extends Identification
     }
 
     /**
-     * @return string|null
+     * @return null|string
      */
-    public function getDuns()
+    public function getDuns(): ?string
     {
         return $this->duns;
     }
@@ -172,9 +172,9 @@ class OrganisationIdentification extends Identification
     }
 
     /**
-     * @return string|null
+     * @return null|string
      */
-    public function getBankPartyId()
+    public function getBankPartyId(): ?string
     {
         return $this->bankPartyId;
     }
@@ -189,9 +189,9 @@ class OrganisationIdentification extends Identification
     }
 
     /**
-     * @return string|null
+     * @return null|string
      */
-    public function getTaxId()
+    public function getTaxId(): ?string
     {
         return $this->taxId;
     }
@@ -206,9 +206,9 @@ class OrganisationIdentification extends Identification
     }
 
     /**
-     * @return string|null
+     * @return null|string
      */
-    public function getOtherId()
+    public function getOtherId(): ?string
     {
         return $this->otherId;
     }
@@ -223,9 +223,9 @@ class OrganisationIdentification extends Identification
     }
 
     /**
-     * @return string|null
+     * @return null|string
      */
-    public function getOtherIssuer()
+    public function getOtherIssuer(): ?string
     {
         return $this->otherIssuer;
     }
@@ -239,9 +239,9 @@ class OrganisationIdentification extends Identification
     }
 
     /**
-     * @return string|null
+     * @return null|string
      */
-    public function getOtherSchemeName()
+    public function getOtherSchemeName(): ?string
     {
         return $this->otherSchemeName;
     }
@@ -255,9 +255,9 @@ class OrganisationIdentification extends Identification
     }
 
     /**
-     * @return string|null
+     * @return null|string
      */
-    public function getOtherType()
+    public function getOtherType(): ?string
     {
         return $this->otherType;
     }
@@ -271,9 +271,9 @@ class OrganisationIdentification extends Identification
     }
 
     /**
-     * @return string|null
+     * @return null|string
      */
-    public function getIssuer()
+    public function getIssuer(): ?string
     {
         return $this->issuer;
     }

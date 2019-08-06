@@ -4,6 +4,7 @@ namespace Genkgo\Camt\DTO;
 
 /**
  * Interface RelatedPartyTypeInterface
+ *
  * @package Genkgo\Camt\DTO
  */
 interface RelatedPartyTypeInterface
@@ -17,10 +18,10 @@ interface RelatedPartyTypeInterface
     /**
      * @return null|Address
      */
-    public function getAddress();
+    public function getAddress(): ?Address;
 
     /**
      * @return null|string
      */
-    public function getName();
+    public function getName(): ?string;
 }

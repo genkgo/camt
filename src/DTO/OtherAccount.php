@@ -14,12 +14,12 @@ class OtherAccount extends Account
     private $identification;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     private $schemeName;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     private $issuer;
 
@@ -48,9 +48,9 @@ class OtherAccount extends Account
     }
 
     /**
-     * @return string|null
+     * @return null|string
      */
-    public function getSchemeName()
+    public function getSchemeName(): ?string
     {
         return $this->schemeName;
     }
@@ -64,9 +64,9 @@ class OtherAccount extends Account
     }
 
     /**
-     * @return string|null
+     * @return null|string
      */
-    public function getIssuer()
+    public function getIssuer(): ?string
     {
         return $this->issuer;
     }

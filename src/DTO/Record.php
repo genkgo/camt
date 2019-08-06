@@ -6,6 +6,7 @@ use DateTimeImmutable;
 
 /**
  * Class Record
+ *
  * @package Genkgo\Camt\DTO
  */
 abstract class Record
@@ -26,32 +27,32 @@ abstract class Record
     protected $account;
 
     /**
-     * @var Pagination|null
+     * @var null|Pagination
      */
     protected $pagination;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     protected $electronicSequenceNumber;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     protected $legalSequenceNumber;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     protected $copyDuplicateIndicator;
 
     /**
-     * @var DateTimeImmutable|null
+     * @var null|DateTimeImmutable
      */
     protected $fromDate;
 
     /**
-     * @var DateTimeImmutable|null
+     * @var null|DateTimeImmutable
      */
     protected $toDate;
 
@@ -61,7 +62,7 @@ abstract class Record
     protected $entries = [];
 
     /**
-     * @var string|null
+     * @var null|string
      */
     protected $additionalInformation;
 
@@ -104,7 +105,7 @@ abstract class Record
     /**
      * @return null|Pagination
      */
-    public function getPagination()
+    public function getPagination(): ?Pagination
     {
         return $this->pagination;
     }
@@ -120,7 +121,7 @@ abstract class Record
     /**
      * @return null|string
      */
-    public function getElectronicSequenceNumber()
+    public function getElectronicSequenceNumber(): ?string
     {
         return $this->electronicSequenceNumber;
     }
@@ -136,7 +137,7 @@ abstract class Record
     /**
      * @return null|string
      */
-    public function getLegalSequenceNumber()
+    public function getLegalSequenceNumber(): ?string
     {
         return $this->legalSequenceNumber;
     }
@@ -152,7 +153,7 @@ abstract class Record
     /**
      * @return null|string
      */
-    public function getCopyDuplicateIndicator()
+    public function getCopyDuplicateIndicator(): ?string
     {
         return $this->copyDuplicateIndicator;
     }
@@ -166,9 +167,9 @@ abstract class Record
     }
 
     /**
-     * @return DateTimeImmutable|null
+     * @return null|DateTimeImmutable
      */
-    public function getFromDate()
+    public function getFromDate():?DateTimeImmutable
     {
         return $this->fromDate;
     }
@@ -182,9 +183,9 @@ abstract class Record
     }
 
     /**
-     * @return DateTimeImmutable|null
+     * @return null|DateTimeImmutable
      */
-    public function getToDate()
+    public function getToDate():?DateTimeImmutable
     {
         return $this->toDate;
     }
@@ -214,9 +215,9 @@ abstract class Record
     }
 
     /**
-     * @return string|null
+     * @return null|string
      */
-    public function getAdditionalInformation()
+    public function getAdditionalInformation(): ?string
     {
         return $this->additionalInformation;
     }

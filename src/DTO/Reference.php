@@ -9,67 +9,67 @@ namespace Genkgo\Camt\DTO;
 class Reference
 {
     /**
-     * @var string|null
+     * @var null|string
      */
     private $messageId;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     private $accountServiceReference;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     private $paymentInformationId;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     private $instructionId;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     private $endToEndId;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     private $transactionId;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     private $mandateId;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     private $chequeNumber;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     private $clearingSystemReference;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     private $accountOwnerTransactionId;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     private $accountServicerTransactionId;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     private $marketInfrastructureTransactionId;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     private $processingId;
 
@@ -79,9 +79,9 @@ class Reference
     private $proprietaries = [];
 
     /**
-     * @return string|null
+     * @return null|string
      */
-    public function getMessageId()
+    public function getMessageId(): ?string
     {
         return $this->messageId;
     }
@@ -91,7 +91,7 @@ class Reference
      *
      * @return Reference
      */
-    public function setMessageId($messageId)
+    public function setMessageId(?string $messageId)
     {
         $this->messageId = $messageId;
 
@@ -99,9 +99,9 @@ class Reference
     }
 
     /**
-     * @return string|null
+     * @return null|string
      */
-    public function getAccountServiceReference()
+    public function getAccountServiceReference(): ?string
     {
         return $this->accountServiceReference;
     }
@@ -111,7 +111,7 @@ class Reference
      *
      * @return Reference
      */
-    public function setAccountServiceReference($accountServiceReference)
+    public function setAccountServiceReference(?string $accountServiceReference)
     {
         $this->accountServiceReference = $accountServiceReference;
 
@@ -119,9 +119,9 @@ class Reference
     }
 
     /**
-     * @return string|null
+     * @return null|string
      */
-    public function getPaymentInformationId()
+    public function getPaymentInformationId(): ?string
     {
         return $this->paymentInformationId;
     }
@@ -131,7 +131,7 @@ class Reference
      *
      * @return Reference
      */
-    public function setPaymentInformationId($paymentInformationId)
+    public function setPaymentInformationId(?string $paymentInformationId)
     {
         $this->paymentInformationId = $paymentInformationId;
 
@@ -139,9 +139,9 @@ class Reference
     }
 
     /**
-     * @return string|null
+     * @return null|string
      */
-    public function getInstructionId()
+    public function getInstructionId(): ?string
     {
         return $this->instructionId;
     }
@@ -151,7 +151,7 @@ class Reference
      *
      * @return Reference
      */
-    public function setInstructionId($instructionId)
+    public function setInstructionId(?string $instructionId)
     {
         $this->instructionId = $instructionId;
 
@@ -159,9 +159,9 @@ class Reference
     }
 
     /**
-     * @return string|null
+     * @return null|string
      */
-    public function getEndToEndId()
+    public function getEndToEndId(): ?string
     {
         return $this->endToEndId;
     }
@@ -171,7 +171,7 @@ class Reference
      *
      * @return Reference
      */
-    public function setEndToEndId($endToEndId)
+    public function setEndToEndId(?string $endToEndId)
     {
         $this->endToEndId = $endToEndId;
 
@@ -179,9 +179,9 @@ class Reference
     }
 
     /**
-     * @return string|null
+     * @return null|string
      */
-    public function getTransactionId()
+    public function getTransactionId(): ?string
     {
         return $this->transactionId;
     }
@@ -191,7 +191,7 @@ class Reference
      *
      * @return Reference
      */
-    public function setTransactionId($transactionId)
+    public function setTransactionId(?string $transactionId)
     {
         $this->transactionId = $transactionId;
 
@@ -199,9 +199,9 @@ class Reference
     }
 
     /**
-     * @return string|null
+     * @return null|string
      */
-    public function getMandateId()
+    public function getMandateId(): ?string
     {
         return $this->mandateId;
     }
@@ -211,7 +211,7 @@ class Reference
      *
      * @return Reference
      */
-    public function setMandateId($mandateId)
+    public function setMandateId(?string $mandateId)
     {
         $this->mandateId = $mandateId;
 
@@ -219,9 +219,9 @@ class Reference
     }
 
     /**
-     * @return string|null
+     * @return null|string
      */
-    public function getChequeNumber()
+    public function getChequeNumber(): ?string
     {
         return $this->chequeNumber;
     }
@@ -231,7 +231,7 @@ class Reference
      *
      * @return Reference
      */
-    public function setChequeNumber($chequeNumber)
+    public function setChequeNumber(?string $chequeNumber)
     {
         $this->chequeNumber = $chequeNumber;
 
@@ -239,9 +239,9 @@ class Reference
     }
 
     /**
-     * @return string|null
+     * @return null|string
      */
-    public function getClearingSystemReference()
+    public function getClearingSystemReference(): ?string
     {
         return $this->clearingSystemReference;
     }
@@ -251,7 +251,7 @@ class Reference
      *
      * @return Reference
      */
-    public function setClearingSystemReference($clearingSystemReference)
+    public function setClearingSystemReference(?string $clearingSystemReference)
     {
         $this->clearingSystemReference = $clearingSystemReference;
 
@@ -259,9 +259,9 @@ class Reference
     }
 
     /**
-     * @return string|null
+     * @return null|string
      */
-    public function getAccountOwnerTransactionId()
+    public function getAccountOwnerTransactionId(): ?string
     {
         return $this->accountOwnerTransactionId;
     }
@@ -271,7 +271,7 @@ class Reference
      *
      * @return Reference
      */
-    public function setAccountOwnerTransactionId($accountOwnerTransactionId)
+    public function setAccountOwnerTransactionId(?string $accountOwnerTransactionId)
     {
         $this->accountOwnerTransactionId = $accountOwnerTransactionId;
 
@@ -279,9 +279,9 @@ class Reference
     }
 
     /**
-     * @return string|null
+     * @return null|string
      */
-    public function getAccountServicerTransactionId()
+    public function getAccountServicerTransactionId(): ?string
     {
         return $this->accountServicerTransactionId;
     }
@@ -291,7 +291,7 @@ class Reference
      *
      * @return Reference
      */
-    public function setAccountServicerTransactionId($accountServicerTransactionId)
+    public function setAccountServicerTransactionId(?string $accountServicerTransactionId)
     {
         $this->accountServicerTransactionId = $accountServicerTransactionId;
 
@@ -299,9 +299,9 @@ class Reference
     }
 
     /**
-     * @return string|null
+     * @return null|string
      */
-    public function getMarketInfrastructureTransactionId()
+    public function getMarketInfrastructureTransactionId(): ?string
     {
         return $this->marketInfrastructureTransactionId;
     }
@@ -311,7 +311,7 @@ class Reference
      *
      * @return Reference
      */
-    public function setMarketInfrastructureTransactionId($marketInfrastructureTransactionId)
+    public function setMarketInfrastructureTransactionId(?string $marketInfrastructureTransactionId)
     {
         $this->marketInfrastructureTransactionId = $marketInfrastructureTransactionId;
 
@@ -319,9 +319,9 @@ class Reference
     }
 
     /**
-     * @return string|null
+     * @return null|string
      */
-    public function getProcessingId()
+    public function getProcessingId(): ?string
     {
         return $this->processingId;
     }
@@ -331,7 +331,7 @@ class Reference
      *
      * @return Reference
      */
-    public function setProcessingId($processingId)
+    public function setProcessingId(?string $processingId)
     {
         $this->processingId = $processingId;
 

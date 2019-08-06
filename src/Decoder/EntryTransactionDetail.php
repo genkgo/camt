@@ -2,12 +2,12 @@
 
 namespace Genkgo\Camt\Decoder;
 
-use Genkgo\Camt\DTO;
-use \SimpleXMLElement;
 use Genkgo\Camt\Decoder\Factory\DTO as DTOFactory;
-use Money\Money;
-use Money\Currency;
+use Genkgo\Camt\DTO;
 use Genkgo\Camt\Util\StringToUnits;
+use Money\Currency;
+use Money\Money;
+use SimpleXMLElement;
 
 abstract class EntryTransactionDetail
 {
@@ -18,6 +18,7 @@ abstract class EntryTransactionDetail
 
     /**
      * EntryTransactionDetail constructor.
+     *
      * @param DateDecoderInterface $dateDecoder
      */
     public function __construct(DateDecoderInterface $dateDecoder)
@@ -27,7 +28,7 @@ abstract class EntryTransactionDetail
 
     /**
      * @param DTO\EntryTransactionDetail $detail
-     * @param SimpleXMLElement           $xmlDetail
+     * @param SimpleXMLElement $xmlDetail
      */
     public function addReferences(DTO\EntryTransactionDetail $detail, SimpleXMLElement $xmlDetail)
     {
@@ -64,7 +65,7 @@ abstract class EntryTransactionDetail
 
     /**
      * @param DTO\EntryTransactionDetail $detail
-     * @param SimpleXMLElement           $xmlDetail
+     * @param SimpleXMLElement $xmlDetail
      */
     public function addRelatedParties(DTO\EntryTransactionDetail $detail, SimpleXMLElement $xmlDetail)
     {
@@ -77,7 +78,7 @@ abstract class EntryTransactionDetail
             if (isset($xmlRelatedParty->Cdtr)) {
                 $xmlRelatedPartyType = $xmlRelatedParty->Cdtr;
                 $xmlRelatedPartyTypeAccount = $xmlRelatedParty->CdtrAcct;
-                $xmlRelatedPartyName = (isset($xmlRelatedPartyType->Nm)) ? (string) $xmlRelatedPartyType->Nm : '' ;
+                $xmlRelatedPartyName = (isset($xmlRelatedPartyType->Nm)) ? (string) $xmlRelatedPartyType->Nm : '';
                 $relatedPartyType = $creditor = new DTO\Creditor($xmlRelatedPartyName);
 
                 $this->addRelatedParty($detail, $xmlRelatedPartyType, $relatedPartyType, $xmlRelatedPartyTypeAccount);
@@ -85,7 +86,7 @@ abstract class EntryTransactionDetail
 
             if (isset($xmlRelatedParty->UltmtCdtr)) {
                 $xmlRelatedPartyType = $xmlRelatedParty->UltmtCdtr;
-                $xmlRelatedPartyName = (isset($xmlRelatedPartyType->Nm)) ? (string) $xmlRelatedPartyType->Nm : '' ;
+                $xmlRelatedPartyName = (isset($xmlRelatedPartyType->Nm)) ? (string) $xmlRelatedPartyType->Nm : '';
                 $relatedPartyType = $creditor = new DTO\UltimateCreditor($xmlRelatedPartyName);
 
                 $this->addRelatedParty($detail, $xmlRelatedPartyType, $relatedPartyType);
@@ -94,7 +95,7 @@ abstract class EntryTransactionDetail
             if (isset($xmlRelatedParty->Dbtr)) {
                 $xmlRelatedPartyType = $xmlRelatedParty->Dbtr;
                 $xmlRelatedPartyTypeAccount = $xmlRelatedParty->DbtrAcct;
-                $xmlRelatedPartyName = (isset($xmlRelatedPartyType->Nm)) ? (string) $xmlRelatedPartyType->Nm : '' ;
+                $xmlRelatedPartyName = (isset($xmlRelatedPartyType->Nm)) ? (string) $xmlRelatedPartyType->Nm : '';
                 $relatedPartyType = $debtor = new DTO\Debtor($xmlRelatedPartyName);
 
                 $this->addRelatedParty($detail, $xmlRelatedPartyType, $relatedPartyType, $xmlRelatedPartyTypeAccount);
@@ -102,7 +103,7 @@ abstract class EntryTransactionDetail
 
             if (isset($xmlRelatedParty->UltmtDbtr)) {
                 $xmlRelatedPartyType = $xmlRelatedParty->UltmtDbtr;
-                $xmlRelatedPartyName = (isset($xmlRelatedPartyType->Nm)) ? (string) $xmlRelatedPartyType->Nm : '' ;
+                $xmlRelatedPartyName = (isset($xmlRelatedPartyType->Nm)) ? (string) $xmlRelatedPartyType->Nm : '';
                 $relatedPartyType = $creditor = new DTO\UltimateDebtor($xmlRelatedPartyName);
 
                 $this->addRelatedParty($detail, $xmlRelatedPartyType, $relatedPartyType);
@@ -114,11 +115,11 @@ abstract class EntryTransactionDetail
      * @param DTO\EntryTransactionDetail $detail
      * @param SimpleXMLElement $xmlRelatedPartyType
      * @param DTO\RelatedPartyTypeInterface $relatedPartyType
-     * @param SimpleXMLElement|null $xmlRelatedPartyTypeAccount
+     * @param null|SimpleXMLElement $xmlRelatedPartyTypeAccount
      *
      * @return DTO\RelatedParty
      */
-    protected function addRelatedParty(DTO\EntryTransactionDetail $detail, SimpleXMLElement $xmlRelatedPartyType, DTO\RelatedPartyTypeInterface $relatedPartyType, SimpleXMLElement $xmlRelatedPartyTypeAccount = null)
+    protected function addRelatedParty(DTO\EntryTransactionDetail $detail, SimpleXMLElement $xmlRelatedPartyType, DTO\RelatedPartyTypeInterface $relatedPartyType, ?SimpleXMLElement $xmlRelatedPartyTypeAccount = null)
     {
         if (isset($xmlRelatedPartyType->PstlAdr)) {
             $relatedPartyType->setAddress(DTOFactory\Address::createFromXml($xmlRelatedPartyType->PstlAdr));
@@ -133,7 +134,7 @@ abstract class EntryTransactionDetail
 
     /**
      * @param DTO\EntryTransactionDetail $detail
-     * @param SimpleXMLElement           $xmlDetail
+     * @param SimpleXMLElement $xmlDetail
      */
     public function addRelatedAgents(DTO\EntryTransactionDetail $detail, SimpleXMLElement $xmlDetail)
     {
@@ -143,14 +144,14 @@ abstract class EntryTransactionDetail
 
         foreach ($xmlDetail->RltdAgts as $xmlRelatedAgent) {
             if (isset($xmlRelatedAgent->CdtrAgt)) {
-                $agent = new DTO\CreditorAgent((string)$xmlRelatedAgent->CdtrAgt->FinInstnId->Nm, (string)$xmlRelatedAgent->CdtrAgt->FinInstnId->BIC);
-                $relatedAgent =  new DTO\RelatedAgent($agent);
+                $agent = new DTO\CreditorAgent((string) $xmlRelatedAgent->CdtrAgt->FinInstnId->Nm, (string) $xmlRelatedAgent->CdtrAgt->FinInstnId->BIC);
+                $relatedAgent = new DTO\RelatedAgent($agent);
                 $detail->addRelatedAgent($relatedAgent);
             }
 
             if (isset($xmlRelatedAgent->DbtrAgt)) {
-                $agent = new DTO\DebtorAgent((string)$xmlRelatedAgent->DbtrAgt->FinInstnId->Nm, (string)$xmlRelatedAgent->DbtrAgt->FinInstnId->BIC);
-                $relatedAgent =  new DTO\RelatedAgent($agent);
+                $agent = new DTO\DebtorAgent((string) $xmlRelatedAgent->DbtrAgt->FinInstnId->Nm, (string) $xmlRelatedAgent->DbtrAgt->FinInstnId->BIC);
+                $relatedAgent = new DTO\RelatedAgent($agent);
                 $detail->addRelatedAgent($relatedAgent);
             }
         }
@@ -158,7 +159,7 @@ abstract class EntryTransactionDetail
 
     /**
      * @param DTO\EntryTransactionDetail $detail
-     * @param SimpleXMLElement           $xmlDetail
+     * @param SimpleXMLElement $xmlDetail
      */
     public function addRemittanceInformation(DTO\EntryTransactionDetail $detail, SimpleXMLElement $xmlDetail)
     {
@@ -174,7 +175,7 @@ abstract class EntryTransactionDetail
         if ($xmlDetailsUnstructuredBlocks !== null) {
             foreach ($xmlDetailsUnstructuredBlocks as $xmlDetailsUnstructuredBlock) {
                 $unstructuredRemittanceInformation = new DTO\UnstructuredRemittanceInformation(
-                    (string)$xmlDetailsUnstructuredBlock
+                    (string) $xmlDetailsUnstructuredBlock
                 );
 
                 $remittanceInformation->addUnstructuredBlock($unstructuredRemittanceInformation);
@@ -183,7 +184,7 @@ abstract class EntryTransactionDetail
                 if ($remittanceInformation->getMessage() === null) {
                     $unstructuredBlockExists = true;
                     $remittanceInformation->setMessage(
-                        (string)$xmlDetailsUnstructuredBlock
+                        (string) $xmlDetailsUnstructuredBlock
                     );
                 }
             }
@@ -197,7 +198,7 @@ abstract class EntryTransactionDetail
 
                 if (isset($xmlDetailsStructuredBlock->AddtlRmtInf)) {
                     $structuredRemittanceInformation->setAdditionalRemittanceInformation(
-                        (string)$xmlDetailsStructuredBlock->AddtlRmtInf
+                        (string) $xmlDetailsStructuredBlock->AddtlRmtInf
                     );
                 }
 
@@ -206,23 +207,23 @@ abstract class EntryTransactionDetail
 
                     if (isset($xmlDetailsStructuredBlock->CdtrRefInf->Ref)) {
                         $creditorReferenceInformation->setRef(
-                            (string)$xmlDetailsStructuredBlock->CdtrRefInf->Ref
+                            (string) $xmlDetailsStructuredBlock->CdtrRefInf->Ref
                         );
                     }
 
                     if (isset($xmlDetailsStructuredBlock->CdtrRefInf->Tp)
-                            && isset($xmlDetailsStructuredBlock->CdtrRefInf->Tp->CdOrPrtry)
-                            && isset($xmlDetailsStructuredBlock->CdtrRefInf->Tp->CdOrPrtry->Prtry)) {
+                        && isset($xmlDetailsStructuredBlock->CdtrRefInf->Tp->CdOrPrtry)
+                        && isset($xmlDetailsStructuredBlock->CdtrRefInf->Tp->CdOrPrtry->Prtry)) {
                         $creditorReferenceInformation->setProprietary(
-                            (string)$xmlDetailsStructuredBlock->CdtrRefInf->Tp->CdOrPrtry->Prtry
+                            (string) $xmlDetailsStructuredBlock->CdtrRefInf->Tp->CdOrPrtry->Prtry
                         );
                     }
 
                     if (isset($xmlDetailsStructuredBlock->CdtrRefInf->Tp)
-                            && isset($xmlDetailsStructuredBlock->CdtrRefInf->Tp->CdOrPrtry)
-                            && isset($xmlDetailsStructuredBlock->CdtrRefInf->Tp->CdOrPrtry->Cd)) {
+                        && isset($xmlDetailsStructuredBlock->CdtrRefInf->Tp->CdOrPrtry)
+                        && isset($xmlDetailsStructuredBlock->CdtrRefInf->Tp->CdOrPrtry->Cd)) {
                         $creditorReferenceInformation->setCode(
-                            (string)$xmlDetailsStructuredBlock->CdtrRefInf->Tp->CdOrPrtry->Cd
+                            (string) $xmlDetailsStructuredBlock->CdtrRefInf->Tp->CdOrPrtry->Cd
                         );
                     }
 
@@ -231,7 +232,7 @@ abstract class EntryTransactionDetail
                     // Legacy : do not overwrite message if already defined above
                     // and no creditor reference is already defined
                     if (false === $unstructuredBlockExists
-                            && $remittanceInformation->getCreditorReferenceInformation() === null) {
+                        && $remittanceInformation->getCreditorReferenceInformation() === null) {
                         $remittanceInformation->setCreditorReferenceInformation($creditorReferenceInformation);
                     }
                 }
@@ -245,7 +246,7 @@ abstract class EntryTransactionDetail
 
     /**
      * @param DTO\EntryTransactionDetail $detail
-     * @param SimpleXMLElement           $xmlDetail
+     * @param SimpleXMLElement $xmlDetail
      */
     public function addRelatedDates(DTO\EntryTransactionDetail $detail, SimpleXMLElement $xmlDetail)
     {
@@ -258,20 +259,21 @@ abstract class EntryTransactionDetail
                 $this->dateDecoder->decode((string) $xmlDetail->RltdDts->AccptncDtTm)
             );
             $detail->setRelatedDates($RelatedDates);
+
             return;
         }
     }
 
     /**
      * @param DTO\EntryTransactionDetail $detail
-     * @param SimpleXMLElement           $xmlDetail
+     * @param SimpleXMLElement $xmlDetail
      */
     public function addReturnInformation(DTO\EntryTransactionDetail $detail, SimpleXMLElement $xmlDetail)
     {
         if (isset($xmlDetail->RtrInf) && isset($xmlDetail->RtrInf->Rsn->Cd)) {
             $remittanceInformation = DTO\ReturnInformation::fromUnstructured(
-                (string)$xmlDetail->RtrInf->Rsn->Cd,
-                (string)$xmlDetail->RtrInf->AddtlInf
+                (string) $xmlDetail->RtrInf->Rsn->Cd,
+                (string) $xmlDetail->RtrInf->AddtlInf
             );
             $detail->setReturnInformation($remittanceInformation);
         }
@@ -279,7 +281,7 @@ abstract class EntryTransactionDetail
 
     /**
      * @param DTO\EntryTransactionDetail $detail
-     * @param SimpleXMLElement           $xmlDetail
+     * @param SimpleXMLElement $xmlDetail
      */
     public function addAdditionalTransactionInformation(DTO\EntryTransactionDetail $detail, SimpleXMLElement $xmlDetail)
     {
@@ -293,7 +295,7 @@ abstract class EntryTransactionDetail
 
     /**
      * @param DTO\EntryTransactionDetail $detail
-     * @param SimpleXMLElement           $xmlDetail
+     * @param SimpleXMLElement $xmlDetail
      */
     public function addBankTransactionCode(DTO\EntryTransactionDetail $detail, SimpleXMLElement $xmlDetail)
     {
@@ -304,8 +306,8 @@ abstract class EntryTransactionDetail
 
             if (isset($xmlDetail->BkTxCd->Prtry)) {
                 $proprietaryBankTransactionCode = new DTO\ProprietaryBankTransactionCode(
-                    (string)$xmlDetail->BkTxCd->Prtry->Cd,
-                    (string)$xmlDetail->BkTxCd->Prtry->Issr
+                    (string) $xmlDetail->BkTxCd->Prtry->Cd,
+                    (string) $xmlDetail->BkTxCd->Prtry->Issr
                 );
 
                 $bankTransactionCode->setProprietary($proprietaryBankTransactionCode);
@@ -313,13 +315,13 @@ abstract class EntryTransactionDetail
 
             if (isset($xmlDetail->BkTxCd->Domn)) {
                 $domainBankTransactionCode = new DTO\DomainBankTransactionCode(
-                    (string)$xmlDetail->BkTxCd->Domn->Cd
+                    (string) $xmlDetail->BkTxCd->Domn->Cd
                 );
 
                 if (isset($xmlDetail->BkTxCd->Domn->Fmly)) {
                     $domainFamilyBankTransactionCode = new DTO\DomainFamilyBankTransactionCode(
-                        (string)$xmlDetail->BkTxCd->Domn->Fmly->Cd,
-                        (string)$xmlDetail->BkTxCd->Domn->Fmly->SubFmlyCd
+                        (string) $xmlDetail->BkTxCd->Domn->Fmly->Cd,
+                        (string) $xmlDetail->BkTxCd->Domn->Fmly->SubFmlyCd
                     );
 
                     $domainBankTransactionCode->setFamily($domainFamilyBankTransactionCode);
@@ -334,7 +336,7 @@ abstract class EntryTransactionDetail
 
     /**
      * @param DTO\EntryTransactionDetail $detail
-     * @param SimpleXMLElement           $xmlDetail
+     * @param SimpleXMLElement $xmlDetail
      */
     public function addCharges(DTO\EntryTransactionDetail $detail, SimpleXMLElement $xmlDetail)
     {
@@ -342,8 +344,8 @@ abstract class EntryTransactionDetail
             $charges = new DTO\Charges();
 
             if (isset($xmlDetail->Chrgs->TtlChrgsAndTaxAmt) && (string) $xmlDetail->Chrgs->TtlChrgsAndTaxAmt) {
-                $amount      = StringToUnits::convert((string) $xmlDetail->Chrgs->TtlChrgsAndTaxAmt);
-                $currency    = (string)$xmlDetail->Chrgs->TtlChrgsAndTaxAmt['Ccy'];
+                $amount = StringToUnits::convert((string) $xmlDetail->Chrgs->TtlChrgsAndTaxAmt);
+                $currency = (string) $xmlDetail->Chrgs->TtlChrgsAndTaxAmt['Ccy'];
 
                 $charges->setTotalChargesAndTaxAmount(new Money($amount, new Currency($currency)));
             }
@@ -356,8 +358,8 @@ abstract class EntryTransactionDetail
                     $chargesDetail = new DTO\ChargesRecord();
 
                     if (isset($chargesRecord->Amt) && (string) $chargesRecord->Amt) {
-                        $amount      = StringToUnits::convert((string) $chargesRecord->Amt);
-                        $currency    = (string)$chargesRecord->Amt['Ccy'];
+                        $amount = StringToUnits::convert((string) $chargesRecord->Amt);
+                        $currency = (string) $chargesRecord->Amt['Ccy'];
 
                         if ((string) $chargesRecord->CdtDbtInd === 'DBIT') {
                             $amount = $amount * -1;
@@ -380,8 +382,8 @@ abstract class EntryTransactionDetail
 
     /**
      * @param DTO\EntryTransactionDetail $detail
-     * @param SimpleXMLElement           $xmlDetail
-     * @param SimpleXMLElement           $CdtDbtInd
+     * @param SimpleXMLElement $xmlDetail
+     * @param SimpleXMLElement $CdtDbtInd
      */
     public function addAmountDetails(DTO\EntryTransactionDetail $detail, SimpleXMLElement $xmlDetail, $CdtDbtInd)
     {
@@ -407,8 +409,8 @@ abstract class EntryTransactionDetail
 
     /**
      * @param DTO\EntryTransactionDetail $detail
-     * @param SimpleXMLElement           $xmlDetail
-     * @param SimpleXMLElement           $CdtDbtInd
+     * @param SimpleXMLElement $xmlDetail
+     * @param SimpleXMLElement $CdtDbtInd
      */
     public function addAmount(DTO\EntryTransactionDetail $detail, SimpleXMLElement $xmlDetail, $CdtDbtInd)
     {
@@ -424,7 +426,7 @@ abstract class EntryTransactionDetail
             $money = new Money(
                 $amount,
                 new Currency((string) $xmlDetail->Amt['Ccy'])
-                );
+            );
             $amountDetails->setAmount($money);
 
             $detail->setAmount($amountDetails);
@@ -432,9 +434,9 @@ abstract class EntryTransactionDetail
     }
 
     /**
-     * @param SimpleXMLElement $xmlRelatedPartyTypeAccount
+     * @param null|SimpleXMLElement $xmlRelatedPartyTypeAccount
      *
-     * @return DTO\Account|null
+     * @return null|DTO\Account
      */
-    abstract public function getRelatedPartyAccount(SimpleXMLElement $xmlRelatedPartyTypeAccount = null);
+    abstract public function getRelatedPartyAccount(?SimpleXMLElement $xmlRelatedPartyTypeAccount): ?DTO\Account;
 }

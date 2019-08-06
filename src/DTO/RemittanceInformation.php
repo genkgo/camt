@@ -6,6 +6,7 @@ use BadMethodCallException;
 
 /**
  * Class RemittanceInformation
+ *
  * @package Genkgo\Camt\DTO
  */
 class RemittanceInformation
@@ -32,19 +33,21 @@ class RemittanceInformation
 
     /**
      * @param string $message
+     *
      * @return static
      */
     public static function fromUnstructured($message)
     {
         $information = new static;
         $information->message = $message;
+
         return $information;
     }
 
     /**
      * @return null|CreditorReferenceInformation
      */
-    public function getCreditorReferenceInformation()
+    public function getCreditorReferenceInformation(): ?CreditorReferenceInformation
     {
         return $this->creditorReferenceInformation;
     }
@@ -59,17 +62,18 @@ class RemittanceInformation
     }
 
     /**
-     * @deprecated Use getStructuredBlocks method instead
      * @return null|string
+     * @deprecated Use getStructuredBlocks method instead
      */
-    public function getMessage()
+    public function getMessage(): ?string
     {
         return $this->message;
     }
 
     /**
-     * @deprecated Use addStructuredBlock method instead
      * @param string $message
+     *
+     * @deprecated Use addStructuredBlock method instead
      */
     public function setMessage($message)
     {
