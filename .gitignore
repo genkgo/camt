@@ -2,5 +2,6 @@
 /.settings/
 /vendor/
 /tests/build/
-.project
-composer.lock
+/.project
+/composer.lock
+/.phpunit.result.cache

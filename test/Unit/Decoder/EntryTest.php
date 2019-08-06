@@ -16,7 +16,7 @@ class EntryTest extends AbstractTestCase
     /** @var Decoder\Entry */
     private $decoder;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->mockedEntryTransactionDetailDecoder = $this->prophesize(Decoder\EntryTransactionDetail::class);
         $this->decoder = new Decoder\Entry($this->mockedEntryTransactionDetailDecoder->reveal());
