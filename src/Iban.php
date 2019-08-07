@@ -30,7 +30,7 @@ class Iban
     {
         return $this->iban;
     }
-    
+
     public function __toString(): string
     {
         return $this->iban;
