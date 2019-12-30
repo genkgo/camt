@@ -16,7 +16,7 @@ class UPICAccount extends Account
     /**
      * @param string $upic
      */
-    public function __construct($upic)
+    public function __construct(string $upic)
     {
         $this->upic = $upic;
     }
@@ -24,7 +24,7 @@ class UPICAccount extends Account
     /**
      * @return string
      */
-    public function getUpic()
+    public function getUpic(): string
     {
         return (string) $this->upic;
     }
@@ -32,7 +32,7 @@ class UPICAccount extends Account
     /**
      * {@inheritdoc}
      */
-    public function getIdentification()
+    public function getIdentification(): string
     {
         return (string) $this->upic;
     }

@@ -13,14 +13,14 @@ class Creditor implements RelatedPartyTypeInterface
      */
     private $name;
     /**
-     * @var Address
+     * @var null|Address
      */
     private $address;
 
     /**
      * @param string $name
      */
-    public function __construct($name)
+    public function __construct(string $name)
     {
         $this->name = $name;
     }
@@ -28,7 +28,7 @@ class Creditor implements RelatedPartyTypeInterface
     /**
      * @param Address $address
      */
-    public function setAddress(Address $address)
+    public function setAddress(Address $address): void
     {
         $this->address = $address;
     }

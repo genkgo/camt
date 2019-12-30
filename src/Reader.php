@@ -31,8 +31,8 @@ class Reader
 
     /**
      * @param DOMDocument $document
-     * @return mixed
      * @throws ReaderException
+     * @return mixed
      */
     public function readDom(DOMDocument $document)
     {
@@ -48,10 +48,10 @@ class Reader
 
     /**
      * @param string $string
-     * @return mixed
      * @throws ReaderException
+     * @return mixed
      */
-    public function readString($string)
+    public function readString(string $string)
     {
         $dom = new DOMDocument('1.0', 'UTF-8');
         $dom->loadXML($string);
@@ -64,7 +64,7 @@ class Reader
      * @return Message|mixed
      * @throws ReaderException
      */
-    public function readFile($file)
+    public function readFile(string $file)
     {
         if (!file_exists($file)) {
             throw new ReaderException("{$file} does not exists");
@@ -83,7 +83,7 @@ class Reader
      * @return MessageFormatInterface
      * @throws ReaderException
      */
-    private function getMessageFormatForXmlNs($xmlNs)
+    private function getMessageFormatForXmlNs(string $xmlNs): MessageFormatInterface
     {
         $messageFormats = $this->config->getMessageFormats();
         foreach ($messageFormats as $messageFormat) {
@@ -98,7 +98,7 @@ class Reader
     /**
      * @return null|MessageFormatInterface
      */
-    public function getMessageFormat()
+    public function getMessageFormat(): ?MessageFormatInterface
     {
         return $this->messageFormat;
     }

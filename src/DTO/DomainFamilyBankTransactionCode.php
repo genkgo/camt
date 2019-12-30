@@ -13,7 +13,7 @@ class DomainFamilyBankTransactionCode
      * @param string $code
      * @param string $subFamilyCode
      */
-    public function __construct($code, $subFamilyCode)
+    public function __construct(string $code, string $subFamilyCode)
     {
         $this->code = $code;
         $this->subFamilyCode = $subFamilyCode;
@@ -22,7 +22,7 @@ class DomainFamilyBankTransactionCode
     /**
      * @return string
      */
-    public function getCode()
+    public function getCode(): string
     {
         return $this->code;
     }
@@ -30,7 +30,7 @@ class DomainFamilyBankTransactionCode
     /**
      * @param string $code
      */
-    public function setCode($code)
+    public function setCode(string $code): void
     {
         $this->code = $code;
     }
@@ -38,7 +38,7 @@ class DomainFamilyBankTransactionCode
     /**
      * @return string
      */
-    public function getSubFamilyCode()
+    public function getSubFamilyCode(): string
     {
         return $this->subFamilyCode;
     }
@@ -46,7 +46,7 @@ class DomainFamilyBankTransactionCode
     /**
      * @param string $issuer
      */
-    public function setSubFamilyCode($issuer)
+    public function setSubFamilyCode(string $issuer): void
     {
         $this->subFamilyCode = $issuer;
     }

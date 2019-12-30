@@ -14,7 +14,7 @@ class Message extends BaseMessageDecoder
      * @param DTO\Message      $message
      * @param SimpleXMLElement $document
      */
-    public function addRecords(DTO\Message $message, SimpleXMLElement $document)
+    public function addRecords(DTO\Message $message, SimpleXMLElement $document): void
     {
         $statements = [];
 
@@ -50,7 +50,7 @@ class Message extends BaseMessageDecoder
     /**
      * {@inheritdoc}
      */
-    public function getRootElement(SimpleXMLElement $document)
+    public function getRootElement(SimpleXMLElement $document): SimpleXMLElement
     {
         return $document->BkToCstmrStmt;
     }
@@ -60,7 +60,7 @@ class Message extends BaseMessageDecoder
      *
      * @return DTO\Account
      */
-    protected function getAccount(SimpleXMLElement $xmlRecord)
+    protected function getAccount(SimpleXMLElement $xmlRecord): DTO\Account
     {
         if (isset($xmlRecord->Acct->Id->IBAN)) {
             return new DTO\IbanAccount(new Iban((string) $xmlRecord->Acct->Id->IBAN));

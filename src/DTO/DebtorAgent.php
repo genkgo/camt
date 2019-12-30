@@ -18,7 +18,7 @@ class DebtorAgent implements RelatedAgentTypeInterface
      * @param string $name
      * @param string $BIC
      */
-    public function __construct($name, $BIC)
+    public function __construct(string $name, string $BIC)
     {
         $this->name = $name;
         $this->BIC = $BIC;
@@ -27,7 +27,7 @@ class DebtorAgent implements RelatedAgentTypeInterface
     /**
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -35,7 +35,7 @@ class DebtorAgent implements RelatedAgentTypeInterface
     /**
      * @param string  $name
      */
-    public function setName($name)
+    public function setName(string $name): void
     {
         $this->name = $name;
     }
@@ -43,7 +43,7 @@ class DebtorAgent implements RelatedAgentTypeInterface
     /**
      * @return string
      */
-    public function getBIC()
+    public function getBIC(): string
     {
         return $this->BIC;
     }
@@ -51,7 +51,7 @@ class DebtorAgent implements RelatedAgentTypeInterface
     /**
      * @param string  $BIC
      */
-    public function setBIC($BIC)
+    public function setBIC(string $BIC): void
     {
         $this->BIC = $BIC;
     }

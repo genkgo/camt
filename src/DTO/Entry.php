@@ -82,7 +82,7 @@ class Entry
      * @param int $index
      * @param Money $amount
      */
-    public function __construct(Record $record, $index, Money $amount)
+    public function __construct(Record $record, int $index, Money $amount)
     {
         $this->record = $record;
         $this->index = $index;
@@ -92,7 +92,7 @@ class Entry
     /**
      * @return Record
      */
-    public function getRecord()
+    public function getRecord(): Record
     {
         return $this->record;
     }
@@ -100,7 +100,7 @@ class Entry
     /**
      * @return Money
      */
-    public function getAmount()
+    public function getAmount(): Money
     {
         return $this->amount;
     }
@@ -108,7 +108,7 @@ class Entry
     /**
      * @return null|DateTimeImmutable
      */
-    public function getBookingDate()
+    public function getBookingDate(): ?DateTimeImmutable
     {
         return $this->bookingDate;
     }
@@ -116,7 +116,7 @@ class Entry
     /**
      * @return null|DateTimeImmutable
      */
-    public function getValueDate()
+    public function getValueDate(): ?DateTimeImmutable
     {
         return $this->valueDate;
     }
@@ -124,7 +124,7 @@ class Entry
     /**
      * @param EntryTransactionDetail $detail
      */
-    public function addTransactionDetail(EntryTransactionDetail $detail)
+    public function addTransactionDetail(EntryTransactionDetail $detail): void
     {
         $this->transactionDetails[] = $detail;
     }
@@ -132,7 +132,7 @@ class Entry
     /**
      * @return EntryTransactionDetail[]
      */
-    public function getTransactionDetails()
+    public function getTransactionDetails(): array
     {
         return $this->transactionDetails;
     }
@@ -152,7 +152,7 @@ class Entry
     /**
      * @return bool
      */
-    public function getReversalIndicator()
+    public function getReversalIndicator(): bool
     {
         return $this->reversalIndicator;
     }
@@ -160,7 +160,7 @@ class Entry
     /**
      * @param bool $reversalIndicator
      */
-    public function setReversalIndicator($reversalIndicator)
+    public function setReversalIndicator(bool $reversalIndicator): void
     {
         $this->reversalIndicator = $reversalIndicator;
     }
@@ -168,7 +168,7 @@ class Entry
     /**
      * @return null|string
      */
-    public function getReference()
+    public function getReference(): ?string
     {
         return $this->reference;
     }
@@ -176,7 +176,7 @@ class Entry
     /**
      * @param null|string $reference
      */
-    public function setReference($reference)
+    public function setReference(?string $reference): void
     {
         $this->reference = $reference;
     }
@@ -186,7 +186,7 @@ class Entry
      *
      * @return null|string
      */
-    public function getAccountServicerReference()
+    public function getAccountServicerReference(): ?string
     {
         return $this->accountServicerReference;
     }
@@ -194,7 +194,7 @@ class Entry
     /**
      * @param null|string $accountServicerReference
      */
-    public function setAccountServicerReference($accountServicerReference)
+    public function setAccountServicerReference(?string $accountServicerReference): void
     {
         $this->accountServicerReference = $accountServicerReference;
     }
@@ -202,7 +202,7 @@ class Entry
     /**
      * @return int
      */
-    public function getIndex()
+    public function getIndex(): int
     {
         return $this->index;
     }
@@ -210,7 +210,7 @@ class Entry
     /**
      * @param null|string $batchPaymentId
      */
-    public function setBatchPaymentId($batchPaymentId)
+    public function setBatchPaymentId(?string $batchPaymentId): void
     {
         $this->batchPaymentId = trim($batchPaymentId);
     }
@@ -218,7 +218,7 @@ class Entry
     /**
      * @return null|string
      */
-    public function getBatchPaymentId()
+    public function getBatchPaymentId(): ?string
     {
         return $this->batchPaymentId;
     }
@@ -226,7 +226,7 @@ class Entry
     /**
      * @return null|string
      */
-    public function getAdditionalInfo()
+    public function getAdditionalInfo(): ?string
     {
         return $this->additionalInfo;
     }
@@ -234,7 +234,7 @@ class Entry
     /**
      * @param null|string $additionalInfo
      */
-    public function setAdditionalInfo($additionalInfo)
+    public function setAdditionalInfo(?string $additionalInfo): void
     {
         $this->additionalInfo = $additionalInfo;
     }
@@ -242,7 +242,7 @@ class Entry
     /**
      * @return null|BankTransactionCode
      */
-    public function getBankTransactionCode()
+    public function getBankTransactionCode(): ?BankTransactionCode
     {
         return $this->bankTransactionCode;
     }
@@ -250,7 +250,7 @@ class Entry
     /**
      * @param null|BankTransactionCode $bankTransactionCode
      */
-    public function setBankTransactionCode(?BankTransactionCode $bankTransactionCode)
+    public function setBankTransactionCode(?BankTransactionCode $bankTransactionCode): void
     {
         $this->bankTransactionCode = $bankTransactionCode;
     }
@@ -258,7 +258,7 @@ class Entry
     /**
      * @return null|Charges
      */
-    public function getCharges()
+    public function getCharges(): ?Charges
     {
         return $this->charges;
     }
@@ -266,7 +266,7 @@ class Entry
     /**
      * @param null|Charges $charges
      */
-    public function setCharges(?Charges $charges)
+    public function setCharges(?Charges $charges): void
     {
         $this->charges = $charges;
     }
@@ -274,7 +274,7 @@ class Entry
     /**
      * @param null|DateTimeImmutable $date
      */
-    public function setBookingDate(?DateTimeImmutable $date)
+    public function setBookingDate(?DateTimeImmutable $date): void
     {
         $this->bookingDate = $date;
     }
@@ -282,7 +282,7 @@ class Entry
     /**
      * @param null|DateTimeImmutable $date
      */
-    public function setValueDate(?DateTimeImmutable $date)
+    public function setValueDate(?DateTimeImmutable $date): void
     {
         $this->valueDate = $date;
     }

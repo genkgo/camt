@@ -16,7 +16,7 @@ class EntryIteratorTest extends AbstractTestCase
         return (new MessageFormat\V02)->getDecoder()->decode($dom);
     }
 
-    public function testMultipleStatements()
+    public function testMultipleStatements(): void
     {
         $message = $this->getDefaultMessage();
         $entries = $message->getEntries();

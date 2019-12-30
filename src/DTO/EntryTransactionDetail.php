@@ -63,7 +63,7 @@ class EntryTransactionDetail
     /**
      * @param null|Reference $reference
      */
-    public function setReference(?Reference $reference)
+    public function setReference(?Reference $reference): void
     {
         $this->reference = $reference;
     }
@@ -79,7 +79,7 @@ class EntryTransactionDetail
     /**
      * @param RelatedParty $relatedParty
      */
-    public function addRelatedParty(RelatedParty $relatedParty)
+    public function addRelatedParty(RelatedParty $relatedParty): void
     {
         $this->relatedParties[] = $relatedParty;
     }
@@ -87,7 +87,7 @@ class EntryTransactionDetail
     /**
      * @return RelatedParty[]
      */
-    public function getRelatedParties()
+    public function getRelatedParties(): array
     {
         return $this->relatedParties;
     }
@@ -107,7 +107,7 @@ class EntryTransactionDetail
     /**
      * @param RelatedAgent $relatedAgent
      */
-    public function addRelatedAgent(RelatedAgent $relatedAgent)
+    public function addRelatedAgent(RelatedAgent $relatedAgent): void
     {
         $this->relatedAgents[] = $relatedAgent;
     }
@@ -115,7 +115,7 @@ class EntryTransactionDetail
     /**
      * @return RelatedAgent[]
      */
-    public function getRelatedAgents()
+    public function getRelatedAgents(): array
     {
         return $this->relatedAgents;
     }
@@ -135,7 +135,7 @@ class EntryTransactionDetail
     /**
      * @param null|RemittanceInformation $remittanceInformation
      */
-    public function setRemittanceInformation(?RemittanceInformation $remittanceInformation)
+    public function setRemittanceInformation(?RemittanceInformation $remittanceInformation): void
     {
         $this->remittanceInformation = $remittanceInformation;
     }
@@ -151,7 +151,7 @@ class EntryTransactionDetail
     /**
      * @param null|RelatedDates $relatedDates
      */
-    public function setRelatedDates(?RelatedDates $relatedDates)
+    public function setRelatedDates(?RelatedDates $relatedDates): void
     {
         $this->relatedDates = $relatedDates;
     }
@@ -159,7 +159,7 @@ class EntryTransactionDetail
     /**
      * @return null|RelatedDates
      */
-    public function getRelatedDates()
+    public function getRelatedDates(): ?RelatedDates
     {
         return $this->relatedDates;
     }
@@ -175,7 +175,7 @@ class EntryTransactionDetail
     /**
      * @param null|ReturnInformation $information
      */
-    public function setReturnInformation(?ReturnInformation $information)
+    public function setReturnInformation(?ReturnInformation $information): void
     {
         $this->returnInformation = $information;
     }
@@ -183,7 +183,7 @@ class EntryTransactionDetail
     /**
      * @param null|AdditionalTransactionInformation $additionalTransactionInformation
      */
-    public function setAdditionalTransactionInformation(?AdditionalTransactionInformation $additionalTransactionInformation)
+    public function setAdditionalTransactionInformation(?AdditionalTransactionInformation $additionalTransactionInformation): void
     {
         $this->additionalTransactionInformation = $additionalTransactionInformation;
     }
@@ -199,7 +199,7 @@ class EntryTransactionDetail
     /**
      * @return BankTransactionCode
      */
-    public function getBankTransactionCode()
+    public function getBankTransactionCode(): BankTransactionCode
     {
         return $this->bankTransactionCode;
     }
@@ -207,7 +207,7 @@ class EntryTransactionDetail
     /**
      * @param BankTransactionCode $bankTransactionCode
      */
-    public function setBankTransactionCode(BankTransactionCode $bankTransactionCode)
+    public function setBankTransactionCode(BankTransactionCode $bankTransactionCode): void
     {
         $this->bankTransactionCode = $bankTransactionCode;
     }
@@ -215,7 +215,7 @@ class EntryTransactionDetail
     /**
      * @return null|Charges
      */
-    public function getCharges()
+    public function getCharges(): ?Charges
     {
         return $this->charges;
     }
@@ -223,7 +223,7 @@ class EntryTransactionDetail
     /**
      * @param null|Charges $charges
      */
-    public function setCharges(?Charges $charges)
+    public function setCharges(?Charges $charges): void
     {
         $this->charges = $charges;
     }
@@ -239,7 +239,7 @@ class EntryTransactionDetail
     /**
      * @param null|Money $amountDetails
      */
-    public function setAmountDetails(?Money $amountDetails)
+    public function setAmountDetails(?Money $amountDetails): void
     {
         $this->amountDetails = $amountDetails;
     }
@@ -255,7 +255,7 @@ class EntryTransactionDetail
     /**
      * @param null|Money $amount
      */
-    public function setAmount(?Money $amount)
+    public function setAmount(?Money $amount): void
     {
         $this->amount = $amount;
     }

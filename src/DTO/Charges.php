@@ -15,7 +15,7 @@ class Charges
     /**
      * @return Money
      */
-    public function getTotalChargesAndTaxAmount()
+    public function getTotalChargesAndTaxAmount(): Money
     {
         return $this->totalChargesAndTaxAmount;
     }
@@ -23,7 +23,7 @@ class Charges
     /**
      * @param Money $money
      */
-    public function setTotalChargesAndTaxAmount(Money $money)
+    public function setTotalChargesAndTaxAmount(Money $money): void
     {
         $this->totalChargesAndTaxAmount = $money;
     }
@@ -31,7 +31,7 @@ class Charges
     /**
      * @param ChargesRecord $record
      */
-    public function addRecord(ChargesRecord $record)
+    public function addRecord(ChargesRecord $record): void
     {
         $this->records[] = $record;
     }
@@ -39,7 +39,7 @@ class Charges
     /**
      * @return ChargesRecord[]
      */
-    public function getRecords()
+    public function getRecords(): array
     {
         return $this->records;
     }

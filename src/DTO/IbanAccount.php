@@ -26,7 +26,7 @@ class IbanAccount extends Account
     /**
      * @return Iban
      */
-    public function getIban()
+    public function getIban(): Iban
     {
         return $this->iban;
     }
@@ -34,7 +34,7 @@ class IbanAccount extends Account
     /**
      * {@inheritdoc}
      */
-    public function getIdentification()
+    public function getIdentification(): string
     {
         return (string) $this->iban;
     }

@@ -20,7 +20,7 @@ class Debtor implements RelatedPartyTypeInterface
     /**
      * @param string $name
      */
-    public function __construct($name)
+    public function __construct(string $name)
     {
         $this->name = $name;
     }
@@ -28,7 +28,7 @@ class Debtor implements RelatedPartyTypeInterface
     /**
      * @param Address $address
      */
-    public function setAddress(Address $address)
+    public function setAddress(Address $address): void
     {
         $this->address = $address;
     }

@@ -21,7 +21,7 @@ class ReturnInformation
     /**
      * @return string
      */
-    public function getCode()
+    public function getCode(): string
     {
         return $this->code;
     }
@@ -29,7 +29,7 @@ class ReturnInformation
     /**
      * @return string
      */
-    public function getAdditionalInformation()
+    public function getAdditionalInformation(): string
     {
         return $this->additionalInformation;
     }
@@ -40,7 +40,7 @@ class ReturnInformation
      *
      * @return self
      */
-    public static function fromUnstructured($code, $additionalInformation)
+    public static function fromUnstructured(string $code, string $additionalInformation): ReturnInformation
     {
         $information = new self();
         $information->code = $code;

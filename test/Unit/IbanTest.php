@@ -8,7 +8,7 @@ use Genkgo\Camt\Iban;
 
 class IbanTest extends AbstractTestCase
 {
-    public function testValidIbanMachineFormat()
+    public function testValidIbanMachineFormat(): void
     {
         $iban = new Iban($expected = "NL91ABNA0417164300");
 
@@ -16,7 +16,7 @@ class IbanTest extends AbstractTestCase
         $this->assertEquals($expected, $iban);
     }
 
-    public function testValidIbanHumanFormat()
+    public function testValidIbanHumanFormat(): void
     {
         $expected = "NL91ABNA0417164300";
 
@@ -26,7 +26,7 @@ class IbanTest extends AbstractTestCase
         $this->assertEquals($expected, $iban);
     }
 
-    public function testInvalidIban()
+    public function testInvalidIban(): void
     {
         $this->expectException(InvalidArgumentException::class);
 

@@ -12,7 +12,7 @@ class Recipient
      *
      * @return DTO\Recipient
      */
-    public static function createFromXml(SimpleXMLElement $xmlRecipient)
+    public static function createFromXml(SimpleXMLElement $xmlRecipient): DTO\Recipient
     {
         $recipient = new DTO\Recipient();
 

@@ -13,7 +13,7 @@ class Message extends BaseMessage
     /**
      * {@inheritdoc}
      */
-    public function addGroupHeader(DTO\Message $message, SimpleXMLElement $document)
+    public function addGroupHeader(DTO\Message $message, SimpleXMLElement $document): void
     {
         $xmlGroupHeader = $this->getRootElement($document)->GrpHdr;
         $groupHeader = new Camt054V04DTO\GroupHeader(

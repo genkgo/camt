@@ -17,7 +17,7 @@ abstract class RecordWithBalances extends Record
     /**
      * @param Balance $balance
      */
-    public function addBalance(Balance $balance)
+    public function addBalance(Balance $balance): void
     {
         $this->balances[] = $balance;
     }
@@ -25,7 +25,7 @@ abstract class RecordWithBalances extends Record
     /**
      * @return Balance[]
      */
-    public function getBalances()
+    public function getBalances(): array
     {
         return $this->balances;
     }

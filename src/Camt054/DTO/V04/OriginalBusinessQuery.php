@@ -24,7 +24,7 @@ class OriginalBusinessQuery
     /**
      * @param string $messageId
      */
-    public function __construct($messageId)
+    public function __construct(string $messageId)
     {
         $this->messageId = $messageId;
     }
@@ -32,7 +32,7 @@ class OriginalBusinessQuery
     /**
      * @return string
      */
-    public function getMessageId()
+    public function getMessageId(): string
     {
         return $this->messageId;
     }
@@ -50,7 +50,7 @@ class OriginalBusinessQuery
      *
      * @return OriginalBusinessQuery
      */
-    public function setMessageNameId($messageNameId)
+    public function setMessageNameId(string $messageNameId): self
     {
         $this->messageNameId = $messageNameId;
 
@@ -62,7 +62,7 @@ class OriginalBusinessQuery
      *
      * @return OriginalBusinessQuery
      */
-    public function setCreatedOn(DateTimeImmutable $createdOn)
+    public function setCreatedOn(DateTimeImmutable $createdOn): self
     {
         $this->createdOn = $createdOn;
 

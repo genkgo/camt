@@ -71,7 +71,7 @@ abstract class Record
      * @param DateTimeImmutable $createdOn
      * @param Account $account
      */
-    public function __construct($id, DateTimeImmutable $createdOn, Account $account)
+    public function __construct(string $id, DateTimeImmutable $createdOn, Account $account)
     {
         $this->id = $id;
         $this->createdOn = $createdOn;
@@ -81,7 +81,7 @@ abstract class Record
     /**
      * @return string
      */
-    public function getId()
+    public function getId(): string
     {
         return $this->id;
     }
@@ -89,7 +89,7 @@ abstract class Record
     /**
      * @return DateTimeImmutable
      */
-    public function getCreatedOn()
+    public function getCreatedOn(): DateTimeImmutable
     {
         return $this->createdOn;
     }
@@ -97,7 +97,7 @@ abstract class Record
     /**
      * @return Account
      */
-    public function getAccount()
+    public function getAccount(): Account
     {
         return $this->account;
     }
@@ -113,7 +113,7 @@ abstract class Record
     /**
      * @param Pagination $pagination
      */
-    public function setPagination(Pagination $pagination)
+    public function setPagination(Pagination $pagination): void
     {
         $this->pagination = $pagination;
     }
@@ -129,7 +129,7 @@ abstract class Record
     /**
      * @param string $electronicSequenceNumber
      */
-    public function setElectronicSequenceNumber($electronicSequenceNumber)
+    public function setElectronicSequenceNumber(string $electronicSequenceNumber): void
     {
         $this->electronicSequenceNumber = $electronicSequenceNumber;
     }
@@ -145,7 +145,7 @@ abstract class Record
     /**
      * @param string $legalSequenceNumber
      */
-    public function setLegalSequenceNumber($legalSequenceNumber)
+    public function setLegalSequenceNumber(string $legalSequenceNumber): void
     {
         $this->legalSequenceNumber = $legalSequenceNumber;
     }
@@ -161,7 +161,7 @@ abstract class Record
     /**
      * @param string $copyDuplicateIndicator
      */
-    public function setCopyDuplicateIndicator($copyDuplicateIndicator)
+    public function setCopyDuplicateIndicator(string $copyDuplicateIndicator): void
     {
         $this->copyDuplicateIndicator = $copyDuplicateIndicator;
     }
@@ -177,7 +177,7 @@ abstract class Record
     /**
      * @param DateTimeImmutable $fromDate
      */
-    public function setFromDate(DateTimeImmutable $fromDate)
+    public function setFromDate(DateTimeImmutable $fromDate): void
     {
         $this->fromDate = $fromDate;
     }
@@ -193,7 +193,7 @@ abstract class Record
     /**
      * @param DateTimeImmutable $toDate
      */
-    public function setToDate(DateTimeImmutable $toDate)
+    public function setToDate(DateTimeImmutable $toDate): void
     {
         $this->toDate = $toDate;
     }
@@ -201,7 +201,7 @@ abstract class Record
     /**
      * @param Entry $entry
      */
-    public function addEntry(Entry $entry)
+    public function addEntry(Entry $entry): void
     {
         $this->entries[] = $entry;
     }
@@ -209,7 +209,7 @@ abstract class Record
     /**
      * @return Entry[]
      */
-    public function getEntries()
+    public function getEntries(): array
     {
         return $this->entries;
     }
@@ -225,7 +225,7 @@ abstract class Record
     /**
      * @param string $additionalInformation
      */
-    public function setAdditionalInformation($additionalInformation)
+    public function setAdditionalInformation(string $additionalInformation): void
     {
         $this->additionalInformation = $additionalInformation;
     }

@@ -11,7 +11,7 @@ trait Mapping
      * @param SimpleXMLElement $xml
      * @param array $mapping
      */
-    public static function map($object, SimpleXMLElement $xml, array $mapping)
+    public static function map(object $object, SimpleXMLElement $xml, array $mapping): void
     {
         foreach ($mapping as $line) {
             $setter   = $line['setter'];

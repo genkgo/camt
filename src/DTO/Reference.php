@@ -91,7 +91,7 @@ class Reference
      *
      * @return Reference
      */
-    public function setMessageId(?string $messageId)
+    public function setMessageId(?string $messageId): self
     {
         $this->messageId = $messageId;
 
@@ -111,7 +111,7 @@ class Reference
      *
      * @return Reference
      */
-    public function setAccountServicerReference(?string $accountServicerReference)
+    public function setAccountServicerReference(?string $accountServicerReference): self
     {
         $this->accountServicerReference = $accountServicerReference;
 
@@ -131,7 +131,7 @@ class Reference
      *
      * @return Reference
      */
-    public function setPaymentInformationId(?string $paymentInformationId)
+    public function setPaymentInformationId(?string $paymentInformationId): self
     {
         $this->paymentInformationId = $paymentInformationId;
 
@@ -151,7 +151,7 @@ class Reference
      *
      * @return Reference
      */
-    public function setInstructionId(?string $instructionId)
+    public function setInstructionId(?string $instructionId): self
     {
         $this->instructionId = $instructionId;
 
@@ -171,7 +171,7 @@ class Reference
      *
      * @return Reference
      */
-    public function setEndToEndId(?string $endToEndId)
+    public function setEndToEndId(?string $endToEndId): self
     {
         $this->endToEndId = $endToEndId;
 
@@ -191,7 +191,7 @@ class Reference
      *
      * @return Reference
      */
-    public function setTransactionId(?string $transactionId)
+    public function setTransactionId(?string $transactionId): self
     {
         $this->transactionId = $transactionId;
 
@@ -211,7 +211,7 @@ class Reference
      *
      * @return Reference
      */
-    public function setMandateId(?string $mandateId)
+    public function setMandateId(?string $mandateId): self
     {
         $this->mandateId = $mandateId;
 
@@ -231,7 +231,7 @@ class Reference
      *
      * @return Reference
      */
-    public function setChequeNumber(?string $chequeNumber)
+    public function setChequeNumber(?string $chequeNumber): self
     {
         $this->chequeNumber = $chequeNumber;
 
@@ -251,7 +251,7 @@ class Reference
      *
      * @return Reference
      */
-    public function setClearingSystemReference(?string $clearingSystemReference)
+    public function setClearingSystemReference(?string $clearingSystemReference): self
     {
         $this->clearingSystemReference = $clearingSystemReference;
 
@@ -271,7 +271,7 @@ class Reference
      *
      * @return Reference
      */
-    public function setAccountOwnerTransactionId(?string $accountOwnerTransactionId)
+    public function setAccountOwnerTransactionId(?string $accountOwnerTransactionId): self
     {
         $this->accountOwnerTransactionId = $accountOwnerTransactionId;
 
@@ -291,7 +291,7 @@ class Reference
      *
      * @return Reference
      */
-    public function setAccountServicerTransactionId(?string $accountServicerTransactionId)
+    public function setAccountServicerTransactionId(?string $accountServicerTransactionId): self
     {
         $this->accountServicerTransactionId = $accountServicerTransactionId;
 
@@ -311,7 +311,7 @@ class Reference
      *
      * @return Reference
      */
-    public function setMarketInfrastructureTransactionId(?string $marketInfrastructureTransactionId)
+    public function setMarketInfrastructureTransactionId(?string $marketInfrastructureTransactionId): self
     {
         $this->marketInfrastructureTransactionId = $marketInfrastructureTransactionId;
 
@@ -331,7 +331,7 @@ class Reference
      *
      * @return Reference
      */
-    public function setProcessingId(?string $processingId)
+    public function setProcessingId(?string $processingId): self
     {
         $this->processingId = $processingId;
 
@@ -343,7 +343,7 @@ class Reference
      *
      * @return Reference
      */
-    public function addProprietary(ProprietaryReference $proprietary)
+    public function addProprietary(ProprietaryReference $proprietary): self
     {
         $this->proprietaries[] = $proprietary;
 
@@ -353,7 +353,7 @@ class Reference
     /**
      * @return ProprietaryReference[]
      */
-    public function getProprietaries()
+    public function getProprietaries(): array
     {
         return $this->proprietaries;
     }

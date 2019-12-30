@@ -26,7 +26,7 @@ class EntryTest extends AbstractTestCase
     /**
      * @test
      */
-    public function it_does_not_add_transaction_details_if_there_is_none_in_xml()
+    public function it_does_not_add_transaction_details_if_there_is_none_in_xml(): void
     {
         $entry = $this->prophesize(DTO\Entry::class);
         $entry->addTransactionDetail(Argument::any())->shouldNotBeCalled();
@@ -38,7 +38,7 @@ class EntryTest extends AbstractTestCase
     /**
      * @test
      */
-    public function it_adds_transaction_details_if_there_are_present_in_xml()
+    public function it_adds_transaction_details_if_there_are_present_in_xml(): void
     {
         $entry = $this->prophesize(DTO\Entry::class);
         $this->mockedEntryTransactionDetailDecoder->addReference(
@@ -92,7 +92,7 @@ class EntryTest extends AbstractTestCase
         $this->decoder->addTransactionDetails($entry->reveal(), $this->getXmlEntry());
     }
 
-    private function getXmlEntry()
+    private function getXmlEntry(): SimpleXMLElement
     {
         $xmlContent = <<<XML
 <content>

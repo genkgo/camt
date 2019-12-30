@@ -50,7 +50,7 @@ class ContactDetails
     /**
      * @param string $namePrefix
      */
-    public function setNamePrefix($namePrefix)
+    public function setNamePrefix(string $namePrefix): void
     {
         $this->namePrefix = $namePrefix;
     }
@@ -66,7 +66,7 @@ class ContactDetails
     /**
      * @param string $name
      */
-    public function setName($name)
+    public function setName(string $name): void
     {
         $this->name = $name;
     }
@@ -82,7 +82,7 @@ class ContactDetails
     /**
      * @param string $phoneNumber
      */
-    public function setPhoneNumber($phoneNumber)
+    public function setPhoneNumber(string $phoneNumber): void
     {
         $this->phoneNumber = $phoneNumber;
     }
@@ -98,7 +98,7 @@ class ContactDetails
     /**
      * @param string $mobileNumber
      */
-    public function setMobileNumber($mobileNumber)
+    public function setMobileNumber(string $mobileNumber): void
     {
         $this->mobileNumber = $mobileNumber;
     }
@@ -114,7 +114,7 @@ class ContactDetails
     /**
      * @param string $faxNumber
      */
-    public function setFaxNumber($faxNumber)
+    public function setFaxNumber(string $faxNumber): void
     {
         $this->faxNumber = $faxNumber;
     }
@@ -130,7 +130,7 @@ class ContactDetails
     /**
      * @param string $emailAddress
      */
-    public function setEmailAddress($emailAddress)
+    public function setEmailAddress(string $emailAddress): void
     {
         $this->emailAddress = $emailAddress;
     }
@@ -146,7 +146,7 @@ class ContactDetails
     /**
      * @param string $other
      */
-    public function setOther($other)
+    public function setOther(string $other): void
     {
         $this->other = $other;
     }

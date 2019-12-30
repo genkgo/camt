@@ -12,5 +12,5 @@ interface DecoderInterface
      *
      * @return Message|mixed
      */
-    public function decode(DOMDocument $document, $xsdValidation = true);
+    public function decode(DOMDocument $document, bool $xsdValidation = true);
 }

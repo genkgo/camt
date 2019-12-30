@@ -16,7 +16,7 @@ final class V04 implements MessageFormatInterface
     /**
      * @return string
      */
-    public function getXmlNs()
+    public function getXmlNs(): string
     {
         return 'urn:iso:std:iso:20022:tech:xsd:camt.052.001.04';
     }
@@ -24,7 +24,7 @@ final class V04 implements MessageFormatInterface
     /**
      * @return string
      */
-    public function getMsgId()
+    public function getMsgId(): string
     {
         return 'camt.052.001.04';
     }
@@ -32,7 +32,7 @@ final class V04 implements MessageFormatInterface
     /**
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return 'BankToCustomerAccountReportV04';
     }
@@ -40,7 +40,7 @@ final class V04 implements MessageFormatInterface
     /**
      * @return DecoderInterface
      */
-    public function getDecoder()
+    public function getDecoder(): DecoderInterface
     {
         $entryTransactionDetailDecoder = new Camt052\Decoder\EntryTransactionDetail(new Decoder\Date());
         $entryDecoder                  = new Decoder\Entry($entryTransactionDetailDecoder);

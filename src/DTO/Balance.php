@@ -39,7 +39,7 @@ class Balance
      * @param Money $amount
      * @param DateTimeImmutable $date
      */
-    private function __construct($type, Money $amount, DateTimeImmutable $date)
+    private function __construct(string $type, Money $amount, DateTimeImmutable $date)
     {
         $this->type = $type;
         $this->amount = $amount;
@@ -49,7 +49,7 @@ class Balance
     /**
      * @return DateTimeImmutable
      */
-    public function getDate()
+    public function getDate(): DateTimeImmutable
     {
         return $this->date;
     }
@@ -57,7 +57,7 @@ class Balance
     /**
      * @return Money
      */
-    public function getAmount()
+    public function getAmount(): Money
     {
         return $this->amount;
     }
@@ -65,7 +65,7 @@ class Balance
     /**
      * @return string
      */
-    public function getType()
+    public function getType(): string
     {
         return $this->type;
     }
@@ -75,7 +75,7 @@ class Balance
      * @param DateTimeImmutable $date
      * @return self
      */
-    public static function opening(Money $amount, DateTimeImmutable $date)
+    public static function opening(Money $amount, DateTimeImmutable $date): Balance
     {
         return new self(self::TYPE_OPENING, $amount, $date);
     }
@@ -85,7 +85,7 @@ class Balance
      * @param DateTimeImmutable $date
      * @return self
      */
-    public static function closing(Money $amount, DateTimeImmutable $date)
+    public static function closing(Money $amount, DateTimeImmutable $date): Balance
     {
         return new self(self::TYPE_CLOSING, $amount, $date);
     }

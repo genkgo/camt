@@ -14,7 +14,7 @@ class Message extends BaseMessageDecoder
      * @param DTO\Message      $message
      * @param SimpleXMLElement $document
      */
-    public function addRecords(DTO\Message $message, SimpleXMLElement $document)
+    public function addRecords(DTO\Message $message, SimpleXMLElement $document): void
     {
         $notifications = [];
 
@@ -49,7 +49,7 @@ class Message extends BaseMessageDecoder
     /**
      * {@inheritdoc}
      */
-    public function getRootElement(SimpleXMLElement $document)
+    public function getRootElement(SimpleXMLElement $document): SimpleXMLElement
     {
         return $document->BkToCstmrDbtCdtNtfctn;
     }

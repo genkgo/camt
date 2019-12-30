@@ -23,7 +23,7 @@ class Message
     /**
      * @return GroupHeader
      */
-    public function getGroupHeader()
+    public function getGroupHeader(): GroupHeader
     {
         return $this->groupHeader;
     }
@@ -31,7 +31,7 @@ class Message
     /**
      * @param GroupHeader $groupHeader
      */
-    public function setGroupHeader($groupHeader)
+    public function setGroupHeader(GroupHeader $groupHeader): void
     {
         $this->groupHeader = $groupHeader;
     }
@@ -39,7 +39,7 @@ class Message
     /**
      * @return Record[]
      */
-    public function getRecords()
+    public function getRecords(): array
     {
         return $this->records;
     }
@@ -47,7 +47,7 @@ class Message
     /**
      * @param Record[] $records
      */
-    public function setRecords(array $records)
+    public function setRecords(array $records): void
     {
         $this->records = $records;
     }
@@ -55,7 +55,7 @@ class Message
     /**
      * @return Entry[]|EntryIterator
      */
-    public function getEntries()
+    public function getEntries(): EntryIterator
     {
         return new EntryIterator($this);
     }

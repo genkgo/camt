@@ -26,7 +26,7 @@ class CreditorReferenceInformation
     /**
      * @return string
      */
-    public function getRef()
+    public function getRef(): string
     {
         return $this->ref;
     }
@@ -34,7 +34,7 @@ class CreditorReferenceInformation
     /**
      * @param string $ref
      */
-    public function setRef($ref)
+    public function setRef(string $ref): void
     {
         $this->ref = $ref;
     }
@@ -44,7 +44,7 @@ class CreditorReferenceInformation
      *
      * @return self
      */
-    public static function fromUnstructured($ref)
+    public static function fromUnstructured(string $ref): CreditorReferenceInformation
     {
         $information = new self();
         $information->ref = $ref;
@@ -54,7 +54,7 @@ class CreditorReferenceInformation
     /**
      * @return null|string
      */
-    public function getProprietary()
+    public function getProprietary(): ?string
     {
         return $this->proprietary;
     }
@@ -62,7 +62,7 @@ class CreditorReferenceInformation
     /**
      * @param null|string $proprietary
      */
-    public function setProprietary($proprietary)
+    public function setProprietary(?string $proprietary): void
     {
         $this->proprietary = $proprietary;
     }
@@ -70,7 +70,7 @@ class CreditorReferenceInformation
     /**
      * @return null|string
      */
-    public function getCode()
+    public function getCode(): ?string
     {
         return $this->code;
     }
@@ -78,7 +78,7 @@ class CreditorReferenceInformation
     /**
      * @param null|string $code
      */
-    public function setCode($code)
+    public function setCode(?string $code): void
     {
         $this->code = $code;
     }

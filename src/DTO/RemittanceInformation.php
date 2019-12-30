@@ -34,7 +34,7 @@ class RemittanceInformation
      *
      * @return self
      */
-    public static function fromUnstructured($message)
+    public static function fromUnstructured(string $message): RemittanceInformation
     {
         $information = new self();
         $information->message = $message;
@@ -53,7 +53,7 @@ class RemittanceInformation
     /**
      * @param CreditorReferenceInformation $creditorReferenceInformation
      */
-    public function setCreditorReferenceInformation($creditorReferenceInformation)
+    public function setCreditorReferenceInformation(CreditorReferenceInformation $creditorReferenceInformation): void
     {
         $this->creditorReferenceInformation = $creditorReferenceInformation;
         $this->message = $creditorReferenceInformation->getRef();
@@ -73,7 +73,7 @@ class RemittanceInformation
      *
      * @deprecated Use addStructuredBlock method instead
      */
-    public function setMessage($message)
+    public function setMessage(string $message): void
     {
         $this->message = $message;
     }
@@ -81,7 +81,7 @@ class RemittanceInformation
     /**
      * @param StructuredRemittanceInformation $structuredRemittanceInformation
      */
-    public function addStructuredBlock(StructuredRemittanceInformation $structuredRemittanceInformation)
+    public function addStructuredBlock(StructuredRemittanceInformation $structuredRemittanceInformation): void
     {
         $this->structuredBlocks[] = $structuredRemittanceInformation;
     }
@@ -89,7 +89,7 @@ class RemittanceInformation
     /**
      * @return StructuredRemittanceInformation[]
      */
-    public function getStructuredBlocks()
+    public function getStructuredBlocks(): array
     {
         return $this->structuredBlocks;
     }
@@ -109,7 +109,7 @@ class RemittanceInformation
     /**
      * @param UnstructuredRemittanceInformation $unstructuredRemittanceInformation
      */
-    public function addUnstructuredBlock(UnstructuredRemittanceInformation $unstructuredRemittanceInformation)
+    public function addUnstructuredBlock(UnstructuredRemittanceInformation $unstructuredRemittanceInformation): void
     {
         $this->unstructuredBlocks[] = $unstructuredRemittanceInformation;
     }
@@ -117,7 +117,7 @@ class RemittanceInformation
     /**
      * @return UnstructuredRemittanceInformation[]
      */
-    public function getUnstructuredBlocks()
+    public function getUnstructuredBlocks(): array
     {
         return $this->unstructuredBlocks;
     }

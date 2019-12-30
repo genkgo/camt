@@ -12,7 +12,7 @@ class BankTransactionCode
     /**
      * @return ProprietaryBankTransactionCode
      */
-    public function getProprietary()
+    public function getProprietary(): ProprietaryBankTransactionCode
     {
         return $this->proprietary;
     }
@@ -20,7 +20,7 @@ class BankTransactionCode
     /**
      * @param ProprietaryBankTransactionCode $proprietary
      */
-    public function setProprietary(ProprietaryBankTransactionCode $proprietary)
+    public function setProprietary(ProprietaryBankTransactionCode $proprietary): void
     {
         $this->proprietary = $proprietary;
     }
@@ -28,7 +28,7 @@ class BankTransactionCode
     /**
      * @return DomainBankTransactionCode
      */
-    public function getDomain()
+    public function getDomain(): DomainBankTransactionCode
     {
         return $this->domain;
     }
@@ -36,7 +36,7 @@ class BankTransactionCode
     /**
      * @param DomainBankTransactionCode $domain
      */
-    public function setDomain(DomainBankTransactionCode $domain)
+    public function setDomain(DomainBankTransactionCode $domain): void
     {
         $this->domain = $domain;
     }

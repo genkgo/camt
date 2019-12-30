@@ -40,7 +40,7 @@ class Recipient implements RelatedPartyTypeInterface
     /**
      * @param Address $address
      */
-    public function setAddress(Address $address)
+    public function setAddress(Address $address): void
     {
         $this->address = $address;
     }
@@ -56,7 +56,7 @@ class Recipient implements RelatedPartyTypeInterface
     /**
      * @param string $name
      */
-    public function setName($name)
+    public function setName(string $name): void
     {
         $this->name = $name;
     }
@@ -72,7 +72,7 @@ class Recipient implements RelatedPartyTypeInterface
     /**
      * @param string $countryOfResidence
      */
-    public function setCountryOfResidence($countryOfResidence)
+    public function setCountryOfResidence(string $countryOfResidence): void
     {
         $this->countryOfResidence = $countryOfResidence;
     }
@@ -88,7 +88,7 @@ class Recipient implements RelatedPartyTypeInterface
     /**
      * @param ContactDetails $contactDetails
      */
-    public function setContactDetails(ContactDetails $contactDetails)
+    public function setContactDetails(ContactDetails $contactDetails): void
     {
         $this->contactDetails = $contactDetails;
     }
@@ -104,7 +104,7 @@ class Recipient implements RelatedPartyTypeInterface
     /**
      * @param Identification $identification
      */
-    public function setIdentification(Identification $identification)
+    public function setIdentification(Identification $identification): void
     {
         $this->identification = $identification;
     }

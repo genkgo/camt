@@ -16,7 +16,7 @@ class UnstructuredRemittanceInformation
     /**
      * @param string $message
      */
-    public function __construct($message)
+    public function __construct(string $message)
     {
         $this->message = $message;
     }
@@ -24,7 +24,7 @@ class UnstructuredRemittanceInformation
     /**
      * @return string
      */
-    public function getMessage()
+    public function getMessage(): string
     {
         return $this->message;
     }
@@ -32,7 +32,7 @@ class UnstructuredRemittanceInformation
     /**
      * @param string $message
      */
-    public function setMessage($message)
+    public function setMessage(string $message): void
     {
         $this->message = $message;
     }

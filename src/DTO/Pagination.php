@@ -18,7 +18,7 @@ class Pagination
      * @param string $pageNumber
      * @param bool $lastPage
      */
-    public function __construct($pageNumber, $lastPage)
+    public function __construct(string $pageNumber, bool $lastPage)
     {
         $this->pageNumber = $pageNumber;
         $this->lastPage   = $lastPage;
@@ -27,7 +27,7 @@ class Pagination
     /**
      * @return string
      */
-    public function getPageNumber()
+    public function getPageNumber(): string
     {
         return $this->pageNumber;
     }
@@ -35,7 +35,7 @@ class Pagination
     /**
      * @return bool
      */
-    public function isLastPage()
+    public function isLastPage(): bool
     {
         return $this->lastPage;
     }

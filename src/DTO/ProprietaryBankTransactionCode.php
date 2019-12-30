@@ -13,7 +13,7 @@ class ProprietaryBankTransactionCode
      * @param string $code
      * @param string $issuer
      */
-    public function __construct($code, $issuer)
+    public function __construct(string $code, string $issuer)
     {
         $this->code = $code;
         $this->issuer = $issuer;
@@ -22,7 +22,7 @@ class ProprietaryBankTransactionCode
     /**
      * @return string
      */
-    public function getCode()
+    public function getCode(): string
     {
         return $this->code;
     }
@@ -30,7 +30,7 @@ class ProprietaryBankTransactionCode
     /**
      * @param string $code
      */
-    public function setCode($code)
+    public function setCode(string $code): void
     {
         $this->code = $code;
     }
@@ -38,7 +38,7 @@ class ProprietaryBankTransactionCode
     /**
      * @return string
      */
-    public function getIssuer()
+    public function getIssuer(): string
     {
         return $this->issuer;
     }
@@ -46,7 +46,7 @@ class ProprietaryBankTransactionCode
     /**
      * @param string $issuer
      */
-    public function setIssuer($issuer)
+    public function setIssuer(string $issuer): void
     {
         $this->issuer = $issuer;
     }

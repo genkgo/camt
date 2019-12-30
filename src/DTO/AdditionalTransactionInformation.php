@@ -11,7 +11,7 @@ class AdditionalTransactionInformation
         $this->information = $information;
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         return (string) $this->information;
     }

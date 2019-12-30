@@ -44,7 +44,7 @@ class EndToEndTest extends AbstractTestCase
         return (new MessageFormat\V04)->getDecoder()->decode($dom);
     }
 
-    public function testGroupHeader()
+    public function testGroupHeader(): void
     {
         $messages = [
             $this->getV1Message(),
@@ -73,7 +73,7 @@ class EndToEndTest extends AbstractTestCase
         }
     }
 
-    public function testReports()
+    public function testReports(): void
     {
         $messages = [
             $this->getV1Message(),
@@ -100,7 +100,7 @@ class EndToEndTest extends AbstractTestCase
         }
     }
 
-    public function testEntries()
+    public function testEntries(): void
     {
         $messages = [
             $this->getV1Message(),
@@ -132,7 +132,7 @@ class EndToEndTest extends AbstractTestCase
         $this->assertEquals(true, $reportV4->getPagination()->isLastPage());
     }
 
-    public function testRelatedAgents()
+    public function testRelatedAgents(): void
     {
         $messages = [
             $this->getV2Message(),
@@ -162,7 +162,7 @@ class EndToEndTest extends AbstractTestCase
         }
     }
 
-    public function testOtherAccount()
+    public function testOtherAccount(): void
     {
         $messages = [
             $this->getV2OtherAccountMessage()
@@ -188,7 +188,7 @@ class EndToEndTest extends AbstractTestCase
         }
     }
 
-    public function testRelatedParties()
+    public function testRelatedParties(): void
     {
         $messages = [
             $this->getV2Message(),
@@ -229,7 +229,7 @@ class EndToEndTest extends AbstractTestCase
         }
     }
 
-    public function testProprietaryBankTransactionCode()
+    public function testProprietaryBankTransactionCode(): void
     {
         $messages = [
             $this->getV2Message()

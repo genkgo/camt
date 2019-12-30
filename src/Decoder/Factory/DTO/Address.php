@@ -12,7 +12,7 @@ class Address
      *
      * @return DTO\Address
      */
-    public static function createFromXml(SimpleXMLElement $xmlAddress)
+    public static function createFromXml(SimpleXMLElement $xmlAddress): DTO\Address
     {
         $address = new DTO\Address();
 

@@ -9,7 +9,7 @@ class OrganisationIdentification
 {
     use Behavior\Mapping;
 
-    public static function createFromXml(SimpleXMLElement $xmlOrganisationIdentification)
+    public static function createFromXml(SimpleXMLElement $xmlOrganisationIdentification): DTO\OrganisationIdentification
     {
         $mapping = [
             ['setter' => 'setBic', 'value' => 'BIC'],

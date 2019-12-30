@@ -16,7 +16,7 @@ final class StringToUnits
      * @return int
      * @throws InvalidArgumentException
      */
-    public static function convert($string)
+    public static function convert(string $string): int
     {
         $sign = "(?P<sign>[-\+])?";
         $digits = "(?P<digits>\d*)";

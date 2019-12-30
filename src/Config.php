@@ -25,7 +25,7 @@ class Config
     /**
      * @param MessageFormatInterface $messageFormat
      */
-    public function addMessageFormat(MessageFormatInterface $messageFormat)
+    public function addMessageFormat(MessageFormatInterface $messageFormat): void
     {
         $this->messageFormats[] = $messageFormat;
     }
@@ -33,12 +33,12 @@ class Config
     /**
      * @return MessageFormatInterface[]
      */
-    public function getMessageFormats()
+    public function getMessageFormats(): array
     {
         return $this->messageFormats;
     }
 
-    public function disableXsdValidation()
+    public function disableXsdValidation(): void
     {
         $this->xsdValidation = false;
     }
@@ -46,7 +46,7 @@ class Config
     /**
      * @return bool
      */
-    public function getXsdValidation()
+    public function getXsdValidation(): bool
     {
         return $this->xsdValidation;
     }
@@ -54,7 +54,7 @@ class Config
     /**
      * @return self
      */
-    public static function getDefault()
+    public static function getDefault(): Config
     {
         $config = new self();
         $config->addMessageFormat(new Camt052\MessageFormat\V01());

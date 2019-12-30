@@ -32,7 +32,7 @@ class RelatedParty
     /**
      * @return RelatedPartyTypeInterface
      */
-    public function getRelatedPartyType()
+    public function getRelatedPartyType(): RelatedPartyTypeInterface
     {
         return $this->relatedPartyDetails;
     }

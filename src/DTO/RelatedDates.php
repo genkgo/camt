@@ -20,7 +20,7 @@ class RelatedDates
     /**
      * @return DateTimeImmutable
      */
-    public function getAcceptanceDateTime()
+    public function getAcceptanceDateTime(): DateTimeImmutable
     {
         return $this->acceptanceDateTime;
     }
@@ -30,7 +30,7 @@ class RelatedDates
      *
      * @return self
      */
-    public static function fromUnstructured($acceptanceDateTime)
+    public static function fromUnstructured(DateTimeImmutable $acceptanceDateTime): RelatedDates
     {
         $information = new self();
         $information->acceptanceDateTime = $acceptanceDateTime;

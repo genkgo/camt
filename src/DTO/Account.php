@@ -11,5 +11,5 @@ abstract class Account
     /**
      * @return string
      */
-    abstract public function getIdentification();
+    abstract public function getIdentification(): string;
 }

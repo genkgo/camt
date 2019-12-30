@@ -20,7 +20,7 @@ class RelatedAgent
     /**
      * @return RelatedAgentTypeInterface
      */
-    public function getRelatedAgentType()
+    public function getRelatedAgentType(): RelatedAgentTypeInterface
     {
         return $this->relatedAgentDetails;
     }

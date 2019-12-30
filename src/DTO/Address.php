@@ -66,7 +66,7 @@ class Address
      *
      * @return static
      */
-    public function setCountry($country)
+    public function setCountry(string $country): self
     {
         $cloned = clone $this;
         $cloned->country = $country;
@@ -87,7 +87,7 @@ class Address
      *
      * @return static
      */
-    public function setCountrySubDivision($countrySubDivision)
+    public function setCountrySubDivision(string $countrySubDivision): self
     {
         $cloned = clone $this;
         $cloned->countrySubDivision = $countrySubDivision;
@@ -98,7 +98,7 @@ class Address
     /**
      * @return array
      */
-    public function getAddressLines()
+    public function getAddressLines(): array
     {
         return $this->addressLines;
     }
@@ -108,7 +108,7 @@ class Address
      *
      * @return static
      */
-    public function setAddressLines(array $addressLines)
+    public function setAddressLines(array $addressLines): self
     {
         $cloned = clone $this;
         $cloned->addressLines = $addressLines;
@@ -121,7 +121,7 @@ class Address
      *
      * @return static
      */
-    public function addAddressLine($addressLine)
+    public function addAddressLine(string $addressLine): self
     {
         $cloned = clone $this;
         $cloned->addressLines[] = $addressLine;
@@ -142,7 +142,7 @@ class Address
      *
      * @return static
      */
-    public function setDepartment($department)
+    public function setDepartment(string $department): self
     {
         $cloned = clone $this;
         $cloned->department = $department;
@@ -163,7 +163,7 @@ class Address
      *
      * @return static
      */
-    public function setSubDepartment($subDepartment)
+    public function setSubDepartment(string $subDepartment): self
     {
         $cloned = clone $this;
         $cloned->subDepartment = $subDepartment;
@@ -184,7 +184,7 @@ class Address
      *
      * @return static
      */
-    public function setStreetName($streetName)
+    public function setStreetName(string $streetName): self
     {
         $cloned = clone $this;
         $cloned->streetName = $streetName;
@@ -205,7 +205,7 @@ class Address
      *
      * @return static
      */
-    public function setBuildingNumber($buildingNumber)
+    public function setBuildingNumber(string $buildingNumber): self
     {
         $cloned = clone $this;
         $cloned->buildingNumber = $buildingNumber;
@@ -226,7 +226,7 @@ class Address
      *
      * @return static
      */
-    public function setPostCode($postCode)
+    public function setPostCode(string $postCode): self
     {
         $cloned = clone $this;
         $cloned->postCode = $postCode;
@@ -247,7 +247,7 @@ class Address
      *
      * @return static
      */
-    public function setTownName($townName)
+    public function setTownName(string $townName): self
     {
         $cloned = clone $this;
         $cloned->townName = $townName;

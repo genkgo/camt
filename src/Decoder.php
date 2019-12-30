@@ -3,6 +3,7 @@
 namespace Genkgo\Camt;
 
 use DOMDocument;
+use Genkgo\Camt\DTO\Message;
 use Genkgo\Camt\Exception\InvalidMessageException;
 use SimpleXMLElement;
 
@@ -34,7 +35,7 @@ class Decoder implements DecoderInterface
      * @param Decoder\Message $messageDecoder
      * @param string          $schemeDefinitionPath
      */
-    public function __construct(Decoder\Message $messageDecoder, $schemeDefinitionPath)
+    public function __construct(Decoder\Message $messageDecoder, string $schemeDefinitionPath)
     {
         $this->messageDecoder       = $messageDecoder;
         $this->schemeDefinitionPath = $schemeDefinitionPath;
@@ -45,7 +46,7 @@ class Decoder implements DecoderInterface
      *
      * @throws InvalidMessageException
      */
-    private function validate(DOMDocument $document)
+    private function validate(DOMDocument $document): void
     {
         libxml_use_internal_errors(true);
         $valid  = $document->schemaValidate(dirname(__DIR__) . $this->schemeDefinitionPath);
@@ -69,7 +70,7 @@ class Decoder implements DecoderInterface
      *
      * @return DTO\Message
      */
-    public function decode(DOMDocument $document, $xsdValidation = true)
+    public function decode(DOMDocument $document, bool $xsdValidation = true): Message
     {
         if ($xsdValidation === true) {
             $this->validate($document);

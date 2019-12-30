@@ -31,7 +31,7 @@ class RecordTest extends AbstractTestCase
     /**
      * @test
      */
-    public function it_does_not_add_balances_if_there_are_none_in_xml()
+    public function it_does_not_add_balances_if_there_are_none_in_xml(): void
     {
         $record = $this->prophesize(Camt053\DTO\Statement::class);
         $record->addBalance(Argument::any())->shouldNotBeCalled();
@@ -43,7 +43,7 @@ class RecordTest extends AbstractTestCase
     /**
      * @test
      */
-    public function it_adds_balances_if_there_are_present_in_xml()
+    public function it_adds_balances_if_there_are_present_in_xml(): void
     {
         $record = $this->prophesize(Camt053\DTO\Statement::class);
         $record->addBalance(Argument::type(DTO\Balance::class))->shouldBeCalled();
@@ -54,7 +54,7 @@ class RecordTest extends AbstractTestCase
     /**
      * @test
      */
-    public function it_adds_no_entries_if_there_are_none_in_xml()
+    public function it_adds_no_entries_if_there_are_none_in_xml(): void
     {
         $record = $this->prophesize(DTO\Record::class);
         $this->mockedEntryDecoder->addTransactionDetails(Argument::any(), Argument::any())->shouldNotBeCalled();
@@ -67,7 +67,7 @@ class RecordTest extends AbstractTestCase
     /**
      * @test
      */
-    public function it_adds_entries_if_there_are_present_in_xml()
+    public function it_adds_entries_if_there_are_present_in_xml(): void
     {
         $record = $this->prophesize(DTO\Record::class);
         $this
@@ -83,7 +83,7 @@ class RecordTest extends AbstractTestCase
         $this->decoder->addEntries($record->reveal(), $this->getXmlRecord());
     }
 
-    private function getXmlRecord()
+    private function getXmlRecord(): SimpleXMLElement
     {
         $xmlContent = <<<XML
 <content>

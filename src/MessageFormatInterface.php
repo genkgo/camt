@@ -10,20 +10,20 @@ interface MessageFormatInterface
     /**
      * @return string
      */
-    public function getXmlNs();
+    public function getXmlNs(): string;
 
     /**
      * @return string
      */
-    public function getMsgId();
+    public function getMsgId(): string;
 
     /**
      * @return string
      */
-    public function getName();
+    public function getName(): string;
 
     /**
      * @return DecoderInterface
      */
-    public function getDecoder();
+    public function getDecoder(): DecoderInterface;
 }

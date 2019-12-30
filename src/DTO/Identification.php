@@ -20,7 +20,7 @@ abstract class Identification
     /**
      * @param string $identification
      */
-    public function setIdentification($identification)
+    public function setIdentification(string $identification): void
     {
         $this->identification = $identification;
     }

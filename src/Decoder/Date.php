@@ -15,7 +15,7 @@ class Date implements DateDecoderInterface
      * @param string $date
      * @return DateTimeImmutable
      */
-    public function decode($date)
+    public function decode(string $date): DateTimeImmutable
     {
         if ($this->format === null) {
             $result = new DateTimeImmutable($date);
@@ -34,7 +34,7 @@ class Date implements DateDecoderInterface
      * @param string $format
      * @return Date
      */
-    public static function fromFormat($format)
+    public static function fromFormat(string $format): Date
     {
         $decoder = new self();
         $decoder->format = $format;

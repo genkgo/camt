@@ -10,14 +10,14 @@ use PHPUnit\Framework\TestCase;
  */
 class ConfigTest extends TestCase
 {
-    public function testDefaultConfigHasXsdValidation()
+    public function testDefaultConfigHasXsdValidation(): void
     {
         $config = Config::getDefault();
 
         $this->assertTrue($config->getXsdValidation());
     }
 
-    public function testNoValidateConfigHasNoXsdValidation()
+    public function testNoValidateConfigHasNoXsdValidation(): void
     {
         $config = Config::getDefault();
         $config->disableXsdValidation();

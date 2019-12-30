@@ -80,7 +80,7 @@ class OrganisationIdentification extends Identification
     /**
      * @param string $bic
      */
-    public function setBic($bic)
+    public function setBic(string $bic): void
     {
         $this->bic = $bic;
         $this->identification = $bic;
@@ -97,7 +97,7 @@ class OrganisationIdentification extends Identification
     /**
      * @param string $ibei
      */
-    public function setIbei($ibei)
+    public function setIbei(string $ibei): void
     {
         $this->ibei = $ibei;
         $this->identification = $ibei;
@@ -114,7 +114,7 @@ class OrganisationIdentification extends Identification
     /**
      * @param string $bei
      */
-    public function setBei($bei)
+    public function setBei(string $bei): void
     {
         $this->bei = $bei;
         $this->identification = $bei;
@@ -131,7 +131,7 @@ class OrganisationIdentification extends Identification
     /**
      * @param string $eangln
      */
-    public function setEangln($eangln)
+    public function setEangln(string $eangln): void
     {
         $this->eangln = $eangln;
         $this->identification = $eangln;
@@ -148,7 +148,7 @@ class OrganisationIdentification extends Identification
     /**
      * @param string $chipsUniversalId
      */
-    public function setChipsUniversalId($chipsUniversalId)
+    public function setChipsUniversalId(string $chipsUniversalId): void
     {
         $this->chipsUniversalId = $chipsUniversalId;
         $this->identification = $chipsUniversalId;
@@ -165,7 +165,7 @@ class OrganisationIdentification extends Identification
     /**
      * @param string $duns
      */
-    public function setDuns($duns)
+    public function setDuns(string $duns): void
     {
         $this->duns = $duns;
         $this->identification = $duns;
@@ -182,7 +182,7 @@ class OrganisationIdentification extends Identification
     /**
      * @param string $bankPartyId
      */
-    public function setBankPartyId($bankPartyId)
+    public function setBankPartyId(string $bankPartyId): void
     {
         $this->bankPartyId = $bankPartyId;
         $this->identification = $bankPartyId;
@@ -199,7 +199,7 @@ class OrganisationIdentification extends Identification
     /**
      * @param string $taxId
      */
-    public function setTaxId($taxId)
+    public function setTaxId(string $taxId): void
     {
         $this->taxId = $taxId;
         $this->identification = $taxId;
@@ -216,7 +216,7 @@ class OrganisationIdentification extends Identification
     /**
      * @param string $otherId
      */
-    public function setOtherId($otherId)
+    public function setOtherId(string $otherId): void
     {
         $this->otherId = $otherId;
         $this->identification = $otherId;
@@ -233,7 +233,7 @@ class OrganisationIdentification extends Identification
     /**
      * @param string $otherIssuer
      */
-    public function setOtherIssuer($otherIssuer)
+    public function setOtherIssuer(string $otherIssuer): void
     {
         $this->otherIssuer = $otherIssuer;
     }
@@ -249,7 +249,7 @@ class OrganisationIdentification extends Identification
     /**
      * @param string $otherSchemeName
      */
-    public function setOtherSchemeName($otherSchemeName)
+    public function setOtherSchemeName(string $otherSchemeName): void
     {
         $this->otherSchemeName = $otherSchemeName;
     }
@@ -265,7 +265,7 @@ class OrganisationIdentification extends Identification
     /**
      * @param string $otherType
      */
-    public function setOtherType($otherType)
+    public function setOtherType(string $otherType): void
     {
         $this->otherType = $otherType;
     }
@@ -281,7 +281,7 @@ class OrganisationIdentification extends Identification
     /**
      * @param string $issuer
      */
-    public function setIssuer($issuer)
+    public function setIssuer(string $issuer): void
     {
         $this->issuer = $issuer;
         $this->identification = $issuer;

@@ -12,7 +12,7 @@ class ContactDetails
      *
      * @return DTO\ContactDetails
      */
-    public static function createFromXml(SimpleXMLElement $xmlContactDetails)
+    public static function createFromXml(SimpleXMLElement $xmlContactDetails): DTO\ContactDetails
     {
         $contactDetails = new DTO\ContactDetails();
 

@@ -35,7 +35,7 @@ class Record
      * @param RecordWithBalances $record
      * @param SimpleXMLElement $xmlRecord
      */
-    public function addBalances(RecordWithBalances $record, SimpleXMLElement $xmlRecord)
+    public function addBalances(RecordWithBalances $record, SimpleXMLElement $xmlRecord): void
     {
         $xmlBalances = $xmlRecord->Bal;
         foreach ($xmlBalances as $xmlBalance) {
@@ -75,7 +75,7 @@ class Record
      * @param DTO\Record       $record
      * @param SimpleXMLElement $xmlRecord
      */
-    public function addEntries(DTO\Record $record, SimpleXMLElement $xmlRecord)
+    public function addEntries(DTO\Record $record, SimpleXMLElement $xmlRecord): void
     {
         $index = 0;
         $xmlEntries = $xmlRecord->Ntry;

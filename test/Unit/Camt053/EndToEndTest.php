@@ -55,28 +55,28 @@ class EndToEndTest extends AbstractTestCase
         return (new MessageFormat\V02)->getDecoder()->decode($dom);
     }
 
-    public function testFiveDecimalsStatement()
+    public function testFiveDecimalsStatement(): void
     {
         $dom = new DOMDocument('1.0', 'UTF-8');
         $dom->load(__DIR__ . '/Stubs/camt053.v2.five.decimals.xml');
         $this->assertInstanceOf(Message::class, (new MessageFormat\V02)->getDecoder()->decode($dom));
     }
 
-    public function testV3Document()
+    public function testV3Document(): void
     {
         $dom = new DOMDocument('1.0', 'UTF-8');
         $dom->load(__DIR__ . '/Stubs/camt053.v3.xml');
         $this->assertInstanceOf(Message::class, (new MessageFormat\V03)->getDecoder()->decode($dom));
     }
 
-    public function testV4Document()
+    public function testV4Document(): void
     {
         $dom = new DOMDocument('1.0', 'UTF-8');
         $dom->load(__DIR__ . '/Stubs/camt053.v4.xml');
         $this->assertInstanceOf(Message::class, (new MessageFormat\V04)->getDecoder()->decode($dom));
     }
 
-    public function testGroupHeader()
+    public function testGroupHeader(): void
     {
         $messages = [
             $this->getV2Message(),
@@ -106,7 +106,7 @@ class EndToEndTest extends AbstractTestCase
         }
     }
 
-    public function testStatements()
+    public function testStatements(): void
     {
         $messages = [
             $this->getV2Message(),
@@ -140,7 +140,7 @@ class EndToEndTest extends AbstractTestCase
         $this->assertEquals(true, $statementV4->getPagination()->isLastPage());
     }
 
-    public function testBalance()
+    public function testBalance(): void
     {
         $messages = [
             $this->getV2Message(),
@@ -174,7 +174,7 @@ class EndToEndTest extends AbstractTestCase
         }
     }
 
-    public function testEntries()
+    public function testEntries(): void
     {
         $messages = [
             $this->getV2Message(),
@@ -240,7 +240,7 @@ class EndToEndTest extends AbstractTestCase
         }
     }
 
-    public function testStructuredMessage()
+    public function testStructuredMessage(): void
     {
         $messages = [
             $this->getV2Message(),

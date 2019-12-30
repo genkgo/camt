@@ -21,7 +21,7 @@ class StructuredRemittanceInformation
     /**
      * @return null|string
      */
-    public function getAdditionalRemittanceInformation()
+    public function getAdditionalRemittanceInformation(): ?string
     {
         return $this->additionalRemittanceInformation;
     }
@@ -29,7 +29,7 @@ class StructuredRemittanceInformation
     /**
      * @param null|string $additionalRemittanceInformation
      */
-    public function setAdditionalRemittanceInformation($additionalRemittanceInformation)
+    public function setAdditionalRemittanceInformation(?string $additionalRemittanceInformation): void
     {
         $this->additionalRemittanceInformation = $additionalRemittanceInformation;
     }
@@ -37,7 +37,7 @@ class StructuredRemittanceInformation
     /**
      * @return null|CreditorReferenceInformation
      */
-    public function getCreditorReferenceInformation()
+    public function getCreditorReferenceInformation(): ?CreditorReferenceInformation
     {
         return $this->creditorReferenceInformation;
     }
@@ -45,7 +45,7 @@ class StructuredRemittanceInformation
     /**
      * @param null|CreditorReferenceInformation $creditorReferenceInformation
      */
-    public function setCreditorReferenceInformation(?CreditorReferenceInformation $creditorReferenceInformation)
+    public function setCreditorReferenceInformation(?CreditorReferenceInformation $creditorReferenceInformation): void
     {
         $this->creditorReferenceInformation = $creditorReferenceInformation;
     }

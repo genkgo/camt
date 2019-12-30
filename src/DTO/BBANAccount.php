@@ -16,7 +16,7 @@ class BBANAccount extends Account
     /**
      * @param string $bban
      */
-    public function __construct($bban)
+    public function __construct(string $bban)
     {
         $this->bban = $bban;
     }
@@ -24,7 +24,7 @@ class BBANAccount extends Account
     /**
      * @return string
      */
-    public function getBban()
+    public function getBban(): string
     {
         return (string) $this->bban;
     }
@@ -32,7 +32,7 @@ class BBANAccount extends Account
     /**
      * {@inheritdoc}
      */
-    public function getIdentification()
+    public function getIdentification(): string
     {
         return (string) $this->bban;
     }

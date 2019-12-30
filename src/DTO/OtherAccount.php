@@ -26,7 +26,7 @@ class OtherAccount extends Account
     /**
      * @param string $identification
      */
-    public function __construct($identification)
+    public function __construct(string $identification)
     {
         $this->identification = $identification;
     }
@@ -34,7 +34,7 @@ class OtherAccount extends Account
     /**
      * {@inheritdoc}
      */
-    public function getIdentification()
+    public function getIdentification(): string
     {
         return $this->identification;
     }
@@ -42,7 +42,7 @@ class OtherAccount extends Account
     /**
      * @param string $schemeName
      */
-    public function setSchemeName($schemeName)
+    public function setSchemeName(string $schemeName): void
     {
         $this->schemeName = $schemeName;
     }
@@ -58,7 +58,7 @@ class OtherAccount extends Account
     /**
      * @param string $issuer
      */
-    public function setIssuer($issuer)
+    public function setIssuer(string $issuer): void
     {
         $this->issuer = $issuer;
     }

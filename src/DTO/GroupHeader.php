@@ -40,7 +40,7 @@ class GroupHeader
      * @param string $messageId
      * @param DateTimeImmutable $createdOn
      */
-    public function __construct($messageId, DateTimeImmutable $createdOn)
+    public function __construct(string $messageId, DateTimeImmutable $createdOn)
     {
         $this->messageId = $messageId;
         $this->createdOn = $createdOn;
@@ -49,7 +49,7 @@ class GroupHeader
     /**
      * @return string
      */
-    public function getMessageId()
+    public function getMessageId(): string
     {
         return $this->messageId;
     }
@@ -57,7 +57,7 @@ class GroupHeader
     /**
      * @return DateTimeImmutable
      */
-    public function getCreatedOn()
+    public function getCreatedOn(): DateTimeImmutable
     {
         return $this->createdOn;
     }
@@ -73,7 +73,7 @@ class GroupHeader
     /**
      * @param string $additionalInformation
      */
-    public function setAdditionalInformation($additionalInformation)
+    public function setAdditionalInformation(string $additionalInformation): void
     {
         $this->additionalInformation = $additionalInformation;
     }
@@ -89,7 +89,7 @@ class GroupHeader
     /**
      * @param Recipient $messageRecipient
      */
-    public function setMessageRecipient(Recipient $messageRecipient)
+    public function setMessageRecipient(Recipient $messageRecipient): void
     {
         $this->messageRecipient = $messageRecipient;
     }
@@ -97,7 +97,7 @@ class GroupHeader
     /**
      * @return null|Pagination
      */
-    public function getPagination()
+    public function getPagination(): ?Pagination
     {
         return $this->pagination;
     }
@@ -105,7 +105,7 @@ class GroupHeader
     /**
      * @param null|Pagination $pagination
      */
-    public function setPagination(?Pagination $pagination)
+    public function setPagination(?Pagination $pagination): void
     {
         $this->pagination = $pagination;
     }

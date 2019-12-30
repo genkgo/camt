@@ -2,6 +2,7 @@
 
 namespace Genkgo\TestCamt\Unit\Camt053\Decoder;
 
+use Genkgo\Camt\Camt053\Decoder\Message;
 use Genkgo\TestCamt\AbstractTestCase;
 use Genkgo\Camt\Camt053;
 use Genkgo\Camt\DTO;
@@ -15,7 +16,7 @@ class MessageTest extends AbstractTestCase
     /** @var ObjectProphecy */
     private $mockedRecordDecoder;
 
-    /** @var DecoderObject\Message */
+    /** @var Message */
     private $decoder;
 
     public function setUp(): void
@@ -25,13 +26,13 @@ class MessageTest extends AbstractTestCase
             ->prophesize(DecoderObject\Record::class)
             ->willBeConstructedWith([$entry->reveal(), new DecoderObject\Date()])
         ;
-        $this->decoder = new Camt053\Decoder\Message($this->mockedRecordDecoder->reveal(), new DecoderObject\Date());
+        $this->decoder = new Message($this->mockedRecordDecoder->reveal(), new DecoderObject\Date());
     }
 
     /**
      * @test
      */
-    public function it_adds_group_header()
+    public function it_adds_group_header(): void
     {
         $message = $this->prophesize(DTO\Message::class);
         $message->setGroupHeader(Argument::type(DTO\GroupHeader::class))->shouldBeCalled();
@@ -42,7 +43,7 @@ class MessageTest extends AbstractTestCase
     /**
      * @test
      */
-    public function it_adds_statements()
+    public function it_adds_statements(): void
     {
         $message = $this->prophesize(DTO\Message::class);
 
@@ -55,14 +56,14 @@ class MessageTest extends AbstractTestCase
             Argument::type('\SimpleXMLElement')
         )->shouldBeCalled();
 
-        $message->setRecords(Argument::that(function ($argument) {
+        $message->setRecords(Argument::that(function ($argument): bool {
             return is_array($argument) && $argument[0] instanceof Camt053\DTO\Statement;
         }))->shouldBeCalled();
 
         $this->decoder->addRecords($message->reveal(), $this->getXmlMessage());
     }
 
-    private function getXmlMessage()
+    private function getXmlMessage(): SimpleXMLElement
     {
         $xmlContent = <<<XML
 <content>

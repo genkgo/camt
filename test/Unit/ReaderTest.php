@@ -12,7 +12,7 @@ use Genkgo\Camt\Reader;
 
 class ReaderTest extends AbstractTestCase
 {
-    protected function getDefaultConfig()
+    protected function getDefaultConfig(): Config
     {
         $config = new Config();
         $config->addMessageFormat(new MessageFormat\V02());
@@ -20,14 +20,14 @@ class ReaderTest extends AbstractTestCase
         return $config;
     }
 
-    public function testReadEmptyDocument()
+    public function testReadEmptyDocument(): void
     {
         $this->expectException(ReaderException::class);
         $reader = new Reader($this->getDefaultConfig());
         $reader->readDom(new DOMDocument('1.0', 'UTF-8'));
     }
 
-    public function testReadWrongFormat()
+    public function testReadWrongFormat(): void
     {
         $this->expectException(ReaderException::class);
 
@@ -40,7 +40,7 @@ class ReaderTest extends AbstractTestCase
         $reader->readDom($dom);
     }
 
-    public function testReadFile()
+    public function testReadFile(): void
     {
         $reader = new Reader(Config::getDefault());
         $message = $reader->readFile(__DIR__.'/Camt053/Stubs/camt053.v2.minimal.xml');
@@ -48,7 +48,7 @@ class ReaderTest extends AbstractTestCase
     }
 
 
-    public function testReadFileWithNoXsdValidation()
+    public function testReadFileWithNoXsdValidation(): void
     {
         $config = Config::getDefault();
         $config->disableXsdValidation();

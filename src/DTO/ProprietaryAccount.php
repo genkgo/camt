@@ -16,7 +16,7 @@ class ProprietaryAccount extends Account
     /**
      * @param string $id
      */
-    public function __construct($id)
+    public function __construct(string $id)
     {
         $this->id = $id;
     }
@@ -24,7 +24,7 @@ class ProprietaryAccount extends Account
     /**
      * @return string
      */
-    public function getId()
+    public function getId(): string
     {
         return (string) $this->id;
     }
@@ -32,7 +32,7 @@ class ProprietaryAccount extends Account
     /**
      * {@inheritdoc}
      */
-    public function getIdentification()
+    public function getIdentification(): string
     {
         return (string) $this->id;
     }

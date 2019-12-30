@@ -32,7 +32,7 @@ abstract class Message
      * @param DTO\Message      $message
      * @param SimpleXMLElement $document
      */
-    public function addGroupHeader(DTO\Message $message, SimpleXMLElement $document)
+    public function addGroupHeader(DTO\Message $message, SimpleXMLElement $document): void
     {
         $xmlGroupHeader = $this->getRootElement($document)->GrpHdr;
         $groupHeader = new DTO\GroupHeader(
@@ -64,7 +64,7 @@ abstract class Message
      * @param DTO\Record       $record
      * @param SimpleXMLElement $xmlRecord
      */
-    public function addCommonRecordInformation(DTO\Record $record, SimpleXMLElement $xmlRecord)
+    public function addCommonRecordInformation(DTO\Record $record, SimpleXMLElement $xmlRecord): void
     {
         if (isset($xmlRecord->ElctrncSeqNb)) {
             $record->setElectronicSequenceNumber((string) $xmlRecord->ElctrncSeqNb);
@@ -92,5 +92,5 @@ abstract class Message
      *
      * @return SimpleXMLElement
      */
-    abstract public function getRootElement(SimpleXMLElement $document);
+    abstract public function getRootElement(SimpleXMLElement $document): SimpleXMLElement;
 }

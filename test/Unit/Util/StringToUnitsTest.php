@@ -6,27 +6,27 @@ use Genkgo\Camt\Util\StringToUnits;
 
 class StringToUnitsTest extends AbstractTestCase
 {
-    public function testOneDecimals()
+    public function testOneDecimals(): void
     {
         $this->assertEquals('1810', StringToUnits::convert('18.1'));
     }
 
-    public function testTwoDecimals()
+    public function testTwoDecimals(): void
     {
         $this->assertEquals('1815', StringToUnits::convert('18.15'));
     }
 
-    public function testThreeDecimals()
+    public function testThreeDecimals(): void
     {
         $this->assertEquals('1815', StringToUnits::convert('18.150'));
     }
 
-    public function testFourDecimals()
+    public function testFourDecimals(): void
     {
         $this->assertEquals('1815', StringToUnits::convert('18.1500'));
     }
 
-    public function testFiveDecimals()
+    public function testFiveDecimals(): void
     {
         $this->assertEquals('1815', StringToUnits::convert('18.15000'));
     }

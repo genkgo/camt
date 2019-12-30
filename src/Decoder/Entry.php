@@ -21,7 +21,7 @@ class Entry
      * @param DTO\Entry        $entry
      * @param SimpleXMLElement $xmlEntry
      */
-    public function addTransactionDetails(DTO\Entry $entry, SimpleXMLElement $xmlEntry)
+    public function addTransactionDetails(DTO\Entry $entry, SimpleXMLElement $xmlEntry): void
     {
         $xmlDetails = $xmlEntry->NtryDtls->TxDtls;
 

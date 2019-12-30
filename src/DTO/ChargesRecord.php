@@ -23,7 +23,7 @@ class ChargesRecord
     /**
      * @return Money
      */
-    public function getAmount()
+    public function getAmount(): Money
     {
         return $this->amount;
     }
@@ -31,7 +31,7 @@ class ChargesRecord
     /**
      * @param Money $money
      */
-    public function setAmount(Money $money)
+    public function setAmount(Money $money): void
     {
         $this->amount = $money;
     }
@@ -39,7 +39,7 @@ class ChargesRecord
     /**
      * @return bool
      */
-    public function getChargesIncludedIndicator()
+    public function getChargesIncludedIndicator(): bool
     {
         return $this->chargesIncludedIndicator;
     }
@@ -47,7 +47,7 @@ class ChargesRecord
     /**
      * @param bool $chargesIncludedIndicator
      */
-    public function setChargesIncludedIndicator($chargesIncludedIndicator)
+    public function setChargesIncludedIndicator(bool $chargesIncludedIndicator): void
     {
         $this->chargesIncludedIndicator = $chargesIncludedIndicator;
     }
@@ -55,7 +55,7 @@ class ChargesRecord
     /**
      * @return string
      */
-    public function getIdentification()
+    public function getIdentification(): string
     {
         return $this->identification;
     }
@@ -63,7 +63,7 @@ class ChargesRecord
     /**
      * @param string $identification
      */
-    public function setIdentification($identification)
+    public function setIdentification(string $identification): void
     {
         $this->identification = $identification;
     }

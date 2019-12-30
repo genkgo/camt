@@ -9,5 +9,5 @@ interface DateDecoderInterface
      * @param string $date
      * @return DateTimeImmutable
      */
-    public function decode($date);
+    public function decode(string $date): DateTimeImmutable;
 }

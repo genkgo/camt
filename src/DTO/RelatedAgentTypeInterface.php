@@ -6,10 +6,10 @@ interface RelatedAgentTypeInterface
     /**
      * @return string
      */
-    public function getName();
+    public function getName(): string;
 
     /**
      * @return string
      */
-    public function getBIC();
+    public function getBIC(): string;
 }
