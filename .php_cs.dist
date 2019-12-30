@@ -5,8 +5,11 @@ $finder = PhpCsFixer\Finder::create()
     ->exclude('vendor');
 
 return PhpCsFixer\Config::create()
+    ->setRiskyAllowed(true)
     ->setFinder($finder)
     ->setCacheFile(sys_get_temp_dir() . '/php-cs-fixer' . preg_replace('~\W~', '-', __DIR__))->setRules([
         '@PSR2' => true,
         'phpdoc_types_order' => true,
+        'declare_strict_types' => true,
+        'blank_line_after_opening_tag' => true,
     ]);

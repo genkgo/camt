@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Genkgo\Camt\Camt054\Decoder;
 
 use Genkgo\Camt\Decoder\Message as BaseMessageDecoder;
@@ -11,7 +13,7 @@ use Genkgo\Camt\Iban;
 class Message extends BaseMessageDecoder
 {
     /**
-     * @param DTO\Message      $message
+     * @param DTO\Message $message
      * @param SimpleXMLElement $document
      */
     public function addRecords(DTO\Message $message, SimpleXMLElement $document): void
@@ -22,7 +24,7 @@ class Message extends BaseMessageDecoder
         foreach ($xmlNotifications as $xmlNotification) {
             $notification = new Camt054DTO\Notification(
                 (string) $xmlNotification->Id,
-                $this->dateDecoder->decode((string)$xmlNotification->CreDtTm),
+                $this->dateDecoder->decode((string) $xmlNotification->CreDtTm),
                 $this->getAccount($xmlNotification)
             );
 
@@ -92,7 +94,7 @@ class Message extends BaseMessageDecoder
             }
 
             if (isset($xmlOtherIdentification->Issr)) {
-                $otherAccount->setIssuer($xmlOtherIdentification->Issr);
+                $otherAccount->setIssuer((string) $xmlOtherIdentification->Issr);
             }
 
             return $otherAccount;

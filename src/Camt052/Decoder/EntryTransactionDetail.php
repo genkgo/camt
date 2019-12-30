@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Genkgo\Camt\Camt052\Decoder;
 
 use Genkgo\Camt\Decoder\EntryTransactionDetail as BaseDecoder;
@@ -53,7 +55,7 @@ class EntryTransactionDetail extends BaseDecoder
             }
 
             if (isset($xmlOtherIdentification->Issr)) {
-                $otherAccount->setIssuer($xmlOtherIdentification->Issr);
+                $otherAccount->setIssuer((string) $xmlOtherIdentification->Issr);
             }
 
             return $otherAccount;

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Genkgo\Camt\Camt054\Decoder\V04;
 
 use SimpleXMLElement;

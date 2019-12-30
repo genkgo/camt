@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Genkgo\TestCamt\Unit\Camt054;
 
 use DOMDocument;

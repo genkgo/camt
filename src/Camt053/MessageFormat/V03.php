@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Genkgo\Camt\Camt053\MessageFormat;
 
 use Genkgo\Camt\Camt053;

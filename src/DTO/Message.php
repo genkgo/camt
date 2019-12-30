@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Genkgo\Camt\DTO;
 
 use Genkgo\Camt\Iterator\EntryIterator;

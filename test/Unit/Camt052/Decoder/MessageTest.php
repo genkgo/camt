@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Genkgo\TestCamt\Unit\Camt052\Decoder;
 
 use Genkgo\Camt\Camt052\Decoder\V01\Message;

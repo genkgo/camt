@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Genkgo\Camt\Decoder;
 
 use Genkgo\Camt\Decoder\Factory\DTO as DTOFactory;
