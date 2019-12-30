@@ -8,6 +8,7 @@ use Genkgo\Camt\DTO;
 use Genkgo\Camt\Decoder as DecoderObject;
 use Prophecy\Argument;
 use Prophecy\Prophecy\ObjectProphecy;
+use SimpleXMLElement;
 
 class MessageTest extends AbstractTestCase
 {
@@ -84,6 +85,6 @@ class MessageTest extends AbstractTestCase
 
 XML;
 
-        return new \SimpleXMLElement($xmlContent);
+        return new SimpleXMLElement($xmlContent);
     }
 }

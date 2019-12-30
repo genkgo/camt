@@ -2,6 +2,7 @@
 
 namespace Genkgo\TestCamt\Unit\Camt054;
 
+use DOMDocument;
 use Genkgo\TestCamt\AbstractTestCase;
 use Genkgo\Camt\Camt054\MessageFormat;
 use Genkgo\Camt\Camt054\DTO as Camt054DTO;
@@ -12,7 +13,7 @@ class EndToEndTest extends AbstractTestCase
 {
     protected function getV2Message()
     {
-        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $dom = new DOMDocument('1.0', 'UTF-8');
         $dom->load(__DIR__.'/Stubs/camt054.v2.xml');
 
         return (new MessageFormat\V02)->getDecoder()->decode($dom);
@@ -20,7 +21,7 @@ class EndToEndTest extends AbstractTestCase
 
     protected function getV4Message()
     {
-        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $dom = new DOMDocument('1.0', 'UTF-8');
         $dom->load(__DIR__.'/Stubs/camt054.v4.xml');
 
         return (new MessageFormat\V04)->getDecoder()->decode($dom);

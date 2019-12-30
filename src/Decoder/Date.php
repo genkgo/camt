@@ -1,6 +1,9 @@
 <?php
 namespace Genkgo\Camt\Decoder;
 
+use DateTimeImmutable;
+use InvalidArgumentException;
+
 class Date implements DateDecoderInterface
 {
     /**
@@ -10,18 +13,18 @@ class Date implements DateDecoderInterface
 
     /**
      * @param string $date
-     * @return \DateTimeImmutable
+     * @return DateTimeImmutable
      */
     public function decode($date)
     {
         if ($this->format === null) {
-            $result = new \DateTimeImmutable($date);
+            $result = new DateTimeImmutable($date);
         } else {
-            $result = \DateTimeImmutable::createFromFormat($this->format, $date);
+            $result = DateTimeImmutable::createFromFormat($this->format, $date);
         }
 
         if ($result === false) {
-            throw new \InvalidArgumentException("Cannot decode date {$date}");
+            throw new InvalidArgumentException("Cannot decode date {$date}");
         }
 
         return $result;

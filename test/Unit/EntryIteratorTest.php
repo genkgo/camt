@@ -2,6 +2,7 @@
 
 namespace Genkgo\TestCamt\Unit;
 
+use DOMDocument;
 use Genkgo\TestCamt\AbstractTestCase;
 use Genkgo\Camt\Camt053\MessageFormat;
 use Genkgo\Camt\DTO;
@@ -10,7 +11,7 @@ class EntryIteratorTest extends AbstractTestCase
 {
     protected function getDefaultMessage()
     {
-        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $dom = new DOMDocument('1.0', 'UTF-8');
         $dom->load(__DIR__.'/Camt053/Stubs/camt053.v2.multi.statement.xml');
         return (new MessageFormat\V02)->getDecoder()->decode($dom);
     }

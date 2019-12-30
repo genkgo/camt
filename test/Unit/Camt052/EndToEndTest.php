@@ -3,6 +3,8 @@
 namespace Genkgo\TestCamt\Unit\Camt052;
 
 use \DateTimeImmutable;
+use DOMDocument;
+use Genkgo\Camt\DTO\Entry;
 use Genkgo\TestCamt\AbstractTestCase;
 use Genkgo\Camt\Camt052\MessageFormat;
 use Genkgo\Camt\Camt052\DTO as Camt052DTO;
@@ -12,7 +14,7 @@ class EndToEndTest extends AbstractTestCase
 {
     protected function getV1Message()
     {
-        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $dom = new DOMDocument('1.0', 'UTF-8');
         $dom->load(__DIR__.'/Stubs/camt052.v1.xml');
 
         return (new MessageFormat\V01)->getDecoder()->decode($dom);
@@ -20,7 +22,7 @@ class EndToEndTest extends AbstractTestCase
 
     protected function getV2Message()
     {
-        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $dom = new DOMDocument('1.0', 'UTF-8');
         $dom->load(__DIR__.'/Stubs/camt052.v2.xml');
 
         return (new MessageFormat\V02)->getDecoder()->decode($dom);
@@ -28,7 +30,7 @@ class EndToEndTest extends AbstractTestCase
 
     protected function getV2OtherAccountMessage()
     {
-        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $dom = new DOMDocument('1.0', 'UTF-8');
         $dom->load(__DIR__.'/Stubs/camt052.v2.other-account.xml');
 
         return (new MessageFormat\V02)->getDecoder()->decode($dom);
@@ -36,7 +38,7 @@ class EndToEndTest extends AbstractTestCase
 
     protected function getV4Message()
     {
-        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $dom = new DOMDocument('1.0', 'UTF-8');
         $dom->load(__DIR__.'/Stubs/camt052.v4.xml');
 
         return (new MessageFormat\V04)->getDecoder()->decode($dom);
@@ -144,7 +146,7 @@ class EndToEndTest extends AbstractTestCase
                 $entries = $report->getEntries();
                 $this->assertCount(1, $entries);
 
-                /** @var \Genkgo\Camt\DTO\Entry $entry */
+                /** @var Entry $entry */
                 foreach ($entries as $entry) {
                     $this->assertCount(1, $entry->getTransactionDetails());
                     foreach ($entry->getTransactionDetails() as $detail) {
@@ -174,7 +176,7 @@ class EndToEndTest extends AbstractTestCase
                 $entries = $report->getEntries();
                 $this->assertCount(1, $entries);
 
-                /** @var DTO\Entry $entry */
+                /** @var Entry $entry */
                 foreach ($entries as $entry) {
                     $parties = $entry->getTransactionDetail()->getRelatedParties();
 
@@ -241,7 +243,7 @@ class EndToEndTest extends AbstractTestCase
                 $entries = $report->getEntries();
                 $this->assertCount(1, $entries);
 
-                /** @var DTO\Entry $entry */
+                /** @var Entry $entry */
                 foreach ($entries as $entry) {
                     $this->assertInstanceOf(DTO\BankTransactionCode::class, $entry->getBankTransactionCode());
                     $this->assertInstanceOf(DTO\ProprietaryBankTransactionCode::class, $entry->getBankTransactionCode()->getProprietary());

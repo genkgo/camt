@@ -3,6 +3,7 @@
 namespace Genkgo\TestCamt\Unit\Camt053;
 
 use DateTimeImmutable;
+use DOMDocument;
 use Genkgo\Camt\DTO\Message;
 use Genkgo\TestCamt\AbstractTestCase;
 use Genkgo\Camt\Camt053\MessageFormat;
@@ -14,7 +15,7 @@ class EndToEndTest extends AbstractTestCase
 {
     protected function getV2Message()
     {
-        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $dom = new DOMDocument('1.0', 'UTF-8');
         $dom->load(__DIR__.'/Stubs/camt053.v2.minimal.xml');
 
         return (new MessageFormat\V02)->getDecoder()->decode($dom);
@@ -22,7 +23,7 @@ class EndToEndTest extends AbstractTestCase
 
     protected function getV2UltimateMessage()
     {
-        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $dom = new DOMDocument('1.0', 'UTF-8');
         $dom->load(__DIR__.'/Stubs/camt053.v2.minimal.ultimate.xml');
 
         return (new MessageFormat\V02)->getDecoder()->decode($dom);
@@ -30,7 +31,7 @@ class EndToEndTest extends AbstractTestCase
 
     protected function getV3Message()
     {
-        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $dom = new DOMDocument('1.0', 'UTF-8');
         $dom->load(__DIR__.'/Stubs/camt053.v3.xml');
 
         return (new MessageFormat\V03)->getDecoder()->decode($dom);
@@ -38,7 +39,7 @@ class EndToEndTest extends AbstractTestCase
 
     protected function getV4Message()
     {
-        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $dom = new DOMDocument('1.0', 'UTF-8');
         $dom->load(__DIR__.'/Stubs/camt053.v4.xml');
 
         return (new MessageFormat\V04)->getDecoder()->decode($dom);
@@ -48,7 +49,7 @@ class EndToEndTest extends AbstractTestCase
     {
         $this->expectException(InvalidMessageException::class);
 
-        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $dom = new DOMDocument('1.0', 'UTF-8');
         $dom->load(__DIR__.'/Stubs/camt053.v2.wrong.xml');
 
         return (new MessageFormat\V02)->getDecoder()->decode($dom);
@@ -56,21 +57,21 @@ class EndToEndTest extends AbstractTestCase
 
     public function testFiveDecimalsStatement()
     {
-        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $dom = new DOMDocument('1.0', 'UTF-8');
         $dom->load(__DIR__.'/Stubs/camt053.v2.five.decimals.xml');
         $this->assertInstanceOf(Message::class, (new MessageFormat\V02)->getDecoder()->decode($dom));
     }
 
     public function testV3Document()
     {
-        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $dom = new DOMDocument('1.0', 'UTF-8');
         $dom->load(__DIR__.'/Stubs/camt053.v3.xml');
         $this->assertInstanceOf(Message::class, (new MessageFormat\V03)->getDecoder()->decode($dom));
     }
 
     public function testV4Document()
     {
-        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $dom = new DOMDocument('1.0', 'UTF-8');
         $dom->load(__DIR__.'/Stubs/camt053.v4.xml');
         $this->assertInstanceOf(Message::class, (new MessageFormat\V04)->getDecoder()->decode($dom));
     }

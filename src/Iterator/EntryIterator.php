@@ -4,12 +4,13 @@ namespace Genkgo\Camt\Iterator;
 use AppendIterator;
 use ArrayIterator;
 use Genkgo\Camt\DTO\Message;
+use IteratorIterator;
 
 /**
  * Class SimpleEntryIterator
  * @package Genkgo\Camt\Iterator
  */
-class EntryIterator extends \IteratorIterator
+class EntryIterator extends IteratorIterator
 {
     /**
      * @param Message $message

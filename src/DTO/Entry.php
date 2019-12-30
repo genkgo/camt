@@ -271,17 +271,17 @@ class Entry
     }
 
     /**
-     * @param \DateTimeImmutable $date
+     * @param DateTimeImmutable $date
      */
-    public function setBookingDate(\DateTimeImmutable $date)
+    public function setBookingDate(DateTimeImmutable $date)
     {
         $this->bookingDate = $date;
     }
 
     /**
-     * @param \DateTimeImmutable $date
+     * @param DateTimeImmutable $date
      */
-    public function setValueDate(\DateTimeImmutable $date)
+    public function setValueDate(DateTimeImmutable $date)
     {
         $this->valueDate = $date;
     }

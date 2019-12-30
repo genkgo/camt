@@ -8,6 +8,7 @@ use Genkgo\Camt\DTO;
 use Genkgo\Camt\Camt053;
 use Prophecy\Argument;
 use Prophecy\Prophecy\ObjectProphecy;
+use SimpleXMLElement;
 
 class RecordTest extends AbstractTestCase
 {
@@ -35,7 +36,7 @@ class RecordTest extends AbstractTestCase
         $record = $this->prophesize(Camt053\DTO\Statement::class);
         $record->addBalance(Argument::any())->shouldNotBeCalled();
 
-        $xmlRecord = new \SimpleXMLElement('<content></content>');
+        $xmlRecord = new SimpleXMLElement('<content></content>');
         $this->decoder->addBalances($record->reveal(), $xmlRecord);
     }
 
@@ -58,7 +59,7 @@ class RecordTest extends AbstractTestCase
         $record = $this->prophesize(DTO\Record::class);
         $this->mockedEntryDecoder->addTransactionDetails(Argument::any(), Argument::any())->shouldNotBeCalled();
         $record->addEntry(Argument::any())->shouldNotBeCalled();
-        $xmlRecord = new \SimpleXMLElement('<content></content>');
+        $xmlRecord = new SimpleXMLElement('<content></content>');
 
         $this->decoder->addEntries($record->reveal(), $xmlRecord);
     }
@@ -119,6 +120,6 @@ class RecordTest extends AbstractTestCase
 </content>
 XML;
 
-        return new \SimpleXMLElement($xmlContent);
+        return new SimpleXMLElement($xmlContent);
     }
 }

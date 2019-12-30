@@ -7,6 +7,7 @@ use Genkgo\Camt\Decoder;
 use Genkgo\Camt\DTO;
 use Prophecy\Argument;
 use Prophecy\Prophecy\ObjectProphecy;
+use SimpleXMLElement;
 
 class EntryTest extends AbstractTestCase
 {
@@ -30,7 +31,7 @@ class EntryTest extends AbstractTestCase
         $entry = $this->prophesize(DTO\Entry::class);
         $entry->addTransactionDetail(Argument::any())->shouldNotBeCalled();
 
-        $xmlEntry = new \SimpleXMLElement('<content></content>');
+        $xmlEntry = new SimpleXMLElement('<content></content>');
         $this->decoder->addTransactionDetails($entry->reveal(), $xmlEntry);
     }
 
@@ -103,6 +104,6 @@ class EntryTest extends AbstractTestCase
 </content>
 XML;
 
-        return new \SimpleXMLElement($xmlContent);
+        return new SimpleXMLElement($xmlContent);
     }
 }
