@@ -1,7 +1,7 @@
 <?php
+
 namespace Genkgo\Camt\DTO;
 
-use BadMethodCallException;
 use Money\Money;
 
 class Charges
@@ -45,14 +45,14 @@ class Charges
     }
 
     /**
-     * @return ChargesRecord
+     * @return null|ChargesRecord
      */
-    public function getRecord()
+    public function getRecord(): ?ChargesRecord
     {
         if (isset($this->records[0])) {
             return $this->records[0];
-        } else {
-            throw new BadMethodCallException('There are no charges records at all for this entry');
         }
+
+        return null;
     }
 }

@@ -2,8 +2,6 @@
 
 namespace Genkgo\Camt\DTO;
 
-use BadMethodCallException;
-
 /**
  * Class RelatedParty
  *
@@ -40,14 +38,10 @@ class RelatedParty
     }
 
     /**
-     * @return Account
+     * @return null|Account
      */
-    public function getAccount()
+    public function getAccount(): ?Account
     {
-        if ($this->account === null) {
-            throw new BadMethodCallException();
-        }
-
         return $this->account;
     }
 }

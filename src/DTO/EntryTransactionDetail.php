@@ -2,7 +2,6 @@
 
 namespace Genkgo\Camt\DTO;
 
-use BadMethodCallException;
 use Money\Money;
 
 /**
@@ -25,7 +24,7 @@ class EntryTransactionDetail
      */
     private $relatedAgents = [];
     /**
-     * @var RemittanceInformation
+     * @var null|RemittanceInformation
      */
     private $remittanceInformation;
     /**
@@ -37,7 +36,7 @@ class EntryTransactionDetail
      */
     private $returnInformation;
     /**
-     * @var AdditionalTransactionInformation
+     * @var null|AdditionalTransactionInformation
      */
     private $additionalTransactionInformation;
 
@@ -78,16 +77,15 @@ class EntryTransactionDetail
     }
 
     /**
-     * @return Reference
-     * @throws BadMethodCallException
+     * @return null|Reference
      */
-    public function getReference()
+    public function getReference(): ?Reference
     {
         if (isset($this->references[0])) {
             return $this->references[0];
-        } else {
-            throw new BadMethodCallException('There are no references at all for this transaction');
         }
+
+        return null;
     }
 
     /**
@@ -107,16 +105,15 @@ class EntryTransactionDetail
     }
 
     /**
-     * @return RelatedParty
-     * @throws BadMethodCallException
+     * @return null|RelatedParty
      */
-    public function getRelatedParty()
+    public function getRelatedParty(): ?RelatedParty
     {
         if (isset($this->relatedParties[0])) {
             return $this->relatedParties[0];
-        } else {
-            throw new BadMethodCallException('There are no related parties at all for this transaction');
         }
+
+        return null;
     }
 
     /**
@@ -136,35 +133,30 @@ class EntryTransactionDetail
     }
 
     /**
-     * @return RelatedAgent
-     * @throws BadMethodCallException
+     * @return null|RelatedAgent
      */
-    public function getRelatedAgent()
+    public function getRelatedAgent(): ?RelatedAgent
     {
         if (isset($this->relatedAgents[0])) {
             return $this->relatedAgents[0];
-        } else {
-            throw new BadMethodCallException('There are no related agents at all for this transaction');
         }
+
+        return null;
     }
 
     /**
-     * @param RemittanceInformation $remittanceInformation
+     * @param null|RemittanceInformation $remittanceInformation
      */
-    public function setRemittanceInformation(RemittanceInformation $remittanceInformation)
+    public function setRemittanceInformation(?RemittanceInformation $remittanceInformation)
     {
         $this->remittanceInformation = $remittanceInformation;
     }
 
     /**
-     * @return RemittanceInformation
+     * @return null|RemittanceInformation
      */
-    public function getRemittanceInformation()
+    public function getRemittanceInformation(): ?RemittanceInformation
     {
-        if ($this->remittanceInformation === null) {
-            throw new BadMethodCallException();
-        }
-
         return $this->remittanceInformation;
     }
 
@@ -201,22 +193,18 @@ class EntryTransactionDetail
     }
 
     /**
-     * @param AdditionalTransactionInformation $additionalTransactionInformation
+     * @param null|AdditionalTransactionInformation $additionalTransactionInformation
      */
-    public function setAdditionalTransactionInformation(AdditionalTransactionInformation $additionalTransactionInformation)
+    public function setAdditionalTransactionInformation(?AdditionalTransactionInformation $additionalTransactionInformation)
     {
         $this->additionalTransactionInformation = $additionalTransactionInformation;
     }
 
     /**
-     * @return AdditionalTransactionInformation
+     * @return null|AdditionalTransactionInformation
      */
-    public function getAdditionalTransactionInformation()
+    public function getAdditionalTransactionInformation(): ?AdditionalTransactionInformation
     {
-        if ($this->additionalTransactionInformation === null) {
-            throw new BadMethodCallException();
-        }
-
         return $this->additionalTransactionInformation;
     }
 

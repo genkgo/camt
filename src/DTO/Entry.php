@@ -2,12 +2,12 @@
 
 namespace Genkgo\Camt\DTO;
 
-use BadMethodCallException;
 use DateTimeImmutable;
 use Money\Money;
 
 /**
  * Class Entry
+ *
  * @package Genkgo\Camt\DTO
  */
 class Entry
@@ -138,15 +138,15 @@ class Entry
     }
 
     /**
-     * @return EntryTransactionDetail
+     * @return null|EntryTransactionDetail
      */
-    public function getTransactionDetail()
+    public function getTransactionDetail(): ?EntryTransactionDetail
     {
         if (isset($this->transactionDetails[0])) {
             return $this->transactionDetails[0];
-        } else {
-            throw new BadMethodCallException('There are no transaction details at all for this entry');
         }
+
+        return null;
     }
 
     /**
@@ -183,6 +183,7 @@ class Entry
 
     /**
      * Unique reference as assigned by the account servicing institution to unambiguously identify the entry.
+     *
      * @return string
      */
     public function getAccountServicerReference()

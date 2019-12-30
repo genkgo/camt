@@ -2,8 +2,6 @@
 
 namespace Genkgo\Camt\DTO;
 
-use BadMethodCallException;
-
 /**
  * Class RemittanceInformation
  *
@@ -97,15 +95,15 @@ class RemittanceInformation
     }
 
     /**
-     * @return StructuredRemittanceInformation
+     * @return null|StructuredRemittanceInformation
      */
-    public function getStructuredBlock()
+    public function getStructuredBlock(): ?StructuredRemittanceInformation
     {
         if (isset($this->structuredBlocks[0])) {
             return $this->structuredBlocks[0];
-        } else {
-            throw new BadMethodCallException('There are no structured block at all for this remittance information');
         }
+
+        return null;
     }
 
     /**
@@ -127,12 +125,12 @@ class RemittanceInformation
     /**
      * @return UnstructuredRemittanceInformation
      */
-    public function getUnstructuredBlock()
+    public function getUnstructuredBlock(): ?UnstructuredRemittanceInformation
     {
         if (isset($this->unstructuredBlocks[0])) {
             return $this->unstructuredBlocks[0];
-        } else {
-            throw new BadMethodCallException('There are no unstructured block at all for this remittance information');
         }
+
+        return null;
     }
 }
