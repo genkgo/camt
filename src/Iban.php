@@ -39,7 +39,7 @@ class Iban
         return $this->iban;
     }
 
-    public function equals($iban): bool
+    public function equals(string $iban): bool
     {
         return (new IbanDetails($iban))->getNormalizedIban() === $this->iban;
     }

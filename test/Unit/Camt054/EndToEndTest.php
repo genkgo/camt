@@ -5,6 +5,9 @@ declare(strict_types=1);
 namespace Genkgo\TestCamt\Unit\Camt054;
 
 use DOMDocument;
+use Genkgo\Camt\Camt054\DTO\V04\GroupHeader;
+use Genkgo\Camt\DTO\Message;
+use Genkgo\Camt\DTO\OrganisationIdentification;
 use Genkgo\TestCamt\AbstractTestCase;
 use Genkgo\Camt\Camt054\MessageFormat;
 use Genkgo\Camt\Camt054\DTO as Camt054DTO;
@@ -13,7 +16,7 @@ use DateTimeImmutable;
 
 class EndToEndTest extends AbstractTestCase
 {
-    protected function getV2Message()
+    protected function getV2Message(): Message
     {
         $dom = new DOMDocument('1.0', 'UTF-8');
         $dom->load(__DIR__.'/Stubs/camt054.v2.xml');
@@ -21,7 +24,7 @@ class EndToEndTest extends AbstractTestCase
         return (new MessageFormat\V02)->getDecoder()->decode($dom);
     }
 
-    protected function getV4Message()
+    protected function getV4Message(): Message
     {
         $dom = new DOMDocument('1.0', 'UTF-8');
         $dom->load(__DIR__.'/Stubs/camt054.v4.xml');
@@ -36,6 +39,7 @@ class EndToEndTest extends AbstractTestCase
             $this->getV4Message(),
         ];
 
+        /** @var Message $message */
         foreach ($messages as $message) {
             $groupHeader = $message->getGroupHeader();
 
@@ -53,14 +57,18 @@ class EndToEndTest extends AbstractTestCase
             $this->assertInstanceOf(DTO\Address::class, $msgRecipient->getAddress());
             $this->assertEquals('12 Oxford Street', $msgRecipient->getAddress()->getStreetName());
             $this->assertEquals('UK', $msgRecipient->getAddress()->getCountry());
-            $this->assertInstanceOf(DTO\Identification::class, $msgRecipient->getIdentification());
-            $this->assertEquals('DABAIE2D', $msgRecipient->getIdentification()->getBic());
-            $this->assertEquals('Some other Id', $msgRecipient->getIdentification()->getOtherId());
-            $this->assertEquals('Some other Issuer', $msgRecipient->getIdentification()->getOtherIssuer());
+
+            /** @var OrganisationIdentification $identification */
+            $identification = $msgRecipient->getIdentification();
+            $this->assertInstanceOf(DTO\Identification::class, $identification);
+            $this->assertEquals('DABAIE2D', $identification->getBic());
+            $this->assertEquals('Some other Id', $identification->getOtherId());
+            $this->assertEquals('Some other Issuer', $identification->getOtherIssuer());
         }
 
+        /** @var GroupHeader $groupHeaderV4 */
         $groupHeaderV4 = $messages[1]->getGroupHeader();
-        $this->assertInstanceOf(Camt054DTO\V04\GroupHeader::class, $groupHeaderV4);
+        $this->assertInstanceOf(GroupHeader::class, $groupHeaderV4);
         $this->assertInstanceOf(Camt054DTO\V04\OriginalBusinessQuery::class, $groupHeaderV4->getOriginalBusinessQuery());
         $this->assertEquals('SomeMessageId', $groupHeaderV4->getOriginalBusinessQuery()->getMessageId());
         $this->assertEquals(

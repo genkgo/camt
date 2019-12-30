@@ -14,7 +14,7 @@ interface RelatedPartyTypeInterface
     /**
      * @param Address $address
      */
-    public function setAddress(Address $address);
+    public function setAddress(Address $address): void;
 
     /**
      * @return null|Address

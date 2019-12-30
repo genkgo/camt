@@ -11,7 +11,7 @@ trait Mapping
     /**
      * @param object $object
      * @param SimpleXMLElement $xml
-     * @param array $mapping
+     * @param string[][] $mapping
      */
     public static function map(object $object, SimpleXMLElement $xml, array $mapping): void
     {

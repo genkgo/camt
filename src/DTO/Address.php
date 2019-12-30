@@ -21,7 +21,7 @@ class Address
     private $countrySubDivision;
 
     /**
-     * @var array
+     * @var string[]
      */
     private $addressLines = [];
 
@@ -98,7 +98,7 @@ class Address
     }
 
     /**
-     * @return array
+     * @return string[]
      */
     public function getAddressLines(): array
     {
@@ -106,7 +106,7 @@ class Address
     }
 
     /**
-     * @param  array $addressLines
+     * @param string[] $addressLines
      *
      * @return static
      */

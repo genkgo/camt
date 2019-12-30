@@ -1,8 +1,9 @@
 parameters:
-    level: 5
+    level: 6
     paths:
         - src/
         - test/
     inferPrivatePropertyTypeFromConstructor: true
     ignoreErrors:
         - '~^Call to an undefined method Prophecy\\Prophecy\\~'
+        - '~^Method Genkgo\\Camt\\Decoder\\Factory\\DTO\\OrganisationIdentification\:\:map\(\) has parameter \$mapping with no value type specified in iterable type array\.$~'

@@ -7,6 +7,8 @@ namespace Genkgo\TestCamt\Unit\Camt052;
 use \DateTimeImmutable;
 use DOMDocument;
 use Genkgo\Camt\DTO\Entry;
+use Genkgo\Camt\DTO\Message;
+use Genkgo\Camt\DTO\OrganisationIdentification;
 use Genkgo\TestCamt\AbstractTestCase;
 use Genkgo\Camt\Camt052\MessageFormat;
 use Genkgo\Camt\Camt052\DTO as Camt052DTO;
@@ -14,7 +16,7 @@ use Genkgo\Camt\DTO;
 
 class EndToEndTest extends AbstractTestCase
 {
-    protected function getV1Message()
+    protected function getV1Message(): Message
     {
         $dom = new DOMDocument('1.0', 'UTF-8');
         $dom->load(__DIR__.'/Stubs/camt052.v1.xml');
@@ -22,7 +24,7 @@ class EndToEndTest extends AbstractTestCase
         return (new MessageFormat\V01)->getDecoder()->decode($dom);
     }
 
-    protected function getV2Message()
+    protected function getV2Message(): Message
     {
         $dom = new DOMDocument('1.0', 'UTF-8');
         $dom->load(__DIR__.'/Stubs/camt052.v2.xml');
@@ -30,7 +32,7 @@ class EndToEndTest extends AbstractTestCase
         return (new MessageFormat\V02)->getDecoder()->decode($dom);
     }
 
-    protected function getV2OtherAccountMessage()
+    protected function getV2OtherAccountMessage(): Message
     {
         $dom = new DOMDocument('1.0', 'UTF-8');
         $dom->load(__DIR__.'/Stubs/camt052.v2.other-account.xml');
@@ -38,7 +40,7 @@ class EndToEndTest extends AbstractTestCase
         return (new MessageFormat\V02)->getDecoder()->decode($dom);
     }
 
-    protected function getV4Message()
+    protected function getV4Message(): Message
     {
         $dom = new DOMDocument('1.0', 'UTF-8');
         $dom->load(__DIR__.'/Stubs/camt052.v4.xml');
@@ -54,6 +56,7 @@ class EndToEndTest extends AbstractTestCase
             $this->getV4Message(),
         ];
 
+        /** @var Message $message */
         foreach ($messages as $message) {
             $groupHeader = $message->getGroupHeader();
 
@@ -68,10 +71,13 @@ class EndToEndTest extends AbstractTestCase
             $this->assertInstanceOf(DTO\Address::class, $msgRecipient->getAddress());
             $this->assertEquals('12 Oxford Street', $msgRecipient->getAddress()->getStreetName());
             $this->assertEquals('UK', $msgRecipient->getAddress()->getCountry());
-            $this->assertInstanceOf(DTO\Identification::class, $msgRecipient->getIdentification());
-            $this->assertEquals('DABAIE2D', $msgRecipient->getIdentification()->getBic());
-            $this->assertEquals('Some other Id', $msgRecipient->getIdentification()->getOtherId());
-            $this->assertEquals('Some other Issuer', $msgRecipient->getIdentification()->getOtherIssuer());
+
+            /** @var OrganisationIdentification $identification */
+            $identification = $msgRecipient->getIdentification();
+            $this->assertInstanceOf(DTO\Identification::class, $identification);
+            $this->assertEquals('DABAIE2D', $identification->getBic());
+            $this->assertEquals('Some other Id', $identification->getOtherId());
+            $this->assertEquals('Some other Issuer', $identification->getOtherIssuer());
         }
     }
 
@@ -167,7 +173,7 @@ class EndToEndTest extends AbstractTestCase
     public function testOtherAccount(): void
     {
         $messages = [
-            $this->getV2OtherAccountMessage()
+            $this->getV2OtherAccountMessage(),
         ];
 
         foreach ($messages as $message) {
@@ -234,7 +240,7 @@ class EndToEndTest extends AbstractTestCase
     public function testProprietaryBankTransactionCode(): void
     {
         $messages = [
-            $this->getV2Message()
+            $this->getV2Message(),
         ];
 
         foreach ($messages as $message) {

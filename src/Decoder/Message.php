@@ -87,7 +87,7 @@ abstract class Message
      * @param DTO\Message      $message
      * @param SimpleXMLElement $document
      */
-    abstract public function addRecords(DTO\Message $message, SimpleXMLElement $document);
+    abstract public function addRecords(DTO\Message $message, SimpleXMLElement $document): void;
 
     /**
      * @param SimpleXMLElement $document

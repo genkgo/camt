@@ -12,7 +12,7 @@ interface DecoderInterface
      * @param DOMDocument $document
      * @param bool $xsdValidation
      *
-     * @return Message|mixed
+     * @return Message
      */
-    public function decode(DOMDocument $document, bool $xsdValidation = true);
+    public function decode(DOMDocument $document, bool $xsdValidation = true): Message;
 }

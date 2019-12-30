@@ -59,7 +59,7 @@ abstract class Record
     protected $toDate;
 
     /**
-     * @var array
+     * @var Entry[]
      */
     protected $entries = [];
 

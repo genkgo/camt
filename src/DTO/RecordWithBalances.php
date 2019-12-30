@@ -12,7 +12,7 @@ namespace Genkgo\Camt\DTO;
 abstract class RecordWithBalances extends Record
 {
     /**
-     * @var array
+     * @var Balance[]
      */
     private $balances = [];
 
