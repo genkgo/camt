@@ -1,5 +1,5 @@
 parameters:
-    level: 6
+    level: 7
     paths:
         - src/
         - test/
@@ -7,3 +7,9 @@ parameters:
     ignoreErrors:
         - '~^Call to an undefined method Prophecy\\Prophecy\\~'
         - '~^Method Genkgo\\Camt\\Decoder\\Factory\\DTO\\OrganisationIdentification\:\:map\(\) has parameter \$mapping with no value type specified in iterable type array\.$~'
+        -
+            message: '~^Parameter \#1 .* of class Genkgo\\Camt\\.* constructor expects Genkgo\\Camt\\.*, object given\.$~'
+            path: test
+        -
+            message: '~^Parameter \#1 .* of method Genkgo\\Camt\\.* expects Genkgo\\Camt\\.*, object given\.$~'
+            path: test

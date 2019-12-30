@@ -214,7 +214,7 @@ class Entry
      */
     public function setBatchPaymentId(?string $batchPaymentId): void
     {
-        $this->batchPaymentId = trim($batchPaymentId);
+        $this->batchPaymentId = trim((string) $batchPaymentId);
     }
 
     /**
