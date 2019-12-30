@@ -82,7 +82,7 @@ abstract class EntryTransactionDetail
                 $xmlRelatedPartyType = $xmlRelatedParty->Cdtr;
                 $xmlRelatedPartyTypeAccount = $xmlRelatedParty->CdtrAcct;
                 $xmlRelatedPartyName = (isset($xmlRelatedPartyType->Nm)) ? (string) $xmlRelatedPartyType->Nm : '';
-                $relatedPartyType = $creditor = new DTO\Creditor($xmlRelatedPartyName);
+                $relatedPartyType = new DTO\Creditor($xmlRelatedPartyName);
 
                 $this->addRelatedParty($detail, $xmlRelatedPartyType, $relatedPartyType, $xmlRelatedPartyTypeAccount);
             }
@@ -90,7 +90,7 @@ abstract class EntryTransactionDetail
             if (isset($xmlRelatedParty->UltmtCdtr)) {
                 $xmlRelatedPartyType = $xmlRelatedParty->UltmtCdtr;
                 $xmlRelatedPartyName = (isset($xmlRelatedPartyType->Nm)) ? (string) $xmlRelatedPartyType->Nm : '';
-                $relatedPartyType = $creditor = new DTO\UltimateCreditor($xmlRelatedPartyName);
+                $relatedPartyType = new DTO\UltimateCreditor($xmlRelatedPartyName);
 
                 $this->addRelatedParty($detail, $xmlRelatedPartyType, $relatedPartyType);
             }
@@ -107,7 +107,7 @@ abstract class EntryTransactionDetail
             if (isset($xmlRelatedParty->UltmtDbtr)) {
                 $xmlRelatedPartyType = $xmlRelatedParty->UltmtDbtr;
                 $xmlRelatedPartyName = (isset($xmlRelatedPartyType->Nm)) ? (string) $xmlRelatedPartyType->Nm : '';
-                $relatedPartyType = $creditor = new DTO\UltimateDebtor($xmlRelatedPartyName);
+                $relatedPartyType = new DTO\UltimateDebtor($xmlRelatedPartyName);
 
                 $this->addRelatedParty($detail, $xmlRelatedPartyType, $relatedPartyType);
             }
