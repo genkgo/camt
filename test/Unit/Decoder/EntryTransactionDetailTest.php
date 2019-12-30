@@ -18,10 +18,10 @@ class EntryTransactionDetailTest extends AbstractTestCase
     public function it_does_not_add_reference_if_there_is_none_in_xml()
     {
         $detail = $this->prophesize(DTO\EntryTransactionDetail::class);
-        $detail->addReference(Argument::any())->shouldNotBeCalled();
+        $detail->setReference(Argument::any())->shouldNotBeCalled();
 
         $xmlDetail = new SimpleXMLElement('<content></content>');
-        (new Camt053\Decoder\EntryTransactionDetail(new Date()))->addReferences($detail->reveal(), $xmlDetail);
+        (new Camt053\Decoder\EntryTransactionDetail(new Date()))->addReference($detail->reveal(), $xmlDetail);
     }
 
     /**
@@ -30,9 +30,9 @@ class EntryTransactionDetailTest extends AbstractTestCase
     public function it_adds_reference_if_it_is_present_in_xml()
     {
         $detail = $this->prophesize(DTO\EntryTransactionDetail::class);
-        $detail->addReference(Argument::type(DTO\Reference::class))->shouldBeCalled();
+        $detail->setReference(Argument::type(DTO\Reference::class))->shouldBeCalled();
 
-        (new Camt053\Decoder\EntryTransactionDetail(new Date()))->addReferences($detail->reveal(), $this->getXmlDetail());
+        (new Camt053\Decoder\EntryTransactionDetail(new Date()))->addReference($detail->reveal(), $this->getXmlDetail());
     }
 
     /**

@@ -30,7 +30,7 @@ abstract class EntryTransactionDetail
      * @param DTO\EntryTransactionDetail $detail
      * @param SimpleXMLElement $xmlDetail
      */
-    public function addReferences(DTO\EntryTransactionDetail $detail, SimpleXMLElement $xmlDetail)
+    public function addReference(DTO\EntryTransactionDetail $detail, SimpleXMLElement $xmlDetail)
     {
         if (false === isset($xmlDetail->Refs)) {
             return;
@@ -60,7 +60,7 @@ abstract class EntryTransactionDetail
             $reference->addProprietary(new DTO\ProprietaryReference($type, $subReference));
         }
 
-        $detail->addReference($reference);
+        $detail->setReference($reference);
     }
 
     /**

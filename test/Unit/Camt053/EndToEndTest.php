@@ -16,7 +16,7 @@ class EndToEndTest extends AbstractTestCase
     protected function getV2Message()
     {
         $dom = new DOMDocument('1.0', 'UTF-8');
-        $dom->load(__DIR__.'/Stubs/camt053.v2.minimal.xml');
+        $dom->load(__DIR__ . '/Stubs/camt053.v2.minimal.xml');
 
         return (new MessageFormat\V02)->getDecoder()->decode($dom);
     }
@@ -24,7 +24,7 @@ class EndToEndTest extends AbstractTestCase
     protected function getV2UltimateMessage()
     {
         $dom = new DOMDocument('1.0', 'UTF-8');
-        $dom->load(__DIR__.'/Stubs/camt053.v2.minimal.ultimate.xml');
+        $dom->load(__DIR__ . '/Stubs/camt053.v2.minimal.ultimate.xml');
 
         return (new MessageFormat\V02)->getDecoder()->decode($dom);
     }
@@ -32,7 +32,7 @@ class EndToEndTest extends AbstractTestCase
     protected function getV3Message()
     {
         $dom = new DOMDocument('1.0', 'UTF-8');
-        $dom->load(__DIR__.'/Stubs/camt053.v3.xml');
+        $dom->load(__DIR__ . '/Stubs/camt053.v3.xml');
 
         return (new MessageFormat\V03)->getDecoder()->decode($dom);
     }
@@ -40,7 +40,7 @@ class EndToEndTest extends AbstractTestCase
     protected function getV4Message()
     {
         $dom = new DOMDocument('1.0', 'UTF-8');
-        $dom->load(__DIR__.'/Stubs/camt053.v4.xml');
+        $dom->load(__DIR__ . '/Stubs/camt053.v4.xml');
 
         return (new MessageFormat\V04)->getDecoder()->decode($dom);
     }
@@ -50,7 +50,7 @@ class EndToEndTest extends AbstractTestCase
         $this->expectException(InvalidMessageException::class);
 
         $dom = new DOMDocument('1.0', 'UTF-8');
-        $dom->load(__DIR__.'/Stubs/camt053.v2.wrong.xml');
+        $dom->load(__DIR__ . '/Stubs/camt053.v2.wrong.xml');
 
         return (new MessageFormat\V02)->getDecoder()->decode($dom);
     }
@@ -58,21 +58,21 @@ class EndToEndTest extends AbstractTestCase
     public function testFiveDecimalsStatement()
     {
         $dom = new DOMDocument('1.0', 'UTF-8');
-        $dom->load(__DIR__.'/Stubs/camt053.v2.five.decimals.xml');
+        $dom->load(__DIR__ . '/Stubs/camt053.v2.five.decimals.xml');
         $this->assertInstanceOf(Message::class, (new MessageFormat\V02)->getDecoder()->decode($dom));
     }
 
     public function testV3Document()
     {
         $dom = new DOMDocument('1.0', 'UTF-8');
-        $dom->load(__DIR__.'/Stubs/camt053.v3.xml');
+        $dom->load(__DIR__ . '/Stubs/camt053.v3.xml');
         $this->assertInstanceOf(Message::class, (new MessageFormat\V03)->getDecoder()->decode($dom));
     }
 
     public function testV4Document()
     {
         $dom = new DOMDocument('1.0', 'UTF-8');
-        $dom->load(__DIR__.'/Stubs/camt053.v4.xml');
+        $dom->load(__DIR__ . '/Stubs/camt053.v4.xml');
         $this->assertInstanceOf(Message::class, (new MessageFormat\V04)->getDecoder()->decode($dom));
     }
 
@@ -112,7 +112,7 @@ class EndToEndTest extends AbstractTestCase
             $this->getV2Message(),
             $this->getV3Message(),
             $this->getV4Message(),
-            $this->getV2UltimateMessage()
+            $this->getV2UltimateMessage(),
         ];
 
         foreach ($messages as $message) {
@@ -227,13 +227,10 @@ class EndToEndTest extends AbstractTestCase
                             }
                         }
 
-                        $references = $detail->getReferences();
-                        $this->assertCount(1, $references);
-                        foreach ($references as $reference) {
-                            $this->assertEquals('LegalSequenceNumber', $reference->getProprietaries()[0]->getType());
-                            $this->assertEquals('100', $reference->getProprietaries()[0]->getReference());
-                            $this->assertNull($reference->getMandateId());
-                        }
+                        $reference = $detail->getReference();
+                        $this->assertEquals('LegalSequenceNumber', $reference->getProprietaries()[0]->getType());
+                        $this->assertEquals('100', $reference->getProprietaries()[0]->getReference());
+                        $this->assertNull($reference->getMandateId());
 
                         $remittanceInformation = $detail->getRemittanceInformation();
                         $this->assertEquals('4654654654654654', $remittanceInformation->getCreditorReferenceInformation()->getRef());

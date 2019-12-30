@@ -12,9 +12,9 @@ use Money\Money;
 class EntryTransactionDetail
 {
     /**
-     * @var Reference[]
+     * @var null|Reference
      */
-    private $references = [];
+    private $reference;
     /**
      * @var RelatedParty[]
      */
@@ -61,19 +61,11 @@ class EntryTransactionDetail
     private $amount;
 
     /**
-     * @param Reference $reference
+     * @param null|Reference $reference
      */
-    public function addReference(Reference $reference)
+    public function setReference(?Reference $reference)
     {
-        $this->references[] = $reference;
-    }
-
-    /**
-     * @return Reference[]
-     */
-    public function getReferences()
-    {
-        return $this->references;
+        $this->reference = $reference;
     }
 
     /**
@@ -81,11 +73,7 @@ class EntryTransactionDetail
      */
     public function getReference(): ?Reference
     {
-        if (isset($this->references[0])) {
-            return $this->references[0];
-        }
-
-        return null;
+        return $this->reference;
     }
 
     /**

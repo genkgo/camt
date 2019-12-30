@@ -41,7 +41,7 @@ class EntryTest extends AbstractTestCase
     public function it_adds_transaction_details_if_there_are_present_in_xml()
     {
         $entry = $this->prophesize(DTO\Entry::class);
-        $this->mockedEntryTransactionDetailDecoder->addReferences(
+        $this->mockedEntryTransactionDetailDecoder->addReference(
             Argument::type(DTO\EntryTransactionDetail::class),
             Argument::type('\SimpleXMLElement')
         )->shouldBeCalled();
