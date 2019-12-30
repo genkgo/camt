@@ -23,12 +23,12 @@ class Entry
     private $amount;
 
     /**
-     * @var DateTimeImmutable
+     * @var null|DateTimeImmutable
      */
     private $bookingDate;
 
     /**
-     * @var DateTimeImmutable
+     * @var null|DateTimeImmutable
      */
     private $valueDate;
 
@@ -43,12 +43,12 @@ class Entry
     private $reversalIndicator = false;
 
     /**
-     * @var string
+     * @var null|string
      */
     private $reference;
 
     /**
-     * @var string
+     * @var null|string
      */
     private $accountServicerReference;
 
@@ -58,22 +58,22 @@ class Entry
     private $index;
 
     /**
-     * @var string
+     * @var null|string
      */
     private $batchPaymentId;
 
     /**
-     * @var string
+     * @var null|string
      */
     private $additionalInfo;
 
     /**
-     * @var BankTransactionCode
+     * @var null|BankTransactionCode
      */
     private $bankTransactionCode;
 
     /**
-     * @var Charges
+     * @var null|Charges
      */
     private $charges;
 
@@ -106,7 +106,7 @@ class Entry
     }
 
     /**
-     * @return DateTimeImmutable
+     * @return null|DateTimeImmutable
      */
     public function getBookingDate()
     {
@@ -114,7 +114,7 @@ class Entry
     }
 
     /**
-     * @return DateTimeImmutable
+     * @return null|DateTimeImmutable
      */
     public function getValueDate()
     {
@@ -158,7 +158,7 @@ class Entry
     }
 
     /**
-     * @param boolean $reversalIndicator
+     * @param bool $reversalIndicator
      */
     public function setReversalIndicator($reversalIndicator)
     {
@@ -166,7 +166,7 @@ class Entry
     }
 
     /**
-     * @return string
+     * @return null|string
      */
     public function getReference()
     {
@@ -174,7 +174,7 @@ class Entry
     }
 
     /**
-     * @param string $reference
+     * @param null|string $reference
      */
     public function setReference($reference)
     {
@@ -184,7 +184,7 @@ class Entry
     /**
      * Unique reference as assigned by the account servicing institution to unambiguously identify the entry.
      *
-     * @return string
+     * @return null|string
      */
     public function getAccountServicerReference()
     {
@@ -192,7 +192,7 @@ class Entry
     }
 
     /**
-     * @param string $accountServicerReference
+     * @param null|string $accountServicerReference
      */
     public function setAccountServicerReference($accountServicerReference)
     {
@@ -208,7 +208,7 @@ class Entry
     }
 
     /**
-     * @param string $batchPaymentId
+     * @param null|string $batchPaymentId
      */
     public function setBatchPaymentId($batchPaymentId)
     {
@@ -216,7 +216,7 @@ class Entry
     }
 
     /**
-     * @return string
+     * @return null|string
      */
     public function getBatchPaymentId()
     {
@@ -224,7 +224,7 @@ class Entry
     }
 
     /**
-     * @return string
+     * @return null|string
      */
     public function getAdditionalInfo()
     {
@@ -232,7 +232,7 @@ class Entry
     }
 
     /**
-     * @param string $additionalInfo
+     * @param null|string $additionalInfo
      */
     public function setAdditionalInfo($additionalInfo)
     {
@@ -240,7 +240,7 @@ class Entry
     }
 
     /**
-     * @return BankTransactionCode
+     * @return null|BankTransactionCode
      */
     public function getBankTransactionCode()
     {
@@ -248,15 +248,15 @@ class Entry
     }
 
     /**
-     * @param BankTransactionCode $bankTransactionCode
+     * @param null|BankTransactionCode $bankTransactionCode
      */
-    public function setBankTransactionCode(BankTransactionCode $bankTransactionCode)
+    public function setBankTransactionCode(?BankTransactionCode $bankTransactionCode)
     {
         $this->bankTransactionCode = $bankTransactionCode;
     }
 
     /**
-     * @return Charges
+     * @return null|Charges
      */
     public function getCharges()
     {
@@ -264,25 +264,25 @@ class Entry
     }
 
     /**
-     * @param Charges $charges
+     * @param null|Charges $charges
      */
-    public function setCharges(Charges $charges)
+    public function setCharges(?Charges $charges)
     {
         $this->charges = $charges;
     }
 
     /**
-     * @param DateTimeImmutable $date
+     * @param null|DateTimeImmutable $date
      */
-    public function setBookingDate(DateTimeImmutable $date)
+    public function setBookingDate(?DateTimeImmutable $date)
     {
         $this->bookingDate = $date;
     }
 
     /**
-     * @param DateTimeImmutable $date
+     * @param null|DateTimeImmutable $date
      */
-    public function setValueDate(DateTimeImmutable $date)
+    public function setValueDate(?DateTimeImmutable $date)
     {
         $this->valueDate = $date;
     }

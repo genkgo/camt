@@ -9,7 +9,6 @@ namespace Genkgo\Camt\DTO;
  */
 interface RelatedPartyTypeInterface
 {
-
     /**
      * @param Address $address
      */

@@ -14,6 +14,10 @@ class Pagination
      */
     private $lastPage;
 
+    /**
+     * @param string $pageNumber
+     * @param bool $lastPage
+     */
     public function __construct($pageNumber, $lastPage)
     {
         $this->pageNumber = $pageNumber;

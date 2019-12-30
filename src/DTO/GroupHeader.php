@@ -31,7 +31,7 @@ class GroupHeader
     private $messageRecipient;
 
     /**
-     * @var Pagination
+     * @var null|Pagination
      */
     private $pagination;
 
@@ -95,7 +95,7 @@ class GroupHeader
     }
 
     /**
-     * @return Pagination
+     * @return null|Pagination
      */
     public function getPagination()
     {
@@ -103,9 +103,9 @@ class GroupHeader
     }
 
     /**
-     * @param Pagination $pagination
+     * @param null|Pagination $pagination
      */
-    public function setPagination(Pagination $pagination)
+    public function setPagination(?Pagination $pagination)
     {
         $this->pagination = $pagination;
     }

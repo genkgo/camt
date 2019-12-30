@@ -14,12 +14,12 @@ class CreditorReferenceInformation
     private $ref;
 
     /**
-     * @var string
+     * @var null|string
      */
     private $code;
 
     /**
-     * @var string
+     * @var null|string
      */
     private $proprietary;
 
@@ -52,7 +52,7 @@ class CreditorReferenceInformation
     }
 
     /**
-     * @return string
+     * @return null|string
      */
     public function getProprietary()
     {
@@ -60,7 +60,7 @@ class CreditorReferenceInformation
     }
 
     /**
-     * @param string $proprietary
+     * @param null|string $proprietary
      */
     public function setProprietary($proprietary)
     {
@@ -68,7 +68,7 @@ class CreditorReferenceInformation
     }
 
     /**
-     * @return string
+     * @return null|string
      */
     public function getCode()
     {
@@ -76,7 +76,7 @@ class CreditorReferenceInformation
     }
 
     /**
-     * @param string $code
+     * @param null|string $code
      */
     public function setCode($code)
     {

@@ -6,6 +6,7 @@ use DateTimeImmutable;
 
 /**
  * Class RelatedDates
+ *
  * @package Genkgo\Camt\DTO
  */
 class RelatedDates
@@ -33,6 +34,7 @@ class RelatedDates
     {
         $information = new self();
         $information->acceptanceDateTime = $acceptanceDateTime;
+
         return $information;
     }
 }

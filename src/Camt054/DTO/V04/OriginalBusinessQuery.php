@@ -72,7 +72,7 @@ class OriginalBusinessQuery
     /**
      * @return null|DateTimeImmutable
      */
-    public function getCreatedOn():?DateTimeImmutable
+    public function getCreatedOn(): ?DateTimeImmutable
     {
         return $this->createdOn;
     }

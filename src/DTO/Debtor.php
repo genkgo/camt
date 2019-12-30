@@ -13,7 +13,7 @@ class Debtor implements RelatedPartyTypeInterface
      */
     private $name;
     /**
-     * @var Address
+     * @var null|Address
      */
     private $address;
 
