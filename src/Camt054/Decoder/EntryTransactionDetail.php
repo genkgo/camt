@@ -58,5 +58,7 @@ class EntryTransactionDetail extends BaseDecoder
 
             return $otherAccount;
         }
+
+        return null;
     }
 }

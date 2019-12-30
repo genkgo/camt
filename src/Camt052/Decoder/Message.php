@@ -50,7 +50,7 @@ abstract class Message extends BaseMessageDecoder
     /**
      * @param SimpleXMLElement $xmlRecord
      *
-     * @return DTO\Account
+     * @return null|DTO\Account
      */
     protected function getAccount(SimpleXMLElement $xmlRecord)
     {
@@ -90,5 +90,7 @@ abstract class Message extends BaseMessageDecoder
 
             return $otherAccount;
         }
+
+        return null;
     }
 }

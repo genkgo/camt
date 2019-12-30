@@ -27,11 +27,11 @@ class RelatedDates
     /**
      * @param DateTimeImmutable $acceptanceDateTime
      *
-     * @return static
+     * @return self
      */
     public static function fromUnstructured($acceptanceDateTime)
     {
-        $information = new static;
+        $information = new self();
         $information->acceptanceDateTime = $acceptanceDateTime;
         return $information;
     }

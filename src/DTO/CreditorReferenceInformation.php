@@ -42,11 +42,11 @@ class CreditorReferenceInformation
     /**
      * @param string $ref
      *
-     * @return static
+     * @return self
      */
     public static function fromUnstructured($ref)
     {
-        $information = new static;
+        $information = new self();
         $information->ref = $ref;
         return $information;
     }

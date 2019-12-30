@@ -222,7 +222,7 @@ class EndToEndTest extends AbstractTestCase
                                         $transactionDetail
                                                 ->getRemittanceInformation()
                                                 ->getUnstructuredBlocks()
-                                        )
+                                    )
                                 );
 
                                 // Check structured and unstructured blocks

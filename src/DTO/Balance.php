@@ -73,20 +73,20 @@ class Balance
     /**
      * @param Money $amount
      * @param DateTimeImmutable $date
-     * @return static
+     * @return self
      */
     public static function opening(Money $amount, DateTimeImmutable $date)
     {
-        return new static (self::TYPE_OPENING, $amount, $date);
+        return new self(self::TYPE_OPENING, $amount, $date);
     }
 
     /**
      * @param Money $amount
      * @param DateTimeImmutable $date
-     * @return static
+     * @return self
      */
     public static function closing(Money $amount, DateTimeImmutable $date)
     {
-        return new static (self::TYPE_CLOSING, $amount, $date);
+        return new self(self::TYPE_CLOSING, $amount, $date);
     }
 }

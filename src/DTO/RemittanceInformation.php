@@ -34,11 +34,11 @@ class RemittanceInformation
     /**
      * @param string $message
      *
-     * @return static
+     * @return self
      */
     public static function fromUnstructured($message)
     {
-        $information = new static;
+        $information = new self();
         $information->message = $message;
 
         return $information;
