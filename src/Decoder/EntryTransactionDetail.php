@@ -385,25 +385,11 @@ abstract class EntryTransactionDetail
      * @param SimpleXMLElement $xmlDetail
      * @param SimpleXMLElement $CdtDbtInd
      */
-    public function addAmountDetails(DTO\EntryTransactionDetail $detail, SimpleXMLElement $xmlDetail, $CdtDbtInd)
+    public function addAmountDetails(DTO\EntryTransactionDetail $detail, SimpleXMLElement $xmlDetail, SimpleXMLElement $CdtDbtInd)
     {
-        if (isset($xmlDetail->AmtDtls)) {
-            $amountDetails = new DTO\AmountDetails();
-
-            if (isset($xmlDetail->AmtDtls->TxAmt) && isset($xmlDetail->AmtDtls->TxAmt->Amt)) {
-                $amount = StringToUnits::convert((string) $xmlDetail->AmtDtls->TxAmt->Amt);
-
-                if ((string) $CdtDbtInd === 'DBIT') {
-                    $amount = $amount * -1;
-                }
-
-                $money = new Money(
-                    $amount,
-                    new Currency((string) $xmlDetail->AmtDtls->TxAmt->Amt['Ccy'])
-                );
-                $amountDetails->setAmount($money);
-            }
-            $detail->setAmountDetails($amountDetails);
+        if (isset($xmlDetail->AmtDtls) && isset($xmlDetail->AmtDtls->TxAmt) && isset($xmlDetail->AmtDtls->TxAmt->Amt)) {
+            $money = $this->createMoney($xmlDetail->AmtDtls->TxAmt->Amt, $CdtDbtInd);
+            $detail->setAmountDetails($money);
         }
     }
 
@@ -412,25 +398,26 @@ abstract class EntryTransactionDetail
      * @param SimpleXMLElement $xmlDetail
      * @param SimpleXMLElement $CdtDbtInd
      */
-    public function addAmount(DTO\EntryTransactionDetail $detail, SimpleXMLElement $xmlDetail, $CdtDbtInd)
+    public function addAmount(DTO\EntryTransactionDetail $detail, SimpleXMLElement $xmlDetail, SimpleXMLElement $CdtDbtInd)
     {
         if (isset($xmlDetail->Amt)) {
-            $amountDetails = new DTO\Amount();
-
-            $amount = StringToUnits::convert((string) $xmlDetail->Amt);
-
-            if ((string) $CdtDbtInd === 'DBIT') {
-                $amount = $amount * -1;
-            }
-
-            $money = new Money(
-                $amount,
-                new Currency((string) $xmlDetail->Amt['Ccy'])
-            );
-            $amountDetails->setAmount($money);
-
-            $detail->setAmount($amountDetails);
+            $money = $this->createMoney($xmlDetail->Amt, $CdtDbtInd);
+            $detail->setAmount($money);
         }
+    }
+
+    private function createMoney(SimpleXMLElement $xmlAmount, SimpleXMLElement $CdtDbtInd): Money
+    {
+        $amount = StringToUnits::convert((string) $xmlAmount);
+
+        if ((string) $CdtDbtInd === 'DBIT') {
+            $amount = $amount * -1;
+        }
+
+        return new Money(
+            $amount,
+            new Currency((string) $xmlAmount['Ccy'])
+        );
     }
 
     /**

@@ -6,6 +6,7 @@ use Genkgo\Camt\Decoder\Date;
 use Genkgo\TestCamt\AbstractTestCase;
 use Genkgo\Camt\Camt053;
 use Genkgo\Camt\DTO;
+use Money\Money;
 use Prophecy\Argument;
 use SimpleXMLElement;
 
@@ -188,6 +189,28 @@ class EntryTransactionDetailTest extends AbstractTestCase
         (new Camt053\Decoder\EntryTransactionDetail(new Date()))->addCharges($detail->reveal(), $this->getXmlDetail());
     }
 
+    /**
+     * @test
+     */
+    public function it_adds_amount_details_if_is_present_in_xmsl()
+    {
+        $detail = $this->prophesize(DTO\EntryTransactionDetail::class);
+        $detail->setAmountDetails(Argument::type(Money::class))->shouldBeCalled();
+
+        $CdtDbtInd = new SimpleXMLElement('<content>DBIT</content>');
+        (new Camt053\Decoder\EntryTransactionDetail(new Date()))->addAmountDetails($detail->reveal(), $this->getXmlDetail(), $CdtDbtInd);
+    }
+    /**
+     * @test
+     */
+    public function it_adds_amount_if_is_present_in_xmsl()
+    {
+        $detail = $this->prophesize(DTO\EntryTransactionDetail::class);
+        $detail->setAmount(Argument::type(Money::class))->shouldBeCalled();
+
+        $CdtDbtInd = new SimpleXMLElement('<content>DBIT</content>');
+        (new Camt053\Decoder\EntryTransactionDetail(new Date()))->addAmount($detail->reveal(), $this->getXmlDetail(), $CdtDbtInd);
+    }
 
     private function getXmlDetail()
     {
@@ -252,6 +275,12 @@ class EntryTransactionDetailTest extends AbstractTestCase
             </Id>
         </CdtrAcct>
     </RltdPties>
+    <AmtDtls>
+      <TxAmt>
+        <Amt Ccy="CHF">3.1</Amt>
+      </TxAmt>
+    </AmtDtls>
+    <Amt Ccy="CHF">3.1</Amt>
 </content>
 XML;
 

@@ -17,7 +17,7 @@ class Reader
     private $config;
 
     /**
-     * @var MessageFormatInterface
+     * @var null|MessageFormatInterface
      */
     private $messageFormat;
 
@@ -96,7 +96,7 @@ class Reader
     }
 
     /**
-     * @return MessageFormatInterface
+     * @return null|MessageFormatInterface
      */
     public function getMessageFormat()
     {

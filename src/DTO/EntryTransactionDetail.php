@@ -3,6 +3,7 @@
 namespace Genkgo\Camt\DTO;
 
 use BadMethodCallException;
+use Money\Money;
 
 /**
  * Class EntryTransactionDetail
@@ -51,12 +52,12 @@ class EntryTransactionDetail
     private $charges;
 
     /**
-     * @var AmountDetails
+     * @var null|Money
      */
     private $amountDetails;
 
     /**
-     * @var Amount
+     * @var null|Money
      */
     private $amount;
 
@@ -252,33 +253,33 @@ class EntryTransactionDetail
     }
 
     /**
-     * @return AmountDetails
+     * @return null|Money
      */
-    public function getAmountDetails()
+    public function getAmountDetails(): ?Money
     {
         return $this->amountDetails;
     }
 
     /**
-     * @param AmountDetails $amountDetails
+     * @param null|Money $amountDetails
      */
-    public function setAmountDetails(AmountDetails $amountDetails)
+    public function setAmountDetails(?Money $amountDetails)
     {
         $this->amountDetails = $amountDetails;
     }
 
     /**
-     * @return Amount
+     * @return null|Money
      */
-    public function getAmount()
+    public function getAmount(): ?Money
     {
         return $this->amount;
     }
 
     /**
-     * @param Amount $amount
+     * @param null|Money $amount
      */
-    public function setAmount(Amount $amount)
+    public function setAmount(?Money $amount)
     {
         $this->amount = $amount;
     }
