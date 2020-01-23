@@ -281,8 +281,10 @@ class EntryTransactionDetailTest extends AbstractTestCase
       <TxAmt>
         <Amt Ccy="CHF">3.1</Amt>
       </TxAmt>
+      <InstdAmt>
+        <Amt Ccy="CHF">3.1</Amt>
+      </InstdAmt>
     </AmtDtls>
-    <Amt Ccy="CHF">3.1</Amt>
 </content>
 XML;
 

@@ -403,8 +403,8 @@ abstract class EntryTransactionDetail
      */
     public function addAmount(DTO\EntryTransactionDetail $detail, SimpleXMLElement $xmlDetail, SimpleXMLElement $CdtDbtInd): void
     {
-        if (isset($xmlDetail->Amt)) {
-            $money = $this->createMoney($xmlDetail->Amt, $CdtDbtInd);
+        if (isset($xmlDetail->AmtDtls) && isset($xmlDetail->AmtDtls->InstdAmt) && isset($xmlDetail->AmtDtls->InstdAmt->Amt)) {
+            $money = $this->createMoney($xmlDetail->AmtDtls->InstdAmt->Amt, $CdtDbtInd);
             $detail->setAmount($money);
         }
     }
