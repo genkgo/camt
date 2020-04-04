@@ -20,7 +20,7 @@ Library to read CAMT files. Currently only CAMT.052, CAMT.053 and CAMT.054 are s
 | camt.052.001.03   |                    |
 | camt.052.001.04   | :heavy_check_mark: |
 | camt.052.001.05   |                    |
-| camt.052.001.06   |                    |
+| camt.052.001.06   | :heavy_check_mark: |
 
 #### Camt 053
 
