@@ -48,12 +48,21 @@ class EndToEndTest extends AbstractTestCase
         return (new MessageFormat\V04)->getDecoder()->decode($dom);
     }
 
+    protected function getV6Message(): Message
+    {
+        $dom = new DOMDocument('1.0', 'UTF-8');
+        $dom->load(__DIR__.'/Stubs/camt052.v6.xml');
+
+        return (new MessageFormat\V06())->getDecoder()->decode($dom);
+    }
+
     public function testGroupHeader(): void
     {
         $messages = [
             $this->getV1Message(),
             $this->getV2Message(),
             $this->getV4Message(),
+            $this->getV6Message(),
         ];
 
         /** @var Message $message */
