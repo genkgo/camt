@@ -95,4 +95,46 @@ abstract class Message
      * @return SimpleXMLElement
      */
     abstract public function getRootElement(SimpleXMLElement $document): SimpleXMLElement;
+
+    protected function accountAddOwnerInfo(DTO\Account $account, SimpleXMLElement $acctOwnrElement): void
+    {
+        $owner = new DTO\AccountOwner();
+        if ($acctOwnrElement->Id->OrgId->Othr->Id) {
+            $owner->setId((string)$acctOwnrElement->Id->OrgId->Othr->Id);
+        }
+        if ($acctOwnrElement->Id->PrvtId->Othr->Id) {
+            $owner->setId((string)$acctOwnrElement->Id->PrvtId->Othr->Id);
+        }
+        if ($acctOwnrElement->Nm) {
+            $owner->setName((string)$acctOwnrElement->Nm);
+        }
+        if ($acctOwnrElement->PstlAdr) {
+            $address = \Genkgo\Camt\Decoder\Factory\DTO\Address::createFromXml($acctOwnrElement->PstlAdr);
+            $owner->setAddress($address);
+        }
+        $account->setOwner($owner);
+    }
+
+    protected function accountAddServicerInfo(DTO\Account $account, SimpleXMLElement $acctSvcrElement): void
+    {
+        $servicer = new DTO\AccountServicer();
+        if ($acctSvcrElement->FinInstnId->Othr->Id) {
+            $servicer->setId((string)$acctSvcrElement->FinInstnId->Othr->Id);
+        }
+        if ($acctSvcrElement->FinInstnId->BIC) {
+            $servicer->setBic((string)$acctSvcrElement->FinInstnId->BIC);
+        }
+        if ($acctSvcrElement->FinInstnId->Nm) {
+            $servicer->setName((string)$acctSvcrElement->FinInstnId->Nm);
+        }
+        if ($acctSvcrElement->FinInstnId->Othr->SchmeNm->Cd) {
+            $servicer->setSchmeNm((string)$acctSvcrElement->FinInstnId->Othr->SchmeNm->Cd);
+        }
+
+        if ($acctSvcrElement->FinInstnId->PstlAdr) {
+            $address = \Genkgo\Camt\Decoder\Factory\DTO\Address::createFromXml($acctSvcrElement->FinInstnId->PstlAdr);
+            $servicer->setAddress($address);
+        }
+        $account->setServicer($servicer);
+    }
 }

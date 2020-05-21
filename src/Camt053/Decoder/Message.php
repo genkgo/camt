@@ -64,27 +64,38 @@ class Message extends BaseMessageDecoder
      */
     protected function getAccount(SimpleXMLElement $xmlRecord): DTO\Account
     {
+        $account = null;
         if (isset($xmlRecord->Acct->Id->IBAN)) {
-            return new DTO\IbanAccount(new Iban((string) $xmlRecord->Acct->Id->IBAN));
-        }
+            $account = new DTO\IbanAccount(new Iban((string)$xmlRecord->Acct->Id->IBAN));
+        } else {
+            $xmlOtherIdentification = $xmlRecord->Acct->Id->Othr;
+            $account = new DTO\OtherAccount((string)$xmlOtherIdentification->Id);
 
-        $xmlOtherIdentification = $xmlRecord->Acct->Id->Othr;
-        $otherAccount = new DTO\OtherAccount((string) $xmlOtherIdentification->Id);
+            if (isset($xmlOtherIdentification->SchmeNm)) {
+                if (isset($xmlOtherIdentification->SchmeNm->Cd)) {
+                    $account->setSchemeName((string)$xmlOtherIdentification->SchmeNm->Cd);
+                }
 
-        if (isset($xmlOtherIdentification->SchmeNm)) {
-            if (isset($xmlOtherIdentification->SchmeNm->Cd)) {
-                $otherAccount->setSchemeName((string) $xmlOtherIdentification->SchmeNm->Cd);
+                if (isset($xmlOtherIdentification->SchmeNm->Prtry)) {
+                    $account->setSchemeName((string)$xmlOtherIdentification->SchmeNm->Prtry);
+                }
             }
 
-            if (isset($xmlOtherIdentification->SchmeNm->Prtry)) {
-                $otherAccount->setSchemeName((string) $xmlOtherIdentification->SchmeNm->Prtry);
+            if (isset($xmlOtherIdentification->Issr)) {
+                $account->setIssuer((string)$xmlOtherIdentification->Issr);
             }
         }
 
-        if (isset($xmlOtherIdentification->Issr)) {
-            $otherAccount->setIssuer((string) $xmlOtherIdentification->Issr);
+        if ($account instanceof DTO\Account) {
+            if ($xmlRecord->Acct->Ownr) {
+                $this->accountAddOwnerInfo($account, $xmlRecord->Acct->Ownr);
+            }
+            if ($xmlRecord->Acct->Svcr) {
+                $this->accountAddServicerInfo($account, $xmlRecord->Acct->Svcr);
+            }
+            return $account;
         }
 
-        return $otherAccount;
+        return $account;
     }
 }

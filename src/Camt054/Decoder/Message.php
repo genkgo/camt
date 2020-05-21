@@ -63,41 +63,43 @@ class Message extends BaseMessageDecoder
      */
     protected function getAccount(SimpleXMLElement $xmlRecord)
     {
+        $account = null;
         if (isset($xmlRecord->Acct->Id->IBAN)) {
-            return new DTO\IbanAccount(new Iban((string) $xmlRecord->Acct->Id->IBAN));
-        }
-
-        if (isset($xmlRecord->Acct->Id->BBAN)) {
-            return new DTO\BBANAccount((string) $xmlRecord->Acct->Id->BBAN);
-        }
-
-        if (isset($xmlRecord->Acct->Id->UPIC)) {
-            return new DTO\UPICAccount((string) $xmlRecord->Acct->Id->UPIC);
-        }
-
-        if (isset($xmlRecord->Acct->Id->PrtryAcct)) {
-            return new DTO\ProprietaryAccount((string) $xmlRecord->Acct->Id->PrtryAcct->Id);
-        }
-
-        if (isset($xmlRecord->Acct->Id->Othr)) {
+            $account = new DTO\IbanAccount(new Iban((string)$xmlRecord->Acct->Id->IBAN));
+        } elseif (isset($xmlRecord->Acct->Id->BBAN)) {
+            $account = new DTO\BBANAccount((string)$xmlRecord->Acct->Id->BBAN);
+        } elseif (isset($xmlRecord->Acct->Id->UPIC)) {
+            $account = new DTO\UPICAccount((string)$xmlRecord->Acct->Id->UPIC);
+        } elseif (isset($xmlRecord->Acct->Id->PrtryAcct)) {
+            $account = new DTO\ProprietaryAccount((string)$xmlRecord->Acct->Id->PrtryAcct->Id);
+        } elseif (isset($xmlRecord->Acct->Id->Othr)) {
             $xmlOtherIdentification = $xmlRecord->Acct->Id->Othr;
-            $otherAccount = new DTO\OtherAccount((string) $xmlOtherIdentification->Id);
+            $account = new DTO\OtherAccount((string)$xmlOtherIdentification->Id);
 
             if (isset($xmlOtherIdentification->SchmeNm)) {
                 if (isset($xmlOtherIdentification->SchmeNm->Cd)) {
-                    $otherAccount->setSchemeName((string) $xmlOtherIdentification->SchmeNm->Cd);
+                    $account->setSchemeName((string)$xmlOtherIdentification->SchmeNm->Cd);
                 }
 
                 if (isset($xmlOtherIdentification->SchmeNm->Prtry)) {
-                    $otherAccount->setSchemeName((string) $xmlOtherIdentification->SchmeNm->Prtry);
+                    $account->setSchemeName((string)$xmlOtherIdentification->SchmeNm->Prtry);
                 }
             }
 
             if (isset($xmlOtherIdentification->Issr)) {
-                $otherAccount->setIssuer((string) $xmlOtherIdentification->Issr);
+                $account->setIssuer((string)$xmlOtherIdentification->Issr);
             }
 
-            return $otherAccount;
+        }
+
+        if ($account instanceof DTO\Account) {
+            if ($xmlRecord->Acct->Ownr) {
+                $this->accountAddOwnerInfo($account, $xmlRecord->Acct->Ownr);
+            }
+            if ($xmlRecord->Acct->Svcr) {
+                $this->accountAddServicerInfo($account, $xmlRecord->Acct->Svcr);
+            }
+            return $account;
         }
 
         return null;
