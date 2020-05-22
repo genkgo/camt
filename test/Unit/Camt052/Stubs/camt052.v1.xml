@@ -87,7 +87,42 @@
                 </Btch>
                 <AddtlNtryInf>Credit</AddtlNtryInf>
             </Ntry>
-            <AddtlRptInf>Additional Information</AddtlRptInf>
+            <!-- Full CRDT entry with payer info -->
+            <Ntry>
+                <Amt Ccy="SEK">100000</Amt>
+                <CdtDbtInd>CRDT</CdtDbtInd>
+                <Sts>BOOK</Sts>
+                <BookgDt>
+                    <DtTm>2007-10-18T10:15:00+01:00</DtTm>
+                </BookgDt>
+                <ValDt>
+                    <Dt>2007-10-18</Dt>
+                </ValDt>
+                <AcctSvcrRef>AAAASESS-FP-ACCR-02</AcctSvcrRef>
+                <BkTxCd>
+                    <Domn>
+                        <Cd>PMNT</Cd>
+                        <Fmly>
+                            <Cd>RCDT</Cd>
+                            <SubFmlyCd>0003</SubFmlyCd>
+                        </Fmly>
+                    </Domn>
+                </BkTxCd>
+                <Btch>
+                    <MsgId>FINP-0055</MsgId>
+                    <PmtInfId>FINP-0055-001</PmtInfId>
+                    <NbOfTxs>20</NbOfTxs>
+                </Btch>
+                <TxDtls>
+                    <RltdPties>
+                        <Dbtr>
+                            <Nm>Payer name</Nm>
+                        </Dbtr>
+                    </RltdPties>
+                </TxDtls>
+                <AddtlNtryInf>Debit</AddtlNtryInf>
+            </Ntry>
+            <AddtlRptInf>Payer Name or something</AddtlRptInf>
         </Rpt>
     </BkToCstmrAcctRptV01>
 </Document>

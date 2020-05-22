@@ -26,6 +26,9 @@ class Entry
     public function addTransactionDetails(DTO\Entry $entry, SimpleXMLElement $xmlEntry): void
     {
         $xmlDetails = $xmlEntry->NtryDtls->TxDtls;
+        if ($xmlDetails === null) { // 052.v1 TxDtls are in different location
+            $xmlDetails = $xmlEntry->TxDtls;
+        }
 
         if ($xmlDetails !== null) {
             foreach ($xmlDetails as $xmlDetail) {
