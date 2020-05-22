@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Genkgo\Camt\DTO;
 
+use Money\Currency;
+
 /**
  * Class Account
  * @package Genkgo\Camt\DTO
@@ -19,7 +21,7 @@ abstract class Account
      */
     private $servicer;
     /**
-     * @var string|null
+     * @var \Money\Currency|null
      */
     private $currency;
 
@@ -62,17 +64,17 @@ abstract class Account
     }
 
     /**
-     * @return string|null
+     * @return \Money\Currency|null
      */
-    public function getCurrency(): ?string
+    public function getCurrency(): ?\Money\Currency
     {
         return $this->currency;
     }
 
     /**
-     * @param string|null $currency
+     * @param \Money\Currency $currency
      */
-    public function setCurrency(string $currency): void
+    public function setCurrency(\Money\Currency $currency): void
     {
         $this->currency = $currency;
     }

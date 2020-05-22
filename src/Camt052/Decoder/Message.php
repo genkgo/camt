@@ -93,6 +93,9 @@ abstract class Message extends BaseMessageDecoder
             if ($xmlRecord->Acct->Svcr) {
                 $this->accountAddServicerInfo($account, $xmlRecord->Acct->Svcr);
             }
+            if ($xmlRecord->Acct->Ccy) {
+                $account->setCurrency(new \Money\Currency((string)$xmlRecord->Acct->Ccy));
+            }
             return $account;
         }
 

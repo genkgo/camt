@@ -28,9 +28,9 @@ class AccountServicer
 
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getId(): string
+    public function getId(): ?string
     {
         return $this->id;
     }
@@ -44,9 +44,9 @@ class AccountServicer
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getBic(): string
+    public function getBic(): ?string
     {
         return $this->bic;
     }
@@ -60,9 +60,9 @@ class AccountServicer
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -76,9 +76,9 @@ class AccountServicer
     }
 
     /**
-     * @return \Genkgo\Camt\DTO\Address
+     * @return \Genkgo\Camt\DTO\Address|null
      */
-    public function getAddress(): \Genkgo\Camt\DTO\Address
+    public function getAddress(): ?\Genkgo\Camt\DTO\Address
     {
         return $this->address;
     }
@@ -92,9 +92,9 @@ class AccountServicer
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getSchmeNm(): string
+    public function getSchmeNm(): ?string
     {
         return $this->schmeNm;
     }

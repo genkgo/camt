@@ -12,9 +12,9 @@ class BankTransactionCode
     private $domain;
 
     /**
-     * @return ProprietaryBankTransactionCode
+     * @return ProprietaryBankTransactionCode|null
      */
-    public function getProprietary(): ProprietaryBankTransactionCode
+    public function getProprietary(): ?ProprietaryBankTransactionCode
     {
         return $this->proprietary;
     }
@@ -28,9 +28,9 @@ class BankTransactionCode
     }
 
     /**
-     * @return DomainBankTransactionCode
+     * @return DomainBankTransactionCode|null
      */
-    public function getDomain(): DomainBankTransactionCode
+    public function getDomain(): ?DomainBankTransactionCode
     {
         return $this->domain;
     }

@@ -7,6 +7,7 @@ namespace Genkgo\Camt\Camt053\Decoder;
 use Genkgo\Camt\Decoder\Message as BaseMessageDecoder;
 use Genkgo\Camt\Camt053\DTO as Camt053DTO;
 use Genkgo\Camt\DTO;
+use Money\Currency;
 use SimpleXMLElement;
 use Genkgo\Camt\Iban;
 
@@ -92,6 +93,9 @@ class Message extends BaseMessageDecoder
             }
             if ($xmlRecord->Acct->Svcr) {
                 $this->accountAddServicerInfo($account, $xmlRecord->Acct->Svcr);
+            }
+            if ($xmlRecord->Acct->Ccy) {
+                $account->setCurrency(new \Money\Currency((string)$xmlRecord->Acct->Ccy));
             }
             return $account;
         }
