@@ -145,6 +145,96 @@
                 </NtryDtls>
                 <AddtlNtryInf>Credit</AddtlNtryInf>
             </Ntry>
+            <Ntry>
+                <Amt Ccy="SEK">20000</Amt>
+                <CdtDbtInd>CRDT</CdtDbtInd>
+                <Sts>BOOK</Sts>
+                <BookgDt>
+                    <DtTm>2007-10-18T10:15:00+01:00</DtTm>
+                </BookgDt>
+                <ValDt>
+                    <Dt>2007-10-18</Dt>
+                </ValDt>
+                <AcctSvcrRef>AAAASESS-FP-ACCR-01</AcctSvcrRef>
+                <BkTxCd>
+                    <Domn>
+                        <Cd>PMNT</Cd>
+                        <Fmly>
+                            <Cd>RCDT</Cd>
+                            <SubFmlyCd>0003</SubFmlyCd>
+                        </Fmly>
+                    </Domn>
+                    <Prtry>
+                        <Cd>XXXX+000+0000+000</Cd>
+                        <Issr>ZKA</Issr>
+                    </Prtry>
+                </BkTxCd>
+                <NtryDtls>
+                    <Btch>
+                        <MsgId>FINP-0055</MsgId>
+                        <PmtInfId>FINP-0055-001</PmtInfId>
+                        <NbOfTxs>20</NbOfTxs>
+                    </Btch>
+                    <TxDtls>
+                        <BkTxCd>
+                            <Prtry>
+                                <Cd>XXXX+000+0000+000</Cd>
+                                <Issr>ZKA</Issr>
+                            </Prtry>
+                        </BkTxCd>
+                        <RltdPties>
+                            <Dbtr>
+                                <Nm>NAME NAME</Nm>
+                                <PstlAdr>
+                                    <Ctry>NL</Ctry>
+                                    <AdrLine>ADDR ADDR 10</AdrLine>
+                                    <AdrLine>2000 ANTWERPEN</AdrLine>
+                                </PstlAdr>
+                            </Dbtr>
+                            <DbtrAcct>
+                                <Id>
+                                    <IBAN>NL56AGDH9619008421</IBAN>
+                                </Id>
+                            </DbtrAcct>
+                            <Cdtr>
+                                <Nm>Company Name</Nm>
+                                <PstlAdr>
+                                    <Ctry>NL</Ctry>
+                                </PstlAdr>
+                                <Id>
+                                    <OrgId>
+                                        <Othr>
+                                            <Id>455454654</Id>
+                                            <Issr>KBO-BCE</Issr>
+                                        </Othr>
+                                    </OrgId>
+                                </Id>
+                            </Cdtr>
+                            <CdtrAcct>
+                                <Id>
+                                    <IBAN>NL56AGDH9619008421</IBAN>
+                                </Id>
+                                <Ccy>EUR</Ccy>
+                            </CdtrAcct>
+                        </RltdPties>
+                        <RltdAgts>
+                            <DbtrAgt>
+                                <FinInstnId>
+                                    <BIC>BANKCHZHXXX</BIC>
+                                    <Nm>Some bank</Nm>
+                                </FinInstnId>
+                            </DbtrAgt>
+                            <CdtrAgt>
+                                <FinInstnId>
+                                    <BIC>BANKCHZHXXX</BIC>
+                                    <Nm>Some bank</Nm>
+                                </FinInstnId>
+                            </CdtrAgt>
+                        </RltdAgts>
+                    </TxDtls>
+                </NtryDtls>
+                <AddtlNtryInf>Credit</AddtlNtryInf>
+            </Ntry>
             <AddtlRptInf>Additional Information</AddtlRptInf>
         </Rpt>
     </BkToCstmrAcctRpt>

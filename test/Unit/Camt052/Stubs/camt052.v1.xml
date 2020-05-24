@@ -117,6 +117,14 @@
                     <RltdPties>
                         <Dbtr>
                             <Nm>Payer name</Nm>
+                            <Id>
+                                <PrvtId>
+                                    <OthrId>
+                                        <Id>122</Id>
+                                        <IdTp>122</IdTp>
+                                    </OthrId>
+                                </PrvtId>
+                            </Id>
                         </Dbtr>
                     </RltdPties>
                 </TxDtls>
