@@ -20,7 +20,7 @@ class RecordTest extends AbstractTestCase
     /** @var Decoder\Record */
     private $decoder;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $entryTransactionDetail = $this->prophesize(Decoder\EntryTransactionDetail::class);
         $this->mockedEntryDecoder = $this

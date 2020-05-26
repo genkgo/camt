@@ -21,7 +21,7 @@ class MessageTest extends AbstractTestCase
     /** @var Message */
     private $decoder;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $entry = $this->prophesize(DecoderObject\Entry::class);
         $this->mockedRecordDecoder = $this
