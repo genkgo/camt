@@ -146,7 +146,7 @@ class EndToEndTest extends AbstractTestCase
         $reportV4 = $messages[2]->getRecords()[0];
         $this->assertInstanceOf(DTO\Pagination::class, $reportV4->getPagination());
         $this->assertEquals('2', $reportV4->getPagination()->getPageNumber());
-        $this->assertEquals(true, $reportV4->getPagination()->isLastPage());
+        $this->assertTrue($reportV4->getPagination()->isLastPage());
     }
 
     public function testRelatedAgents(): void

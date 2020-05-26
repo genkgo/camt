@@ -145,7 +145,7 @@ class EndToEndTest extends AbstractTestCase
         $statementV4 = $messages[2]->getRecords()[0];
         $this->assertInstanceOf(DTO\Pagination::class, $statementV4->getPagination());
         $this->assertEquals('2', $statementV4->getPagination()->getPageNumber());
-        $this->assertEquals(true, $statementV4->getPagination()->isLastPage());
+        $this->assertTrue($statementV4->getPagination()->isLastPage());
     }
 
     public function testBalance(): void
