@@ -49,7 +49,7 @@ class EndToEndTest extends AbstractTestCase
             $this->assertEquals('Group header additional information', $groupHeader->getAdditionalInformation());
             $this->assertInstanceOf(DTO\Pagination::class, $groupHeader->getPagination());
             $this->assertEquals('1', $groupHeader->getPagination()->getPageNumber());
-            $this->assertEquals(true, $groupHeader->getPagination()->isLastPage());
+            $this->assertTrue($groupHeader->getPagination()->isLastPage());
             $msgRecipient = $groupHeader->getMessageRecipient();
             $this->assertInstanceOf(DTO\Recipient::class, $msgRecipient);
             $this->assertEquals('COMPANY BVBA', $msgRecipient->getName());
@@ -109,7 +109,7 @@ class EndToEndTest extends AbstractTestCase
         $notificationV4 = $messages[1]->getRecords()[0];
         $this->assertInstanceOf(DTO\Pagination::class, $notificationV4->getPagination());
         $this->assertEquals('2', $notificationV4->getPagination()->getPageNumber());
-        $this->assertEquals(true, $notificationV4->getPagination()->isLastPage());
+        $this->assertTrue($notificationV4->getPagination()->isLastPage());
     }
 
     public function testEntries(): void
