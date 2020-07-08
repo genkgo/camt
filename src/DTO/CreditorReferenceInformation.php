@@ -11,7 +11,7 @@ namespace Genkgo\Camt\DTO;
 class CreditorReferenceInformation
 {
     /**
-     * @var string
+     * @var null|string
      */
     private $ref;
 
@@ -26,7 +26,7 @@ class CreditorReferenceInformation
     private $proprietary;
 
     /**
-     * @return string
+     * @return null|string
      */
     public function getRef(): ?string
     {
@@ -34,9 +34,9 @@ class CreditorReferenceInformation
     }
 
     /**
-     * @param string $ref
+     * @param null|string $ref
      */
-    public function setRef(string $ref): void
+    public function setRef(?string $ref): void
     {
         $this->ref = $ref;
     }
