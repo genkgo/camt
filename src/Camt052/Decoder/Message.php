@@ -7,6 +7,7 @@ namespace Genkgo\Camt\Camt052\Decoder;
 use Genkgo\Camt\Camt052\DTO as Camt052DTO;
 use Genkgo\Camt\Decoder\Message as BaseMessageDecoder;
 use Genkgo\Camt\DTO;
+use Genkgo\Camt\DTO\Account;
 use Genkgo\Camt\Iban;
 use SimpleXMLElement;
 
@@ -45,10 +46,7 @@ abstract class Message extends BaseMessageDecoder
         $message->setRecords($reports);
     }
 
-    /**
-     * @return null|DTO\Account
-     */
-    protected function getAccount(SimpleXMLElement $xmlRecord)
+    protected function getAccount(SimpleXMLElement $xmlRecord): ?Account
     {
         if (isset($xmlRecord->Acct->Id->IBAN)) {
             return new DTO\IbanAccount(new Iban((string) $xmlRecord->Acct->Id->IBAN));

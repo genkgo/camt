@@ -96,9 +96,6 @@ class RemittanceInformation
         return $this->unstructuredBlocks;
     }
 
-    /**
-     * @return UnstructuredRemittanceInformation
-     */
     public function getUnstructuredBlock(): ?UnstructuredRemittanceInformation
     {
         if (isset($this->unstructuredBlocks[0])) {

@@ -38,9 +38,6 @@ class OriginalBusinessQuery
         return $this->messageNameId;
     }
 
-    /**
-     * @return OriginalBusinessQuery
-     */
     public function setMessageNameId(string $messageNameId): self
     {
         $this->messageNameId = $messageNameId;
@@ -48,9 +45,6 @@ class OriginalBusinessQuery
         return $this;
     }
 
-    /**
-     * @return OriginalBusinessQuery
-     */
     public function setCreatedOn(DateTimeImmutable $createdOn): self
     {
         $this->createdOn = $createdOn;

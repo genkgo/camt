@@ -18,9 +18,6 @@ class GroupHeader extends BaseGroupHeader
         return $this->originalBusinessQuery;
     }
 
-    /**
-     * @return GroupHeader
-     */
     public function setOriginalBusinessQuery(OriginalBusinessQuery $originalBusinessQuery): self
     {
         $this->originalBusinessQuery = $originalBusinessQuery;

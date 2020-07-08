@@ -25,10 +25,7 @@ class Reader
         $this->config = $config;
     }
 
-    /**
-     * @return mixed
-     */
-    public function readDom(DOMDocument $document)
+    public function readDom(DOMDocument $document): Message
     {
         if ($document->documentElement === null) {
             throw new ReaderException('Empty document');
@@ -40,10 +37,7 @@ class Reader
         return $this->messageFormat->getDecoder()->decode($document, $this->config->getXsdValidation());
     }
 
-    /**
-     * @return mixed
-     */
-    public function readString(string $string)
+    public function readString(string $string): Message
     {
         $dom = new DOMDocument('1.0', 'UTF-8');
         $dom->loadXML($string);
@@ -51,10 +45,7 @@ class Reader
         return $this->readDom($dom);
     }
 
-    /**
-     * @return Message|mixed
-     */
-    public function readFile(string $file)
+    public function readFile(string $file): Message
     {
         if (!file_exists($file)) {
             throw new ReaderException("{$file} does not exists");

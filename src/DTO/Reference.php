@@ -81,9 +81,6 @@ class Reference
         return $this->messageId;
     }
 
-    /**
-     * @return Reference
-     */
     public function setMessageId(?string $messageId): self
     {
         $this->messageId = $messageId;
@@ -96,9 +93,6 @@ class Reference
         return $this->accountServicerReference;
     }
 
-    /**
-     * @return Reference
-     */
     public function setAccountServicerReference(?string $accountServicerReference): self
     {
         $this->accountServicerReference = $accountServicerReference;
@@ -111,9 +105,6 @@ class Reference
         return $this->paymentInformationId;
     }
 
-    /**
-     * @return Reference
-     */
     public function setPaymentInformationId(?string $paymentInformationId): self
     {
         $this->paymentInformationId = $paymentInformationId;
@@ -126,9 +117,6 @@ class Reference
         return $this->instructionId;
     }
 
-    /**
-     * @return Reference
-     */
     public function setInstructionId(?string $instructionId): self
     {
         $this->instructionId = $instructionId;
@@ -141,9 +129,6 @@ class Reference
         return $this->endToEndId;
     }
 
-    /**
-     * @return Reference
-     */
     public function setEndToEndId(?string $endToEndId): self
     {
         $this->endToEndId = $endToEndId;
@@ -156,9 +141,6 @@ class Reference
         return $this->transactionId;
     }
 
-    /**
-     * @return Reference
-     */
     public function setTransactionId(?string $transactionId): self
     {
         $this->transactionId = $transactionId;
@@ -171,9 +153,6 @@ class Reference
         return $this->mandateId;
     }
 
-    /**
-     * @return Reference
-     */
     public function setMandateId(?string $mandateId): self
     {
         $this->mandateId = $mandateId;
@@ -186,9 +165,6 @@ class Reference
         return $this->chequeNumber;
     }
 
-    /**
-     * @return Reference
-     */
     public function setChequeNumber(?string $chequeNumber): self
     {
         $this->chequeNumber = $chequeNumber;
@@ -201,9 +177,6 @@ class Reference
         return $this->clearingSystemReference;
     }
 
-    /**
-     * @return Reference
-     */
     public function setClearingSystemReference(?string $clearingSystemReference): self
     {
         $this->clearingSystemReference = $clearingSystemReference;
@@ -216,9 +189,6 @@ class Reference
         return $this->accountOwnerTransactionId;
     }
 
-    /**
-     * @return Reference
-     */
     public function setAccountOwnerTransactionId(?string $accountOwnerTransactionId): self
     {
         $this->accountOwnerTransactionId = $accountOwnerTransactionId;
@@ -231,9 +201,6 @@ class Reference
         return $this->accountServicerTransactionId;
     }
 
-    /**
-     * @return Reference
-     */
     public function setAccountServicerTransactionId(?string $accountServicerTransactionId): self
     {
         $this->accountServicerTransactionId = $accountServicerTransactionId;
@@ -246,9 +213,6 @@ class Reference
         return $this->marketInfrastructureTransactionId;
     }
 
-    /**
-     * @return Reference
-     */
     public function setMarketInfrastructureTransactionId(?string $marketInfrastructureTransactionId): self
     {
         $this->marketInfrastructureTransactionId = $marketInfrastructureTransactionId;
@@ -261,9 +225,6 @@ class Reference
         return $this->processingId;
     }
 
-    /**
-     * @return Reference
-     */
     public function setProcessingId(?string $processingId): self
     {
         $this->processingId = $processingId;
@@ -271,9 +232,6 @@ class Reference
         return $this;
     }
 
-    /**
-     * @return Reference
-     */
     public function addProprietary(ProprietaryReference $proprietary): self
     {
         $this->proprietaries[] = $proprietary;
