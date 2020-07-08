@@ -28,7 +28,7 @@ class CreditorReferenceInformation
     /**
      * @return string
      */
-    public function getRef(): string
+    public function getRef(): ?string
     {
         return $this->ref;
     }
