@@ -11,17 +11,11 @@ abstract class Identification
      */
     protected $identification;
 
-    /**
-     * @return null|string
-     */
     public function getIdentification(): ?string
     {
         return $this->identification;
     }
 
-    /**
-     * @param string $identification
-     */
     public function setIdentification(string $identification): void
     {
         $this->identification = $identification;

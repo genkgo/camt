@@ -4,10 +4,6 @@ declare(strict_types=1);
 
 namespace Genkgo\Camt\DTO;
 
-/**
- * Class OtherAccount
- * @package Genkgo\Camt\Camt053
- */
 class OtherAccount extends Account
 {
     /**
@@ -25,9 +21,6 @@ class OtherAccount extends Account
      */
     private $issuer;
 
-    /**
-     * @param string $identification
-     */
     public function __construct(string $identification)
     {
         $this->identification = $identification;
@@ -41,33 +34,21 @@ class OtherAccount extends Account
         return $this->identification;
     }
 
-    /**
-     * @param string $schemeName
-     */
     public function setSchemeName(string $schemeName): void
     {
         $this->schemeName = $schemeName;
     }
 
-    /**
-     * @return null|string
-     */
     public function getSchemeName(): ?string
     {
         return $this->schemeName;
     }
 
-    /**
-     * @param string $issuer
-     */
     public function setIssuer(string $issuer): void
     {
         $this->issuer = $issuer;
     }
 
-    /**
-     * @return null|string
-     */
     public function getIssuer(): ?string
     {
         return $this->issuer;

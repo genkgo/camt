@@ -9,14 +9,12 @@ use SimpleXMLElement;
 trait Mapping
 {
     /**
-     * @param object $object
-     * @param SimpleXMLElement $xml
      * @param string[][] $mapping
      */
     public static function map(object $object, SimpleXMLElement $xml, array $mapping): void
     {
         foreach ($mapping as $line) {
-            $setter   = $line['setter'];
+            $setter = $line['setter'];
             $xmlValue = $line['value'];
 
             if (isset($xml->$xmlValue)) {

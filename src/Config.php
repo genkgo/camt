@@ -8,10 +8,6 @@ use Genkgo\Camt\Camt052;
 use Genkgo\Camt\Camt053;
 use Genkgo\Camt\Camt054;
 
-/**
- * Class Config
- * @package Genkgo\Camt
- */
 class Config
 {
     /**
@@ -24,9 +20,6 @@ class Config
      */
     private $xsdValidation = true;
 
-    /**
-     * @param MessageFormatInterface $messageFormat
-     */
     public function addMessageFormat(MessageFormatInterface $messageFormat): void
     {
         $this->messageFormats[] = $messageFormat;
@@ -45,18 +38,12 @@ class Config
         $this->xsdValidation = false;
     }
 
-    /**
-     * @return bool
-     */
     public function getXsdValidation(): bool
     {
         return $this->xsdValidation;
     }
 
-    /**
-     * @return self
-     */
-    public static function getDefault(): Config
+    public static function getDefault(): self
     {
         $config = new self();
         $config->addMessageFormat(new Camt052\MessageFormat\V01());

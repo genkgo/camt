@@ -4,16 +4,11 @@ declare(strict_types=1);
 
 namespace Genkgo\Camt\Decoder\Factory\DTO;
 
-use SimpleXMLElement;
 use Genkgo\Camt\DTO;
+use SimpleXMLElement;
 
 class Address
 {
-    /**
-     * @param SimpleXMLElement $xmlAddress
-     *
-     * @return DTO\Address
-     */
     public static function createFromXml(SimpleXMLElement $xmlAddress): DTO\Address
     {
         $address = new DTO\Address();
@@ -44,7 +39,7 @@ class Address
         }
         if (isset($xmlAddress->AdrLine)) {
             foreach ($xmlAddress->AdrLine as $line) {
-                $address = $address->addAddressLine((string)$line);
+                $address = $address->addAddressLine((string) $line);
             }
         }
 

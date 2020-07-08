@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+
 namespace Genkgo\Camt\DTO;
 
 class RelatedAgent
@@ -12,16 +13,12 @@ class RelatedAgent
 
     /**
      * RelatedAgent constructor.
-     * @param RelatedAgentTypeInterface $relatedAgentDetails
      */
     public function __construct(RelatedAgentTypeInterface $relatedAgentDetails)
     {
         $this->relatedAgentDetails = $relatedAgentDetails;
     }
 
-    /**
-     * @return RelatedAgentTypeInterface
-     */
     public function getRelatedAgentType(): RelatedAgentTypeInterface
     {
         return $this->relatedAgentDetails;

@@ -4,18 +4,14 @@ declare(strict_types=1);
 
 namespace Genkgo\Camt\Camt054\Decoder;
 
-use Genkgo\Camt\Decoder\Message as BaseMessageDecoder;
 use Genkgo\Camt\Camt054\DTO as Camt054DTO;
+use Genkgo\Camt\Decoder\Message as BaseMessageDecoder;
 use Genkgo\Camt\DTO;
-use \SimpleXMLElement;
 use Genkgo\Camt\Iban;
+use SimpleXMLElement;
 
 class Message extends BaseMessageDecoder
 {
-    /**
-     * @param DTO\Message $message
-     * @param SimpleXMLElement $document
-     */
     public function addRecords(DTO\Message $message, SimpleXMLElement $document): void
     {
         $notifications = [];
@@ -57,8 +53,6 @@ class Message extends BaseMessageDecoder
     }
 
     /**
-     * @param SimpleXMLElement $xmlRecord
-     *
      * @return null|DTO\Account
      */
     protected function getAccount(SimpleXMLElement $xmlRecord)

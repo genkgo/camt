@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Genkgo\Camt\Camt052\Decoder\V04;
 
 use Genkgo\Camt\Camt052\Decoder\Message as BaseMessageDecoder;
-use \SimpleXMLElement;
+use SimpleXMLElement;
 
 class Message extends BaseMessageDecoder
 {

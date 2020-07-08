@@ -1,16 +1,13 @@
 <?php
 
 declare(strict_types=1);
+
 namespace Genkgo\Camt;
 
 use DOMDocument;
 use Genkgo\Camt\DTO\Message;
 use Genkgo\Camt\Exception\ReaderException;
 
-/**
- * Class Reader
- * @package Genkgo\Camt
- */
 class Reader
 {
     /**
@@ -23,23 +20,18 @@ class Reader
      */
     private $messageFormat;
 
-    /**
-     * @param Config $config
-     */
     public function __construct(Config $config)
     {
         $this->config = $config;
     }
 
     /**
-     * @param DOMDocument $document
-     * @throws ReaderException
      * @return mixed
      */
     public function readDom(DOMDocument $document)
     {
         if ($document->documentElement === null) {
-            throw new ReaderException("Empty document");
+            throw new ReaderException('Empty document');
         }
 
         $xmlNs = $document->documentElement->getAttribute('xmlns');
@@ -49,8 +41,6 @@ class Reader
     }
 
     /**
-     * @param string $string
-     * @throws ReaderException
      * @return mixed
      */
     public function readString(string $string)
@@ -62,9 +52,7 @@ class Reader
     }
 
     /**
-     * @param  string $file
      * @return Message|mixed
-     * @throws ReaderException
      */
     public function readFile(string $file)
     {
@@ -80,11 +68,6 @@ class Reader
         return $this->readString($string);
     }
 
-    /**
-     * @param string $xmlNs
-     * @return MessageFormatInterface
-     * @throws ReaderException
-     */
     private function getMessageFormatForXmlNs(string $xmlNs): MessageFormatInterface
     {
         $messageFormats = $this->config->getMessageFormats();
@@ -97,9 +80,6 @@ class Reader
         throw new ReaderException("Unsupported format, cannot find message format with xmlns {$xmlNs}");
     }
 
-    /**
-     * @return null|MessageFormatInterface
-     */
     public function getMessageFormat(): ?MessageFormatInterface
     {
         return $this->messageFormat;

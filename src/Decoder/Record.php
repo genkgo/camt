@@ -7,9 +7,9 @@ namespace Genkgo\Camt\Decoder;
 use Genkgo\Camt\DTO;
 use Genkgo\Camt\DTO\RecordWithBalances;
 use Genkgo\Camt\Util\StringToUnits;
-use Money\Money;
 use Money\Currency;
-use \SimpleXMLElement;
+use Money\Money;
+use SimpleXMLElement;
 
 class Record
 {
@@ -17,6 +17,7 @@ class Record
      * @var Entry
      */
     private $entryDecoder;
+
     /**
      * @var DateDecoderInterface
      */
@@ -24,8 +25,6 @@ class Record
 
     /**
      * Record constructor.
-     * @param Entry $entryDecoder
-     * @param DateDecoderInterface $dateDecoder
      */
     public function __construct(Entry $entryDecoder, DateDecoderInterface $dateDecoder)
     {
@@ -33,26 +32,22 @@ class Record
         $this->dateDecoder = $dateDecoder;
     }
 
-    /**
-     * @param RecordWithBalances $record
-     * @param SimpleXMLElement $xmlRecord
-     */
     public function addBalances(RecordWithBalances $record, SimpleXMLElement $xmlRecord): void
     {
         $xmlBalances = $xmlRecord->Bal;
         foreach ($xmlBalances as $xmlBalance) {
             $amount = StringToUnits::convert((string) $xmlBalance->Amt);
-            $currency = (string)$xmlBalance->Amt['Ccy'];
-            $date = (string)$xmlBalance->Dt->Dt;
+            $currency = (string) $xmlBalance->Amt['Ccy'];
+            $date = (string) $xmlBalance->Dt->Dt;
 
             if ((string) $xmlBalance->CdtDbtInd === 'DBIT') {
                 $amount = $amount * -1;
             }
 
-            if (isset($xmlBalance->Tp) && isset($xmlBalance->Tp->CdOrPrtry)) {
+            if (isset($xmlBalance->Tp, $xmlBalance->Tp->CdOrPrtry)) {
                 $code = (string) $xmlBalance->Tp->CdOrPrtry->Cd;
 
-                if (in_array($code, ['OPBD', 'PRCD'])) {
+                if (in_array($code, ['OPBD', 'PRCD'], true)) {
                     $record->addBalance(DTO\Balance::opening(
                         new Money(
                             $amount,
@@ -73,19 +68,15 @@ class Record
         }
     }
 
-    /**
-     * @param DTO\Record       $record
-     * @param SimpleXMLElement $xmlRecord
-     */
     public function addEntries(DTO\Record $record, SimpleXMLElement $xmlRecord): void
     {
         $index = 0;
         $xmlEntries = $xmlRecord->Ntry;
         foreach ($xmlEntries as $xmlEntry) {
-            $amount      = StringToUnits::convert((string) $xmlEntry->Amt);
-            $currency    = (string)$xmlEntry->Amt['Ccy'];
+            $amount = StringToUnits::convert((string) $xmlEntry->Amt);
+            $currency = (string) $xmlEntry->Amt['Ccy'];
             $bookingDate = ((string) $xmlEntry->BookgDt->Dt) ?: (string) $xmlEntry->BookgDt->DtTm;
-            $valueDate   = ((string) $xmlEntry->ValDt->Dt) ?: (string) $xmlEntry->ValDt->DtTm;
+            $valueDate = ((string) $xmlEntry->ValDt->Dt) ?: (string) $xmlEntry->ValDt->DtTm;
             $additionalInfo = ((string) $xmlEntry->AddtlNtryInf) ?: (string) $xmlEntry->AddtlNtryInf;
 
             if ((string) $xmlEntry->CdtDbtInd === 'DBIT') {
@@ -133,8 +124,8 @@ class Record
 
                 if (isset($xmlEntry->BkTxCd->Prtry)) {
                     $proprietaryBankTransactionCode = new DTO\ProprietaryBankTransactionCode(
-                        (string)$xmlEntry->BkTxCd->Prtry->Cd,
-                        (string)$xmlEntry->BkTxCd->Prtry->Issr
+                        (string) $xmlEntry->BkTxCd->Prtry->Cd,
+                        (string) $xmlEntry->BkTxCd->Prtry->Issr
                     );
 
                     $bankTransactionCode->setProprietary($proprietaryBankTransactionCode);
@@ -142,13 +133,13 @@ class Record
 
                 if (isset($xmlEntry->BkTxCd->Domn)) {
                     $domainBankTransactionCode = new DTO\DomainBankTransactionCode(
-                        (string)$xmlEntry->BkTxCd->Domn->Cd
+                        (string) $xmlEntry->BkTxCd->Domn->Cd
                     );
 
                     if (isset($xmlEntry->BkTxCd->Domn->Fmly)) {
                         $domainFamilyBankTransactionCode = new DTO\DomainFamilyBankTransactionCode(
-                            (string)$xmlEntry->BkTxCd->Domn->Fmly->Cd,
-                            (string)$xmlEntry->BkTxCd->Domn->Fmly->SubFmlyCd
+                            (string) $xmlEntry->BkTxCd->Domn->Fmly->Cd,
+                            (string) $xmlEntry->BkTxCd->Domn->Fmly->SubFmlyCd
                         );
 
                         $domainBankTransactionCode->setFamily($domainFamilyBankTransactionCode);
@@ -164,8 +155,8 @@ class Record
                 $charges = new DTO\Charges();
 
                 if (isset($xmlEntry->Chrgs->TtlChrgsAndTaxAmt) && (string) $xmlEntry->Chrgs->TtlChrgsAndTaxAmt) {
-                    $amount      = StringToUnits::convert((string) $xmlEntry->Chrgs->TtlChrgsAndTaxAmt);
-                    $currency    = (string)$xmlEntry->Chrgs->TtlChrgsAndTaxAmt['Ccy'];
+                    $amount = StringToUnits::convert((string) $xmlEntry->Chrgs->TtlChrgsAndTaxAmt);
+                    $currency = (string) $xmlEntry->Chrgs->TtlChrgsAndTaxAmt['Ccy'];
 
                     $charges->setTotalChargesAndTaxAmount(new Money($amount, new Currency($currency)));
                 }
@@ -178,8 +169,8 @@ class Record
                         $chargesDetail = new DTO\ChargesRecord();
 
                         if (isset($chargesRecord->Amt) && (string) $chargesRecord->Amt) {
-                            $amount      = StringToUnits::convert((string) $chargesRecord->Amt);
-                            $currency    = (string)$chargesRecord->Amt['Ccy'];
+                            $amount = StringToUnits::convert((string) $chargesRecord->Amt);
+                            $currency = (string) $chargesRecord->Amt['Ccy'];
 
                             if ((string) $chargesRecord->CdtDbtInd === 'DBIT') {
                                 $amount = $amount * -1;
@@ -202,7 +193,7 @@ class Record
             $this->entryDecoder->addTransactionDetails($entry, $xmlEntry);
 
             $record->addEntry($entry);
-            $index++;
+            ++$index;
         }
     }
 }

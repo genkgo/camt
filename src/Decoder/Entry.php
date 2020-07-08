@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Genkgo\Camt\Decoder;
 
 use Genkgo\Camt\DTO;
-use \SimpleXMLElement;
+use SimpleXMLElement;
 
 class Entry
 {
@@ -19,10 +19,6 @@ class Entry
         $this->entryTransactionDetailDecoder = $entryTransactionDetailDecoder;
     }
 
-    /**
-     * @param DTO\Entry        $entry
-     * @param SimpleXMLElement $xmlEntry
-     */
     public function addTransactionDetails(DTO\Entry $entry, SimpleXMLElement $xmlEntry): void
     {
         $xmlDetails = $xmlEntry->NtryDtls->TxDtls;

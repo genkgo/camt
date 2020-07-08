@@ -4,18 +4,14 @@ declare(strict_types=1);
 
 namespace Genkgo\Camt\Camt053\Decoder;
 
-use Genkgo\Camt\Decoder\Message as BaseMessageDecoder;
 use Genkgo\Camt\Camt053\DTO as Camt053DTO;
+use Genkgo\Camt\Decoder\Message as BaseMessageDecoder;
 use Genkgo\Camt\DTO;
-use SimpleXMLElement;
 use Genkgo\Camt\Iban;
+use SimpleXMLElement;
 
 class Message extends BaseMessageDecoder
 {
-    /**
-     * @param DTO\Message $message
-     * @param SimpleXMLElement $document
-     */
     public function addRecords(DTO\Message $message, SimpleXMLElement $document): void
     {
         $statements = [];
@@ -57,11 +53,6 @@ class Message extends BaseMessageDecoder
         return $document->BkToCstmrStmt;
     }
 
-    /**
-     * @param SimpleXMLElement $xmlRecord
-     *
-     * @return DTO\Account
-     */
     protected function getAccount(SimpleXMLElement $xmlRecord): DTO\Account
     {
         if (isset($xmlRecord->Acct->Id->IBAN)) {

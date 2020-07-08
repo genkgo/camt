@@ -4,11 +4,6 @@ declare(strict_types=1);
 
 namespace Genkgo\Camt\DTO;
 
-/**
- * Class RecordWithBalances
- *
- * @package Genkgo\Camt\DTO
- */
 abstract class RecordWithBalances extends Record
 {
     /**
@@ -16,9 +11,6 @@ abstract class RecordWithBalances extends Record
      */
     private $balances = [];
 
-    /**
-     * @param Balance $balance
-     */
     public function addBalance(Balance $balance): void
     {
         $this->balances[] = $balance;
