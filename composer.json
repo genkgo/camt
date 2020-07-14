@@ -13,7 +13,7 @@
         ]
     },
     "require": {
-        "php": "^7.1",
+        "php": "^7.2",
         "ext-dom": "*",
         "ext-libxml": "*",
         "ext-simplexml": "*",
@@ -21,9 +21,9 @@
         "moneyphp/money": "^3.3"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^2.14",
+        "friendsofphp/php-cs-fixer": "^2.16",
         "phpstan/phpstan": "@stable",
-        "phpunit/phpunit": "~6"
+        "phpunit/phpunit": "^8.5"
     },
     "autoload": {
         "psr-4": {
