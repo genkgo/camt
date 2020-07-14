@@ -4,12 +4,6 @@ declare(strict_types=1);
 
 namespace Genkgo\Camt\DTO;
 
-use Money\Currency;
-
-/**
- * Class Account
- * @package Genkgo\Camt\DTO
- */
 abstract class Account
 {
     /**
@@ -25,11 +19,7 @@ abstract class Account
      */
     private $currency;
 
-    /**
-     * @return string
-     */
     abstract public function getIdentification(): string;
-
 
     /**
      * @return \Genkgo\Camt\DTO\AccountOwner|null

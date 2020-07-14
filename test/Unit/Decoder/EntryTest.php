@@ -4,31 +4,32 @@ declare(strict_types=1);
 
 namespace Genkgo\TestCamt\Unit\Decoder;
 
-use Genkgo\TestCamt\AbstractTestCase;
 use Genkgo\Camt\Decoder;
 use Genkgo\Camt\DTO;
+use Genkgo\TestCamt\AbstractTestCase;
 use Prophecy\Argument;
 use Prophecy\Prophecy\ObjectProphecy;
 use SimpleXMLElement;
 
 class EntryTest extends AbstractTestCase
 {
-    /** @var ObjectProphecy */
+    /**
+     * @var ObjectProphecy
+     */
     private $mockedEntryTransactionDetailDecoder;
 
-    /** @var Decoder\Entry */
+    /**
+     * @var Decoder\Entry
+     */
     private $decoder;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->mockedEntryTransactionDetailDecoder = $this->prophesize(Decoder\EntryTransactionDetail::class);
         $this->decoder = new Decoder\Entry($this->mockedEntryTransactionDetailDecoder->reveal());
     }
 
-    /**
-     * @test
-     */
-    public function it_does_not_add_transaction_details_if_there_is_none_in_xml(): void
+    public function testItDoesNotAddTransactionDetailsIfThereIsNoneInXml(): void
     {
         $entry = $this->prophesize(DTO\Entry::class);
         $entry->addTransactionDetail(Argument::any())->shouldNotBeCalled();
@@ -37,10 +38,7 @@ class EntryTest extends AbstractTestCase
         $this->decoder->addTransactionDetails($entry->reveal(), $xmlEntry);
     }
 
-    /**
-     * @test
-     */
-    public function it_adds_transaction_details_if_there_are_present_in_xml(): void
+    public function testItAddsTransactionDetailsIfThereArePresentInXml(): void
     {
         $entry = $this->prophesize(DTO\Entry::class);
         $this->mockedEntryTransactionDetailDecoder->addReference(

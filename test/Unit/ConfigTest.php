@@ -16,7 +16,7 @@ class ConfigTest extends TestCase
     {
         $config = Config::getDefault();
 
-        $this->assertTrue($config->getXsdValidation());
+        self::assertTrue($config->getXsdValidation());
     }
 
     public function testNoValidateConfigHasNoXsdValidation(): void
@@ -24,6 +24,6 @@ class ConfigTest extends TestCase
         $config = Config::getDefault();
         $config->disableXsdValidation();
 
-        $this->assertFalse($config->getXsdValidation());
+        self::assertFalse($config->getXsdValidation());
     }
 }

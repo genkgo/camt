@@ -4,19 +4,14 @@ declare(strict_types=1);
 
 namespace Genkgo\Camt\Camt053\Decoder;
 
-use Genkgo\Camt\Decoder\Message as BaseMessageDecoder;
 use Genkgo\Camt\Camt053\DTO as Camt053DTO;
+use Genkgo\Camt\Decoder\Message as BaseMessageDecoder;
 use Genkgo\Camt\DTO;
-use Money\Currency;
 use SimpleXMLElement;
 use Genkgo\Camt\Iban;
 
 class Message extends BaseMessageDecoder
 {
-    /**
-     * @param DTO\Message $message
-     * @param SimpleXMLElement $document
-     */
     public function addRecords(DTO\Message $message, SimpleXMLElement $document): void
     {
         $statements = [];
@@ -24,20 +19,22 @@ class Message extends BaseMessageDecoder
         $xmlStatements = $this->getRootElement($document)->Stmt;
         foreach ($xmlStatements as $xmlStatement) {
             $statement = new Camt053DTO\Statement(
-                (string) $xmlStatement->Id,
-                $this->dateDecoder->decode((string) $xmlStatement->CreDtTm),
+                (string)$xmlStatement->Id,
+                $this->dateDecoder->decode((string)$xmlStatement->CreDtTm),
                 $this->getAccount($xmlStatement)
             );
 
             if (isset($xmlStatement->StmtPgntn)) {
-                $statement->setPagination(new DTO\Pagination(
-                    (string) $xmlStatement->StmtPgntn->PgNb,
-                    ('true' === (string) $xmlStatement->StmtPgntn->LastPgInd) ? true : false
-                ));
+                $statement->setPagination(
+                    new DTO\Pagination(
+                        (string)$xmlStatement->StmtPgntn->PgNb,
+                        ('true' === (string)$xmlStatement->StmtPgntn->LastPgInd) ? true : false
+                    )
+                );
             }
 
             if (isset($xmlStatement->AddtlStmtInf)) {
-                $statement->setAdditionalInformation((string) $xmlStatement->AddtlStmtInf);
+                $statement->setAdditionalInformation((string)$xmlStatement->AddtlStmtInf);
             }
 
             $this->addCommonRecordInformation($statement, $xmlStatement);
@@ -58,11 +55,6 @@ class Message extends BaseMessageDecoder
         return $document->BkToCstmrStmt;
     }
 
-    /**
-     * @param SimpleXMLElement $xmlRecord
-     *
-     * @return DTO\Account
-     */
     protected function getAccount(SimpleXMLElement $xmlRecord): DTO\Account
     {
         $account = null;

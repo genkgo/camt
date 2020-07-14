@@ -4,37 +4,37 @@ declare(strict_types=1);
 
 namespace Genkgo\TestCamt\Unit\Camt052\Decoder;
 
-use Genkgo\Camt\Camt052\Decoder\V01\Message;
-use Genkgo\TestCamt\AbstractTestCase;
 use Genkgo\Camt\Camt052;
-use Genkgo\Camt\DTO;
+use Genkgo\Camt\Camt052\Decoder\V01\Message;
 use Genkgo\Camt\Decoder as DecoderObject;
+use Genkgo\Camt\DTO;
+use Genkgo\TestCamt\AbstractTestCase;
 use Prophecy\Argument;
 use Prophecy\Prophecy\ObjectProphecy;
 use SimpleXMLElement;
 
 class MessageTest extends AbstractTestCase
 {
-    /** @var ObjectProphecy */
+    /**
+     * @var ObjectProphecy
+     */
     private $mockedRecordDecoder;
 
-    /** @var Message */
+    /**
+     * @var Message
+     */
     private $decoder;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $entry = $this->prophesize(DecoderObject\Entry::class);
         $this->mockedRecordDecoder = $this
             ->prophesize(DecoderObject\Record::class)
-            ->willBeConstructedWith([$entry->reveal(), new DecoderObject\Date()])
-        ;
+            ->willBeConstructedWith([$entry->reveal(), new DecoderObject\Date()]);
         $this->decoder = new Message($this->mockedRecordDecoder->reveal(), new DecoderObject\Date());
     }
 
-    /**
-     * @test
-     */
-    public function it_adds_group_header(): void
+    public function testItAddsGroupHeader(): void
     {
         $message = $this->prophesize(DTO\Message::class);
         $message->setGroupHeader(Argument::type(DTO\GroupHeader::class))->shouldBeCalled();
@@ -42,10 +42,7 @@ class MessageTest extends AbstractTestCase
         $this->decoder->addGroupHeader($message->reveal(), $this->getXmlMessage());
     }
 
-    /**
-     * @test
-     */
-    public function it_adds_reports(): void
+    public function testItAddsReports(): void
     {
         $message = $this->prophesize(DTO\Message::class);
 

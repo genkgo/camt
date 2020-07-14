@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+
 namespace Genkgo\Camt\DTO;
 
 class CreditorAgent implements RelatedAgentTypeInterface
@@ -17,8 +18,6 @@ class CreditorAgent implements RelatedAgentTypeInterface
 
     /**
      * CreditorAgent constructor.
-     * @param string $name
-     * @param string $BIC
      */
     public function __construct(string $name, string $BIC)
     {
@@ -26,33 +25,21 @@ class CreditorAgent implements RelatedAgentTypeInterface
         $this->BIC = $BIC;
     }
 
-    /**
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * @param string $name
-     */
     public function setName(string $name): void
     {
         $this->name = $name;
     }
 
-    /**
-     * @return string
-     */
     public function getBIC(): string
     {
         return $this->BIC;
     }
 
-    /**
-     * @param string $BIC
-     */
     public function setBIC(string $BIC): void
     {
         $this->BIC = $BIC;

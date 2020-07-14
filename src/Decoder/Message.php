@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Genkgo\Camt\Decoder;
 
-use SimpleXMLElement;
-use Genkgo\Camt\DTO;
 use Genkgo\Camt\Decoder\Factory\DTO as DTOFactory;
+use Genkgo\Camt\DTO;
+use SimpleXMLElement;
 
 abstract class Message
 {
@@ -14,6 +14,7 @@ abstract class Message
      * @var Record
      */
     protected $recordDecoder;
+
     /**
      * @var DateDecoderInterface
      */
@@ -21,8 +22,6 @@ abstract class Message
 
     /**
      * Message constructor.
-     * @param Record $recordDecoder
-     * @param DateDecoderInterface $dateDecoder
      */
     public function __construct(Record $recordDecoder, DateDecoderInterface $dateDecoder)
     {
@@ -30,16 +29,12 @@ abstract class Message
         $this->dateDecoder = $dateDecoder;
     }
 
-    /**
-     * @param DTO\Message      $message
-     * @param SimpleXMLElement $document
-     */
     public function addGroupHeader(DTO\Message $message, SimpleXMLElement $document): void
     {
         $xmlGroupHeader = $this->getRootElement($document)->GrpHdr;
         $groupHeader = new DTO\GroupHeader(
-            (string)$xmlGroupHeader->MsgId,
-            $this->dateDecoder->decode((string)$xmlGroupHeader->CreDtTm)
+            (string) $xmlGroupHeader->MsgId,
+            $this->dateDecoder->decode((string) $xmlGroupHeader->CreDtTm)
         );
 
         if (isset($xmlGroupHeader->AddtlInf)) {
@@ -62,10 +57,6 @@ abstract class Message
         $message->setGroupHeader($groupHeader);
     }
 
-    /**
-     * @param DTO\Record       $record
-     * @param SimpleXMLElement $xmlRecord
-     */
     public function addCommonRecordInformation(DTO\Record $record, SimpleXMLElement $xmlRecord): void
     {
         if (isset($xmlRecord->ElctrncSeqNb)) {
@@ -83,17 +74,8 @@ abstract class Message
         }
     }
 
-    /**
-     * @param DTO\Message      $message
-     * @param SimpleXMLElement $document
-     */
     abstract public function addRecords(DTO\Message $message, SimpleXMLElement $document): void;
 
-    /**
-     * @param SimpleXMLElement $document
-     *
-     * @return SimpleXMLElement
-     */
     abstract public function getRootElement(SimpleXMLElement $document): SimpleXMLElement;
 
     protected function accountAddOwnerInfo(DTO\Account $account, SimpleXMLElement $acctOwnrElement): void

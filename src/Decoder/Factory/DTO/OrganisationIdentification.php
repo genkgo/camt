@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Genkgo\Camt\Decoder\Factory\DTO;
 
-use SimpleXMLElement;
 use Genkgo\Camt\DTO;
+use SimpleXMLElement;
 
 class OrganisationIdentification
 {

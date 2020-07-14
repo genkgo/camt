@@ -1,16 +1,13 @@
 <?php
 
 declare(strict_types=1);
+
 namespace Genkgo\Camt;
 
-use Iban\Validation\Validator;
 use Iban\Validation\Iban as IbanDetails;
+use Iban\Validation\Validator;
 use InvalidArgumentException;
 
-/**
- * Class Iban
- * @package Genkgo\Camt
- */
 class Iban
 {
     /**

@@ -23,35 +23,21 @@ class OriginalBusinessQuery
      */
     private $createdOn;
 
-    /**
-     * @param string $messageId
-     */
     public function __construct(string $messageId)
     {
         $this->messageId = $messageId;
     }
 
-    /**
-     * @return string
-     */
     public function getMessageId(): string
     {
         return $this->messageId;
     }
 
-    /**
-     * @return null|string
-     */
     public function getMessageNameId(): ?string
     {
         return $this->messageNameId;
     }
 
-    /**
-     * @param string $messageNameId
-     *
-     * @return OriginalBusinessQuery
-     */
     public function setMessageNameId(string $messageNameId): self
     {
         $this->messageNameId = $messageNameId;
@@ -59,11 +45,6 @@ class OriginalBusinessQuery
         return $this;
     }
 
-    /**
-     * @param DateTimeImmutable $createdOn
-     *
-     * @return OriginalBusinessQuery
-     */
     public function setCreatedOn(DateTimeImmutable $createdOn): self
     {
         $this->createdOn = $createdOn;
@@ -71,9 +52,6 @@ class OriginalBusinessQuery
         return $this;
     }
 
-    /**
-     * @return null|DateTimeImmutable
-     */
     public function getCreatedOn(): ?DateTimeImmutable
     {
         return $this->createdOn;

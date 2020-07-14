@@ -4,20 +4,17 @@ declare(strict_types=1);
 
 namespace Genkgo\TestCamt\Unit\Decoder;
 
-use Genkgo\Camt\Decoder\Date;
-use Genkgo\TestCamt\AbstractTestCase;
 use Genkgo\Camt\Camt053;
+use Genkgo\Camt\Decoder\Date;
 use Genkgo\Camt\DTO;
+use Genkgo\TestCamt\AbstractTestCase;
 use Money\Money;
 use Prophecy\Argument;
 use SimpleXMLElement;
 
 class EntryTransactionDetailTest extends AbstractTestCase
 {
-    /**
-     * @test
-     */
-    public function it_does_not_add_reference_if_there_is_none_in_xml(): void
+    public function testItDoesNotAddReferenceIfThereIsNoneInXml(): void
     {
         $detail = $this->prophesize(DTO\EntryTransactionDetail::class);
         $detail->setReference(Argument::any())->shouldNotBeCalled();
@@ -26,10 +23,7 @@ class EntryTransactionDetailTest extends AbstractTestCase
         (new Camt053\Decoder\EntryTransactionDetail(new Date()))->addReference($detail->reveal(), $xmlDetail);
     }
 
-    /**
-     * @test
-     */
-    public function it_adds_reference_if_it_is_present_in_xml(): void
+    public function testItAddsReferenceIfItIsPresentInXml(): void
     {
         $detail = $this->prophesize(DTO\EntryTransactionDetail::class);
         $detail->setReference(Argument::type(DTO\Reference::class))->shouldBeCalled();
@@ -37,10 +31,7 @@ class EntryTransactionDetailTest extends AbstractTestCase
         (new Camt053\Decoder\EntryTransactionDetail(new Date()))->addReference($detail->reveal(), $this->getXmlDetail());
     }
 
-    /**
-     * @test
-     */
-    public function it_does_not_add_additional_transaction_information_if_there_is_none_in_xml(): void
+    public function testItDoesNotAddAdditionalTransactionInformationIfThereIsNoneInXml(): void
     {
         $detail = $this->prophesize(DTO\EntryTransactionDetail::class);
         $detail->setAdditionalTransactionInformation(Argument::any())->shouldNotBeCalled();
@@ -49,10 +40,7 @@ class EntryTransactionDetailTest extends AbstractTestCase
         (new Camt053\Decoder\EntryTransactionDetail(new Date()))->addAdditionalTransactionInformation($detail->reveal(), $xmlDetail);
     }
 
-    /**
-     * @test
-     */
-    public function it_adds_additional_transaction_information_if_it_is_present_in_xml(): void
+    public function testItAddsAdditionalTransactionInformationIfItIsPresentInXml(): void
     {
         $detail = $this->prophesize(DTO\EntryTransactionDetail::class);
         $detail->setAdditionalTransactionInformation(
@@ -62,10 +50,7 @@ class EntryTransactionDetailTest extends AbstractTestCase
         (new Camt053\Decoder\EntryTransactionDetail(new Date()))->addAdditionalTransactionInformation($detail->reveal(), $this->getXmlDetail());
     }
 
-    /**
-     * @test
-     */
-    public function it_does_not_add_remittance_information_if_there_is_none_in_xml(): void
+    public function testItDoesNotAddRemittanceInformationIfThereIsNoneInXml(): void
     {
         $detail = $this->prophesize(DTO\EntryTransactionDetail::class);
         $detail->setRemittanceInformation(Argument::any())->shouldNotBeCalled();
@@ -74,10 +59,7 @@ class EntryTransactionDetailTest extends AbstractTestCase
         (new Camt053\Decoder\EntryTransactionDetail(new Date()))->addRemittanceInformation($detail->reveal(), $xmlDetail);
     }
 
-    /**
-     * @test
-     */
-    public function it_adds_remittance_information_and_creditor_reference_if_it_is_present_in_xml(): void
+    public function testItAddsRemittanceInformationAndCreditorReferenceIfItIsPresentInXml(): void
     {
         $detail = $this->prophesize(DTO\EntryTransactionDetail::class);
         $detail->setRemittanceInformation(Argument::type(DTO\RemittanceInformation::class))->shouldBeCalled();
@@ -85,10 +67,7 @@ class EntryTransactionDetailTest extends AbstractTestCase
         (new Camt053\Decoder\EntryTransactionDetail(new Date()))->addRemittanceInformation($detail->reveal(), $this->getXmlDetail());
     }
 
-    /**
-     * @test
-     */
-    public function it_adds_remittance_information_if_it_is_present_in_xml(): void
+    public function testItAddsRemittanceInformationIfItIsPresentInXml(): void
     {
         $detail = $this->prophesize(DTO\EntryTransactionDetail::class);
         $detail->setRemittanceInformation(Argument::type(DTO\RemittanceInformation::class))->shouldBeCalled();
@@ -97,10 +76,7 @@ class EntryTransactionDetailTest extends AbstractTestCase
         (new Camt053\Decoder\EntryTransactionDetail(new Date()))->addRemittanceInformation($detail->reveal(), $xmlDetail);
     }
 
-    /**
-     * @test
-     */
-    public function it_does_not_add_return_information_if_there_is_none_in_xml(): void
+    public function testItDoesNotAddReturnInformationIfThereIsNoneInXml(): void
     {
         $detail = $this->prophesize(DTO\EntryTransactionDetail::class);
         $detail->setReturnInformation(Argument::any())->shouldNotBeCalled();
@@ -109,10 +85,7 @@ class EntryTransactionDetailTest extends AbstractTestCase
         (new Camt053\Decoder\EntryTransactionDetail(new Date()))->addReturnInformation($detail->reveal(), $xmlDetail);
     }
 
-    /**
-     * @test
-     */
-    public function it_adds_return_information_if_it_is_present_in_xml(): void
+    public function testItAddsReturnInformationIfItIsPresentInXml(): void
     {
         $detail = $this->prophesize(DTO\EntryTransactionDetail::class);
         $detail->setReturnInformation(
@@ -122,10 +95,7 @@ class EntryTransactionDetailTest extends AbstractTestCase
         (new Camt053\Decoder\EntryTransactionDetail(new Date()))->addReturnInformation($detail->reveal(), $this->getXmlDetail());
     }
 
-    /**
-     * @test
-     */
-    public function it_does_not_add_related_parties_if_there_is_none_in_xml(): void
+    public function testItDoesNotAddRelatedPartiesIfThereIsNoneInXml(): void
     {
         $detail = $this->prophesize(DTO\EntryTransactionDetail::class);
         $detail->addRelatedParty(Argument::any())->shouldNotBeCalled();
@@ -134,10 +104,7 @@ class EntryTransactionDetailTest extends AbstractTestCase
         (new Camt053\Decoder\EntryTransactionDetail(new Date()))->addRelatedParties($detail->reveal(), $xmlDetail);
     }
 
-    /**
-     * @test
-     */
-    public function it_adds_related_parties_if_is_present_in_xml(): void
+    public function testItAddsRelatedPartiesIfIsPresentInXml(): void
     {
         $detail = $this->prophesize(DTO\EntryTransactionDetail::class);
         $detail->addRelatedParty(Argument::type(DTO\RelatedParty::class))->shouldBeCalled();
@@ -145,10 +112,7 @@ class EntryTransactionDetailTest extends AbstractTestCase
         (new Camt053\Decoder\EntryTransactionDetail(new Date()))->addRelatedParties($detail->reveal(), $this->getXmlDetail());
     }
 
-    /**
-     * @test
-     */
-    public function it_does_not_add_related_dates_if_there_is_none_in_xml(): void
+    public function testItDoesNotAddRelatedDatesIfThereIsNoneInXml(): void
     {
         $detail = $this->prophesize(DTO\EntryTransactionDetail::class);
         $detail->setRelatedDates(Argument::any())->shouldNotBeCalled();
@@ -157,10 +121,7 @@ class EntryTransactionDetailTest extends AbstractTestCase
         (new Camt053\Decoder\EntryTransactionDetail(new Date()))->addRelatedDates($detail->reveal(), $xmlDetail);
     }
 
-    /**
-     * @test
-     */
-    public function it_adds_related_dates_if_is_present_in_xml(): void
+    public function testItAddsRelatedDatesIfIsPresentInXml(): void
     {
         $detail = $this->prophesize(DTO\EntryTransactionDetail::class);
         $detail->setRelatedDates(Argument::type(DTO\RelatedDates::class))->shouldBeCalled();
@@ -168,10 +129,7 @@ class EntryTransactionDetailTest extends AbstractTestCase
         (new Camt053\Decoder\EntryTransactionDetail(new Date()))->addRelatedDates($detail->reveal(), $this->getXmlDetail());
     }
 
-    /**
-     * @test
-     */
-    public function it_does_not_add_charges_if_there_is_none_in_xml(): void
+    public function testItDoesNotAddChargesIfThereIsNoneInXml(): void
     {
         $detail = $this->prophesize(DTO\EntryTransactionDetail::class);
         $detail->setCharges(Argument::any())->shouldNotBeCalled();
@@ -180,10 +138,7 @@ class EntryTransactionDetailTest extends AbstractTestCase
         (new Camt053\Decoder\EntryTransactionDetail(new Date()))->addCharges($detail->reveal(), $xmlDetail);
     }
 
-    /**
-     * @test
-     */
-    public function it_adds_charges_if_is_present_in_xml(): void
+    public function testItAddsChargesIfIsPresentInXml(): void
     {
         $detail = $this->prophesize(DTO\EntryTransactionDetail::class);
         $detail->setCharges(Argument::type(DTO\Charges::class))->shouldBeCalled();
@@ -191,10 +146,7 @@ class EntryTransactionDetailTest extends AbstractTestCase
         (new Camt053\Decoder\EntryTransactionDetail(new Date()))->addCharges($detail->reveal(), $this->getXmlDetail());
     }
 
-    /**
-     * @test
-     */
-    public function it_adds_amount_details_if_is_present_in_xmsl(): void
+    public function testItAddsAmountDetailsIfIsPresentInXmsl(): void
     {
         $detail = $this->prophesize(DTO\EntryTransactionDetail::class);
         $detail->setAmountDetails(Argument::type(Money::class))->shouldBeCalled();
@@ -202,10 +154,8 @@ class EntryTransactionDetailTest extends AbstractTestCase
         $CdtDbtInd = new SimpleXMLElement('<content>DBIT</content>');
         (new Camt053\Decoder\EntryTransactionDetail(new Date()))->addAmountDetails($detail->reveal(), $this->getXmlDetail(), $CdtDbtInd);
     }
-    /**
-     * @test
-     */
-    public function it_adds_amount_if_is_present_in_xmsl(): void
+
+    public function testItAddsAmountIfIsPresentInXmsl(): void
     {
         $detail = $this->prophesize(DTO\EntryTransactionDetail::class);
         $detail->setAmount(Argument::type(Money::class))->shouldBeCalled();
