@@ -13,7 +13,7 @@ trait Mapping
      * @param SimpleXMLElement $xml
      * @param string[][] $mapping
      */
-    public static function map($object, SimpleXMLElement $xml, array $mapping): void
+    public static function map(object $object, SimpleXMLElement $xml, array $mapping): void
     {
         foreach ($mapping as $line) {
             $setter   = $line['setter'];
