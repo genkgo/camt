@@ -19,11 +19,9 @@ class Iban
     {
         $iban = new IbanDetails($iban);
 
-        // jschaedl/iban-validation 1.6 seems to be giving false positives, disable it currently
-        // Ex. DE89370444440532413000
-//        if (!(new Validator)->validate($iban)) {
-//            throw new InvalidArgumentException("Unknown IBAN {$iban}");
-//        }
+        if (!(new Validator)->validate($iban)) {
+            throw new InvalidArgumentException("Unknown IBAN {$iban}");
+        }
 
         $this->iban = $iban->getNormalizedIban();
     }
