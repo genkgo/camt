@@ -61,7 +61,7 @@ class AccountOwner
     }
 
     /**
-     * @param \Genkgo\Camt\DTO\Address|null $address
+     * @param \Genkgo\Camt\DTO\Address $address
      */
     public function setAddress(\Genkgo\Camt\DTO\Address $address): void
     {

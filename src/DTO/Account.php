@@ -30,7 +30,7 @@ abstract class Account
     }
 
     /**
-     * @param \Genkgo\Camt\DTO\AccountOwner|null $owner
+     * @param \Genkgo\Camt\DTO\AccountOwner $owner
      */
     public function setOwner(\Genkgo\Camt\DTO\AccountOwner $owner): void
     {
@@ -46,7 +46,7 @@ abstract class Account
     }
 
     /**
-     * @param \Genkgo\Camt\DTO\AccountServicer|null $servicer
+     * @param \Genkgo\Camt\DTO\AccountServicer $servicer
      */
     public function setServicer(\Genkgo\Camt\DTO\AccountServicer $servicer): void
     {

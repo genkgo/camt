@@ -85,14 +85,14 @@ class Message extends BaseMessageDecoder
         }
 
         if ($account instanceof DTO\Account) {
-            if ($xmlRecord->Acct->Ownr) {
-                $this->accountAddOwnerInfo($account, $xmlRecord->Acct->Ownr);
+            if ($Ownr = data_get($xmlRecord, 'Acct.Ownr')) {
+                $this->accountAddOwnerInfo($account, $Ownr);
             }
-            if ($xmlRecord->Acct->Svcr) {
-                $this->accountAddServicerInfo($account, $xmlRecord->Acct->Svcr);
+            if ($Svcr = data_get($xmlRecord, 'Acct.Svcr')) {
+                $this->accountAddServicerInfo($account, $Svcr);
             }
-            if ($xmlRecord->Acct->Ccy) {
-                $account->setCurrency(new \Money\Currency((string)$xmlRecord->Acct->Ccy));
+            if ($Ccy = data_get($xmlRecord, 'Acct.Ccy')) {
+                $account->setCurrency(new \Money\Currency((string)$Ccy));
             }
             return $account;
         }
