@@ -143,10 +143,10 @@
                         </RltdAgts>
                     </TxDtls>
                 </NtryDtls>
-                <AddtlNtryInf>Credit</AddtlNtryInf>
+                <AddtlNtryInf>Debit</AddtlNtryInf>
             </Ntry>
             <Ntry>
-                <Amt Ccy="SEK">20000</Amt>
+                <Amt Ccy="SEK">200000</Amt>
                 <CdtDbtInd>CRDT</CdtDbtInd>
                 <Sts>BOOK</Sts>
                 <BookgDt>
@@ -235,7 +235,7 @@
                 </NtryDtls>
                 <AddtlNtryInf>Credit</AddtlNtryInf>
             </Ntry>
-            <AddtlRptInf>Additional Information</AddtlRptInf>
+            <AddtlRptInf>Payer Name or Additional Information</AddtlRptInf>
         </Rpt>
     </BkToCstmrAcctRpt>
 </Document>

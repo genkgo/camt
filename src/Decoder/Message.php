@@ -81,17 +81,17 @@ abstract class Message
     protected function accountAddOwnerInfo(DTO\Account $account, SimpleXMLElement $acctOwnrElement): void
     {
         $owner = new DTO\AccountOwner();
-        if ($acctOwnrElement->Id->OrgId->Othr->Id) {
-            $owner->setId((string)$acctOwnrElement->Id->OrgId->Othr->Id);
+        if ($Id = data_get($acctOwnrElement, 'Id.OrgId.Othr.Id')) {
+            $owner->setId((string)$Id);
         }
-        if ($acctOwnrElement->Id->PrvtId->Othr->Id) {
-            $owner->setId((string)$acctOwnrElement->Id->PrvtId->Othr->Id);
+        if ($Id = data_get($acctOwnrElement, 'Id.PrvtId.Othr.Id')) {
+            $owner->setId((string)$Id);
         }
-        if ($acctOwnrElement->Nm) {
-            $owner->setName((string)$acctOwnrElement->Nm);
+        if ($Nm = data_get($acctOwnrElement, 'Nm')) {
+            $owner->setName((string)$Nm);
         }
-        if ($acctOwnrElement->PstlAdr) {
-            $address = \Genkgo\Camt\Decoder\Factory\DTO\Address::createFromXml($acctOwnrElement->PstlAdr);
+        if ($PstlAdr = data_get($acctOwnrElement, 'PstlAdr')) {
+            $address = \Genkgo\Camt\Decoder\Factory\DTO\Address::createFromXml($PstlAdr);
             $owner->setAddress($address);
         }
         $account->setOwner($owner);
@@ -100,21 +100,21 @@ abstract class Message
     protected function accountAddServicerInfo(DTO\Account $account, SimpleXMLElement $acctSvcrElement): void
     {
         $servicer = new DTO\AccountServicer();
-        if ($acctSvcrElement->FinInstnId->Othr->Id) {
-            $servicer->setId((string)$acctSvcrElement->FinInstnId->Othr->Id);
+        if ($Id = data_get($acctSvcrElement, 'FinInstnId.Othr.Id')) {
+            $servicer->setId((string)$id);
         }
-        if ($acctSvcrElement->FinInstnId->BIC) {
-            $servicer->setBic((string)$acctSvcrElement->FinInstnId->BIC);
+        if ($BIC = data_get($acctSvcrElement, 'FinInstnId.BIC')) {
+            $servicer->setBic((string)$BIC);
         }
-        if ($acctSvcrElement->FinInstnId->Nm) {
-            $servicer->setName((string)$acctSvcrElement->FinInstnId->Nm);
+        if ($Nm = data_get($acctSvcrElement, 'FinInstnId.Nm')) {
+            $servicer->setName((string)$Nm);
         }
-        if ($acctSvcrElement->FinInstnId->Othr->SchmeNm->Cd) {
-            $servicer->setSchmeNm((string)$acctSvcrElement->FinInstnId->Othr->SchmeNm->Cd);
+        if ($Cd = data_get($acctSvcrElement, 'FinInstnId.Othr.SchmeNm.Cd')) {
+            $servicer->setSchmeNm((string)$Cd);
         }
 
-        if ($acctSvcrElement->FinInstnId->PstlAdr) {
-            $address = \Genkgo\Camt\Decoder\Factory\DTO\Address::createFromXml($acctSvcrElement->FinInstnId->PstlAdr);
+        if ($PstlAdr = data_get($acctSvcrElement, 'FinInstnId.PstlAdr')) {
+            $address = \Genkgo\Camt\Decoder\Factory\DTO\Address::createFromXml($PstlAdr);
             $servicer->setAddress($address);
         }
         $account->setServicer($servicer);

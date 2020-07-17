@@ -85,11 +85,11 @@
                     <PmtInfId>FINP-0055-001</PmtInfId>
                     <NbOfTxs>20</NbOfTxs>
                 </Btch>
-                <AddtlNtryInf>Credit</AddtlNtryInf>
+                <AddtlNtryInf>Debit</AddtlNtryInf>
             </Ntry>
             <!-- Full CRDT entry with payer info -->
             <Ntry>
-                <Amt Ccy="SEK">100000</Amt>
+                <Amt Ccy="SEK">200000</Amt>
                 <CdtDbtInd>CRDT</CdtDbtInd>
                 <Sts>BOOK</Sts>
                 <BookgDt>
@@ -128,9 +128,9 @@
                         </Dbtr>
                     </RltdPties>
                 </TxDtls>
-                <AddtlNtryInf>Debit</AddtlNtryInf>
+                <AddtlNtryInf>Credit</AddtlNtryInf>
             </Ntry>
-            <AddtlRptInf>Payer Name or something</AddtlRptInf>
+            <AddtlRptInf>Payer Name or Additional Information</AddtlRptInf>
         </Rpt>
     </BkToCstmrAcctRptV01>
 </Document>

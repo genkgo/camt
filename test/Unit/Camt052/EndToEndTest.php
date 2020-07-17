@@ -112,7 +112,7 @@ class EndToEndTest extends AbstractTestCase
                 self::assertEquals('CODU', $report->getCopyDuplicateIndicator());
                 self::assertEquals(new DateTimeImmutable('2007-10-18T08:00:00+01:00'), $report->getFromDate());
                 self::assertEquals(new DateTimeImmutable('2007-10-18T12:30:00+01:00'), $report->getToDate());
-                self::assertEquals('Additional Information', $report->getAdditionalInformation());
+                self::assertEquals('Payer Name or Additional Information', $report->getAdditionalInformation());
             }
         }
     }
@@ -131,14 +131,31 @@ class EndToEndTest extends AbstractTestCase
             self::assertCount(1, $reports);
             foreach ($reports as $report) {
                 $entries = $report->getEntries();
-                self::assertCount(1, $entries);
+                self::assertCount(2, $entries);
 
-                foreach ($entries as $entry) {
-                    self::assertEquals(-20000000, $entry->getAmount()->getAmount());
-                    self::assertEquals('SEK', $entry->getAmount()->getCurrency()->getCode());
-                    self::assertEquals('2007-10-18', $entry->getBookingDate()->format('Y-m-d'));
-                    self::assertEquals('2007-10-18', $entry->getValueDate()->format('Y-m-d'));
-                    self::assertEquals('Credit', $entry->getAdditionalInfo());
+                $expectedEntries = [
+                    [
+                        'amount' => -20000000,
+                        'currency' => 'SEK',
+                        'bookingDate' => '2007-10-18',
+                        'valueDate' => '2007-10-18',
+                        'additionalInfo' => 'Debit',
+                    ],
+                    [
+                        'amount' => 20000000,
+                        'currency' => 'SEK',
+                        'bookingDate' => '2007-10-18',
+                        'valueDate' => '2007-10-18',
+                        'additionalInfo' => 'Credit',
+                    ]
+                ];
+
+                foreach ($entries as $index => $entry) {
+                    self::assertEquals($expectedEntries[$index]['amount'], $entry->getAmount()->getAmount());
+                    self::assertEquals($expectedEntries[$index]['currency'], $entry->getAmount()->getCurrency()->getCode());
+                    self::assertEquals($expectedEntries[$index]['bookingDate'], $entry->getBookingDate()->format('Y-m-d'));
+                    self::assertEquals($expectedEntries[$index]['valueDate'], $entry->getValueDate()->format('Y-m-d'));
+                    self::assertEquals($expectedEntries[$index]['additionalInfo'], $entry->getAdditionalInfo());
                 }
             }
         }
@@ -161,7 +178,7 @@ class EndToEndTest extends AbstractTestCase
             self::assertCount(1, $reports);
             foreach ($reports as $report) {
                 $entries = $report->getEntries();
-                self::assertCount(1, $entries);
+                self::assertCount(2, $entries);
 
                 /** @var Entry $entry */
                 foreach ($entries as $entry) {
@@ -217,7 +234,7 @@ class EndToEndTest extends AbstractTestCase
             self::assertCount(1, $reports);
             foreach ($reports as $report) {
                 $entries = $report->getEntries();
-                self::assertCount(1, $entries);
+                self::assertCount(2, $entries);
 
                 foreach ($entries as $entry) {
                     $details = $entry->getTransactionDetails();
@@ -232,12 +249,15 @@ class EndToEndTest extends AbstractTestCase
                                 self::assertEquals('Company Name', $party->getRelatedPartyType()->getName());
                                 self::assertEquals('NL', $party->getRelatedPartyType()->getAddress()->getCountry());
                                 self::assertEquals([], $party->getRelatedPartyType()->getAddress()->getAddressLines());
-                                self::assertEquals('NL56AGDH9619008421', (string) $party->getAccount()->getIdentification());
+                                self::assertEquals('NL56AGDH9619008421', (string)$party->getAccount()->getIdentification());
                             } elseif ($party->getRelatedPartyType() instanceof DTO\Debtor) {
                                 self::assertEquals('NAME NAME', $party->getRelatedPartyType()->getName());
                                 self::assertEquals('NL', $party->getRelatedPartyType()->getAddress()->getCountry());
-                                self::assertEquals(['ADDR ADDR 10', '2000 ANTWERPEN'], $party->getRelatedPartyType()->getAddress()->getAddressLines());
-                                self::assertEquals('NL56AGDH9619008421', (string) $party->getAccount()->getIdentification());
+                                self::assertEquals(
+                                    ['ADDR ADDR 10', '2000 ANTWERPEN'],
+                                    $party->getRelatedPartyType()->getAddress()->getAddressLines()
+                                );
+                                self::assertEquals('NL56AGDH9619008421', (string)$party->getAccount()->getIdentification());
                             }
                         }
                     }
@@ -258,7 +278,7 @@ class EndToEndTest extends AbstractTestCase
             self::assertCount(1, $reports);
             foreach ($reports as $report) {
                 $entries = $report->getEntries();
-                self::assertCount(1, $entries);
+                self::assertCount(2, $entries);
 
                 /** @var Entry $entry */
                 foreach ($entries as $entry) {
