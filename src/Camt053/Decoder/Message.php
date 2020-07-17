@@ -57,7 +57,6 @@ class Message extends BaseMessageDecoder
 
     protected function getAccount(SimpleXMLElement $xmlRecord): DTO\Account
     {
-        $account = null;
         if (isset($xmlRecord->Acct->Id->IBAN)) {
             $account = new DTO\IbanAccount(new Iban((string)$xmlRecord->Acct->Id->IBAN));
         } else {
@@ -79,17 +78,14 @@ class Message extends BaseMessageDecoder
             }
         }
 
-        if ($account instanceof DTO\Account) {
-            if ($xmlRecord->Acct->Ownr) {
-                $this->accountAddOwnerInfo($account, $xmlRecord->Acct->Ownr);
-            }
-            if ($xmlRecord->Acct->Svcr) {
-                $this->accountAddServicerInfo($account, $xmlRecord->Acct->Svcr);
-            }
-            if ($xmlRecord->Acct->Ccy) {
-                $account->setCurrency(new \Money\Currency((string)$xmlRecord->Acct->Ccy));
-            }
-            return $account;
+        if ($xmlRecord->Acct->Ownr) {
+            $this->accountAddOwnerInfo($account, $xmlRecord->Acct->Ownr);
+        }
+        if ($xmlRecord->Acct->Svcr) {
+            $this->accountAddServicerInfo($account, $xmlRecord->Acct->Svcr);
+        }
+        if ($xmlRecord->Acct->Ccy) {
+            $account->setCurrency(new \Money\Currency((string)$xmlRecord->Acct->Ccy));
         }
 
         return $account;

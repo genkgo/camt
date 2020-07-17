@@ -101,7 +101,7 @@ abstract class Message
     {
         $servicer = new DTO\AccountServicer();
         if ($Id = data_get($acctSvcrElement, 'FinInstnId.Othr.Id')) {
-            $servicer->setId((string)$id);
+            $servicer->setId((string)$Id);
         }
         if ($BIC = data_get($acctSvcrElement, 'FinInstnId.BIC')) {
             $servicer->setBic((string)$BIC);
