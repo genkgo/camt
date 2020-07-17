@@ -57,31 +57,30 @@ class Message extends BaseMessageDecoder
     {
         $account = null;
         if (isset($xmlRecord->Acct->Id->IBAN)) {
-            $account = new DTO\IbanAccount(new Iban((string)$xmlRecord->Acct->Id->IBAN));
+            $account = new DTO\IbanAccount(new Iban((string) $xmlRecord->Acct->Id->IBAN));
         } elseif (isset($xmlRecord->Acct->Id->BBAN)) {
-            $account = new DTO\BBANAccount((string)$xmlRecord->Acct->Id->BBAN);
+            $account = new DTO\BBANAccount((string) $xmlRecord->Acct->Id->BBAN);
         } elseif (isset($xmlRecord->Acct->Id->UPIC)) {
-            $account = new DTO\UPICAccount((string)$xmlRecord->Acct->Id->UPIC);
+            $account = new DTO\UPICAccount((string) $xmlRecord->Acct->Id->UPIC);
         } elseif (isset($xmlRecord->Acct->Id->PrtryAcct)) {
-            $account = new DTO\ProprietaryAccount((string)$xmlRecord->Acct->Id->PrtryAcct->Id);
+            $account = new DTO\ProprietaryAccount((string) $xmlRecord->Acct->Id->PrtryAcct->Id);
         } elseif (isset($xmlRecord->Acct->Id->Othr)) {
             $xmlOtherIdentification = $xmlRecord->Acct->Id->Othr;
-            $account = new DTO\OtherAccount((string)$xmlOtherIdentification->Id);
+            $account = new DTO\OtherAccount((string) $xmlOtherIdentification->Id);
 
             if (isset($xmlOtherIdentification->SchmeNm)) {
                 if (isset($xmlOtherIdentification->SchmeNm->Cd)) {
-                    $account->setSchemeName((string)$xmlOtherIdentification->SchmeNm->Cd);
+                    $account->setSchemeName((string) $xmlOtherIdentification->SchmeNm->Cd);
                 }
 
                 if (isset($xmlOtherIdentification->SchmeNm->Prtry)) {
-                    $account->setSchemeName((string)$xmlOtherIdentification->SchmeNm->Prtry);
+                    $account->setSchemeName((string) $xmlOtherIdentification->SchmeNm->Prtry);
                 }
             }
 
             if (isset($xmlOtherIdentification->Issr)) {
-                $account->setIssuer((string)$xmlOtherIdentification->Issr);
+                $account->setIssuer((string) $xmlOtherIdentification->Issr);
             }
-
         }
 
         if ($account instanceof DTO\Account) {
@@ -92,8 +91,9 @@ class Message extends BaseMessageDecoder
                 $this->accountAddServicerInfo($account, $Svcr);
             }
             if ($Ccy = data_get($xmlRecord, 'Acct.Ccy')) {
-                $account->setCurrency(new \Money\Currency((string)$Ccy));
+                $account->setCurrency(new \Money\Currency((string) $Ccy));
             }
+
             return $account;
         }
 

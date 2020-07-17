@@ -7,9 +7,10 @@ namespace Genkgo\Camt\DTO;
 class Creditor implements RelatedPartyTypeInterface
 {
     /**
-     * @var string|null
+     * @var null|string
      */
     private $id;
+
     /**
      * @var string
      */
@@ -19,8 +20,9 @@ class Creditor implements RelatedPartyTypeInterface
      * @var null|Address
      */
     private $address;
+
     /**
-     * @var string|null
+     * @var null|string
      */
     private $typeName;
 
@@ -54,17 +56,11 @@ class Creditor implements RelatedPartyTypeInterface
         $this->id = $id;
     }
 
-    /**
-     * @return string|null
-     */
     public function getTypeName(): ?string
     {
         return $this->typeName;
     }
 
-    /**
-     * @param string|null $typeName
-     */
     public function setTypeName(?string $typeName): void
     {
         $this->typeName = $typeName;

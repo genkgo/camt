@@ -19,7 +19,7 @@ class Iban
     {
         $iban = new IbanDetails($iban);
 
-        if (!(new Validator)->validate($iban)) {
+        if (!(new Validator())->validate($iban)) {
             throw new InvalidArgumentException("Unknown IBAN {$iban}");
         }
 

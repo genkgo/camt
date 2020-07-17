@@ -82,13 +82,13 @@ abstract class Message
     {
         $owner = new DTO\AccountOwner();
         if ($Id = data_get($acctOwnrElement, 'Id.OrgId.Othr.Id')) {
-            $owner->setId((string)$Id);
+            $owner->setId((string) $Id);
         }
         if ($Id = data_get($acctOwnrElement, 'Id.PrvtId.Othr.Id')) {
-            $owner->setId((string)$Id);
+            $owner->setId((string) $Id);
         }
         if ($Nm = data_get($acctOwnrElement, 'Nm')) {
-            $owner->setName((string)$Nm);
+            $owner->setName((string) $Nm);
         }
         if ($PstlAdr = data_get($acctOwnrElement, 'PstlAdr')) {
             $address = \Genkgo\Camt\Decoder\Factory\DTO\Address::createFromXml($PstlAdr);
@@ -101,16 +101,16 @@ abstract class Message
     {
         $servicer = new DTO\AccountServicer();
         if ($Id = data_get($acctSvcrElement, 'FinInstnId.Othr.Id')) {
-            $servicer->setId((string)$Id);
+            $servicer->setId((string) $Id);
         }
         if ($BIC = data_get($acctSvcrElement, 'FinInstnId.BIC')) {
-            $servicer->setBic((string)$BIC);
+            $servicer->setBic((string) $BIC);
         }
         if ($Nm = data_get($acctSvcrElement, 'FinInstnId.Nm')) {
-            $servicer->setName((string)$Nm);
+            $servicer->setName((string) $Nm);
         }
         if ($Cd = data_get($acctSvcrElement, 'FinInstnId.Othr.SchmeNm.Cd')) {
-            $servicer->setSchmeNm((string)$Cd);
+            $servicer->setSchmeNm((string) $Cd);
         }
 
         if ($PstlAdr = data_get($acctSvcrElement, 'FinInstnId.PstlAdr')) {

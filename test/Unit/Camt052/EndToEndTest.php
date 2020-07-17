@@ -147,7 +147,7 @@ class EndToEndTest extends AbstractTestCase
                         'bookingDate' => '2007-10-18',
                         'valueDate' => '2007-10-18',
                         'additionalInfo' => 'Credit',
-                    ]
+                    ],
                 ];
 
                 foreach ($entries as $index => $entry) {
@@ -249,7 +249,7 @@ class EndToEndTest extends AbstractTestCase
                                 self::assertEquals('Company Name', $party->getRelatedPartyType()->getName());
                                 self::assertEquals('NL', $party->getRelatedPartyType()->getAddress()->getCountry());
                                 self::assertEquals([], $party->getRelatedPartyType()->getAddress()->getAddressLines());
-                                self::assertEquals('NL56AGDH9619008421', (string)$party->getAccount()->getIdentification());
+                                self::assertEquals('NL56AGDH9619008421', (string) $party->getAccount()->getIdentification());
                             } elseif ($party->getRelatedPartyType() instanceof DTO\Debtor) {
                                 self::assertEquals('NAME NAME', $party->getRelatedPartyType()->getName());
                                 self::assertEquals('NL', $party->getRelatedPartyType()->getAddress()->getCountry());
@@ -257,7 +257,7 @@ class EndToEndTest extends AbstractTestCase
                                     ['ADDR ADDR 10', '2000 ANTWERPEN'],
                                     $party->getRelatedPartyType()->getAddress()->getAddressLines()
                                 );
-                                self::assertEquals('NL56AGDH9619008421', (string)$party->getAccount()->getIdentification());
+                                self::assertEquals('NL56AGDH9619008421', (string) $party->getAccount()->getIdentification());
                             }
                         }
                     }

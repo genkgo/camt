@@ -15,24 +15,11 @@ interface RelatedPartyTypeInterface
 
     public function getName(): ?string;
 
-    /**
-     * @return null|string
-     */
     public function getId(): ?string;
 
-    /**
-     * @param string $id
-     * @return void
-     */
     public function setId(string $id): void;
 
-    /**
-     * @return string|null
-     */
     public function getTypeName(): ?string;
 
-    /**
-     * @param string|null $typeName
-     */
     public function setTypeName(?string $typeName): void;
 }

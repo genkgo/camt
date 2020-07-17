@@ -7,7 +7,7 @@ namespace Genkgo\Camt\DTO;
 class Recipient implements RelatedPartyTypeInterface
 {
     /**
-     * @var string|null
+     * @var null|string
      */
     private $id;
 
@@ -37,13 +37,10 @@ class Recipient implements RelatedPartyTypeInterface
     private $identification;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     private $typeName;
 
-    /**
-     * @return null|Address
-     */
     public function getAddress(): ?Address
     {
         return $this->address;
@@ -104,17 +101,11 @@ class Recipient implements RelatedPartyTypeInterface
         $this->id = $id;
     }
 
-    /**
-     * @return string|null
-     */
     public function getTypeName(): ?string
     {
         return $this->typeName;
     }
 
-    /**
-     * @param string|null $typeName
-     */
     public function setTypeName(?string $typeName): void
     {
         $this->typeName = $typeName;

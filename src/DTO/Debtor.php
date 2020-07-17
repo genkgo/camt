@@ -22,13 +22,10 @@ class Debtor implements RelatedPartyTypeInterface
     private $address;
 
     /**
-     * @var string|null
+     * @var null|string
      */
     private $typeName;
 
-    /**
-     * @param string $name
-     */
     public function __construct(string $name)
     {
         $this->name = $name;
@@ -59,17 +56,11 @@ class Debtor implements RelatedPartyTypeInterface
         $this->id = $id;
     }
 
-    /**
-     * @return string|null
-     */
     public function getTypeName(): ?string
     {
         return $this->typeName;
     }
 
-    /**
-     * @param string|null $typeName
-     */
     public function setTypeName(?string $typeName): void
     {
         $this->typeName = $typeName;

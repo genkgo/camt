@@ -110,10 +110,10 @@ abstract class EntryTransactionDetail
             $relatedPartyType->setAddress(DTOFactory\Address::createFromXml($xmlRelatedPartyType->PstlAdr));
         }
         if ($Id = data_get($xmlRelatedPartyType, 'Id.PrvtId.Othr.Id')) {
-            $relatedPartyType->setId((string)$Id);
+            $relatedPartyType->setId((string) $Id);
         }
         if ($Cd = data_get($xmlRelatedPartyType, 'Id.PrvtId.Othr.SchmeNm.Cd')) {
-            $relatedPartyType->setTypeName((string)$Cd);
+            $relatedPartyType->setTypeName((string) $Cd);
         }
 
         $relatedParty = new RelatedParty($relatedPartyType, $this->getRelatedPartyAccount($xmlRelatedPartyTypeAccount));
