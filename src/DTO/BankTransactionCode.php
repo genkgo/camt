@@ -16,7 +16,7 @@ class BankTransactionCode
      */
     private $domain;
 
-    public function getProprietary(): ProprietaryBankTransactionCode
+    public function getProprietary(): ?ProprietaryBankTransactionCode
     {
         return $this->proprietary;
     }
@@ -26,7 +26,7 @@ class BankTransactionCode
         $this->proprietary = $proprietary;
     }
 
-    public function getDomain(): DomainBankTransactionCode
+    public function getDomain(): ?DomainBankTransactionCode
     {
         return $this->domain;
     }
