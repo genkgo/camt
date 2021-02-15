@@ -18,7 +18,7 @@ class Charges
      */
     private $records = [];
 
-    public function getTotalChargesAndTaxAmount(): Money
+    public function getTotalChargesAndTaxAmount(): ?Money
     {
         return $this->totalChargesAndTaxAmount;
     }
