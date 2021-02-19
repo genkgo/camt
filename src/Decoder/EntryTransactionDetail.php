@@ -7,9 +7,7 @@ namespace Genkgo\Camt\Decoder;
 use Genkgo\Camt\Decoder\Factory\DTO as DTOFactory;
 use Genkgo\Camt\DTO;
 use Genkgo\Camt\DTO\RelatedParty;
-use Genkgo\Camt\Util\StringToUnits;
-use Money\Currency;
-use Money\Money;
+use Genkgo\Camt\Util\MoneyFactory;
 use SimpleXMLElement;
 
 abstract class EntryTransactionDetail
@@ -20,11 +18,17 @@ abstract class EntryTransactionDetail
     private $dateDecoder;
 
     /**
+     * @var MoneyFactory
+     */
+    private $moneyFactory;
+
+    /**
      * EntryTransactionDetail constructor.
      */
     public function __construct(DateDecoderInterface $dateDecoder)
     {
         $this->dateDecoder = $dateDecoder;
+        $this->moneyFactory = new MoneyFactory();
     }
 
     public function addReference(DTO\EntryTransactionDetail $detail, SimpleXMLElement $xmlDetail): void
@@ -190,7 +194,7 @@ abstract class EntryTransactionDetail
 
                     if (isset($xmlDetailsStructuredBlock->CdtrRefInf->Tp, $xmlDetailsStructuredBlock->CdtrRefInf->Tp->CdOrPrtry, $xmlDetailsStructuredBlock->CdtrRefInf->Tp->CdOrPrtry->Prtry)
 
-                         ) {
+                    ) {
                         $creditorReferenceInformation->setProprietary(
                             (string) $xmlDetailsStructuredBlock->CdtrRefInf->Tp->CdOrPrtry->Prtry
                         );
@@ -198,7 +202,7 @@ abstract class EntryTransactionDetail
 
                     if (isset($xmlDetailsStructuredBlock->CdtrRefInf->Tp, $xmlDetailsStructuredBlock->CdtrRefInf->Tp->CdOrPrtry, $xmlDetailsStructuredBlock->CdtrRefInf->Tp->CdOrPrtry->Cd)
 
-                         ) {
+                    ) {
                         $creditorReferenceInformation->setCode(
                             (string) $xmlDetailsStructuredBlock->CdtrRefInf->Tp->CdOrPrtry->Cd
                         );
@@ -301,10 +305,9 @@ abstract class EntryTransactionDetail
             $charges = new DTO\Charges();
 
             if (isset($xmlDetail->Chrgs->TtlChrgsAndTaxAmt) && (string) $xmlDetail->Chrgs->TtlChrgsAndTaxAmt) {
-                $amount = StringToUnits::convert((string) $xmlDetail->Chrgs->TtlChrgsAndTaxAmt);
-                $currency = (string) $xmlDetail->Chrgs->TtlChrgsAndTaxAmt['Ccy'];
+                $money = $this->moneyFactory->create($xmlDetail->Chrgs->TtlChrgsAndTaxAmt, null);
 
-                $charges->setTotalChargesAndTaxAmount(new Money($amount, new Currency($currency)));
+                $charges->setTotalChargesAndTaxAmount($money);
             }
 
             $chargesRecords = $xmlDetail->Chrgs->Rcrd;
@@ -315,14 +318,8 @@ abstract class EntryTransactionDetail
                     $chargesDetail = new DTO\ChargesRecord();
 
                     if (isset($chargesRecord->Amt) && (string) $chargesRecord->Amt) {
-                        $amount = StringToUnits::convert((string) $chargesRecord->Amt);
-                        $currency = (string) $chargesRecord->Amt['Ccy'];
-
-                        if ((string) $chargesRecord->CdtDbtInd === 'DBIT') {
-                            $amount = $amount * -1;
-                        }
-
-                        $chargesDetail->setAmount(new Money($amount, new Currency($currency)));
+                        $money = $this->moneyFactory->create($chargesRecord->Amt, $chargesRecord->CdtDbtInd);
+                        $chargesDetail->setAmount($money);
                     }
                     if (isset($chargesRecord->CdtDbtInd) && (string) $chargesRecord->CdtDbtInd === 'true') {
                         $chargesDetail->setChargesIncludedIndicator(true);
@@ -340,7 +337,7 @@ abstract class EntryTransactionDetail
     public function addAmountDetails(DTO\EntryTransactionDetail $detail, SimpleXMLElement $xmlDetail, SimpleXMLElement $CdtDbtInd): void
     {
         if (isset($xmlDetail->AmtDtls, $xmlDetail->AmtDtls->TxAmt, $xmlDetail->AmtDtls->TxAmt->Amt)) {
-            $money = $this->createMoney($xmlDetail->AmtDtls->TxAmt->Amt, $CdtDbtInd);
+            $money = $this->moneyFactory->create($xmlDetail->AmtDtls->TxAmt->Amt, $CdtDbtInd);
             $detail->setAmountDetails($money);
         }
     }
@@ -348,23 +345,9 @@ abstract class EntryTransactionDetail
     public function addAmount(DTO\EntryTransactionDetail $detail, SimpleXMLElement $xmlDetail, SimpleXMLElement $CdtDbtInd): void
     {
         if (isset($xmlDetail->Amt)) {
-            $money = $this->createMoney($xmlDetail->Amt, $CdtDbtInd);
+            $money = $this->moneyFactory->create($xmlDetail->Amt, $CdtDbtInd);
             $detail->setAmount($money);
         }
-    }
-
-    private function createMoney(SimpleXMLElement $xmlAmount, SimpleXMLElement $CdtDbtInd): Money
-    {
-        $amount = StringToUnits::convert((string) $xmlAmount);
-
-        if ((string) $CdtDbtInd === 'DBIT') {
-            $amount = $amount * -1;
-        }
-
-        return new Money(
-            $amount,
-            new Currency((string) $xmlAmount['Ccy'])
-        );
     }
 
     abstract public function getRelatedPartyAccount(?SimpleXMLElement $xmlRelatedPartyTypeAccount): ?DTO\Account;

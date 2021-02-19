@@ -4,6 +4,7 @@ parameters:
         - src/
         - test/
     inferPrivatePropertyTypeFromConstructor: true
+    checkMissingIterableValueType: false
     ignoreErrors:
         - '~^Call to an undefined method Prophecy\\Prophecy\\~'
         -
