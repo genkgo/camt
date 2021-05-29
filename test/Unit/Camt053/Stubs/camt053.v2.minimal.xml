@@ -63,6 +63,30 @@
                     <Dt>2014-12-31</Dt>
                 </Dt>
             </Bal>
+            <Bal>
+                <Tp>
+                    <CdOrPrtry>
+                        <Cd>OPAV</Cd>
+                    </CdOrPrtry>
+                </Tp>
+                <Amt Ccy="CHF">35.00</Amt>
+                <CdtDbtInd>CRDT</CdtDbtInd>
+                <Dt>
+                    <Dt>2014-12-30</Dt>
+                </Dt>
+            </Bal>
+            <Bal>
+                <Tp>
+                    <CdOrPrtry>
+                        <Cd>CLAV</Cd>
+                    </CdOrPrtry>
+                </Tp>
+                <Amt Ccy="JPY">2700</Amt>
+                <CdtDbtInd>DBIT</CdtDbtInd>
+                <Dt>
+                    <Dt>2014-12-31</Dt>
+                </Dt>
+            </Bal>
             <Ntry>
                 <Amt Ccy="EUR">8.85</Amt>
                 <CdtDbtInd>CRDT</CdtDbtInd>

@@ -43,20 +43,43 @@ class Record
             $money = $this->moneyFactory->create($xmlBalance->Amt, $xmlBalance->CdtDbtInd);
             $date = $this->dateDecoder->decode((string) $xmlBalance->Dt->Dt);
 
-            if (isset($xmlBalance->Tp, $xmlBalance->Tp->CdOrPrtry)) {
-                $code = (string) $xmlBalance->Tp->CdOrPrtry->Cd;
+            if (!isset($xmlBalance->Tp, $xmlBalance->Tp->CdOrPrtry)) {
+                continue;
+            }
+            $code = (string) $xmlBalance->Tp->CdOrPrtry->Cd;
 
-                if (in_array($code, ['OPBD', 'PRCD'], true)) {
+            switch ($code) {
+                case 'OPBD':
+                case 'PRCD':
                     $record->addBalance(DTO\Balance::opening(
                         $money,
                         $date
                     ));
-                } elseif ($code === 'CLBD') {
+
+                    break;
+                case 'OPAV':
+                    $record->addBalance(DTO\Balance::openingAvailable(
+                        $money,
+                        $date
+                    ));
+
+                    break;
+                case 'CLBD':
                     $record->addBalance(DTO\Balance::closing(
                         $money,
                         $date
                     ));
-                }
+
+                    break;
+                case 'CLAV':
+                    $record->addBalance(DTO\Balance::closingAvailable(
+                        $money,
+                        $date
+                    ));
+
+                    break;
+                default:
+                    break;
             }
         }
     }

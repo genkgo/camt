@@ -91,6 +91,18 @@ class RecordTest extends AbstractTestCase
             </CdOrPrtry>
         </Tp>
     </Bal>
+    <Bal>
+        <Amt Ccy="EUR">80.22</Amt>
+        <Dt>
+            <Dt>2014-12-30</Dt>
+        </Dt>
+        <Tp>
+            <CdOrPrtry>
+                <Cd>CLAV</Cd>
+            </CdOrPrtry>
+        </Tp>
+        <CdtDbtInd>DBIT</CdtDbtInd>
+    </Bal>
     <Ntry>
         <Amt Ccy="EUR">1.42</Amt>
         <BookgDt>

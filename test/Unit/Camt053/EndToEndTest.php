@@ -164,19 +164,36 @@ class EndToEndTest extends AbstractTestCase
             /** @var RecordWithBalances $statement */
             foreach ($statements as $statement) {
                 $balances = $statement->getBalances();
-                self::assertCount(2, $balances);
+                self::assertCount(4, $balances);
 
                 foreach ($balances as $item => $balance) {
-                    if ($item === 0) {
-                        self::assertEquals(1815, $balance->getAmount()->getAmount());
-                        self::assertEquals('EUR', $balance->getAmount()->getCurrency()->getCode());
-                        self::assertEquals('opening', $balance->getType());
-                    }
+                    switch ($item) {
+                        case 0:
+                            self::assertEquals(1815, $balance->getAmount()->getAmount());
+                            self::assertEquals('EUR', $balance->getAmount()->getCurrency()->getCode());
+                            self::assertEquals('opening', $balance->getType());
 
-                    if ($item === 1) {
-                        self::assertEquals(-2700, $balance->getAmount()->getAmount());
-                        self::assertEquals('SEK', $balance->getAmount()->getCurrency()->getCode());
-                        self::assertEquals('closing', $balance->getType());
+                            break;
+                        case 1:
+                            self::assertEquals(-2700, $balance->getAmount()->getAmount());
+                            self::assertEquals('SEK', $balance->getAmount()->getCurrency()->getCode());
+                            self::assertEquals('closing', $balance->getType());
+
+                            break;
+                        case 2:
+                            self::assertEquals(3500, $balance->getAmount()->getAmount());
+                            self::assertEquals('CHF', $balance->getAmount()->getCurrency()->getCode());
+                            self::assertEquals('opening_available', $balance->getType());
+
+                            break;
+                        case 3:
+                            self::assertEquals(-2700, $balance->getAmount()->getAmount());
+                            self::assertEquals('JPY', $balance->getAmount()->getCurrency()->getCode());
+                            self::assertEquals('closing_available', $balance->getType());
+
+                            break;
+                        default:
+                            break;
                     }
                 }
             }
