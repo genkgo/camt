@@ -149,6 +149,17 @@ class EndToEndTest extends AbstractTestCase
         self::assertTrue($reportV4->getPagination()->isLastPage());
     }
 
+    public function testStatuses(): void
+    {
+        $messages = [
+            $this->getV1Message(),
+            $this->getV4Message(),
+        ];
+
+        self::assertEquals('BOOK', $messages[0]->getRecords()[0]->getEntries()[0]->getStatus());
+        self::assertEquals('PDNG', $messages[1]->getRecords()[0]->getEntries()[0]->getStatus());
+    }
+
     public function testRelatedAgents(): void
     {
         $messages = [

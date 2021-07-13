@@ -130,6 +130,10 @@ class Record
                 $entry->setBatchPaymentId((string) $xmlEntry->NtryDtls->TxDtls->Refs->PmtInfId);
             }
 
+            if (isset($xmlEntry->Sts) && (string) $xmlEntry->Sts) {
+                $entry->setStatus((string) $xmlEntry->Sts);
+            }
+
             if (isset($xmlEntry->BkTxCd)) {
                 $bankTransactionCode = new DTO\BankTransactionCode();
 
