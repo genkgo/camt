@@ -74,6 +74,11 @@ class Entry
      */
     private $charges;
 
+    /**
+     * @var null|string
+     */
+    private $status;
+
     public function __construct(Record $record, int $index, Money $amount)
     {
         $this->record = $record;
@@ -209,5 +214,15 @@ class Entry
     public function setValueDate(?DateTimeImmutable $date): void
     {
         $this->valueDate = $date;
+    }
+
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
+
+    public function setStatus(?string $status): void
+    {
+        $this->status = $status;
     }
 }
