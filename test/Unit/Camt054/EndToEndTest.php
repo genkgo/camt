@@ -230,8 +230,8 @@ class EndToEndTest extends AbstractTestCase
                                 self::assertCount(
                                     0,
                                     $transactionDetail
-                                            ->getRemittanceInformation()
-                                            ->getUnstructuredBlocks()
+                                        ->getRemittanceInformation()
+                                        ->getUnstructuredBlocks()
                                 );
 
                                 // Check structured and unstructured blocks
