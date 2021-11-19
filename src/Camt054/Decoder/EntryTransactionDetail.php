@@ -12,7 +12,7 @@ use SimpleXMLElement;
 class EntryTransactionDetail extends BaseDecoder
 {
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     public function getRelatedPartyAccount(?SimpleXMLElement $xmlRelatedPartyTypeAccount): ?DTO\Account
     {

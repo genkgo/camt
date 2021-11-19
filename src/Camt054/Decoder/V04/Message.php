@@ -13,7 +13,7 @@ use SimpleXMLElement;
 class Message extends BaseMessage
 {
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     public function addGroupHeader(DTO\Message $message, SimpleXMLElement $document): void
     {

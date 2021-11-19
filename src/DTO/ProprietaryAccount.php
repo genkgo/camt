@@ -22,7 +22,7 @@ class ProprietaryAccount extends Account
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     public function getIdentification(): string
     {

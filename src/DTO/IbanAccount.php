@@ -24,7 +24,7 @@ class IbanAccount extends Account
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     public function getIdentification(): string
     {

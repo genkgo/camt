@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Genkgo\Camt;
 
 /**
- * Interface MessageFormatInterface
+ * Interface MessageFormatInterface.
  */
 interface MessageFormatInterface
 {

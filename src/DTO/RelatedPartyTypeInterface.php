@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Genkgo\Camt\DTO;
 
 /**
- * Interface RelatedPartyTypeInterface
+ * Interface RelatedPartyTypeInterface.
  */
 interface RelatedPartyTypeInterface
 {

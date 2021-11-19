@@ -22,7 +22,7 @@ class Decoder implements DecoderInterface
     private $messageDecoder;
 
     /**
-     * Path to the schema definition
+     * Path to the schema definition.
      *
      * @var string
      */
