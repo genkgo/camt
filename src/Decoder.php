@@ -60,7 +60,7 @@ class Decoder implements DecoderInterface
         }
 
         $document = simplexml_import_dom($document);
-        if ($document === false) {
+        if (!$document) {
             throw new InvalidMessageException('Provided XML could not be parsed');
         }
 

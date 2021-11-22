@@ -1,5 +1,5 @@
 parameters:
-    level: 7
+    level: max
     paths:
         - src/
         - test/
@@ -12,4 +12,10 @@ parameters:
             path: test
         -
             message: '~^Parameter \#1 .* of method Genkgo\\Camt\\.* expects Genkgo\\Camt\\.*, object given\.$~'
+            path: test
+        -
+            message: '~^Cannot call method .*\(\) on Genkgo\\Camt\\.*\|null\.$~'
+            path: test
+        -
+            message: '~^Cannot call method format\(\) on DateTimeImmutable\|null\.$~'
             path: test
