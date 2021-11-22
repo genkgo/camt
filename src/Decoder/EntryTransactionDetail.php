@@ -8,6 +8,7 @@ use Genkgo\Camt\Decoder\Factory\DTO as DTOFactory;
 use Genkgo\Camt\DTO;
 use Genkgo\Camt\DTO\RelatedParty;
 use Genkgo\Camt\Util\MoneyFactory;
+use Iban\Validation\Validator;
 use SimpleXMLElement;
 
 abstract class EntryTransactionDetail
@@ -23,12 +24,18 @@ abstract class EntryTransactionDetail
     private $moneyFactory;
 
     /**
+     * @var Validator
+     */
+    protected $ibanValidator;
+
+    /**
      * EntryTransactionDetail constructor.
      */
     public function __construct(DateDecoderInterface $dateDecoder)
     {
         $this->dateDecoder = $dateDecoder;
         $this->moneyFactory = new MoneyFactory();
+        $this->ibanValidator = new Validator();
     }
 
     public function addReference(DTO\EntryTransactionDetail $detail, SimpleXMLElement $xmlDetail): void

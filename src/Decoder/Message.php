@@ -6,6 +6,7 @@ namespace Genkgo\Camt\Decoder;
 
 use Genkgo\Camt\Decoder\Factory\DTO as DTOFactory;
 use Genkgo\Camt\DTO;
+use Iban\Validation\Validator;
 use SimpleXMLElement;
 
 abstract class Message
@@ -21,12 +22,18 @@ abstract class Message
     protected $dateDecoder;
 
     /**
+     * @var Validator
+     */
+    protected $ibanValidator;
+
+    /**
      * Message constructor.
      */
     public function __construct(Record $recordDecoder, DateDecoderInterface $dateDecoder)
     {
         $this->recordDecoder = $recordDecoder;
         $this->dateDecoder = $dateDecoder;
+        $this->ibanValidator = new Validator();
     }
 
     public function addGroupHeader(DTO\Message $message, SimpleXMLElement $document): void

@@ -25,7 +25,7 @@ class EntryTransactionDetail extends BaseDecoder
         }
 
         if (isset($xmlRelatedPartyTypeAccount->Id->IBAN)) {
-            return new DTO\IbanAccount(new Iban((string) $xmlRelatedPartyTypeAccount->Id->IBAN));
+            return new DTO\IbanAccount(new Iban((string) $xmlRelatedPartyTypeAccount->Id->IBAN, $this->ibanValidator));
         }
 
         if (isset($xmlRelatedPartyTypeAccount->Id->BBAN)) {

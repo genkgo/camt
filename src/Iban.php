@@ -15,11 +15,15 @@ class Iban
      */
     private $iban;
 
-    public function __construct(string $iban)
+    public function __construct(string $iban, ?Validator $ibanValidator = null)
     {
         $iban = new IbanDetails($iban);
 
-        if (!(new Validator())->validate($iban)) {
+        if ($ibanValidator === null) {
+            $ibanValidator = new Validator();
+        }
+
+        if ($ibanValidator->validate($iban) === false) {
             throw new InvalidArgumentException("Unknown IBAN {$iban}");
         }
 
