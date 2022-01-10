@@ -9,162 +9,223 @@ use Genkgo\Camt\Decoder\Date;
 use Genkgo\Camt\DTO;
 use Genkgo\TestCamt\AbstractTestCase;
 use Money\Money;
-use Prophecy\Argument;
-use Prophecy\PhpUnit\ProphecyTrait;
 use SimpleXMLElement;
 
 class EntryTransactionDetailTest extends AbstractTestCase
 {
-    use ProphecyTrait;
-
     public function testItDoesNotAddReferenceIfThereIsNoneInXml(): void
     {
-        $detail = $this->prophesize(DTO\EntryTransactionDetail::class);
-        $detail->setReference(Argument::any())->shouldNotBeCalled();
+        $detail = $this->createMock(DTO\EntryTransactionDetail::class);
+
+        $detail
+            ->expects(self::never())
+            ->method('setReference')
+            ->with(self::anything());
 
         $xmlDetail = new SimpleXMLElement('<content></content>');
-        (new Camt053\Decoder\EntryTransactionDetail(new Date()))->addReference($detail->reveal(), $xmlDetail);
+        (new Camt053\Decoder\EntryTransactionDetail(new Date()))->addReference($detail, $xmlDetail);
     }
 
     public function testItAddsReferenceIfItIsPresentInXml(): void
     {
-        $detail = $this->prophesize(DTO\EntryTransactionDetail::class);
-        $detail->setReference(Argument::type(DTO\Reference::class))->shouldBeCalled();
+        $detail = $this->createMock(DTO\EntryTransactionDetail::class);
 
-        (new Camt053\Decoder\EntryTransactionDetail(new Date()))->addReference($detail->reveal(), $this->getXmlDetail());
+        $detail
+            ->expects(self::once())
+            ->method('setReference')
+            ->with(self::isInstanceOf(DTO\Reference::class));
+
+        (new Camt053\Decoder\EntryTransactionDetail(new Date()))->addReference($detail, $this->getXmlDetail());
     }
 
     public function testItDoesNotAddAdditionalTransactionInformationIfThereIsNoneInXml(): void
     {
-        $detail = $this->prophesize(DTO\EntryTransactionDetail::class);
-        $detail->setAdditionalTransactionInformation(Argument::any())->shouldNotBeCalled();
+        $detail = $this->createMock(DTO\EntryTransactionDetail::class);
+
+        $detail
+            ->expects(self::never())
+            ->method('setAdditionalTransactionInformation')
+            ->with(self::anything());
 
         $xmlDetail = new SimpleXMLElement('<content></content>');
-        (new Camt053\Decoder\EntryTransactionDetail(new Date()))->addAdditionalTransactionInformation($detail->reveal(), $xmlDetail);
+        (new Camt053\Decoder\EntryTransactionDetail(new Date()))->addAdditionalTransactionInformation($detail, $xmlDetail);
     }
 
     public function testItAddsAdditionalTransactionInformationIfItIsPresentInXml(): void
     {
-        $detail = $this->prophesize(DTO\EntryTransactionDetail::class);
-        $detail->setAdditionalTransactionInformation(
-            Argument::type(DTO\AdditionalTransactionInformation::class)
-        )->shouldBeCalled();
+        $detail = $this->createMock(DTO\EntryTransactionDetail::class);
 
-        (new Camt053\Decoder\EntryTransactionDetail(new Date()))->addAdditionalTransactionInformation($detail->reveal(), $this->getXmlDetail());
+        $detail
+            ->expects(self::once())
+            ->method('setAdditionalTransactionInformation')
+            ->with(self::isInstanceOf(DTO\AdditionalTransactionInformation::class));
+
+        (new Camt053\Decoder\EntryTransactionDetail(new Date()))->addAdditionalTransactionInformation($detail, $this->getXmlDetail());
     }
 
     public function testItDoesNotAddRemittanceInformationIfThereIsNoneInXml(): void
     {
-        $detail = $this->prophesize(DTO\EntryTransactionDetail::class);
-        $detail->setRemittanceInformation(Argument::any())->shouldNotBeCalled();
+        $detail = $this->createMock(DTO\EntryTransactionDetail::class);
+
+        $detail
+            ->expects(self::never())
+            ->method('setRemittanceInformation')
+            ->with(self::anything());
 
         $xmlDetail = new SimpleXMLElement('<content></content>');
-        (new Camt053\Decoder\EntryTransactionDetail(new Date()))->addRemittanceInformation($detail->reveal(), $xmlDetail);
+        (new Camt053\Decoder\EntryTransactionDetail(new Date()))->addRemittanceInformation($detail, $xmlDetail);
     }
 
     public function testItAddsRemittanceInformationAndCreditorReferenceIfItIsPresentInXml(): void
     {
-        $detail = $this->prophesize(DTO\EntryTransactionDetail::class);
-        $detail->setRemittanceInformation(Argument::type(DTO\RemittanceInformation::class))->shouldBeCalled();
+        $detail = $this->createMock(DTO\EntryTransactionDetail::class);
 
-        (new Camt053\Decoder\EntryTransactionDetail(new Date()))->addRemittanceInformation($detail->reveal(), $this->getXmlDetail());
+        $detail
+            ->expects(self::once())
+            ->method('setRemittanceInformation')
+            ->with(self::isInstanceOf(DTO\RemittanceInformation::class));
+
+        (new Camt053\Decoder\EntryTransactionDetail(new Date()))->addRemittanceInformation($detail, $this->getXmlDetail());
     }
 
     public function testItAddsRemittanceInformationIfItIsPresentInXml(): void
     {
-        $detail = $this->prophesize(DTO\EntryTransactionDetail::class);
-        $detail->setRemittanceInformation(Argument::type(DTO\RemittanceInformation::class))->shouldBeCalled();
+        $detail = $this->createMock(DTO\EntryTransactionDetail::class);
+
+        $detail
+            ->expects(self::once())
+            ->method('setRemittanceInformation')
+            ->with(self::isInstanceOf(DTO\RemittanceInformation::class));
 
         $xmlDetail = new SimpleXMLElement('<content><RmtInf><Ustrd>Lorem</Ustrd></RmtInf></content>');
-        (new Camt053\Decoder\EntryTransactionDetail(new Date()))->addRemittanceInformation($detail->reveal(), $xmlDetail);
+
+        (new Camt053\Decoder\EntryTransactionDetail(new Date()))->addRemittanceInformation($detail, $xmlDetail);
     }
 
     public function testItDoesNotAddReturnInformationIfThereIsNoneInXml(): void
     {
-        $detail = $this->prophesize(DTO\EntryTransactionDetail::class);
-        $detail->setReturnInformation(Argument::any())->shouldNotBeCalled();
+        $detail = $this->createMock(DTO\EntryTransactionDetail::class);
+
+        $detail
+            ->expects(self::never())
+            ->method('setReturnInformation')
+            ->with(self::anything());
 
         $xmlDetail = new SimpleXMLElement('<content></content>');
-        (new Camt053\Decoder\EntryTransactionDetail(new Date()))->addReturnInformation($detail->reveal(), $xmlDetail);
+        (new Camt053\Decoder\EntryTransactionDetail(new Date()))->addReturnInformation($detail, $xmlDetail);
     }
 
     public function testItAddsReturnInformationIfItIsPresentInXml(): void
     {
-        $detail = $this->prophesize(DTO\EntryTransactionDetail::class);
-        $detail->setReturnInformation(
-            Argument::type(DTO\ReturnInformation::class)
-        )->shouldBeCalled();
+        $detail = $this->createMock(DTO\EntryTransactionDetail::class);
 
-        (new Camt053\Decoder\EntryTransactionDetail(new Date()))->addReturnInformation($detail->reveal(), $this->getXmlDetail());
+        $detail
+            ->expects(self::once())
+            ->method('setReturnInformation')
+            ->with(self::isInstanceOf(DTO\ReturnInformation::class));
+
+        (new Camt053\Decoder\EntryTransactionDetail(new Date()))->addReturnInformation($detail, $this->getXmlDetail());
     }
 
     public function testItDoesNotAddRelatedPartiesIfThereIsNoneInXml(): void
     {
-        $detail = $this->prophesize(DTO\EntryTransactionDetail::class);
-        $detail->addRelatedParty(Argument::any())->shouldNotBeCalled();
+        $detail = $this->createMock(DTO\EntryTransactionDetail::class);
+
+        $detail
+            ->expects(self::never())
+            ->method('addRelatedParty')
+            ->with(self::anything());
 
         $xmlDetail = new SimpleXMLElement('<content></content>');
-        (new Camt053\Decoder\EntryTransactionDetail(new Date()))->addRelatedParties($detail->reveal(), $xmlDetail);
+        (new Camt053\Decoder\EntryTransactionDetail(new Date()))->addRelatedParties($detail, $xmlDetail);
     }
 
     public function testItAddsRelatedPartiesIfIsPresentInXml(): void
     {
-        $detail = $this->prophesize(DTO\EntryTransactionDetail::class);
-        $detail->addRelatedParty(Argument::type(DTO\RelatedParty::class))->shouldBeCalled();
+        $detail = $this->createMock(DTO\EntryTransactionDetail::class);
 
-        (new Camt053\Decoder\EntryTransactionDetail(new Date()))->addRelatedParties($detail->reveal(), $this->getXmlDetail());
+        $detail
+            ->expects(self::once())
+            ->method('addRelatedParty')
+            ->with(self::isInstanceOf(DTO\RelatedParty::class));
+
+        (new Camt053\Decoder\EntryTransactionDetail(new Date()))->addRelatedParties($detail, $this->getXmlDetail());
     }
 
     public function testItDoesNotAddRelatedDatesIfThereIsNoneInXml(): void
     {
-        $detail = $this->prophesize(DTO\EntryTransactionDetail::class);
-        $detail->setRelatedDates(Argument::any())->shouldNotBeCalled();
+        $detail = $this->createMock(DTO\EntryTransactionDetail::class);
+
+        $detail
+            ->expects(self::never())
+            ->method('setRelatedDates')
+            ->with(self::anything());
 
         $xmlDetail = new SimpleXMLElement('<content></content>');
-        (new Camt053\Decoder\EntryTransactionDetail(new Date()))->addRelatedDates($detail->reveal(), $xmlDetail);
+        (new Camt053\Decoder\EntryTransactionDetail(new Date()))->addRelatedDates($detail, $xmlDetail);
     }
 
     public function testItAddsRelatedDatesIfIsPresentInXml(): void
     {
-        $detail = $this->prophesize(DTO\EntryTransactionDetail::class);
-        $detail->setRelatedDates(Argument::type(DTO\RelatedDates::class))->shouldBeCalled();
+        $detail = $this->createMock(DTO\EntryTransactionDetail::class);
 
-        (new Camt053\Decoder\EntryTransactionDetail(new Date()))->addRelatedDates($detail->reveal(), $this->getXmlDetail());
+        $detail
+            ->expects(self::once())
+            ->method('setRelatedDates')
+            ->with(self::isInstanceOf(DTO\RelatedDates::class));
+
+        (new Camt053\Decoder\EntryTransactionDetail(new Date()))->addRelatedDates($detail, $this->getXmlDetail());
     }
 
     public function testItDoesNotAddChargesIfThereIsNoneInXml(): void
     {
-        $detail = $this->prophesize(DTO\EntryTransactionDetail::class);
-        $detail->setCharges(Argument::any())->shouldNotBeCalled();
+        $detail = $this->createMock(DTO\EntryTransactionDetail::class);
+
+        $detail
+            ->expects(self::never())
+            ->method('setCharges')
+            ->with(self::anything());
 
         $xmlDetail = new SimpleXMLElement('<content></content>');
-        (new Camt053\Decoder\EntryTransactionDetail(new Date()))->addCharges($detail->reveal(), $xmlDetail);
+        (new Camt053\Decoder\EntryTransactionDetail(new Date()))->addCharges($detail, $xmlDetail);
     }
 
     public function testItAddsChargesIfIsPresentInXml(): void
     {
-        $detail = $this->prophesize(DTO\EntryTransactionDetail::class);
-        $detail->setCharges(Argument::type(DTO\Charges::class))->shouldBeCalled();
+        $detail = $this->createMock(DTO\EntryTransactionDetail::class);
 
-        (new Camt053\Decoder\EntryTransactionDetail(new Date()))->addCharges($detail->reveal(), $this->getXmlDetail());
+        $detail
+            ->expects(self::once())
+            ->method('setCharges')
+            ->with(self::isInstanceOf(DTO\Charges::class));
+
+        (new Camt053\Decoder\EntryTransactionDetail(new Date()))->addCharges($detail, $this->getXmlDetail());
     }
 
     public function testItAddsAmountDetailsIfIsPresentInXmsl(): void
     {
-        $detail = $this->prophesize(DTO\EntryTransactionDetail::class);
-        $detail->setAmountDetails(Argument::type(Money::class))->shouldBeCalled();
+        $detail = $this->createMock(DTO\EntryTransactionDetail::class);
+
+        $detail
+            ->expects(self::once())
+            ->method('setAmountDetails')
+            ->with(self::isInstanceOf(Money::class));
 
         $CdtDbtInd = new SimpleXMLElement('<content>DBIT</content>');
-        (new Camt053\Decoder\EntryTransactionDetail(new Date()))->addAmountDetails($detail->reveal(), $this->getXmlDetail(), $CdtDbtInd);
+        (new Camt053\Decoder\EntryTransactionDetail(new Date()))->addAmountDetails($detail, $this->getXmlDetail(), $CdtDbtInd);
     }
 
     public function testItAddsAmountIfIsPresentInXmsl(): void
     {
-        $detail = $this->prophesize(DTO\EntryTransactionDetail::class);
-        $detail->setAmount(Argument::type(Money::class))->shouldBeCalled();
+        $detail = $this->createMock(DTO\EntryTransactionDetail::class);
+
+        $detail
+            ->expects(self::once())
+            ->method('setAmount')
+            ->with(self::isInstanceOf(Money::class));
 
         $CdtDbtInd = new SimpleXMLElement('<content>DBIT</content>');
-        (new Camt053\Decoder\EntryTransactionDetail(new Date()))->addAmount($detail->reveal(), $this->getXmlDetail(), $CdtDbtInd);
+        (new Camt053\Decoder\EntryTransactionDetail(new Date()))->addAmount($detail, $this->getXmlDetail(), $CdtDbtInd);
     }
 
     private function getXmlDetail(): SimpleXMLElement

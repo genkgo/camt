@@ -37,7 +37,6 @@
     "require-dev": {
         "friendsofphp/php-cs-fixer": "@stable",
         "phpstan/phpstan": "@stable",
-        "phpunit/phpunit": "@stable",
-        "phpspec/prophecy-phpunit": "@stable"
+        "phpunit/phpunit": "@stable"
     }
 }
