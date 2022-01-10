@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a892f42f0c459b196390d89259e5de2e",
+    "content-hash": "4f3622f4b6ddd5ddce15135cb8428bcf",
     "packages": [
         {
             "name": "jschaedl/iban-validation",
@@ -4379,7 +4379,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.2 || ^8.0",
+        "php": "^7.4 || ^8.0",
         "ext-dom": "*",
         "ext-libxml": "*",
         "ext-simplexml": "*"
