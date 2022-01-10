@@ -18,7 +18,7 @@
         "ext-libxml": "*",
         "ext-simplexml": "*",
         "jschaedl/iban-validation": "^1.7",
-        "moneyphp/money": "^3.3"
+        "moneyphp/money": "^3.3 || ^4.0"
     },
     "autoload": {
         "psr-4": {
@@ -37,6 +37,7 @@
     "require-dev": {
         "friendsofphp/php-cs-fixer": "@stable",
         "phpstan/phpstan": "@stable",
-        "phpunit/phpunit": "@stable"
+        "phpunit/phpunit": "@stable",
+        "phpspec/prophecy-phpunit": "@stable"
     }
 }
