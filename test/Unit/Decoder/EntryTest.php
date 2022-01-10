@@ -7,17 +7,13 @@ namespace Genkgo\TestCamt\Unit\Decoder;
 use Genkgo\Camt\Decoder;
 use Genkgo\Camt\DTO;
 use Genkgo\TestCamt\AbstractTestCase;
-use Prophecy\Argument;
-use Prophecy\PhpUnit\ProphecyTrait;
-use Prophecy\Prophecy\ObjectProphecy;
+use PHPUnit\Framework;
 use SimpleXMLElement;
 
 class EntryTest extends AbstractTestCase
 {
-    use ProphecyTrait;
-
     /**
-     * @var ObjectProphecy
+     * @var Decoder\EntryTransactionDetail&Framework\MockObject\MockObject
      */
     private $mockedEntryTransactionDetailDecoder;
 
@@ -28,71 +24,122 @@ class EntryTest extends AbstractTestCase
 
     protected function setUp(): void
     {
-        $this->mockedEntryTransactionDetailDecoder = $this->prophesize(Decoder\EntryTransactionDetail::class);
-        $this->decoder = new Decoder\Entry($this->mockedEntryTransactionDetailDecoder->reveal());
+        $this->mockedEntryTransactionDetailDecoder = $this->createMock(Decoder\EntryTransactionDetail::class);
+        $this->decoder = new Decoder\Entry($this->mockedEntryTransactionDetailDecoder);
     }
 
     public function testItDoesNotAddTransactionDetailsIfThereIsNoneInXml(): void
     {
-        $entry = $this->prophesize(DTO\Entry::class);
-        $entry->addTransactionDetail(Argument::any())->shouldNotBeCalled();
+        $entry = $this->createMock(DTO\Entry::class);
+
+        $entry
+            ->expects(self::never())
+            ->method('addTransactionDetail')
+            ->with(self::anything());
 
         $xmlEntry = new SimpleXMLElement('<content></content>');
-        $this->decoder->addTransactionDetails($entry->reveal(), $xmlEntry);
+        $this->decoder->addTransactionDetails($entry, $xmlEntry);
     }
 
     public function testItAddsTransactionDetailsIfThereArePresentInXml(): void
     {
-        $entry = $this->prophesize(DTO\Entry::class);
-        $this->mockedEntryTransactionDetailDecoder->addReference(
-            Argument::type(DTO\EntryTransactionDetail::class),
-            Argument::type('\SimpleXMLElement')
-        )->shouldBeCalled();
-        $this->mockedEntryTransactionDetailDecoder->addRelatedParties(
-            Argument::type(DTO\EntryTransactionDetail::class),
-            Argument::type('\SimpleXMLElement')
-        )->shouldBeCalled();
-        $this->mockedEntryTransactionDetailDecoder->addRelatedAgents(
-            Argument::type(DTO\EntryTransactionDetail::class),
-            Argument::type('\SimpleXMLElement')
-        )->shouldBeCalled();
-        $this->mockedEntryTransactionDetailDecoder->addRemittanceInformation(
-            Argument::type(DTO\EntryTransactionDetail::class),
-            Argument::type('\SimpleXMLElement')
-        )->shouldBeCalled();
-        $this->mockedEntryTransactionDetailDecoder->addRelatedDates(
-            Argument::type(DTO\EntryTransactionDetail::class),
-            Argument::type('\SimpleXMLElement')
-        )->shouldBeCalled();
-        $this->mockedEntryTransactionDetailDecoder->addReturnInformation(
-            Argument::type(DTO\EntryTransactionDetail::class),
-            Argument::type('\SimpleXMLElement')
-        )->shouldBeCalled();
-        $this->mockedEntryTransactionDetailDecoder->addAdditionalTransactionInformation(
-            Argument::type(DTO\EntryTransactionDetail::class),
-            Argument::type('\SimpleXMLElement')
-        )->shouldBeCalled();
-        $this->mockedEntryTransactionDetailDecoder->addBankTransactionCode(
-            Argument::type(DTO\EntryTransactionDetail::class),
-            Argument::type('\SimpleXMLElement')
-        )->shouldBeCalled();
-        $this->mockedEntryTransactionDetailDecoder->addCharges(
-            Argument::type(DTO\EntryTransactionDetail::class),
-            Argument::type('\SimpleXMLElement')
-        )->shouldBeCalled();
-        $this->mockedEntryTransactionDetailDecoder->addAmountDetails(
-            Argument::type(DTO\EntryTransactionDetail::class),
-            Argument::type('\SimpleXMLElement'),
-            Argument::type('\SimpleXMLElement')
-        )->shouldBeCalled();
-        $this->mockedEntryTransactionDetailDecoder->addAmount(
-            Argument::type(DTO\EntryTransactionDetail::class),
-            Argument::type('\SimpleXMLElement'),
-            Argument::type('\SimpleXMLElement')
-        )->shouldBeCalled();
-        $entry->addTransactionDetail(Argument::type(DTO\EntryTransactionDetail::class))->shouldBeCalled();
+        $entry = $this->createMock(DTO\Entry::class);
 
-        $this->decoder->addTransactionDetails($entry->reveal(), $this->getXmlEntry());
+        $this->mockedEntryTransactionDetailDecoder
+            ->expects(self::once())
+            ->method('addReference')
+            ->with(
+                self::isInstanceOf(DTO\EntryTransactionDetail::class),
+                self::isInstanceOf(SimpleXMLElement::class)
+            );
+
+        $this->mockedEntryTransactionDetailDecoder
+            ->expects(self::once())
+            ->method('addRelatedParties')
+            ->with(
+                self::isInstanceOf(DTO\EntryTransactionDetail::class),
+                self::isInstanceOf(SimpleXMLElement::class),
+            );
+
+        $this->mockedEntryTransactionDetailDecoder
+            ->expects(self::once())
+            ->method('addRelatedAgents')
+            ->with(
+                self::isInstanceOf(DTO\EntryTransactionDetail::class),
+                self::isInstanceOf(SimpleXMLElement::class),
+            );
+
+        $this->mockedEntryTransactionDetailDecoder
+            ->expects(self::once())
+            ->method('addRemittanceInformation')
+            ->with(
+                self::isInstanceOf(DTO\EntryTransactionDetail::class),
+                self::isInstanceOf(SimpleXMLElement::class),
+            );
+
+        $this->mockedEntryTransactionDetailDecoder
+            ->expects(self::once())
+            ->method('addRelatedDates')
+            ->with(
+                self::isInstanceOf(DTO\EntryTransactionDetail::class),
+                self::isInstanceOf(SimpleXMLElement::class),
+            );
+
+        $this->mockedEntryTransactionDetailDecoder
+            ->expects(self::once())
+            ->method('addReturnInformation')
+            ->with(
+                self::isInstanceOf(DTO\EntryTransactionDetail::class),
+                self::isInstanceOf(SimpleXMLElement::class),
+            );
+
+        $this->mockedEntryTransactionDetailDecoder
+            ->expects(self::once())
+            ->method('addAdditionalTransactionInformation')
+            ->with(
+                self::isInstanceOf(DTO\EntryTransactionDetail::class),
+                self::isInstanceOf(SimpleXMLElement::class),
+            );
+
+        $this->mockedEntryTransactionDetailDecoder
+            ->expects(self::once())
+            ->method('addBankTransactionCode')
+            ->with(
+                self::isInstanceOf(DTO\EntryTransactionDetail::class),
+                self::isInstanceOf(SimpleXMLElement::class),
+            );
+
+        $this->mockedEntryTransactionDetailDecoder
+            ->expects(self::once())
+            ->method('addCharges')
+            ->with(
+                self::isInstanceOf(DTO\EntryTransactionDetail::class),
+                self::isInstanceOf(SimpleXMLElement::class),
+            );
+
+        $this->mockedEntryTransactionDetailDecoder
+            ->expects(self::once())
+            ->method('addAmountDetails')
+            ->with(
+                self::isInstanceOf(DTO\EntryTransactionDetail::class),
+                self::isInstanceOf(SimpleXMLElement::class),
+            );
+
+        $this->mockedEntryTransactionDetailDecoder
+            ->expects(self::once())
+            ->method('addAmount')
+            ->with(
+                self::isInstanceOf(DTO\EntryTransactionDetail::class),
+                self::isInstanceOf(SimpleXMLElement::class),
+                self::isInstanceOf(SimpleXMLElement::class),
+            );
+
+        $entry
+            ->expects(self::once())
+            ->method('addTransactionDetail')
+            ->with(self::isInstanceOf(DTO\EntryTransactionDetail::class));
+
+        $this->decoder->addTransactionDetails($entry, $this->getXmlEntry());
     }
 
     private function getXmlEntry(): SimpleXMLElement

@@ -8,17 +8,13 @@ use Genkgo\Camt\Camt053;
 use Genkgo\Camt\Decoder;
 use Genkgo\Camt\DTO;
 use Genkgo\TestCamt\AbstractTestCase;
-use Prophecy\Argument;
-use Prophecy\PhpUnit\ProphecyTrait;
-use Prophecy\Prophecy\ObjectProphecy;
+use PHPUnit\Framework;
 use SimpleXMLElement;
 
 class RecordTest extends AbstractTestCase
 {
-    use ProphecyTrait;
-
     /**
-     * @var ObjectProphecy
+     * @var Decoder\Entry&Framework\MockObject\MockObject
      */
     private $mockedEntryDecoder;
 
@@ -29,53 +25,75 @@ class RecordTest extends AbstractTestCase
 
     protected function setUp(): void
     {
-        $entryTransactionDetail = $this->prophesize(Decoder\EntryTransactionDetail::class);
-        $this->mockedEntryDecoder = $this
-            ->prophesize(Decoder\Entry::class)
-            ->willBeConstructedWith([$entryTransactionDetail->reveal()]);
-        $this->decoder = new Decoder\Record($this->mockedEntryDecoder->reveal(), new Decoder\Date());
+        $this->mockedEntryDecoder = $this->createMock(Decoder\Entry::class);
+        $this->decoder = new Decoder\Record($this->mockedEntryDecoder, new Decoder\Date());
     }
 
     public function testItDoesNotAddBalancesIfThereAreNoneInXml(): void
     {
-        $record = $this->prophesize(Camt053\DTO\Statement::class);
-        $record->addBalance(Argument::any())->shouldNotBeCalled();
+        $record = $this->createMock(Camt053\DTO\Statement::class);
+
+        $record
+            ->expects(self::never())
+            ->method('addBalance')
+            ->with(self::anything());
 
         $xmlRecord = new SimpleXMLElement('<content></content>');
-        $this->decoder->addBalances($record->reveal(), $xmlRecord);
+        $this->decoder->addBalances($record, $xmlRecord);
     }
 
     public function testItAddsBalancesIfThereArePresentInXml(): void
     {
-        $record = $this->prophesize(Camt053\DTO\Statement::class);
-        $record->addBalance(Argument::type(DTO\Balance::class))->shouldBeCalled();
+        $record = $this->createMock(Camt053\DTO\Statement::class);
 
-        $this->decoder->addBalances($record->reveal(), $this->getXmlRecord());
+        $record
+            ->expects(self::exactly(2))
+            ->method('addBalance')
+            ->with(self::isInstanceOf(DTO\Balance::class));
+
+        $this->decoder->addBalances($record, $this->getXmlRecord());
     }
 
     public function testItAddsNoEntriesIfThereAreNoneInXml(): void
     {
-        $record = $this->prophesize(DTO\Record::class);
-        $this->mockedEntryDecoder->addTransactionDetails(Argument::any(), Argument::any())->shouldNotBeCalled();
-        $record->addEntry(Argument::any())->shouldNotBeCalled();
+        $record = $this->createMock(DTO\Record::class);
+
+        $record
+            ->expects(self::never())
+            ->method('addEntry')
+            ->with(self::anything());
+
+        $this->mockedEntryDecoder
+            ->expects(self::never())
+            ->method('addTransactionDetails')
+            ->with(
+                self::anything(),
+                self::anything(),
+            );
+
         $xmlRecord = new SimpleXMLElement('<content></content>');
 
-        $this->decoder->addEntries($record->reveal(), $xmlRecord);
+        $this->decoder->addEntries($record, $xmlRecord);
     }
 
     public function testItAddsEntriesIfThereArePresentInXml(): void
     {
-        $record = $this->prophesize(DTO\Record::class);
-        $this
-            ->mockedEntryDecoder
-            ->addTransactionDetails(
-                Argument::type(DTO\Entry::class),
-                Argument::type('\SimpleXMLElement')
-            )
-            ->shouldBeCalled();
-        $record->addEntry(Argument::type(DTO\Entry::class))->shouldBeCalled();
+        $record = $this->createMock(DTO\Record::class);
 
-        $this->decoder->addEntries($record->reveal(), $this->getXmlRecord());
+        $record
+            ->expects(self::once())
+            ->method('addEntry')
+            ->with(self::isInstanceOf(DTO\Entry::class));
+
+        $this->mockedEntryDecoder
+            ->expects(self::once())
+            ->method('addTransactionDetails')
+            ->with(
+                self::isInstanceOf(DTO\Entry::class),
+                self::isInstanceOf(SimpleXMLElement::class),
+            );
+
+        $this->decoder->addEntries($record, $this->getXmlRecord());
     }
 
     private function getXmlRecord(): SimpleXMLElement
