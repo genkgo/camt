@@ -25,7 +25,6 @@ return (new PhpCsFixer\Config())
         'cast_spaces' => true,
         'class_attributes_separation' => ['elements' => ['method' => 'one', 'property' => 'one']], // const are often grouped with other related const
         'class_definition' => true,
-        'class_keyword_remove' => false, // Deprecated, and ::class keyword gives us better support in IDE
         'combine_consecutive_issets' => true,
         'combine_consecutive_unsets' => true,
         'combine_nested_dirname' => true,
