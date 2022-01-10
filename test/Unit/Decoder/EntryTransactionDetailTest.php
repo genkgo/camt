@@ -10,10 +10,13 @@ use Genkgo\Camt\DTO;
 use Genkgo\TestCamt\AbstractTestCase;
 use Money\Money;
 use Prophecy\Argument;
+use Prophecy\PhpUnit\ProphecyTrait;
 use SimpleXMLElement;
 
 class EntryTransactionDetailTest extends AbstractTestCase
 {
+    use ProphecyTrait;
+
     public function testItDoesNotAddReferenceIfThereIsNoneInXml(): void
     {
         $detail = $this->prophesize(DTO\EntryTransactionDetail::class);

@@ -9,11 +9,14 @@ use Genkgo\Camt\Decoder;
 use Genkgo\Camt\DTO;
 use Genkgo\TestCamt\AbstractTestCase;
 use Prophecy\Argument;
+use Prophecy\PhpUnit\ProphecyTrait;
 use Prophecy\Prophecy\ObjectProphecy;
 use SimpleXMLElement;
 
 class RecordTest extends AbstractTestCase
 {
+    use ProphecyTrait;
+
     /**
      * @var ObjectProphecy
      */

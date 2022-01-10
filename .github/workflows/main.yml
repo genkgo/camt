@@ -6,8 +6,6 @@ jobs:
     strategy:
       matrix:
         php-version:
-          - '7.2'
-          - '7.3'
           - '7.4'
           - '8.0'
           - '8.1'
@@ -31,6 +29,10 @@ jobs:
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
           restore-keys: ${{ runner.os }}-composer-
 
+      - name: Remove lock for older PHP
+        if: matrix.php-version == '7.4'
+        run: rm composer.lock
+
       - name: Install dependencies
         run: composer install
 
@@ -52,7 +54,7 @@ jobs:
       - name: Setup PHP, with composer and extensions
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 7.4
+          php-version: 8.0
           coverage: none
           tools: cs2pr
 
@@ -78,7 +80,7 @@ jobs:
       - name: Setup PHP, with composer and extensions
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 7.4
+          php-version: 8.0
           coverage: none
 
       - name: Cache composer dependencies
@@ -103,7 +105,7 @@ jobs:
       - name: Setup PHP, with composer and extensions
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 7.4
+          php-version: 8.0
           coverage: pcov
 
       - name: Cache composer dependencies
@@ -119,10 +121,10 @@ jobs:
       - name: Code coverage
         run: ./vendor/bin/phpunit --coverage-clover coverage-clover.xml
 
-      - name: Upload code coverage
-        run: |
-          curl -LO https://scrutinizer-ci.com/ocular.phar
-          php ocular.phar code-coverage:upload --format=php-clover coverage-clover.xml
+      - name: Upload Scrutinizer coverage
+        uses: sudo-bot/action-scrutinizer@latest
+        with:
+          cli-args: --format=php-clover coverage-clover.xml
 
   release:
     runs-on: ubuntu-latest
