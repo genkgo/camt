@@ -1,33 +1,7 @@
 name: main
 on: [ push, pull_request ]
 jobs:
-  test_composer_lock_versions:
-    name: Build lowest version
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Set up PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.0'
-          coverage: none
-
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Install dependencies
-        run: composer install
-
-      - name: Setup problem matchers for PHP
-        run: echo "::add-matcher::${{ runner.tool_cache }}/php.json"
-
-      - name: Setup problem matchers for PHPUnit
-        run: echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
-
-      - name: Test with PHPUnit
-        run: ./vendor/bin/phpunit
-
-  test_all_versions:
+  test:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -55,8 +29,12 @@ jobs:
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
           restore-keys: ${{ runner.os }}-composer-
 
+      - name: Remove lock for older PHP
+        if: matrix.php-version == '7.4'
+        run: rm composer.lock
+
       - name: Install dependencies
-        run: composer update
+        run: composer install
 
       - name: Setup problem matchers for PHP
         run: echo "::add-matcher::${{ runner.tool_cache }}/php.json"
