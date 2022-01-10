@@ -145,10 +145,10 @@ jobs:
       - name: Code coverage
         run: ./vendor/bin/phpunit --coverage-clover coverage-clover.xml
 
-      - name: Upload code coverage
-        run: |
-          curl -LO https://scrutinizer-ci.com/ocular.phar
-          php ocular.phar code-coverage:upload --format=php-clover coverage-clover.xml
+      - name: Upload Scrutinizer coverage
+        uses: sudo-bot/action-scrutinizer@latest
+        with:
+          cli-args: --format=php-clover coverage-clover.xml
 
   release:
     runs-on: ubuntu-latest
