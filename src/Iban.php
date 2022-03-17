@@ -10,10 +10,7 @@ use InvalidArgumentException;
 
 class Iban
 {
-    /**
-     * @var string
-     */
-    private $iban;
+    private string $iban;
 
     public function __construct(string $iban)
     {

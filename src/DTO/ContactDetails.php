@@ -6,40 +6,19 @@ namespace Genkgo\Camt\DTO;
 
 class ContactDetails
 {
-    /**
-     * @var null|string
-     */
-    private $namePrefix;
+    private ?string $namePrefix = null;
 
-    /**
-     * @var null|string
-     */
-    private $name;
+    private ?string $name = null;
 
-    /**
-     * @var null|string
-     */
-    private $phoneNumber;
+    private ?string $phoneNumber = null;
 
-    /**
-     * @var null|string
-     */
-    private $mobileNumber;
+    private ?string $mobileNumber = null;
 
-    /**
-     * @var null|string
-     */
-    private $faxNumber;
+    private ?string $faxNumber = null;
 
-    /**
-     * @var null|string
-     */
-    private $emailAddress;
+    private ?string $emailAddress = null;
 
-    /**
-     * @var null|string
-     */
-    private $other;
+    private ?string $other = null;
 
     public function getNamePrefix(): ?string
     {

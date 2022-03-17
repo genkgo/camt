@@ -6,70 +6,31 @@ namespace Genkgo\Camt\DTO;
 
 class OrganisationIdentification extends Identification
 {
-    /**
-     * @var null|string
-     */
-    private $bic;
+    private ?string $bic = null;
 
-    /**
-     * @var null|string
-     */
-    private $ibei;
+    private ?string $ibei = null;
 
-    /**
-     * @var null|string
-     */
-    private $bei;
+    private ?string $bei = null;
 
-    /**
-     * @var null|string
-     */
-    private $eangln;
+    private ?string $eangln = null;
 
-    /**
-     * @var null|string
-     */
-    private $chipsUniversalId;
+    private ?string $chipsUniversalId = null;
 
-    /**
-     * @var null|string
-     */
-    private $duns;
+    private ?string $duns = null;
 
-    /**
-     * @var null|string
-     */
-    private $bankPartyId;
+    private ?string $bankPartyId = null;
 
-    /**
-     * @var null|string
-     */
-    private $taxId;
+    private ?string $taxId = null;
 
-    /**
-     * @var null|string
-     */
-    private $issuer;
+    private ?string $issuer = null;
 
-    /**
-     * @var null|string
-     */
-    private $otherId;
+    private ?string $otherId = null;
 
-    /**
-     * @var null|string
-     */
-    private $otherIssuer;
+    private ?string $otherIssuer = null;
 
-    /**
-     * @var null|string
-     */
-    private $otherSchemeName;
+    private ?string $otherSchemeName = null;
 
-    /**
-     * @var null|string
-     */
-    private $otherType;
+    private ?string $otherType = null;
 
     public function getBic(): ?string
     {

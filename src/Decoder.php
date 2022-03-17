@@ -11,15 +11,9 @@ use SimpleXMLElement;
 
 class Decoder implements DecoderInterface
 {
-    /**
-     * @var SimpleXMLElement
-     */
-    private $document;
+    private SimpleXMLElement $document;
 
-    /**
-     * @var Decoder\Message
-     */
-    private $messageDecoder;
+    private Decoder\Message $messageDecoder;
 
     /**
      * Path to the schema definition.

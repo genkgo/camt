@@ -17,20 +17,11 @@ class Balance
 
     public const TYPE_CLOSING_AVAILABLE = 'closing_available';
 
-    /**
-     * @var Money
-     */
-    private $amount;
+    private Money $amount;
 
-    /**
-     * @var string
-     */
-    private $type;
+    private string $type;
 
-    /**
-     * @var DateTimeImmutable
-     */
-    private $date;
+    private DateTimeImmutable $date;
 
     private function __construct(string $type, Money $amount, DateTimeImmutable $date)
     {

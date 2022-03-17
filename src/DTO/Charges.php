@@ -8,15 +8,12 @@ use Money\Money;
 
 class Charges
 {
-    /**
-     * @var Money
-     */
-    private $totalChargesAndTaxAmount;
+    private ?Money $totalChargesAndTaxAmount = null;
 
     /**
      * @var ChargesRecord[]
      */
-    private $records = [];
+    private array $records = [];
 
     public function getTotalChargesAndTaxAmount(): ?Money
     {

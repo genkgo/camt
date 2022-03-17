@@ -10,15 +10,9 @@ use Genkgo\Camt\Exception\ReaderException;
 
 class Reader
 {
-    /**
-     * @var Config
-     */
-    private $config;
+    private Config $config;
 
-    /**
-     * @var null|MessageFormatInterface
-     */
-    private $messageFormat;
+    private ?MessageFormatInterface $messageFormat = null;
 
     public function __construct(Config $config)
     {

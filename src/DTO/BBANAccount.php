@@ -6,10 +6,7 @@ namespace Genkgo\Camt\DTO;
 
 class BBANAccount extends Account
 {
-    /**
-     * @var string
-     */
-    private $bban;
+    private string $bban;
 
     public function __construct(string $bban)
     {

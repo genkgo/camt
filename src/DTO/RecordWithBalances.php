@@ -9,7 +9,7 @@ abstract class RecordWithBalances extends Record
     /**
      * @var Balance[]
      */
-    private $balances = [];
+    private array $balances = [];
 
     public function addBalance(Balance $balance): void
     {

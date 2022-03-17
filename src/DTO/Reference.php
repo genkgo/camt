@@ -6,75 +6,36 @@ namespace Genkgo\Camt\DTO;
 
 class Reference
 {
-    /**
-     * @var null|string
-     */
-    private $messageId;
+    private ?string $messageId = null;
 
-    /**
-     * @var null|string
-     */
-    private $accountServicerReference;
+    private ?string $accountServicerReference = null;
 
-    /**
-     * @var null|string
-     */
-    private $paymentInformationId;
+    private ?string $paymentInformationId = null;
 
-    /**
-     * @var null|string
-     */
-    private $instructionId;
+    private ?string $instructionId = null;
 
-    /**
-     * @var null|string
-     */
-    private $endToEndId;
+    private ?string $endToEndId = null;
 
-    /**
-     * @var null|string
-     */
-    private $transactionId;
+    private ?string $transactionId = null;
 
-    /**
-     * @var null|string
-     */
-    private $mandateId;
+    private ?string $mandateId = null;
 
-    /**
-     * @var null|string
-     */
-    private $chequeNumber;
+    private ?string $chequeNumber = null;
 
-    /**
-     * @var null|string
-     */
-    private $clearingSystemReference;
+    private ?string $clearingSystemReference = null;
 
-    /**
-     * @var null|string
-     */
-    private $accountOwnerTransactionId;
+    private ?string $accountOwnerTransactionId = null;
 
-    /**
-     * @var null|string
-     */
-    private $accountServicerTransactionId;
+    private ?string $accountServicerTransactionId = null;
 
-    /**
-     * @var null|string
-     */
-    private $marketInfrastructureTransactionId;
+    private ?string $marketInfrastructureTransactionId = null;
 
-    /**
-     * @var null|string
-     */
-    private $processingId;
+    private ?string $processingId = null;
 
     /**
      * @var ProprietaryReference[]
      */
-    private $proprietaries = [];
+    private array $proprietaries = [];
 
     public function getMessageId(): ?string
     {

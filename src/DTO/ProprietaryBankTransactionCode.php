@@ -6,15 +6,9 @@ namespace Genkgo\Camt\DTO;
 
 class ProprietaryBankTransactionCode
 {
-    /**
-     * @var string
-     */
-    private $code;
+    private string $code;
 
-    /**
-     * @var string
-     */
-    private $issuer;
+    private string $issuer;
 
     public function __construct(string $code, string $issuer)
     {

@@ -8,30 +8,15 @@ use DateTimeImmutable;
 
 class GroupHeader
 {
-    /**
-     * @var string
-     */
-    private $messageId;
+    private string $messageId;
 
-    /**
-     * @var DateTimeImmutable
-     */
-    private $createdOn;
+    private DateTimeImmutable $createdOn;
 
-    /**
-     * @var null|string
-     */
-    private $additionalInformation;
+    private ?string $additionalInformation = null;
 
-    /**
-     * @var null|Recipient
-     */
-    private $messageRecipient;
+    private ?Recipient $messageRecipient = null;
 
-    /**
-     * @var null|Pagination
-     */
-    private $pagination;
+    private ?Pagination $pagination = null;
 
     public function __construct(string $messageId, DateTimeImmutable $createdOn)
     {

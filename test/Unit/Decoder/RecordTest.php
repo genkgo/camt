@@ -6,6 +6,7 @@ namespace Genkgo\TestCamt\Unit\Decoder;
 
 use Genkgo\Camt\Camt053;
 use Genkgo\Camt\Decoder;
+use Genkgo\Camt\Decoder\Record;
 use Genkgo\Camt\DTO;
 use Genkgo\TestCamt\AbstractTestCase;
 use PHPUnit\Framework;
@@ -18,15 +19,12 @@ class RecordTest extends AbstractTestCase
      */
     private $mockedEntryDecoder;
 
-    /**
-     * @var Decoder\Record
-     */
-    private $decoder;
+    private Record $decoder;
 
     protected function setUp(): void
     {
         $this->mockedEntryDecoder = $this->createMock(Decoder\Entry::class);
-        $this->decoder = new Decoder\Record($this->mockedEntryDecoder, new Decoder\Date());
+        $this->decoder = new Record($this->mockedEntryDecoder, new Decoder\Date());
     }
 
     public function testItDoesNotAddBalancesIfThereAreNoneInXml(): void

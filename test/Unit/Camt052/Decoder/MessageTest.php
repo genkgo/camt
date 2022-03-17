@@ -19,10 +19,7 @@ class MessageTest extends AbstractTestCase
      */
     private $mockedRecordDecoder;
 
-    /**
-     * @var Message
-     */
-    private $decoder;
+    private Message $decoder;
 
     protected function setUp(): void
     {

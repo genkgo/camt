@@ -11,20 +11,11 @@ use SimpleXMLElement;
 
 class Record
 {
-    /**
-     * @var Entry
-     */
-    private $entryDecoder;
+    private Entry $entryDecoder;
 
-    /**
-     * @var DateDecoderInterface
-     */
-    private $dateDecoder;
+    private DateDecoderInterface $dateDecoder;
 
-    /**
-     * @var MoneyFactory
-     */
-    private $moneyFactory;
+    private MoneyFactory $moneyFactory;
 
     /**
      * Record constructor.

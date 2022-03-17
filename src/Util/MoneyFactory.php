@@ -12,10 +12,7 @@ use SimpleXMLElement;
 
 final class MoneyFactory
 {
-    /**
-     * @var DecimalMoneyParser
-     */
-    private $decimalMoneyParser;
+    private DecimalMoneyParser $decimalMoneyParser;
 
     public function __construct()
     {

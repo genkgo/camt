@@ -8,10 +8,7 @@ use DateTimeImmutable;
 
 class RelatedDates
 {
-    /**
-     * @var DateTimeImmutable
-     */
-    private $acceptanceDateTime;
+    private DateTimeImmutable $acceptanceDateTime;
 
     public function getAcceptanceDateTime(): DateTimeImmutable
     {

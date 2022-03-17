@@ -9,75 +9,36 @@ use Money\Money;
 
 class Entry
 {
-    /**
-     * @var Record
-     */
-    private $record;
+    private Record $record;
 
-    /**
-     * @var Money
-     */
-    private $amount;
+    private Money $amount;
 
-    /**
-     * @var null|DateTimeImmutable
-     */
-    private $bookingDate;
+    private ?DateTimeImmutable $bookingDate = null;
 
-    /**
-     * @var null|DateTimeImmutable
-     */
-    private $valueDate;
+    private ?DateTimeImmutable $valueDate = null;
 
     /**
      * @var EntryTransactionDetail[]
      */
-    private $transactionDetails = [];
+    private array $transactionDetails = [];
 
-    /**
-     * @var bool
-     */
-    private $reversalIndicator = false;
+    private bool $reversalIndicator = false;
 
-    /**
-     * @var null|string
-     */
-    private $reference;
+    private ?string $reference = null;
 
-    /**
-     * @var null|string
-     */
-    private $accountServicerReference;
+    private ?string $accountServicerReference = null;
 
-    /**
-     * @var int
-     */
-    private $index;
+    private int $index;
 
-    /**
-     * @var null|string
-     */
-    private $batchPaymentId;
+    private ?string $batchPaymentId = null;
 
-    /**
-     * @var null|string
-     */
-    private $additionalInfo;
+    private ?string $additionalInfo = null;
 
-    /**
-     * @var null|BankTransactionCode
-     */
-    private $bankTransactionCode;
+    private ?BankTransactionCode $bankTransactionCode = null;
 
-    /**
-     * @var null|Charges
-     */
-    private $charges;
+    private ?Charges $charges = null;
 
-    /**
-     * @var null|string
-     */
-    private $status;
+    private ?string $status = null;
 
     public function __construct(Record $record, int $index, Money $amount)
     {

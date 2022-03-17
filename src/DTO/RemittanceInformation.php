@@ -6,25 +6,19 @@ namespace Genkgo\Camt\DTO;
 
 class RemittanceInformation
 {
-    /**
-     * @var null|string
-     */
-    private $message;
+    private ?string $message = null;
 
-    /**
-     * @var null|CreditorReferenceInformation
-     */
-    private $creditorReferenceInformation;
+    private ?CreditorReferenceInformation $creditorReferenceInformation = null;
 
     /**
      * @var StructuredRemittanceInformation[]
      */
-    private $structuredBlocks = [];
+    private array $structuredBlocks = [];
 
     /**
      * @var UnstructuredRemittanceInformation[]
      */
-    private $unstructuredBlocks = [];
+    private array $unstructuredBlocks = [];
 
     public static function fromUnstructured(string $message): self
     {

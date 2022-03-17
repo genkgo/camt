@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Genkgo\TestCamt\Unit\Decoder;
 
 use Genkgo\Camt\Decoder;
+use Genkgo\Camt\Decoder\Entry;
 use Genkgo\Camt\DTO;
 use Genkgo\TestCamt\AbstractTestCase;
 use PHPUnit\Framework;
@@ -17,15 +18,12 @@ class EntryTest extends AbstractTestCase
      */
     private $mockedEntryTransactionDetailDecoder;
 
-    /**
-     * @var Decoder\Entry
-     */
-    private $decoder;
+    private Entry $decoder;
 
     protected function setUp(): void
     {
         $this->mockedEntryTransactionDetailDecoder = $this->createMock(Decoder\EntryTransactionDetail::class);
-        $this->decoder = new Decoder\Entry($this->mockedEntryTransactionDetailDecoder);
+        $this->decoder = new Entry($this->mockedEntryTransactionDetailDecoder);
     }
 
     public function testItDoesNotAddTransactionDetailsIfThereIsNoneInXml(): void

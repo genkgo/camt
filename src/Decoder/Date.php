@@ -9,10 +9,7 @@ use InvalidArgumentException;
 
 class Date implements DateDecoderInterface
 {
-    /**
-     * @var null|string
-     */
-    private $format;
+    private ?string $format = null;
 
     public function decode(string $date): DateTimeImmutable
     {

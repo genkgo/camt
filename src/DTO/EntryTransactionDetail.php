@@ -8,60 +8,33 @@ use Money\Money;
 
 class EntryTransactionDetail
 {
-    /**
-     * @var null|Reference
-     */
-    private $reference;
+    private ?Reference $reference = null;
 
     /**
      * @var RelatedParty[]
      */
-    private $relatedParties = [];
+    private array $relatedParties = [];
 
     /**
      * @var RelatedAgent[]
      */
-    private $relatedAgents = [];
+    private array $relatedAgents = [];
 
-    /**
-     * @var null|RemittanceInformation
-     */
-    private $remittanceInformation;
+    private ?RemittanceInformation $remittanceInformation = null;
 
-    /**
-     * @var null|RelatedDates
-     */
-    private $relatedDates;
+    private ?RelatedDates $relatedDates = null;
 
-    /**
-     * @var null|ReturnInformation
-     */
-    private $returnInformation;
+    private ?ReturnInformation $returnInformation = null;
 
-    /**
-     * @var null|AdditionalTransactionInformation
-     */
-    private $additionalTransactionInformation;
+    private ?AdditionalTransactionInformation $additionalTransactionInformation = null;
 
-    /**
-     * @var BankTransactionCode
-     */
-    private $bankTransactionCode;
+    private ?BankTransactionCode $bankTransactionCode = null;
 
-    /**
-     * @var null|Charges
-     */
-    private $charges;
+    private ?Charges $charges = null;
 
-    /**
-     * @var null|Money
-     */
-    private $amountDetails;
+    private ?Money $amountDetails = null;
 
-    /**
-     * @var null|Money
-     */
-    private $amount;
+    private ?Money $amount = null;
 
     public function setReference(?Reference $reference): void
     {
@@ -157,7 +130,7 @@ class EntryTransactionDetail
         return $this->additionalTransactionInformation;
     }
 
-    public function getBankTransactionCode(): BankTransactionCode
+    public function getBankTransactionCode(): ?BankTransactionCode
     {
         return $this->bankTransactionCode;
     }

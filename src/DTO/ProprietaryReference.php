@@ -6,15 +6,9 @@ namespace Genkgo\Camt\DTO;
 
 class ProprietaryReference
 {
-    /**
-     * @var null|string
-     */
-    private $type;
+    private ?string $type;
 
-    /**
-     * @var null|string
-     */
-    private $reference;
+    private ?string $reference;
 
     public function __construct(?string $type, ?string $reference)
     {

@@ -8,15 +8,12 @@ use Genkgo\Camt\Iterator\EntryIterator;
 
 class Message
 {
-    /**
-     * @var GroupHeader
-     */
-    private $groupHeader;
+    private GroupHeader $groupHeader;
 
     /**
      * @var Record[]
      */
-    private $records = [];
+    private array $records = [];
 
     public function getGroupHeader(): GroupHeader
     {

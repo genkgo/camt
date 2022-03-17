@@ -6,15 +6,9 @@ namespace Genkgo\Camt\DTO;
 
 class RelatedParty
 {
-    /**
-     * @var RelatedPartyTypeInterface
-     */
-    private $relatedPartyDetails;
+    private RelatedPartyTypeInterface $relatedPartyDetails;
 
-    /**
-     * @var null|Account
-     */
-    private $account;
+    private ?Account $account;
 
     public function __construct(RelatedPartyTypeInterface $relatedPartyDetails, ?Account $account)
     {

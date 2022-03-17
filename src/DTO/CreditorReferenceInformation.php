@@ -6,20 +6,11 @@ namespace Genkgo\Camt\DTO;
 
 class CreditorReferenceInformation
 {
-    /**
-     * @var null|string
-     */
-    private $ref;
+    private ?string $ref = null;
 
-    /**
-     * @var null|string
-     */
-    private $code;
+    private ?string $code = null;
 
-    /**
-     * @var null|string
-     */
-    private $proprietary;
+    private ?string $proprietary = null;
 
     public function getRef(): ?string
     {

@@ -8,20 +8,11 @@ use DateTimeImmutable;
 
 class OriginalBusinessQuery
 {
-    /**
-     * @var string
-     */
-    private $messageId;
+    private string $messageId;
 
-    /**
-     * @var null|string
-     */
-    private $messageNameId;
+    private ?string $messageNameId = null;
 
-    /**
-     * @var null|DateTimeImmutable
-     */
-    private $createdOn;
+    private ?DateTimeImmutable $createdOn = null;
 
     public function __construct(string $messageId)
     {
