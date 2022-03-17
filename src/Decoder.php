@@ -17,10 +17,8 @@ class Decoder implements DecoderInterface
 
     /**
      * Path to the schema definition.
-     *
-     * @var string
      */
-    protected $schemeDefinitionPath;
+    protected string $schemeDefinitionPath;
 
     public function __construct(Decoder\Message $messageDecoder, string $schemeDefinitionPath)
     {
