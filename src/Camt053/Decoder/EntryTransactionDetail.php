@@ -51,4 +51,38 @@ class EntryTransactionDetail extends BaseDecoder
 
         return $otherAccount;
     }
+    
+    public function addCharges(DTO\EntryTransactionDetail $detail, SimpleXMLElement $xmlDetail): void
+    {
+        if (isset($xmlDetail->Chrgs)) {
+            $charges = new DTO\Charges();
+
+            if (isset($xmlDetail->Chrgs->TtlChrgsAndTaxAmt) && (string) $xmlDetail->Chrgs->TtlChrgsAndTaxAmt) {
+                $money = $this->moneyFactory->create($xmlDetail->Chrgs->TtlChrgsAndTaxAmt, null);
+                $charges->setTotalChargesAndTaxAmount($money);
+            }
+
+            $chargesRecords = $xmlDetail->Chrgs;
+            if ($chargesRecords !== null) {
+
+                /** @var SimpleXMLElement $chargesRecord */
+                foreach ($xmlDetail->Chrgs as $chargesRecord) {
+                    $chargesDetail = new DTO\ChargesRecord();
+
+                    if (isset($chargesRecord->Amt) && (string) $chargesRecord->Amt) {
+                        $money = $this->moneyFactory->create($chargesRecord->Amt, $chargesRecord->CdtDbtInd);
+                        $chargesDetail->setAmount($money);
+                    }
+                    if (isset($chargesRecord->CdtDbtInd) && (string) $chargesRecord->CdtDbtInd === 'true') {
+                        $chargesDetail->setChargesIncludedIndicator(true);
+                    }
+                    if (isset($chargesRecord->Tp->Prtry->Id) && (string) $chargesRecord->Tp->Prtry->Id) {
+                        $chargesDetail->setIdentification((string) $chargesRecord->Tp->Prtry->Id);
+                    }
+                    $charges->addRecord($chargesDetail);
+                }
+            }
+            $detail->setCharges($charges);
+        }
+    }
 }
