@@ -14,7 +14,7 @@ abstract class EntryTransactionDetail
 {
     private DateDecoderInterface $dateDecoder;
 
-    private MoneyFactory $moneyFactory;
+    protected MoneyFactory $moneyFactory;
 
     /**
      * EntryTransactionDetail constructor.
