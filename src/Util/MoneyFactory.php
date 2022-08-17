@@ -22,6 +22,7 @@ final class MoneyFactory
     public function create(SimpleXMLElement $xmlAmount, ?SimpleXMLElement $CdtDbtInd): Money
     {
         $amount = (string) $xmlAmount;
+        $amount = ltrim($amount, "0");
 
         if ((string) $CdtDbtInd === 'DBIT') {
             $amount = (string) ((float) $amount * -1);
