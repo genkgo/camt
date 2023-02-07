@@ -306,7 +306,6 @@ abstract class EntryTransactionDetail
 
             $chargesRecords = $xmlDetail->Chrgs->Rcrd;
             if ($chargesRecords !== null) {
-
                 /** @var SimpleXMLElement $chargesRecord */
                 foreach ($chargesRecords as $chargesRecord) {
                     $chargesDetail = new DTO\ChargesRecord();
