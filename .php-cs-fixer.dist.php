@@ -154,6 +154,7 @@ return (new PhpCsFixer\Config())
         'ordered_interfaces' => true,
         'ordered_traits' => true,
         'php_unit_construct' => true,
+        'php_unit_data_provider_static' => true,
         'php_unit_dedicate_assert' => true,
         'php_unit_dedicate_assert_internal_type' => true,
         'php_unit_expectation' => true,
