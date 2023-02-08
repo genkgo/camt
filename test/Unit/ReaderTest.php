@@ -10,9 +10,9 @@ use Genkgo\Camt\Config;
 use Genkgo\Camt\DTO;
 use Genkgo\Camt\Exception\ReaderException;
 use Genkgo\Camt\Reader;
-use Genkgo\TestCamt\AbstractTestCase;
+use PHPUnit\Framework;
 
-class ReaderTest extends AbstractTestCase
+class ReaderTest extends Framework\TestCase
 {
     protected function getDefaultConfig(): Config
     {

@@ -8,9 +8,9 @@ use DOMDocument;
 use Genkgo\Camt\Camt053\MessageFormat;
 use Genkgo\Camt\DTO;
 use Genkgo\Camt\DTO\Message;
-use Genkgo\TestCamt\AbstractTestCase;
+use PHPUnit\Framework;
 
-class EntryIteratorTest extends AbstractTestCase
+class EntryIteratorTest extends Framework\TestCase
 {
     protected function getDefaultMessage(): Message
     {
