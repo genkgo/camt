@@ -25,7 +25,7 @@ class MoneyFactoryTest extends TestCase
         self::assertTrue($actual->equals($expected));
     }
 
-    public function providerCreate(): array
+    public static function providerCreate(): array
     {
         return [
             ['<Amt Ccy="CHF">27.50</Amt>', null, Money::CHF(2750)],
