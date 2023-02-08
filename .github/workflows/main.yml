@@ -6,7 +6,6 @@ jobs:
     strategy:
       matrix:
         php-version:
-          - '7.4'
           - '8.0'
           - '8.1'
           - '8.2'
@@ -29,10 +28,6 @@ jobs:
           path: ~/.cache/composer
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
           restore-keys: ${{ runner.os }}-composer-
-
-      - name: Remove lock for older PHP
-        if: matrix.php-version == '7.4'
-        run: rm composer.lock
 
       - name: Install dependencies
         run: composer install
