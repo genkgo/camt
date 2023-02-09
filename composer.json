@@ -22,16 +22,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Genkgo\\Camt\\": [
-                "src"
-            ]
+            "Genkgo\\Camt\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Genkgo\\TestCamt\\": [
-                "test"
-            ]
+            "Genkgo\\TestCamt\\": "test"
         }
     },
     "require-dev": {
