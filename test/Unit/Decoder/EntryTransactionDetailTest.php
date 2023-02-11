@@ -7,11 +7,11 @@ namespace Genkgo\TestCamt\Unit\Decoder;
 use Genkgo\Camt\Camt053;
 use Genkgo\Camt\Decoder\Date;
 use Genkgo\Camt\DTO;
-use Genkgo\TestCamt\AbstractTestCase;
 use Money\Money;
+use PHPUnit\Framework;
 use SimpleXMLElement;
 
-class EntryTransactionDetailTest extends AbstractTestCase
+class EntryTransactionDetailTest extends Framework\TestCase
 {
     public function testItDoesNotAddReferenceIfThereIsNoneInXml(): void
     {

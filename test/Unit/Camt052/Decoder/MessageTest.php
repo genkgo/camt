@@ -8,11 +8,10 @@ use Genkgo\Camt\Camt052;
 use Genkgo\Camt\Camt052\Decoder\V01\Message;
 use Genkgo\Camt\Decoder as DecoderObject;
 use Genkgo\Camt\DTO;
-use Genkgo\TestCamt\AbstractTestCase;
 use PHPUnit\Framework;
 use SimpleXMLElement;
 
-class MessageTest extends AbstractTestCase
+class MessageTest extends Framework\TestCase
 {
     /**
      * @var DecoderObject\Record&Framework\MockObject\MockObject

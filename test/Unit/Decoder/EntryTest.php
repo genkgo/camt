@@ -7,11 +7,10 @@ namespace Genkgo\TestCamt\Unit\Decoder;
 use Genkgo\Camt\Decoder;
 use Genkgo\Camt\Decoder\Entry;
 use Genkgo\Camt\DTO;
-use Genkgo\TestCamt\AbstractTestCase;
 use PHPUnit\Framework;
 use SimpleXMLElement;
 
-class EntryTest extends AbstractTestCase
+class EntryTest extends Framework\TestCase
 {
     /**
      * @var Decoder\EntryTransactionDetail&Framework\MockObject\MockObject

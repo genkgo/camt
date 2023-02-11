@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Genkgo\TestCamt\Unit;
 
 use Genkgo\Camt\Iban;
-use Genkgo\TestCamt\AbstractTestCase;
 use InvalidArgumentException;
+use PHPUnit\Framework;
 
-class IbanTest extends AbstractTestCase
+class IbanTest extends Framework\TestCase
 {
     public function testValidIbanMachineFormat(): void
     {

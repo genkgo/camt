@@ -13,9 +13,9 @@ use Genkgo\Camt\DTO\Message;
 use Genkgo\Camt\DTO\OrganisationIdentification;
 use Genkgo\Camt\DTO\RecordWithBalances;
 use Genkgo\Camt\Exception\InvalidMessageException;
-use Genkgo\TestCamt\AbstractTestCase;
+use PHPUnit\Framework;
 
-class EndToEndTest extends AbstractTestCase
+class EndToEndTest extends Framework\TestCase
 {
     protected function getV2Message(): Message
     {
