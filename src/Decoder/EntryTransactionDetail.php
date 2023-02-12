@@ -40,6 +40,7 @@ abstract class EntryTransactionDetail
         $reference->setPaymentInformationId(isset($refs->PmtInfId) ? (string) $refs->PmtInfId : null);
         $reference->setInstructionId(isset($refs->InstrId) ? (string) $refs->InstrId : null);
         $reference->setEndToEndId(isset($refs->EndToEndId) ? (string) $refs->EndToEndId : null);
+        $reference->setUuidEndToEndReference(isset($refs->UETR) ? (string) $refs->UETR : null);
         $reference->setTransactionId(isset($refs->TxId) ? (string) $refs->TxId : null);
         $reference->setMandateId(isset($refs->MndtId) ? (string) $refs->MndtId : null);
         $reference->setChequeNumber(isset($refs->ChqNb) ? (string) $refs->ChqNb : null);

@@ -16,6 +16,8 @@ class Reference
 
     private ?string $endToEndId = null;
 
+    private ?string $uuidEndToEndReference = null;
+
     private ?string $transactionId = null;
 
     private ?string $mandateId = null;
@@ -95,6 +97,19 @@ class Reference
         $this->endToEndId = $endToEndId;
 
         return $this;
+    }
+
+    /**
+     * Universally unique identifier to provide an end-to-end reference of a payment transaction.
+     */
+    public function getUuidEndToEndReference(): ?string
+    {
+        return $this->uuidEndToEndReference;
+    }
+
+    public function setUuidEndToEndReference(?string $uuidEndToEndReference): void
+    {
+        $this->uuidEndToEndReference = $uuidEndToEndReference;
     }
 
     public function getTransactionId(): ?string

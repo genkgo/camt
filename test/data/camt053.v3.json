@@ -175,7 +175,8 @@
                             "getType": "LegalSequenceNumber"
                         }
                     ],
-                    "getTransactionId": null
+                    "getTransactionId": null,
+                    "getUuidEndToEndReference": null
                 },
                 "getRelatedAgent": {
                     "__CLASS__": "Genkgo\\Camt\\DTO\\RelatedAgent",

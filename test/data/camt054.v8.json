@@ -127,7 +127,8 @@
                     "getPaymentInformationId": "UXC06170000006PI00001",
                     "getProcessingId": null,
                     "getProprietaries": [],
-                    "getTransactionId": null
+                    "getTransactionId": null,
+                    "getUuidEndToEndReference": null
                 },
                 "getRelatedAgent": {
                     "__CLASS__": "Genkgo\\Camt\\DTO\\RelatedAgent",
@@ -276,7 +277,8 @@
                         "getPaymentInformationId": "UXC06170000006PI00001",
                         "getProcessingId": null,
                         "getProprietaries": [],
-                        "getTransactionId": null
+                        "getTransactionId": null,
+                        "getUuidEndToEndReference": null
                     },
                     "getRelatedAgent": {
                         "__CLASS__": "Genkgo\\Camt\\DTO\\RelatedAgent",
@@ -418,7 +420,8 @@
                         "getPaymentInformationId": "UXC06170000006PI00001",
                         "getProcessingId": null,
                         "getProprietaries": [],
-                        "getTransactionId": null
+                        "getTransactionId": null,
+                        "getUuidEndToEndReference": null
                     },
                     "getRelatedAgent": {
                         "__CLASS__": "Genkgo\\Camt\\DTO\\RelatedAgent",

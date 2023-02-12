@@ -92,7 +92,8 @@
                     "getPaymentInformationId": null,
                     "getProcessingId": null,
                     "getProprietaries": [],
-                    "getTransactionId": null
+                    "getTransactionId": null,
+                    "getUuidEndToEndReference": null
                 },
                 "getRelatedAgent": null,
                 "getRelatedAgents": [],
@@ -164,7 +165,8 @@
                         "getPaymentInformationId": null,
                         "getProcessingId": null,
                         "getProprietaries": [],
-                        "getTransactionId": null
+                        "getTransactionId": null,
+                        "getUuidEndToEndReference": null
                     },
                     "getRelatedAgent": null,
                     "getRelatedAgents": [],
@@ -229,7 +231,8 @@
                         "getPaymentInformationId": null,
                         "getProcessingId": null,
                         "getProprietaries": [],
-                        "getTransactionId": null
+                        "getTransactionId": null,
+                        "getUuidEndToEndReference": null
                     },
                     "getRelatedAgent": null,
                     "getRelatedAgents": [],
