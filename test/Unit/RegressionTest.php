@@ -71,5 +71,7 @@ class RegressionTest extends TestCase
         yield ['test/data/camt053.v4.xml'];
         yield ['test/data/camt054.v2.xml'];
         yield ['test/data/camt054.v4.xml'];
+        yield ['test/data/camt054.v8.xml'];
+        yield ['test/data/camt054.v8-with-financial-institution.xml'];
     }
 }

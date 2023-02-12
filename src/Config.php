@@ -52,6 +52,7 @@ class Config
         $config->addMessageFormat(new Camt053\MessageFormat\V04());
         $config->addMessageFormat(new Camt054\MessageFormat\V02());
         $config->addMessageFormat(new Camt054\MessageFormat\V04());
+        $config->addMessageFormat(new Camt054\MessageFormat\V08());
 
         return $config;
     }

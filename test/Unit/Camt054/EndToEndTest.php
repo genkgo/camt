@@ -32,11 +32,20 @@ class EndToEndTest extends Framework\TestCase
         return (new MessageFormat\V04())->getDecoder()->decode($dom);
     }
 
+    protected function getv8Message(): Message
+    {
+        $dom = new DOMDocument('1.0', 'UTF-8');
+        $dom->load('test/data/camt054.v8.xml');
+
+        return (new MessageFormat\V08())->getDecoder()->decode($dom);
+    }
+
     public function testGroupHeader(): void
     {
         $messages = [
             $this->getV2Message(),
             $this->getV4Message(),
+            $this->getV8Message(),
         ];
 
         /** @var Message $message */
@@ -86,6 +95,7 @@ class EndToEndTest extends Framework\TestCase
         $messages = [
             $this->getV2Message(),
             $this->getV4Message(),
+            $this->getV8Message(),
         ];
 
         foreach ($messages as $message) {
@@ -117,6 +127,7 @@ class EndToEndTest extends Framework\TestCase
         $messages = [
             $this->getV2Message(),
             $this->getV4Message(),
+            $this->getV8Message(),
         ];
 
         foreach ($messages as $message) {
@@ -145,6 +156,7 @@ class EndToEndTest extends Framework\TestCase
         $messages = [
             $this->getV2Message(),
             $this->getV4Message(),
+            $this->getV8Message(),
         ];
 
         foreach ($messages as $message) {

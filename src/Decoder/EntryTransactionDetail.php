@@ -7,6 +7,7 @@ namespace Genkgo\Camt\Decoder;
 use Genkgo\Camt\Decoder\Factory\DTO as DTOFactory;
 use Genkgo\Camt\DTO;
 use Genkgo\Camt\DTO\RelatedParty;
+use Genkgo\Camt\DTO\RelatedPartyTypeInterface;
 use Genkgo\Camt\Util\MoneyFactory;
 use SimpleXMLElement;
 
@@ -69,50 +70,49 @@ abstract class EntryTransactionDetail
             if (isset($xmlRelatedParty->Cdtr)) {
                 $xmlRelatedPartyType = $xmlRelatedParty->Cdtr;
                 $xmlRelatedPartyTypeAccount = $xmlRelatedParty->CdtrAcct;
-                $xmlRelatedPartyName = (isset($xmlRelatedPartyType->Nm)) ? (string) $xmlRelatedPartyType->Nm : '';
-                $relatedPartyType = new DTO\Creditor($xmlRelatedPartyName);
 
-                $this->addRelatedParty($detail, $xmlRelatedPartyType, $relatedPartyType, $xmlRelatedPartyTypeAccount);
+                $this->addRelatedParty($detail, $xmlRelatedPartyType, DTO\Creditor::class, $xmlRelatedPartyTypeAccount);
             }
 
             if (isset($xmlRelatedParty->UltmtCdtr)) {
                 $xmlRelatedPartyType = $xmlRelatedParty->UltmtCdtr;
-                $xmlRelatedPartyName = (isset($xmlRelatedPartyType->Nm)) ? (string) $xmlRelatedPartyType->Nm : '';
-                $relatedPartyType = new DTO\UltimateCreditor($xmlRelatedPartyName);
 
-                $this->addRelatedParty($detail, $xmlRelatedPartyType, $relatedPartyType);
+                $this->addRelatedParty($detail, $xmlRelatedPartyType, DTO\UltimateCreditor::class);
             }
 
             if (isset($xmlRelatedParty->Dbtr)) {
                 $xmlRelatedPartyType = $xmlRelatedParty->Dbtr;
                 $xmlRelatedPartyTypeAccount = $xmlRelatedParty->DbtrAcct;
-                $xmlRelatedPartyName = (isset($xmlRelatedPartyType->Nm)) ? (string) $xmlRelatedPartyType->Nm : '';
-                $relatedPartyType = $debtor = new DTO\Debtor($xmlRelatedPartyName);
 
-                $this->addRelatedParty($detail, $xmlRelatedPartyType, $relatedPartyType, $xmlRelatedPartyTypeAccount);
+                $this->addRelatedParty($detail, $xmlRelatedPartyType, DTO\Debtor::class, $xmlRelatedPartyTypeAccount);
             }
 
             if (isset($xmlRelatedParty->UltmtDbtr)) {
                 $xmlRelatedPartyType = $xmlRelatedParty->UltmtDbtr;
-                $xmlRelatedPartyName = (isset($xmlRelatedPartyType->Nm)) ? (string) $xmlRelatedPartyType->Nm : '';
-                $relatedPartyType = new DTO\UltimateDebtor($xmlRelatedPartyName);
 
-                $this->addRelatedParty($detail, $xmlRelatedPartyType, $relatedPartyType);
+                $this->addRelatedParty($detail, $xmlRelatedPartyType, DTO\UltimateDebtor::class);
             }
         }
     }
 
-    protected function addRelatedParty(DTO\EntryTransactionDetail $detail, SimpleXMLElement $xmlRelatedPartyType, DTO\RelatedPartyTypeInterface $relatedPartyType, ?SimpleXMLElement $xmlRelatedPartyTypeAccount = null): RelatedParty
+    /**
+     * @param class-string<RelatedPartyTypeInterface> $relatedPartyTypeClass
+     */
+    protected function addRelatedParty(DTO\EntryTransactionDetail $detail, SimpleXMLElement $xmlRelatedPartyType, string $relatedPartyTypeClass, ?SimpleXMLElement $xmlRelatedPartyTypeAccount = null): void
     {
-        if (isset($xmlRelatedPartyType->PstlAdr)) {
-            $relatedPartyType->setAddress(DTOFactory\Address::createFromXml($xmlRelatedPartyType->PstlAdr));
+        // CAMT v08 uses substructure, so we check for its existence or fallback to the element itself to keep compatibility with CAMT v04
+        $xmlPartyDetail = $xmlRelatedPartyType->Pty ?: $xmlRelatedPartyType->Agt?->FinInstnId ?: $xmlRelatedPartyType;
+
+        $xmlRelatedPartyName = (isset($xmlPartyDetail->Nm)) ? (string) $xmlPartyDetail->Nm : null;
+        $relatedPartyType = new $relatedPartyTypeClass($xmlRelatedPartyName);
+
+        if (isset($xmlPartyDetail->PstlAdr)) {
+            $relatedPartyType->setAddress(DTOFactory\Address::createFromXml($xmlPartyDetail->PstlAdr));
         }
 
         $relatedParty = new RelatedParty($relatedPartyType, $this->getRelatedPartyAccount($xmlRelatedPartyTypeAccount));
 
         $detail->addRelatedParty($relatedParty);
-
-        return $relatedParty;
     }
 
     public function addRelatedAgents(DTO\EntryTransactionDetail $detail, SimpleXMLElement $xmlDetail): void

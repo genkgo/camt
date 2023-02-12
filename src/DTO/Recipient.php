@@ -8,13 +8,15 @@ class Recipient implements RelatedPartyTypeInterface
 {
     private ?Address $address = null;
 
-    private ?string $name = null;
-
     private ?string $countryOfResidence = null;
 
     private ?ContactDetails $contactDetails = null;
 
     private ?Identification $identification = null;
+
+    public function __construct(private ?string $name = null)
+    {
+    }
 
     public function getAddress(): ?Address
     {

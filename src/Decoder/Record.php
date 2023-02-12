@@ -121,9 +121,7 @@ class Record
                 $entry->setBatchPaymentId((string) $xmlEntry->NtryDtls->TxDtls->Refs->PmtInfId);
             }
 
-            if (isset($xmlEntry->Sts) && (string) $xmlEntry->Sts) {
-                $entry->setStatus((string) $xmlEntry->Sts);
-            }
+            $entry->setStatus($this->readStatus($xmlEntry));
 
             if (isset($xmlEntry->BkTxCd)) {
                 $bankTransactionCode = new DTO\BankTransactionCode();
@@ -193,5 +191,16 @@ class Record
             $record->addEntry($entry);
             ++$index;
         }
+    }
+
+    private function readStatus(SimpleXMLElement $xmlEntry): ?string
+    {
+        $xmlStatus = $xmlEntry->Sts;
+
+        // CAMT v08 uses substructure, so we check for its existence or fallback to the element itself to keep compatibility with CAMT v04
+        return (string) $xmlStatus?->Cd
+            ?: (string) $xmlStatus?->Prtry
+                ?: (string) $xmlStatus
+                    ?: null;
     }
 }

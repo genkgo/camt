@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Document xmlns="urn:iso:std:iso:20022:tech:xsd:camt.054.001.08" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:iso:std:iso:20022:tech:xsd:camt.054.001.08 camt.054.001.08.xsd">
+  <BkToCstmrDbtCdtNtfctn>
+    <GrpHdr>
+      <MsgId>AAAASESS-FP-ACCR001</MsgId>
+      <CreDtTm>2007-10-18T12:30:00+01:00</CreDtTm>
+    </GrpHdr>
+    <Ntfctn>
+      <Id>AAAASESS-FP-ACCR001</Id>
+      <CreDtTm>2007-10-18T12:30:00+01:00</CreDtTm>
+      <Acct>
+        <Id>
+          <IBAN>CH2801234000123456789</IBAN>
+        </Id>
+      </Acct>
+      <Ntry>
+        <Amt Ccy="SEK">200000</Amt>
+        <CdtDbtInd>DBIT</CdtDbtInd>
+        <Sts>
+          <Cd>BOOK</Cd>
+        </Sts>
+        <AcctSvcrRef>ACSR160617103200001</AcctSvcrRef>
+        <BkTxCd>
+        </BkTxCd>
+        <NtryDtls>
+          <TxDtls>
+            <RltdPties>
+              <Cdtr>
+                <Agt>
+                  <FinInstnId>
+                    <Nm>Example Creditor 3 - V1</Nm>
+                    <PstlAdr>
+                      <StrtNm>Example Street 3 - V1</StrtNm>
+                      <BldgNb>31</BldgNb>
+                      <PstCd>3131</PstCd>
+                      <TwnNm>Example Town 3 - V1</TwnNm>
+                      <Ctry>CH</Ctry>
+                    </PstlAdr>
+                  </FinInstnId>
+                </Agt>
+              </Cdtr>
+            </RltdPties>
+          </TxDtls>
+        </NtryDtls>
+      </Ntry>
+    </Ntfctn>
+  </BkToCstmrDbtCdtNtfctn>
+</Document>

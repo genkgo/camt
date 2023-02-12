@@ -9,6 +9,8 @@ namespace Genkgo\Camt\DTO;
  */
 interface RelatedPartyTypeInterface
 {
+    public function __construct(?string $name);
+
     public function setAddress(Address $address): void;
 
     public function getAddress(): ?Address;

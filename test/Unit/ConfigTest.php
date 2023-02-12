@@ -32,6 +32,7 @@ class ConfigTest extends TestCase
             Camt053\MessageFormat\V04::class,
             Camt054\MessageFormat\V02::class,
             Camt054\MessageFormat\V04::class,
+            Camt054\MessageFormat\V08::class,
         ];
 
         $actualMessageFormats = array_map(static fn (MessageFormatInterface $messageFormat): string => get_class($messageFormat), $messageFormats);
