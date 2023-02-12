@@ -55,31 +55,6 @@ It is installable and autoloadable via Composer:
 composer require genkgo/camt
 ```
 
-### Quality
-
-To run the unit tests at the command line, run:
-
-```sh
-./vendor/bin/phpunit
-```
-
-This library attempts to comply with [PSR-1][], [PSR-2][], and [PSR-4][]. If
-you notice compliance oversights, please send a patch via pull request.
-
-[PSR-1]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-1-basic-coding-standard.md
-[PSR-2]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md
-[PSR-4]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader.md
-
-[PHP-CS-Fixer](https://github.com/FriendsOfPHP/PHP-CS-Fixer) is used to ensure PSR coding standards are respected.
-
-To fix CS, run:
-
-```sh
-./vendor/bin/php-cs-fixer fix
-```
-
-A `.php_cs.dist` file in the root directory excludes `vendor` directory from fixing and contains coding standards level wanted (PSR-2).
-
 ## Getting Started
 
 Read a CAMT file, and loop through its statements and entries.
@@ -121,3 +96,26 @@ $reader = new Reader($config);
   give a clear description what goes wrong. We will have a look when there is time.
 - Want to see a feature added, issue a pull request and see what happens. You could also file a bug of the missing
   feature and we can discuss how to implement it.
+
+
+### Quality
+
+To check that everything is as it should be, run:
+
+```sh
+composer check
+```
+
+To fix code style, run:
+
+```sh
+composer check
+```
+
+### How to release
+
+1. Create an annotated tag
+    1. `git tag -a 1.2.3`
+    1. Tag subject must be the version number, eg: `1.2.3`
+    1. Tag body must be a copy-paste of the changelog entries
+1. Push tag with `git push --tags`, then GitHub Actions will create a GitHub release automatically
