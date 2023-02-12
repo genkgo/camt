@@ -15,7 +15,7 @@ class EntryIteratorTest extends Framework\TestCase
     protected function getDefaultMessage(): Message
     {
         $dom = new DOMDocument('1.0', 'UTF-8');
-        $dom->load(__DIR__ . '/Camt053/Stubs/camt053.v2.multi.statement.xml');
+        $dom->load('test/data/camt053.v2.multi.statement.xml');
 
         return (new MessageFormat\V02())->getDecoder()->decode($dom);
     }

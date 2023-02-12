@@ -90,7 +90,7 @@ use Genkgo\Camt\Config;
 use Genkgo\Camt\Reader;
 
 $reader = new Reader(Config::getDefault());
-$message = $reader->readFile(__DIR__.'/Camt053/Stubs/camt053.v2.minimal.xml');
+$message = $reader->readFile('test/data/camt053.v2.minimal.xml');
 $statements = $message->getRecords();
 foreach ($statements as $statement) {
     $entries = $statement->getEntries();

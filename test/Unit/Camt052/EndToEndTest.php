@@ -19,7 +19,7 @@ class EndToEndTest extends Framework\TestCase
     protected function getV1Message(): Message
     {
         $dom = new DOMDocument('1.0', 'UTF-8');
-        $dom->load(__DIR__ . '/Stubs/camt052.v1.xml');
+        $dom->load('test/data/camt052.v1.xml');
 
         return (new MessageFormat\V01())->getDecoder()->decode($dom);
     }
@@ -27,7 +27,7 @@ class EndToEndTest extends Framework\TestCase
     protected function getV2Message(): Message
     {
         $dom = new DOMDocument('1.0', 'UTF-8');
-        $dom->load(__DIR__ . '/Stubs/camt052.v2.xml');
+        $dom->load('test/data/camt052.v2.xml');
 
         return (new MessageFormat\V02())->getDecoder()->decode($dom);
     }
@@ -35,7 +35,7 @@ class EndToEndTest extends Framework\TestCase
     protected function getV2OtherAccountMessage(): Message
     {
         $dom = new DOMDocument('1.0', 'UTF-8');
-        $dom->load(__DIR__ . '/Stubs/camt052.v2.other-account.xml');
+        $dom->load('test/data/camt052.v2.other-account.xml');
 
         return (new MessageFormat\V02())->getDecoder()->decode($dom);
     }
@@ -43,7 +43,7 @@ class EndToEndTest extends Framework\TestCase
     protected function getV4Message(): Message
     {
         $dom = new DOMDocument('1.0', 'UTF-8');
-        $dom->load(__DIR__ . '/Stubs/camt052.v4.xml');
+        $dom->load('test/data/camt052.v4.xml');
 
         return (new MessageFormat\V04())->getDecoder()->decode($dom);
     }
@@ -51,7 +51,7 @@ class EndToEndTest extends Framework\TestCase
     protected function getV6Message(): Message
     {
         $dom = new DOMDocument('1.0', 'UTF-8');
-        $dom->load(__DIR__ . '/Stubs/camt052.v6.xml');
+        $dom->load('test/data/camt052.v6.xml');
 
         return (new MessageFormat\V06())->getDecoder()->decode($dom);
     }
