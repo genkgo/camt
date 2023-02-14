@@ -3,7 +3,6 @@
 /.gitattributes             export-ignore
 /.gitignore                 export-ignore
 /.php-cs-fixer.dist.php     export-ignore
-/.scrutinizer.yaml          export-ignore
 /composer.lock              export-ignore
 /phpstan.neon.dist          export-ignore
 /phpunit.xml                export-ignore
