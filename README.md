@@ -1,8 +1,7 @@
 # Genkgo.CAMT
 
 [![Build Status](https://github.com/genkgo/camt/workflows/main/badge.svg)](https://github.com/genkgo/camt/actions)
-[![Code Quality](https://scrutinizer-ci.com/g/genkgo/camt/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/genkgo/camt/?branch=master)
-[![Code Coverage](https://scrutinizer-ci.com/g/genkgo/camt/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/genkgo/camt/?branch=master)
+[![Code Coverage](https://codecov.io/gh/genkgo/camt/branch/main/graph/badge.svg)](https://codecov.io/gh/genkgo/camt)
 [![Total Downloads](https://poser.pugx.org/genkgo/camt/downloads.png)](https://packagist.org/packages/genkgo/camt)
 [![Latest Stable Version](https://poser.pugx.org/genkgo/camt/v/stable.png)](https://packagist.org/packages/genkgo/camt)
 [![License](https://poser.pugx.org/genkgo/camt/license.png)](https://packagist.org/packages/genkgo/camt)

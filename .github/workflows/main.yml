@@ -119,10 +119,10 @@ jobs:
       - name: Code coverage
         run: ./vendor/bin/phpunit --coverage-clover coverage-clover.xml
 
-      - name: Upload Scrutinizer coverage
-        run: |
-          composer global require scrutinizer/ocular
-          ~/.composer/vendor/bin/ocular code-coverage:upload --format=php-clover coverage-clover.xml
+      - name: Send code coverage report to codecov.io
+        uses: codecov/codecov-action@v3
+        with:
+          files: coverage-clover.xml
 
   release:
     runs-on: ubuntu-latest
