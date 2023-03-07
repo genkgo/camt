@@ -7,7 +7,7 @@ namespace Genkgo\Camt\DTO;
 class Debtor implements RelatedPartyTypeInterface
 {
     private ?Address $address = null;
-	private ?string $orgId;
+    private ?string $orgId;
 
     public function __construct(private ?string $name)
     {
@@ -28,13 +28,13 @@ class Debtor implements RelatedPartyTypeInterface
         return $this->name;
     }
 
-	public function setOrgId(?string $orgId): void
-	{
-		$this->orgId = $orgId;
-	}
+    public function setOrgId(?string $orgId): void
+    {
+        $this->orgId = $orgId;
+    }
 
-	public function getOrgId(): ?string
-	{
-		return $this->orgId;
-	}
+    public function getOrgId(): ?string
+    {
+        return $this->orgId;
+    }
 }

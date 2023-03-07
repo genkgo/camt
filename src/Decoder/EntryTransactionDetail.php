@@ -106,9 +106,9 @@ abstract class EntryTransactionDetail
 
         $xmlRelatedPartyName = (isset($xmlPartyDetail->Nm)) ? (string) $xmlPartyDetail->Nm : null;
         $relatedPartyType = new $relatedPartyTypeClass($xmlRelatedPartyName);
-		$orgId = $xmlRelatedPartyType?->Id?->OrgId?->Othr?->Id;
+        $orgId = $xmlRelatedPartyType?->Id?->OrgId?->Othr?->Id;
 
-		$relatedPartyType->setOrgId((string) $orgId);
+        $relatedPartyType->setOrgId((string)$orgId);
         if (isset($xmlPartyDetail->PstlAdr)) {
             $relatedPartyType->setAddress(DTOFactory\Address::createFromXml($xmlPartyDetail->PstlAdr));
         }
