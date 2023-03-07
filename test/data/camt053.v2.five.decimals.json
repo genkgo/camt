@@ -153,7 +153,8 @@
                                 "getSubDepartment": null,
                                 "getTownName": null
                             },
-                            "getName": "Company Name"
+                            "getName": "Company Name",
+                            "getOrgId": ""
                         }
                     }
                 ],

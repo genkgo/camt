@@ -191,7 +191,8 @@
                         "getRelatedPartyType": {
                             "__CLASS__": "Genkgo\\Camt\\DTO\\Creditor",
                             "getAddress": null,
-                            "getName": "UNIFITS GmbH"
+                            "getName": "UNIFITS GmbH",
+                            "getOrgId": ""
                         }
                     },
                     {
@@ -218,7 +219,8 @@
                                 "getSubDepartment": null,
                                 "getTownName": "Example Creditor Town 4 - V1"
                             },
-                            "getName": "Example Creditor 4 - V1"
+                            "getName": "Example Creditor 4 - V1",
+                            "getOrgId": ""
                         }
                     }
                 ],

@@ -106,7 +106,9 @@ abstract class EntryTransactionDetail
 
         $xmlRelatedPartyName = (isset($xmlPartyDetail->Nm)) ? (string) $xmlPartyDetail->Nm : null;
         $relatedPartyType = new $relatedPartyTypeClass($xmlRelatedPartyName);
+		$orgId = $xmlRelatedPartyType?->Id?->OrgId?->Othr?->Id;
 
+		$relatedPartyType->setOrgId((string) $orgId);
         if (isset($xmlPartyDetail->PstlAdr)) {
             $relatedPartyType->setAddress(DTOFactory\Address::createFromXml($xmlPartyDetail->PstlAdr));
         }
@@ -330,10 +332,13 @@ abstract class EntryTransactionDetail
 
     public function addAmountDetails(DTO\EntryTransactionDetail $detail, SimpleXMLElement $xmlDetail, SimpleXMLElement $CdtDbtInd): void
     {
-        if (isset($xmlDetail->AmtDtls, $xmlDetail->AmtDtls->TxAmt, $xmlDetail->AmtDtls->TxAmt->Amt)) {
-            $money = $this->moneyFactory->create($xmlDetail->AmtDtls->TxAmt->Amt, $CdtDbtInd);
-            $detail->setAmountDetails($money);
-        }
+		if (isset($xmlDetail->AmtDtls, $xmlDetail->AmtDtls->TxAmt, $xmlDetail->AmtDtls->TxAmt->Amt)) {
+			$money = $this->moneyFactory->create($xmlDetail->AmtDtls->TxAmt->Amt, $CdtDbtInd);
+			$detail->setAmountDetails($money);
+		} elseif(isset($xmlDetail->AmtDtls->PrtryAmt, $xmlDetail->AmtDtls->PrtryAmt->Amt, $xmlDetail->AmtDtls->PrtryAmt->Tp)) {
+			$money = $this->moneyFactory->create($xmlDetail->AmtDtls->PrtryAmt->Amt, $xmlDetail->AmtDtls->PrtryAmt->Tp);
+			$detail->setAmountDetails($money);
+		}
     }
 
     public function addAmount(DTO\EntryTransactionDetail $detail, SimpleXMLElement $xmlDetail, SimpleXMLElement $CdtDbtInd): void

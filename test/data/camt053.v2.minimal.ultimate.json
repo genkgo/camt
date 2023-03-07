@@ -193,7 +193,8 @@
                                 "getSubDepartment": null,
                                 "getTownName": null
                             },
-                            "getName": "CREDITOR NAME NM"
+                            "getName": "CREDITOR NAME NM",
+                            "getOrgId": ""
                         }
                     },
                     {
@@ -216,7 +217,8 @@
                                 "getSubDepartment": null,
                                 "getTownName": null
                             },
-                            "getName": "DEBTOR NAME NM"
+                            "getName": "DEBTOR NAME NM",
+                            "getOrgId": ""
                         }
                     }
                 ],

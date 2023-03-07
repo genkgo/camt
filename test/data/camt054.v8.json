@@ -175,7 +175,8 @@
                                 "getSubDepartment": null,
                                 "getTownName": "Example Town 3 - V1"
                             },
-                            "getName": "Example Creditor 3 - V1"
+                            "getName": "Example Creditor 3 - V1",
+                            "getOrgId": ""
                         }
                     },
                     {
@@ -191,7 +192,8 @@
                         "getRelatedPartyType": {
                             "__CLASS__": "Genkgo\\Camt\\DTO\\Debtor",
                             "getAddress": null,
-                            "getName": "UNIFITS GmbH"
+                            "getName": "UNIFITS GmbH",
+                            "getOrgId": ""
                         }
                     }
                 ],
@@ -325,7 +327,8 @@
                                     "getSubDepartment": null,
                                     "getTownName": "Example Town 3 - V2"
                                 },
-                                "getName": "Example Creditor 3 - V2"
+                                "getName": "Example Creditor 3 - V2",
+                                "getOrgId": ""
                             }
                         },
                         {
@@ -341,7 +344,8 @@
                             "getRelatedPartyType": {
                                 "__CLASS__": "Genkgo\\Camt\\DTO\\Debtor",
                                 "getAddress": null,
-                                "getName": "UNIFITS GmbH"
+                                "getName": "UNIFITS GmbH",
+                                "getOrgId": ""
                             }
                         }
                     ],
@@ -468,7 +472,8 @@
                                     "getSubDepartment": null,
                                     "getTownName": "Example Town 3 - V3"
                                 },
-                                "getName": "Example Creditor 3 - V3"
+                                "getName": "Example Creditor 3 - V3",
+                                "getOrgId": ""
                             }
                         },
                         {
@@ -484,7 +489,8 @@
                             "getRelatedPartyType": {
                                 "__CLASS__": "Genkgo\\Camt\\DTO\\Debtor",
                                 "getAddress": null,
-                                "getName": "UNIFITS GmbH"
+                                "getName": "UNIFITS GmbH",
+                                "getOrgId": ""
                             }
                         }
                     ],
