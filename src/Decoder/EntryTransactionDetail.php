@@ -332,13 +332,13 @@ abstract class EntryTransactionDetail
 
     public function addAmountDetails(DTO\EntryTransactionDetail $detail, SimpleXMLElement $xmlDetail, SimpleXMLElement $CdtDbtInd): void
     {
-		if (isset($xmlDetail->AmtDtls, $xmlDetail->AmtDtls->TxAmt, $xmlDetail->AmtDtls->TxAmt->Amt)) {
-			$money = $this->moneyFactory->create($xmlDetail->AmtDtls->TxAmt->Amt, $CdtDbtInd);
-			$detail->setAmountDetails($money);
-		} elseif(isset($xmlDetail->AmtDtls->PrtryAmt, $xmlDetail->AmtDtls->PrtryAmt->Amt, $xmlDetail->AmtDtls->PrtryAmt->Tp)) {
-			$money = $this->moneyFactory->create($xmlDetail->AmtDtls->PrtryAmt->Amt, $xmlDetail->AmtDtls->PrtryAmt->Tp);
-			$detail->setAmountDetails($money);
-		}
+        if (isset($xmlDetail->AmtDtls, $xmlDetail->AmtDtls->TxAmt, $xmlDetail->AmtDtls->TxAmt->Amt)) {
+            $money = $this->moneyFactory->create($xmlDetail->AmtDtls->TxAmt->Amt, $CdtDbtInd);
+            $detail->setAmountDetails($money);
+        } elseif (isset($xmlDetail->AmtDtls->PrtryAmt, $xmlDetail->AmtDtls->PrtryAmt->Amt, $xmlDetail->AmtDtls->PrtryAmt->Tp)) {
+            $money = $this->moneyFactory->create($xmlDetail->AmtDtls->PrtryAmt->Amt, $xmlDetail->AmtDtls->PrtryAmt->Tp);
+            $detail->setAmountDetails($money);
+        }
     }
 
     public function addAmount(DTO\EntryTransactionDetail $detail, SimpleXMLElement $xmlDetail, SimpleXMLElement $CdtDbtInd): void
