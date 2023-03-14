@@ -106,7 +106,7 @@
                             "__CLASS__": "Genkgo\\Camt\\DTO\\Debtor",
                             "getAddress": null,
                             "getName": "MUELLER",
-                            "getOrgId": ""
+                            "getOrgId": null
                         }
                     }
                 ],
@@ -140,6 +140,102 @@
             },
             "getTransactionDetails": [
                 "__RECURSIVITY__",
+                {
+                    "__CLASS__": "Genkgo\\Camt\\DTO\\EntryTransactionDetail",
+                    "getAdditionalTransactionInformation": null,
+                    "getAmount": null,
+                    "getAmountDetails": {
+                        "__CLASS__": "Money\\Money",
+                        "getAmount": "-23625",
+                        "getCurrency": {
+                            "__CLASS__": "Money\\Currency",
+                            "getCode": "SEK"
+                        }
+                    },
+                    "getBankTransactionCode": {
+                        "__CLASS__": "Genkgo\\Camt\\DTO\\BankTransactionCode",
+                        "getDomain": null,
+                        "getProprietary": null
+                    },
+                    "getCharges": null,
+                    "getReference": {
+                        "__CLASS__": "Genkgo\\Camt\\DTO\\Reference",
+                        "getAccountOwnerTransactionId": null,
+                        "getAccountServicerReference": null,
+                        "getAccountServicerTransactionId": null,
+                        "getChequeNumber": null,
+                        "getClearingSystemReference": null,
+                        "getEndToEndId": "NOTPROVIDED",
+                        "getInstructionId": null,
+                        "getMandateId": null,
+                        "getMarketInfrastructureTransactionId": null,
+                        "getMessageId": null,
+                        "getPaymentInformationId": null,
+                        "getProcessingId": null,
+                        "getProprietaries": [],
+                        "getTransactionId": null,
+                        "getUuidEndToEndReference": null
+                    },
+                    "getRelatedAgent": null,
+                    "getRelatedAgents": [],
+                    "getRelatedDates": {
+                        "__CLASS__": "Genkgo\\Camt\\DTO\\RelatedDates",
+                        "getAcceptanceDateTime": {
+                            "__CLASS__": "DateTimeImmutable",
+                            "0": "2023-03-02T01:01:01+00:00"
+                        }
+                    },
+                    "getRelatedParties": [
+                        {
+                            "__CLASS__": "Genkgo\\Camt\\DTO\\RelatedParty",
+                            "getAccount": null,
+                            "getRelatedPartyType": {
+                                "__CLASS__": "Genkgo\\Camt\\DTO\\Debtor",
+                                "getAddress": {
+                                    "__CLASS__": "Genkgo\\Camt\\DTO\\Address",
+                                    "getAddressLines": [],
+                                    "getBuildingNumber": null,
+                                    "getCountry": null,
+                                    "getCountrySubDivision": null,
+                                    "getDepartment": null,
+                                    "getPostCode": "17577",
+                                    "getStreetName": null,
+                                    "getSubDepartment": null,
+                                    "getTownName": "STOCKHOLM"
+                                },
+                                "getName": "Test Name",
+                                "getOrgId": "002021012973"
+                            }
+                        }
+                    ],
+                    "getRelatedParty": "__RECURSIVITY__",
+                    "getRemittanceInformation": {
+                        "__CLASS__": "Genkgo\\Camt\\DTO\\RemittanceInformation",
+                        "getCreditorReferenceInformation": null,
+                        "getMessage": "ISR ref number V2",
+                        "getStructuredBlock": {
+                            "__CLASS__": "Genkgo\\Camt\\DTO\\StructuredRemittanceInformation",
+                            "getAdditionalRemittanceInformation": null,
+                            "getCreditorReferenceInformation": {
+                                "__CLASS__": "Genkgo\\Camt\\DTO\\CreditorReferenceInformation",
+                                "getCode": "SCOR",
+                                "getProprietary": null,
+                                "getRef": "ISR ref number V2"
+                            }
+                        },
+                        "getStructuredBlocks": [
+                            "__RECURSIVITY__"
+                        ],
+                        "getUnstructuredBlock": {
+                            "__CLASS__": "Genkgo\\Camt\\DTO\\UnstructuredRemittanceInformation",
+                            "getMessage": "ISR ref number V2"
+                        },
+                        "getUnstructuredBlocks": [
+                            "__RECURSIVITY__"
+                        ]
+                    },
+                    "getReturnInformation": null
+                },
                 {
                     "__CLASS__": "Genkgo\\Camt\\DTO\\EntryTransactionDetail",
                     "getAdditionalTransactionInformation": null,
@@ -180,7 +276,7 @@
                                 "__CLASS__": "Genkgo\\Camt\\DTO\\Debtor",
                                 "getAddress": null,
                                 "getName": "MUELLER",
-                                "getOrgId": ""
+                                "getOrgId": null
                             }
                         }
                     ],
@@ -247,7 +343,7 @@
                                 "__CLASS__": "Genkgo\\Camt\\DTO\\Debtor",
                                 "getAddress": null,
                                 "getName": "MUELLER",
-                                "getOrgId": ""
+                                "getOrgId": null
                             }
                         }
                     ],

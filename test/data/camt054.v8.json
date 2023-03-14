@@ -176,7 +176,7 @@
                                 "getTownName": "Example Town 3 - V1"
                             },
                             "getName": "Example Creditor 3 - V1",
-                            "getOrgId": ""
+                            "getOrgId": null
                         }
                     },
                     {
@@ -193,7 +193,7 @@
                             "__CLASS__": "Genkgo\\Camt\\DTO\\Debtor",
                             "getAddress": null,
                             "getName": "UNIFITS GmbH",
-                            "getOrgId": ""
+                            "getOrgId": null
                         }
                     }
                 ],
@@ -328,7 +328,7 @@
                                     "getTownName": "Example Town 3 - V2"
                                 },
                                 "getName": "Example Creditor 3 - V2",
-                                "getOrgId": ""
+                                "getOrgId": null
                             }
                         },
                         {
@@ -345,7 +345,7 @@
                                 "__CLASS__": "Genkgo\\Camt\\DTO\\Debtor",
                                 "getAddress": null,
                                 "getName": "UNIFITS GmbH",
-                                "getOrgId": ""
+                                "getOrgId": null
                             }
                         }
                     ],
@@ -473,7 +473,7 @@
                                     "getTownName": "Example Town 3 - V3"
                                 },
                                 "getName": "Example Creditor 3 - V3",
-                                "getOrgId": ""
+                                "getOrgId": null
                             }
                         },
                         {
@@ -490,7 +490,7 @@
                                 "__CLASS__": "Genkgo\\Camt\\DTO\\Debtor",
                                 "getAddress": null,
                                 "getName": "UNIFITS GmbH",
-                                "getOrgId": ""
+                                "getOrgId": null
                             }
                         }
                     ],

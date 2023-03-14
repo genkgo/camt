@@ -194,7 +194,7 @@
                                 "getTownName": null
                             },
                             "getName": "CREDITOR NAME NM",
-                            "getOrgId": ""
+                            "getOrgId": null
                         }
                     },
                     {
@@ -218,7 +218,7 @@
                                 "getTownName": null
                             },
                             "getName": "DEBTOR NAME NM",
-                            "getOrgId": ""
+                            "getOrgId": null
                         }
                     }
                 ],

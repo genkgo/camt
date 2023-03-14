@@ -154,7 +154,7 @@
                                 "getTownName": null
                             },
                             "getName": "Company Name",
-                            "getOrgId": ""
+                            "getOrgId": null
                         }
                     }
                 ],

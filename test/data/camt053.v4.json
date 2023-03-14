@@ -237,7 +237,7 @@
                                 "getTownName": null
                             },
                             "getName": "NAME NAME",
-                            "getOrgId": ""
+                            "getOrgId": null
                         }
                     }
                 ],

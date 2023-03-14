@@ -192,7 +192,7 @@
                             "__CLASS__": "Genkgo\\Camt\\DTO\\Creditor",
                             "getAddress": null,
                             "getName": "UNIFITS GmbH",
-                            "getOrgId": ""
+                            "getOrgId": null
                         }
                     },
                     {
@@ -220,7 +220,7 @@
                                 "getTownName": "Example Creditor Town 6 - V1"
                             },
                             "getName": "Example Creditor 6 - V1",
-                            "getOrgId": ""
+                            "getOrgId": null
                         }
                     }
                 ],

@@ -85,7 +85,7 @@
                                 "getTownName": "Example Town 3 - V1"
                             },
                             "getName": "Example Creditor 3 - V1",
-                            "getOrgId": ""
+                            "getOrgId": null
                         }
                     }
                 ],
