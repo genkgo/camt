@@ -21,6 +21,7 @@ Library to read CAMT files. Currently only CAMT.052, CAMT.053 and CAMT.054 are s
 | camt.052.001.05   |                    |
 | camt.052.001.06   | :heavy_check_mark: |
 | camt.052.001.08   |                    |
+| camt.052.001.10   |                    |
 
 #### Camt 053
 
@@ -33,6 +34,7 @@ Library to read CAMT files. Currently only CAMT.052, CAMT.053 and CAMT.054 are s
 | camt.053.001.05   |                    |
 | camt.053.001.06   |                    |
 | camt.053.001.08   |                    |
+| camt.053.001.10   |                    |
 
 #### Camt 054
 
@@ -45,6 +47,7 @@ Library to read CAMT files. Currently only CAMT.052, CAMT.053 and CAMT.054 are s
 | camt.054.001.05   |                    |
 | camt.054.001.06   |                    |
 | camt.054.001.08   | :heavy_check_mark: |
+| camt.054.001.10   |                    |
 
 ### Installation
 
