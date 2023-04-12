@@ -12,42 +12,45 @@ Library to read CAMT files. Currently only CAMT.052, CAMT.053 and CAMT.054 are s
 
 #### Camt 052
 
-| Version           | Supported          |
-| :---------------: | :----------------: |
-| camt.052.001.01   | :heavy_check_mark: |
-| camt.052.001.02   | :heavy_check_mark: |
-| camt.052.001.03   |                    |
-| camt.052.001.04   | :heavy_check_mark: |
-| camt.052.001.05   |                    |
-| camt.052.001.06   | :heavy_check_mark: |
-| camt.052.001.08   |                    |
-| camt.052.001.10   |                    |
+|     Version     | Supported          |
+|:---------------:| :----------------: |
+| camt.052.001.01 | :heavy_check_mark: |
+| camt.052.001.02 | :heavy_check_mark: |
+| camt.052.001.03 |                    |
+| camt.052.001.04 | :heavy_check_mark: |
+| camt.052.001.05 |                    |
+| camt.052.001.06 | :heavy_check_mark: |
+| camt.052.001.08 |                    |
+| camt.052.001.10 |                    |
+| camt.052.001.11 |                    |
 
 #### Camt 053
 
-| Version           | Supported          |
-| :---------------: | :----------------: |
-| camt.053.001.01   |                    |
-| camt.053.001.02   | :heavy_check_mark: |
-| camt.053.001.03   | :heavy_check_mark: |
-| camt.053.001.04   | :heavy_check_mark: |
-| camt.053.001.05   |                    |
-| camt.053.001.06   |                    |
-| camt.053.001.08   |                    |
-| camt.053.001.10   |                    |
+|     Version     | Supported          |
+|:---------------:| :----------------: |
+| camt.053.001.01 |                    |
+| camt.053.001.02 | :heavy_check_mark: |
+| camt.053.001.03 | :heavy_check_mark: |
+| camt.053.001.04 | :heavy_check_mark: |
+| camt.053.001.05 |                    |
+| camt.053.001.06 |                    |
+| camt.053.001.08 |                    |
+| camt.053.001.10 |                    |
+| camt.053.001.11 |                    |
 
 #### Camt 054
 
-| Version           | Supported          |
-| :---------------: | :----------------: |
-| camt.054.001.01   |                    |
-| camt.054.001.02   | :heavy_check_mark: |
-| camt.054.001.03   |                    |
-| camt.054.001.04   | :heavy_check_mark: |
-| camt.054.001.05   |                    |
-| camt.054.001.06   |                    |
-| camt.054.001.08   | :heavy_check_mark: |
-| camt.054.001.10   |                    |
+|     Version     | Supported          |
+|:---------------:| :----------------: |
+| camt.054.001.01 |                    |
+| camt.054.001.02 | :heavy_check_mark: |
+| camt.054.001.03 |                    |
+| camt.054.001.04 | :heavy_check_mark: |
+| camt.054.001.05 |                    |
+| camt.054.001.06 |                    |
+| camt.054.001.08 | :heavy_check_mark: |
+| camt.054.001.10 |                    |
+| camt.054.001.11 |                    |
 
 ### Installation
 
