@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Document xmlns="urn:iso:std:iso:20022:tech:xsd:camt.053.001.08" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <BkToCstmrStmt>
+        <GrpHdr>
+            <MsgId>CAMT053RIB000000000001</MsgId>
+            <CreDtTm>2015-03-10T18:43:50+00:00</CreDtTm>
+            <MsgRcpt>
+                <Nm>COMPANY BVBA</Nm>
+                <PstlAdr>
+                    <StrtNm>12 Oxford Street</StrtNm>
+                    <Ctry>UK</Ctry>
+                </PstlAdr>
+                <Id>
+                    <OrgId>
+                        <AnyBIC>DABAIE2D</AnyBIC>
+                        <Othr>
+                            <Id>Some other Id</Id>
+                            <Issr>Some other Issuer</Issr>
+                        </Othr>
+                    </OrgId>
+                </Id>
+                <CtryOfRes>NL</CtryOfRes>
+            </MsgRcpt>
+            <MsgPgntn>
+                <PgNb>1</PgNb>
+                <LastPgInd>true</LastPgInd>
+            </MsgPgntn>
+            <AddtlInf>Group header additional information</AddtlInf>
+        </GrpHdr>
+        <Stmt>
+            <Id>253EURNL26VAYB8060476890</Id>
+            <StmtPgntn>
+                <PgNb>2</PgNb>
+                <LastPgInd>true</LastPgInd>
+            </StmtPgntn>
+            <ElctrncSeqNb>12312</ElctrncSeqNb>
+            <LglSeqNb>12312</LglSeqNb>
+            <CreDtTm>2015-03-10T18:43:50+00:00</CreDtTm>
+            <FrToDt>
+                <FrDtTm>2007-10-18T08:00:00+01:00</FrDtTm>
+                <ToDtTm>2007-10-18T12:30:00+01:00</ToDtTm>
+            </FrToDt>
+            <CpyDplctInd>CODU</CpyDplctInd>
+            <Acct>
+                <Id>
+                    <Othr>
+                        <Id>NL26VAYB8060476890</Id>
+                    </Othr>
+                </Id>
+                <Ownr>
+                    <Nm>FINPETROL</Nm>
+                </Ownr>
+                <Svcr>
+                    <FinInstnId>
+                        <Nm>AAAA BANKEN</Nm>
+                        <PstlAdr>
+                            <Ctry>SE</Ctry>
+                        </PstlAdr>
+                    </FinInstnId>
+                </Svcr>
+            </Acct>
+            <Bal>
+                <Tp>
+                    <CdOrPrtry>
+                        <Cd>OPBD</Cd>
+                    </CdOrPrtry>
+                </Tp>
+                <Amt Ccy="EUR">18.15</Amt>
+                <CdtDbtInd>CRDT</CdtDbtInd>
+                <Dt>
+                    <Dt>2014-12-30</Dt>
+                </Dt>
+            </Bal>
+            <Bal>
+                <Tp>
+                    <CdOrPrtry>
+                        <Cd>CLBD</Cd>
+                    </CdOrPrtry>
+                </Tp>
+                <Amt Ccy="SEK">27.00</Amt>
+                <CdtDbtInd>DBIT</CdtDbtInd>
+                <Dt>
+                    <Dt>2014-12-30</Dt>
+                </Dt>
+            </Bal>
+            <Bal>
+                <Tp>
+                    <CdOrPrtry>
+                        <Cd>OPAV</Cd>
+                    </CdOrPrtry>
+                </Tp>
+                <Amt Ccy="CHF">35.00</Amt>
+                <CdtDbtInd>CRDT</CdtDbtInd>
+                <Dt>
+                    <Dt>2014-12-30</Dt>
+                </Dt>
+            </Bal>
+            <Bal>
+                <Tp>
+                    <CdOrPrtry>
+                        <Cd>CLAV</Cd>
+                    </CdOrPrtry>
+                </Tp>
+                <Amt Ccy="JPY">2700</Amt>
+                <CdtDbtInd>DBIT</CdtDbtInd>
+                <Dt>
+                    <Dt>2014-12-31</Dt>
+                </Dt>
+            </Bal>
+            <Ntry>
+                <Amt Ccy="EUR">8.85</Amt>
+                <CdtDbtInd>CRDT</CdtDbtInd>
+                <Sts>
+                    <Cd>BOOK</Cd>
+                </Sts>
+                <BookgDt>
+                    <DtTm>2014-12-31T13:15:00+01:00</DtTm>
+                </BookgDt>
+                <ValDt>
+                    <Dt>2015-01-02</Dt>
+                </ValDt>
+                <AcctSvcrRef>AAAASESS-FP-CN_98765/01</AcctSvcrRef>
+                <BkTxCd>
+                    <Domn>
+                        <Cd>PMNT</Cd>
+                        <Fmly>
+                            <Cd>RCDT</Cd>
+                            <SubFmlyCd>BOOK</SubFmlyCd>
+                        </Fmly>
+                    </Domn>
+                </BkTxCd>
+                <NtryDtls>
+                    <TxDtls>
+                        <Refs>
+                            <EndToEndId>MUELL/FINP/RA12345</EndToEndId>
+                            <Prtry>
+                                <Tp>LegalSequenceNumber</Tp>
+                                <Ref>100</Ref>
+                            </Prtry>
+                        </Refs>
+                        <Amt Ccy="SEK">0</Amt>
+                        <CdtDbtInd>CRDT</CdtDbtInd>
+                        <RltdPties>
+                            <Dbtr>
+                                <Pty>
+                                    <Nm>NAME NAME</Nm>
+                                    <PstlAdr>
+                                        <Ctry>NL</Ctry>
+                                        <AdrLine>ADDR ADDR 10</AdrLine>
+                                        <AdrLine>2000 ANTWERPEN</AdrLine>
+                                    </PstlAdr>
+                                </Pty>
+                            </Dbtr>
+                            <DbtrAcct>
+                                <Id>
+                                    <IBAN>NL56AGDH9619008421</IBAN>
+                                </Id>
+                            </DbtrAcct>
+                            <Cdtr>
+                                <Pty>
+                                    <Nm>Company Name</Nm>
+                                    <PstlAdr>
+                                        <Ctry>NL</Ctry>
+                                    </PstlAdr>
+                                    <Id>
+                                        <OrgId>
+                                            <Othr>
+                                                <Id>455454654</Id>
+                                                <Issr>KBO-BCE</Issr>
+                                            </Othr>
+                                        </OrgId>
+                                    </Id>
+                                </Pty>
+                            </Cdtr>
+                            <CdtrAcct>
+                                <Id>
+                                    <IBAN>NL56AGDH9619008421</IBAN>
+                                </Id>
+                                <Ccy>EUR</Ccy>
+                            </CdtrAcct>
+                        </RltdPties>
+                        <RmtInf>
+                            <Strd>
+                                <CdtrRefInf>
+                                    <Tp>
+                                        <CdOrPrtry>
+                                            <Cd>SCOR</Cd>
+                                        </CdOrPrtry>
+                                        <Issr>BBA</Issr>
+                                    </Tp>
+                                    <Ref>4654654654654654</Ref>
+                                </CdtrRefInf>
+                            </Strd>
+                        </RmtInf>
+                    </TxDtls>
+                </NtryDtls>
+            </Ntry>
+            <AddtlStmtInf>Additional Information</AddtlStmtInf>
+        </Stmt>
+    </BkToCstmrStmt>
+</Document>

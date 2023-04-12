@@ -56,6 +56,14 @@ class EndToEndTest extends Framework\TestCase
         return (new MessageFormat\V06())->getDecoder()->decode($dom);
     }
 
+    protected function getV8Message(): Message
+    {
+        $dom = new DOMDocument('1.0', 'UTF-8');
+        $dom->load('test/data/camt052.v8.xml');
+
+        return (new MessageFormat\V08())->getDecoder()->decode($dom);
+    }
+
     public function testGroupHeader(): void
     {
         $messages = [
@@ -63,6 +71,7 @@ class EndToEndTest extends Framework\TestCase
             $this->getV2Message(),
             $this->getV4Message(),
             $this->getV6Message(),
+            $this->getV8Message(),
         ];
 
         /** @var Message $message */
@@ -96,6 +105,7 @@ class EndToEndTest extends Framework\TestCase
             $this->getV1Message(),
             $this->getV2Message(),
             $this->getV4Message(),
+            $this->getV8Message(),
         ];
 
         foreach ($messages as $message) {
@@ -123,6 +133,7 @@ class EndToEndTest extends Framework\TestCase
             $this->getV1Message(),
             $this->getV2Message(),
             $this->getV4Message(),
+            $this->getV8Message(),
         ];
 
         foreach ($messages as $message) {
@@ -154,6 +165,7 @@ class EndToEndTest extends Framework\TestCase
         $messages = [
             $this->getV1Message(),
             $this->getV4Message(),
+            $this->getV8Message(),
         ];
 
         self::assertEquals('BOOK', $messages[0]->getRecords()[0]->getEntries()[0]->getStatus());
