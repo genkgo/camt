@@ -26,6 +26,15 @@ abstract class EntryTransactionDetail
         $this->moneyFactory = new MoneyFactory();
     }
 
+    public function addCreditDebitIdentifier(DTO\EntryTransactionDetail $detail, SimpleXMLElement $CdtDbtInd): void
+    {
+        $creditDebitIdentifier = (string) $CdtDbtInd;
+        $creditDebitIdentifier = in_array($creditDebitIdentifier, ['CRDT', 'DBIT'], true)
+            ? $creditDebitIdentifier
+            : null;
+        $detail->setCreditDebitIndicator($creditDebitIdentifier);
+    }
+
     public function addReference(DTO\EntryTransactionDetail $detail, SimpleXMLElement $xmlDetail): void
     {
         if (false === isset($xmlDetail->Refs)) {

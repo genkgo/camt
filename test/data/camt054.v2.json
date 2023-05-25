@@ -32,6 +32,7 @@
                 "0": "2007-10-18T12:15:00+00:00"
             },
             "getCharges": null,
+            "getCreditDebitIndicator": "DBIT",
             "getIndex": 0,
             "getRecord": {
                 "__CLASS__": "Genkgo\\Camt\\Camt054\\DTO\\Notification",
@@ -77,6 +78,7 @@
                     "getProprietary": null
                 },
                 "getCharges": null,
+                "getCreditDebitIndicator": "DBIT",
                 "getReference": {
                     "__CLASS__": "Genkgo\\Camt\\DTO\\Reference",
                     "getAccountOwnerTransactionId": null,
@@ -150,6 +152,7 @@
                         "getProprietary": null
                     },
                     "getCharges": null,
+                    "getCreditDebitIndicator": "DBIT",
                     "getReference": {
                         "__CLASS__": "Genkgo\\Camt\\DTO\\Reference",
                         "getAccountOwnerTransactionId": null,
@@ -216,6 +219,7 @@
                         "getProprietary": null
                     },
                     "getCharges": null,
+                    "getCreditDebitIndicator": "DBIT",
                     "getReference": {
                         "__CLASS__": "Genkgo\\Camt\\DTO\\Reference",
                         "getAccountOwnerTransactionId": null,

@@ -36,6 +36,7 @@
                 "0": "2007-10-18T09:15:00+00:00"
             },
             "getCharges": null,
+            "getCreditDebitIndicator": "DBIT",
             "getIndex": 0,
             "getRecord": {
                 "__CLASS__": "Genkgo\\Camt\\Camt052\\DTO\\Report",
@@ -86,6 +87,7 @@
                     }
                 },
                 "getCharges": null,
+                "getCreditDebitIndicator": "DBIT",
                 "getReference": null,
                 "getRelatedAgent": {
                     "__CLASS__": "Genkgo\\Camt\\DTO\\RelatedAgent",

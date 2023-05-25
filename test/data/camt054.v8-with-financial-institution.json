@@ -21,6 +21,7 @@
             "getBatchPaymentId": null,
             "getBookingDate": null,
             "getCharges": null,
+            "getCreditDebitIndicator": "DBIT",
             "getIndex": 0,
             "getRecord": {
                 "__CLASS__": "Genkgo\\Camt\\Camt054\\DTO\\Notification",
@@ -62,6 +63,7 @@
                     "getProprietary": null
                 },
                 "getCharges": null,
+                "getCreditDebitIndicator": "DBIT",
                 "getReference": null,
                 "getRelatedAgent": null,
                 "getRelatedAgents": [],

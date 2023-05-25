@@ -28,6 +28,7 @@
                 "0": "2014-12-31T00:00:00+00:00"
             },
             "getCharges": null,
+            "getCreditDebitIndicator": "DBIT",
             "getIndex": 0,
             "getRecord": {
                 "__CLASS__": "Genkgo\\Camt\\Camt053\\DTO\\Statement",
@@ -107,6 +108,7 @@
                     }
                 },
                 "getCharges": null,
+                "getCreditDebitIndicator": "DBIT",
                 "getReference": {
                     "__CLASS__": "Genkgo\\Camt\\DTO\\Reference",
                     "getAccountOwnerTransactionId": null,
