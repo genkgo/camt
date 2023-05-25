@@ -36,6 +36,8 @@ class EntryTransactionDetail
 
     private ?Money $amount = null;
 
+    private ?string $creditDebitIndicator = null;
+
     public function setReference(?Reference $reference): void
     {
         $this->reference = $reference;
@@ -168,5 +170,15 @@ class EntryTransactionDetail
     public function setAmount(?Money $amount): void
     {
         $this->amount = $amount;
+    }
+
+    public function getCreditDebitIndicator(): ?string
+    {
+        return $this->creditDebitIndicator;
+    }
+
+    public function setCreditDebitIndicator(?string $creditDebitIndicator): void
+    {
+        $this->creditDebitIndicator = $creditDebitIndicator;
     }
 }

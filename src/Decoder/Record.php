@@ -121,6 +121,10 @@ class Record
                 $entry->setBatchPaymentId((string) $xmlEntry->NtryDtls->TxDtls->Refs->PmtInfId);
             }
 
+            if (isset($xmlEntry->CdtDbtInd) && in_array((string) $xmlEntry->CdtDbtInd, ['CRDT', 'DBIT'], true)) {
+                $entry->setCreditDebitIndicator((string) $xmlEntry->CdtDbtInd);
+            }
+
             $entry->setStatus($this->readStatus($xmlEntry));
 
             if (isset($xmlEntry->BkTxCd)) {

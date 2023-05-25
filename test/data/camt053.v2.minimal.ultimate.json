@@ -28,6 +28,7 @@
                 "0": "2014-12-31T00:00:00+00:00"
             },
             "getCharges": null,
+            "getCreditDebitIndicator": "CRDT",
             "getIndex": 0,
             "getRecord": {
                 "__CLASS__": "Genkgo\\Camt\\Camt053\\DTO\\Statement",
@@ -145,6 +146,7 @@
                     }
                 },
                 "getCharges": null,
+                "getCreditDebitIndicator": "CRDT",
                 "getReference": {
                     "__CLASS__": "Genkgo\\Camt\\DTO\\Reference",
                     "getAccountOwnerTransactionId": null,
