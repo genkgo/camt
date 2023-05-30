@@ -6,6 +6,7 @@ namespace Genkgo\TestCamt\Unit;
 
 use DateTimeImmutable;
 use DateTimeZone;
+use Money\Money;
 use ReflectionClass;
 use ReflectionMethod;
 
@@ -71,7 +72,9 @@ class Dumper
         $values = [];
         foreach ($class->getMethods(ReflectionMethod::IS_PUBLIC) as $method) {
             $name = $method->getName();
-            if (str_starts_with($name, 'get')) {
+            if (str_starts_with($name, 'get')
+                && ($class->getName() !== Money::class || in_array($name, ['getAmount', 'getCurrency'], true))
+            ) {
                 $values[$name] = $method->invoke($object);
             }
         }
