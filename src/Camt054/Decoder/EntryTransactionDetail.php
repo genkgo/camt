@@ -63,4 +63,11 @@ class EntryTransactionDetail extends BaseDecoder
 
         return null;
     }
+    /**
+     * Get Agent BIC from either FinInstnId.BIC or .BICFI, dependeing on protocol version
+     */
+    protected function getAgentBic(SimpleXMLElement $xmlAgent): ?SimpleXMLElement
+    {
+        return $xmlAgent->FinInstnId->BICFI;
+    }
 }

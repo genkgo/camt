@@ -146,7 +146,7 @@
                         "__CLASS__": "Genkgo\\Camt\\DTO\\RelatedAgent",
                         "getRelatedAgentType": {
                             "__CLASS__": "Genkgo\\Camt\\DTO\\DebtorAgent",
-                            "getBIC": "",
+                            "getBIC": "BANKCHZHXXX",
                             "getName": ""
                         }
                     }
@@ -287,7 +287,7 @@
                         "__CLASS__": "Genkgo\\Camt\\DTO\\RelatedAgent",
                         "getRelatedAgentType": {
                             "__CLASS__": "Genkgo\\Camt\\DTO\\CreditorAgent",
-                            "getBIC": "",
+                            "getBIC": "BANKCHBE",
                             "getName": ""
                         }
                     },
@@ -297,7 +297,7 @@
                             "__CLASS__": "Genkgo\\Camt\\DTO\\RelatedAgent",
                             "getRelatedAgentType": {
                                 "__CLASS__": "Genkgo\\Camt\\DTO\\DebtorAgent",
-                                "getBIC": "",
+                                "getBIC": "BANKCHZHXXX",
                                 "getName": ""
                             }
                         }
@@ -431,7 +431,7 @@
                         "__CLASS__": "Genkgo\\Camt\\DTO\\RelatedAgent",
                         "getRelatedAgentType": {
                             "__CLASS__": "Genkgo\\Camt\\DTO\\CreditorAgent",
-                            "getBIC": "",
+                            "getBIC": "BANKCHBE",
                             "getName": ""
                         }
                     },
@@ -441,7 +441,7 @@
                             "__CLASS__": "Genkgo\\Camt\\DTO\\RelatedAgent",
                             "getRelatedAgentType": {
                                 "__CLASS__": "Genkgo\\Camt\\DTO\\DebtorAgent",
-                                "getBIC": "",
+                                "getBIC": "BANKCHZHXXX",
                                 "getName": ""
                             }
                         }
