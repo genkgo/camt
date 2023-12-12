@@ -6,7 +6,6 @@ jobs:
     strategy:
       matrix:
         php-version:
-          - '8.0'
           - '8.1'
           - '8.2'
           - '8.3'
@@ -51,7 +50,7 @@ jobs:
       - name: Setup PHP, with composer and extensions
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 8.0
+          php-version: 8.1
           coverage: none
           tools: cs2pr
 
@@ -77,7 +76,7 @@ jobs:
       - name: Setup PHP, with composer and extensions
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 8.0
+          php-version: 8.1
           coverage: none
 
       - name: Cache composer dependencies
@@ -104,7 +103,7 @@ jobs:
       - name: Setup PHP, with composer and extensions
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 8.0
+          php-version: 8.1
           coverage: pcov
 
       - name: Cache composer dependencies

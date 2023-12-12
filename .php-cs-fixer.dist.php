@@ -88,7 +88,7 @@ return (new PhpCsFixer\Config())
         'mb_str_functions' => true,
         'method_argument_space' => true,
         'method_chaining_indentation' => true,
-        'modernize_strpos' => false, // Require PHP 8.0
+        'modernize_strpos' => true,
         'modernize_types_casting' => true,
         'multiline_comment_opening_closing' => true,
         'multiline_whitespace_before_semicolons' => true,
