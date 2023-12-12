@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1263145d9df18de98d1e2cf536b8ddc7",
+    "content-hash": "0fbdcc68fff016cc8692f811b8fa5f82",
     "packages": [
         {
             "name": "jschaedl/iban-validation",
