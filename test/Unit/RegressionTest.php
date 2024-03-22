@@ -30,7 +30,7 @@ class RegressionTest extends TestCase
     public function testRegression(string $file): void
     {
         $reader = new Reader(Config::getDefault());
-        $message = $reader->readFile(__DIR__.'/../../'.$file);
+        $message = $reader->readFile($file);
 
         $dumper = new Dumper();
         $actual = $dumper->dump($message);

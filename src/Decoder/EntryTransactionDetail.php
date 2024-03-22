@@ -358,7 +358,7 @@ abstract class EntryTransactionDetail
     abstract public function getRelatedPartyAccount(?SimpleXMLElement $xmlRelatedPartyTypeAccount): ?DTO\Account;
 
     /**
-     * Get Agent BIC from either FinInstnId.BIC or .BICFI, dependeing on protocol version
+     * Get Agent BIC from either FinInstnId.BIC or .BICFI, depending on the protocol version.
      */
     protected function getAgentBic(SimpleXMLElement $xmlAgent): ?SimpleXMLElement
     {
