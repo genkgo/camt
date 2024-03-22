@@ -154,10 +154,12 @@ class EndToEndTest extends Framework\TestCase
     public function testTransactionDetails(): void
     {
         $messages = [
-            $this->getV2Message(),
             $this->getV4Message(),
             $this->getV8Message(),
         ];
+
+        // this is because V4 and V8 don't support the structure with proprietary amount
+        $this->testV2Message();
 
         foreach ($messages as $message) {
             $notifications = $message->getRecords();
@@ -371,6 +373,278 @@ class EndToEndTest extends Framework\TestCase
                             default:
                                 break;
                         }
+                    }
+                }
+            }
+        }
+    }
+
+    public function testV2Message(): void
+    {
+        $message = $this->getV2Message();
+
+        $notifications = $message->getRecords();
+
+        self::assertCount(1, $notifications);
+        foreach ($notifications as $notification) {
+            $entries = $notification->getEntries();
+
+            self::assertCount(1, $entries);
+            foreach ($entries as $entry) {
+                $transactionDetails = $entry->getTransactionDetails();
+                self::assertCount(4, $transactionDetails);
+                foreach ($transactionDetails as $index => $transactionDetail) {
+                    switch ($index) {
+                        case 0:
+                            // Legacy : The first message comes from unstructured block
+                            self::assertEquals(
+                                'Unstructured Remittance Information V1',
+                                $transactionDetail
+                                    ->getRemittanceInformation()
+                                    ->getMessage()
+                            );
+
+                            // Only one structured data block
+                            self::assertEquals(
+                                'Unstructured Remittance Information V1',
+                                $transactionDetail
+                                    ->getRemittanceInformation()
+                                    ->getUnstructuredBlock()
+                                    ->getMessage()
+                            );
+
+                            // Check structured and unstructured blocks
+                            self::assertEquals(
+                                'ISR ref number V1',
+                                $transactionDetail
+                                    ->getRemittanceInformation()
+                                    ->getStructuredBlock()
+                                    ->getCreditorReferenceInformation()
+                                    ->getRef()
+                            );
+
+                            self::assertEquals(
+                                'ISR Reference',
+                                $transactionDetail
+                                    ->getRemittanceInformation()
+                                    ->getStructuredBlock()
+                                    ->getCreditorReferenceInformation()
+                                    ->getProprietary()
+                            );
+
+                            self::assertNull(
+                                $transactionDetail
+                                    ->getRemittanceInformation()
+                                    ->getStructuredBlock()
+                                    ->getCreditorReferenceInformation()
+                                    ->getCode()
+                            );
+
+                            self::assertEquals(
+                                'Additional Remittance Information V1',
+                                $transactionDetail
+                                    ->getRemittanceInformation()
+                                    ->getStructuredBlock()
+                                    ->getAdditionalRemittanceInformation()
+                            );
+
+                            break;
+                        case 1:
+                            self::assertEquals(
+                                'ISR ref number V2',
+                                $transactionDetail
+                                    ->getRemittanceInformation()
+                                    ->getMessage()
+                            );
+
+                            // Only one structured data block
+                            self::assertEquals(
+                                'ISR ref number V2',
+                                $transactionDetail
+                                    ->getRemittanceInformation()
+                                    ->getUnstructuredBlock()
+                                    ->getMessage()
+                            );
+
+                            // Check structured and unstructured blocks
+                            self::assertEquals(
+                                'ISR ref number V2',
+                                $transactionDetail
+                                    ->getRemittanceInformation()
+                                    ->getStructuredBlock()
+                                    ->getCreditorReferenceInformation()
+                                    ->getRef()
+                            );
+
+                            self::assertEquals(
+                                null,
+                                $transactionDetail
+                                    ->getRemittanceInformation()
+                                    ->getStructuredBlock()
+                                    ->getCreditorReferenceInformation()
+                                    ->getProprietary()
+                            );
+
+                            self::assertEquals(
+                                'SCOR',
+                                $transactionDetail
+                                    ->getRemittanceInformation()
+                                    ->getStructuredBlock()
+                                    ->getCreditorReferenceInformation()
+                                    ->getCode()
+                            );
+
+                            self::assertEquals(
+                                null,
+                                $transactionDetail
+                                    ->getRemittanceInformation()
+                                    ->getStructuredBlock()
+                                    ->getAdditionalRemittanceInformation()
+                            );
+                            break;
+                        case 2:
+
+                            // Legacy : ref number from the structured information
+                            // because the unstructured block is not present
+                            self::assertEquals(
+                                'ISR ref number V2',
+                                $transactionDetail
+                                    ->getRemittanceInformation()
+                                    ->getMessage()
+                            );
+
+                            // No unstructured block
+                            self::assertCount(
+                                0,
+                                $transactionDetail
+                                    ->getRemittanceInformation()
+                                    ->getUnstructuredBlocks()
+                            );
+
+                            // Check structured and unstructured blocks
+                            self::assertEquals(
+                                'ISR ref number V2',
+                                $transactionDetail
+                                    ->getRemittanceInformation()
+                                    ->getStructuredBlock()
+                                    ->getCreditorReferenceInformation()
+                                    ->getRef()
+                            );
+
+                            self::assertEquals(
+                                'ISR Reference',
+                                $transactionDetail
+                                    ->getRemittanceInformation()
+                                    ->getStructuredBlock()
+                                    ->getCreditorReferenceInformation()
+                                    ->getProprietary()
+                            );
+
+                            self::assertNull(
+                                $transactionDetail
+                                    ->getRemittanceInformation()
+                                    ->getStructuredBlock()
+                                    ->getCreditorReferenceInformation()
+                                    ->getCode()
+                            );
+
+                            self::assertEquals(
+                                'Additional Remittance Information V2',
+                                $transactionDetail
+                                    ->getRemittanceInformation()
+                                    ->getStructuredBlock()
+                                    ->getAdditionalRemittanceInformation()
+                            );
+
+                            break;
+                        case 3:
+                            // Legacy : ref number from the first unstructured block
+                            self::assertEquals(
+                                'Unstructured Remittance Information V3 block 1',
+                                $transactionDetail
+                                    ->getRemittanceInformation()
+                                    ->getMessage()
+                            );
+
+                            // First unstructured block
+                            self::assertEquals(
+                                'Unstructured Remittance Information V3 block 1',
+                                $transactionDetail
+                                    ->getRemittanceInformation()
+                                    ->getUnstructuredBlocks()[0]
+                                    ->getMessage()
+                            );
+
+                            // Second unstructured block
+                            self::assertEquals(
+                                'Unstructured Remittance Information V3 block 2',
+                                $transactionDetail
+                                    ->getRemittanceInformation()
+                                    ->getUnstructuredBlocks()[1]
+                                    ->getMessage()
+                            );
+
+                            // Ref number from the first structured block
+                            self::assertEquals(
+                                'Ref number V3 block 1',
+                                $transactionDetail
+                                    ->getRemittanceInformation()
+                                    ->getStructuredBlocks()[0]
+                                    ->getCreditorReferenceInformation()
+                                    ->getRef()
+                            );
+
+                            // Ref number from the second structured block
+                            self::assertEquals(
+                                'Ref number V3 block 2',
+                                $transactionDetail
+                                    ->getRemittanceInformation()
+                                    ->getStructuredBlocks()[1]
+                                    ->getCreditorReferenceInformation()
+                                    ->getRef()
+                            );
+
+                            // Code from the first structured block
+                            self::assertEquals(
+                                'SCOR',
+                                $transactionDetail
+                                    ->getRemittanceInformation()
+                                    ->getStructuredBlocks()[0]
+                                    ->getCreditorReferenceInformation()
+                                    ->getCode()
+                            );
+
+                            // Code from the second structured block
+                            self::assertEquals(
+                                'SCOR',
+                                $transactionDetail
+                                    ->getRemittanceInformation()
+                                    ->getStructuredBlocks()[1]
+                                    ->getCreditorReferenceInformation()
+                                    ->getCode()
+                            );
+
+                            // Additional remittance information from the first structured block
+                            self::assertEquals(
+                                'Additional Remittance Information V3 block 1',
+                                $transactionDetail
+                                    ->getRemittanceInformation()
+                                    ->getStructuredBlocks()[0]
+                                    ->getAdditionalRemittanceInformation()
+                            );
+
+                            // Additional remittance information from the second structured block
+                            self::assertEquals(
+                                'Additional Remittance Information V3 block 2',
+                                $transactionDetail
+                                    ->getRemittanceInformation()
+                                    ->getStructuredBlocks()[1]
+                                    ->getAdditionalRemittanceInformation()
+                            );
+
+                            break;
+                        default:
+                            break;
                     }
                 }
             }
