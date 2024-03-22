@@ -133,13 +133,15 @@ abstract class EntryTransactionDetail
 
         foreach ($xmlDetail->RltdAgts as $xmlRelatedAgent) {
             if (isset($xmlRelatedAgent->CdtrAgt)) {
-                $agent = new DTO\CreditorAgent((string) $xmlRelatedAgent->CdtrAgt->FinInstnId->Nm, (string) $xmlRelatedAgent->CdtrAgt->FinInstnId->BIC);
+                $bic = $this->getAgentBic($xmlRelatedAgent->CdtrAgt);
+                $agent = new DTO\CreditorAgent((string) $xmlRelatedAgent->CdtrAgt->FinInstnId->Nm, (string) $bic);
                 $relatedAgent = new DTO\RelatedAgent($agent);
                 $detail->addRelatedAgent($relatedAgent);
             }
 
             if (isset($xmlRelatedAgent->DbtrAgt)) {
-                $agent = new DTO\DebtorAgent((string) $xmlRelatedAgent->DbtrAgt->FinInstnId->Nm, (string) $xmlRelatedAgent->DbtrAgt->FinInstnId->BIC);
+                $bic = $this->getAgentBic($xmlRelatedAgent->DbtrAgt);
+                $agent = new DTO\DebtorAgent((string) $xmlRelatedAgent->DbtrAgt->FinInstnId->Nm, (string) $bic);
                 $relatedAgent = new DTO\RelatedAgent($agent);
                 $detail->addRelatedAgent($relatedAgent);
             }
@@ -354,4 +356,12 @@ abstract class EntryTransactionDetail
     }
 
     abstract public function getRelatedPartyAccount(?SimpleXMLElement $xmlRelatedPartyTypeAccount): ?DTO\Account;
+
+    /**
+     * Get Agent BIC from either FinInstnId.BIC or .BICFI, depending on the protocol version.
+     */
+    protected function getAgentBic(SimpleXMLElement $xmlAgent): ?SimpleXMLElement
+    {
+        return $xmlAgent->FinInstnId->BIC;
+    }
 }
