@@ -58,24 +58,24 @@ class RegressionTest extends TestCase
 
     public static function providerRegression(): iterable
     {
-        yield ['test/data/camt052.v1.xml'];
-        yield ['test/data/camt052.v2.other-account.xml'];
-        yield ['test/data/camt052.v2.xml'];
-        yield ['test/data/camt052.v4.xml'];
-        yield ['test/data/camt052.v6.xml'];
-        yield ['test/data/camt052.v8.xml'];
-        yield ['test/data/camt053.v2.five.decimals.xml'];
-        yield ['test/data/camt053.v2.minimal.ultimate.xml'];
-        yield ['test/data/camt053.v2.minimal.xml'];
-        yield ['test/data/camt053.v2.multi.statement.xml'];
-        yield ['test/data/camt053.v2.all-balance-types.xml'];
-        yield ['test/data/camt053.v3.xml'];
-        yield ['test/data/camt053.v4.xml'];
-        yield ['test/data/camt053.v8.xml'];
-        yield ['test/data/camt054.v2.xml'];
-        yield ['test/data/camt054.v4.xml'];
-        yield ['test/data/camt054.v8-with-UETR.xml'];
-        yield ['test/data/camt054.v8-with-financial-institution.xml'];
-        yield ['test/data/camt054.v8.xml'];
+        yield 'test/data/camt052.v1.xml' => ['test/data/camt052.v1.xml'];
+        yield 'test/data/camt052.v2.other-account.xml' => ['test/data/camt052.v2.other-account.xml'];
+        yield 'test/data/camt052.v2.xml' => ['test/data/camt052.v2.xml'];
+        yield 'test/data/camt052.v4.xml' => ['test/data/camt052.v4.xml'];
+        yield 'test/data/camt052.v6.xml' => ['test/data/camt052.v6.xml'];
+        yield 'test/data/camt052.v8.xml' => ['test/data/camt052.v8.xml'];
+        yield 'test/data/camt053.v2.five.decimals.xml' => ['test/data/camt053.v2.five.decimals.xml'];
+        yield 'test/data/camt053.v2.minimal.ultimate.xml'=> ['test/data/camt053.v2.minimal.ultimate.xml'];
+        yield 'test/data/camt053.v2.minimal.xml' => ['test/data/camt053.v2.minimal.xml'];
+        yield 'test/data/camt053.v2.multi.statement.xml' => ['test/data/camt053.v2.multi.statement.xml'];
+        yield 'test/data/camt053.v2.all-balance-types.xml' => ['test/data/camt053.v2.all-balance-types.xml'];
+        yield 'test/data/camt053.v3.xml' => ['test/data/camt053.v3.xml'];
+        yield 'test/data/camt053.v4.xml' => ['test/data/camt053.v4.xml'];
+        yield 'test/data/camt053.v8.xml' => ['test/data/camt053.v8.xml'];
+        yield 'test/data/camt054.v2.xml' => ['test/data/camt054.v2.xml'];
+        yield 'test/data/camt054.v4.xml' => ['test/data/camt054.v4.xml'];
+        yield 'test/data/camt054.v8-with-UETR.xml' => ['test/data/camt054.v8-with-UETR.xml'];
+        yield 'test/data/camt054.v8-with-financial-institution.xml' => ['test/data/camt054.v8-with-financial-institution.xml'];
+        yield 'test/data/camt054.v8.xml' => ['test/data/camt054.v8.xml'];
     }
 }
