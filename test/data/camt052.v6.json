@@ -49,7 +49,24 @@
                     "getIdentification": "CH2801234000123456789"
                 },
                 "getAdditionalInformation": "Additional Information",
-                "getBalances": [],
+                "getBalances": [
+                    {
+                        "__CLASS__": "Genkgo\\Camt\\DTO\\Balance",
+                        "getAmount": {
+                            "__CLASS__": "Money\\Money",
+                            "getAmount": "1002215",
+                            "getCurrency": {
+                                "__CLASS__": "Money\\Currency",
+                                "getCode": "CHF"
+                            }
+                        },
+                        "getDate": {
+                            "__CLASS__": "DateTimeImmutable",
+                            "0": "2020-04-04T00:00:00+00:00"
+                        },
+                        "getType": "interim"
+                    }
+                ],
                 "getCopyDuplicateIndicator": "CODU",
                 "getCreatedOn": {
                     "__CLASS__": "DateTimeImmutable",
