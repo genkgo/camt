@@ -68,6 +68,7 @@ class RegressionTest extends TestCase
         yield ['test/data/camt053.v2.minimal.ultimate.xml'];
         yield ['test/data/camt053.v2.minimal.xml'];
         yield ['test/data/camt053.v2.multi.statement.xml'];
+        yield ['test/data/camt053.v2.all-balance-types.xml'];
         yield ['test/data/camt053.v3.xml'];
         yield ['test/data/camt053.v4.xml'];
         yield ['test/data/camt053.v8.xml'];

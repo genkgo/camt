@@ -90,7 +90,7 @@ class Record
                     ));
 
                     break;
-                case 'ITDB':
+                case 'ITBD':
                     $record->addBalance(DTO\Balance::interim(
                         $money,
                         $date
