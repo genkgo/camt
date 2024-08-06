@@ -27,14 +27,13 @@ class RegressionTest extends TestCase
     /**
      * @dataProvider providerRegression
      */
-    public function testRegression(string $file): void
+    public function testRegression(string $file, string $expectedFile): void
     {
         $reader = new Reader(Config::getDefault());
         $message = $reader->readFile($file);
 
         $dumper = new Dumper();
         $actual = $dumper->dump($message);
-        $expectedFile = str_replace('.xml', '.json', $file);
 
         $this->assertFile($expectedFile, $actual);
     }
@@ -58,23 +57,11 @@ class RegressionTest extends TestCase
 
     public static function providerRegression(): iterable
     {
-        yield ['test/data/camt052.v1.xml'];
-        yield ['test/data/camt052.v2.other-account.xml'];
-        yield ['test/data/camt052.v2.xml'];
-        yield ['test/data/camt052.v4.xml'];
-        yield ['test/data/camt052.v6.xml'];
-        yield ['test/data/camt052.v8.xml'];
-        yield ['test/data/camt053.v2.five.decimals.xml'];
-        yield ['test/data/camt053.v2.minimal.ultimate.xml'];
-        yield ['test/data/camt053.v2.minimal.xml'];
-        yield ['test/data/camt053.v2.multi.statement.xml'];
-        yield ['test/data/camt053.v3.xml'];
-        yield ['test/data/camt053.v4.xml'];
-        yield ['test/data/camt053.v8.xml'];
-        yield ['test/data/camt054.v2.xml'];
-        yield ['test/data/camt054.v4.xml'];
-        yield ['test/data/camt054.v8-with-UETR.xml'];
-        yield ['test/data/camt054.v8-with-financial-institution.xml'];
-        yield ['test/data/camt054.v8.xml'];
+        foreach ((glob('test/data/*.xml') ?: []) as $file) {
+            $expectedFile = str_replace('.xml', '.json', $file);
+            if (is_file($expectedFile)) {
+                yield $file => [$file, $expectedFile];
+            }
+        }
     }
 }

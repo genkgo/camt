@@ -17,6 +17,16 @@ class Balance
 
     public const TYPE_CLOSING_AVAILABLE = 'closing_available';
 
+    public const TYPE_FORWARD_AVAILABLE = 'forward_available';
+
+    public const TYPE_INFORMATION = 'information';
+
+    public const TYPE_INTERIM = 'interim';
+
+    public const TYPE_INTERIM_AVAILABLE = 'interim_available';
+
+    public const TYPE_EXPECTED_CREDIT = 'expected_credit';
+
     private Money $amount;
 
     private string $type;
@@ -63,5 +73,30 @@ class Balance
     public static function closingAvailable(Money $amount, DateTimeImmutable $date): self
     {
         return new self(self::TYPE_CLOSING_AVAILABLE, $amount, $date);
+    }
+
+    public static function forwardAvailable(Money $amount, DateTimeImmutable $date): self
+    {
+        return new self(self::TYPE_FORWARD_AVAILABLE, $amount, $date);
+    }
+
+    public static function information(Money $amount, DateTimeImmutable $date): self
+    {
+        return new self(self::TYPE_INFORMATION, $amount, $date);
+    }
+
+    public static function interim(Money $amount, DateTimeImmutable $date): self
+    {
+        return new self(self::TYPE_INTERIM, $amount, $date);
+    }
+
+    public static function interimAvailable(Money $amount, DateTimeImmutable $date): self
+    {
+        return new self(self::TYPE_INTERIM_AVAILABLE, $amount, $date);
+    }
+
+    public static function expectedCredit(Money $amount, DateTimeImmutable $date): self
+    {
+        return new self(self::TYPE_EXPECTED_CREDIT, $amount, $date);
     }
 }

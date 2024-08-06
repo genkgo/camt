@@ -64,7 +64,7 @@
         <Amt Ccy="CHF">10022.15</Amt>
         <CdtDbtInd>CRDT</CdtDbtInd>
         <Dt>
-          <DtTm>2020-04-04T13:45:34.414+02:00</DtTm>
+          <Dt>2020-04-04</Dt>
         </Dt>
       </Bal>
       <Ntry>

@@ -69,6 +69,42 @@ class Record
                     ));
 
                     break;
+                case 'FWAV':
+                    $record->addBalance(DTO\Balance::forwardAvailable(
+                        $money,
+                        $date
+                    ));
+
+                    break;
+                case 'INFO':
+                    $record->addBalance(DTO\Balance::information(
+                        $money,
+                        $date
+                    ));
+
+                    break;
+                case 'ITAV':
+                    $record->addBalance(DTO\Balance::interimAvailable(
+                        $money,
+                        $date
+                    ));
+
+                    break;
+                case 'ITBD':
+                    $record->addBalance(DTO\Balance::interim(
+                        $money,
+                        $date
+                    ));
+
+                    break;
+
+                case 'XPCD':
+                    $record->addBalance(DTO\Balance::expectedCredit(
+                        $money,
+                        $date
+                    ));
+
+                    break;
                 default:
                     break;
             }
