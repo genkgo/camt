@@ -65,7 +65,7 @@ class RegressionTest extends TestCase
         yield 'test/data/camt052.v6.xml' => ['test/data/camt052.v6.xml'];
         yield 'test/data/camt052.v8.xml' => ['test/data/camt052.v8.xml'];
         yield 'test/data/camt053.v2.five.decimals.xml' => ['test/data/camt053.v2.five.decimals.xml'];
-        yield 'test/data/camt053.v2.minimal.ultimate.xml'=> ['test/data/camt053.v2.minimal.ultimate.xml'];
+        yield 'test/data/camt053.v2.minimal.ultimate.xml' => ['test/data/camt053.v2.minimal.ultimate.xml'];
         yield 'test/data/camt053.v2.minimal.xml' => ['test/data/camt053.v2.minimal.xml'];
         yield 'test/data/camt053.v2.multi.statement.xml' => ['test/data/camt053.v2.multi.statement.xml'];
         yield 'test/data/camt053.v2.all-balance-types.xml' => ['test/data/camt053.v2.all-balance-types.xml'];
