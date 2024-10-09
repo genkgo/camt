@@ -4,65 +4,71 @@ declare(strict_types=1);
 
 namespace Genkgo\TestCamt\Unit\Camt052\Decoder;
 
-use Genkgo\Camt\Camt052\Decoder\V01\Message;
-use Genkgo\TestCamt\AbstractTestCase;
 use Genkgo\Camt\Camt052;
-use Genkgo\Camt\DTO;
+use Genkgo\Camt\Camt052\Decoder\V01\Message;
 use Genkgo\Camt\Decoder as DecoderObject;
-use Prophecy\Argument;
-use Prophecy\Prophecy\ObjectProphecy;
+use Genkgo\Camt\DTO;
+use PHPUnit\Framework;
 use SimpleXMLElement;
 
-class MessageTest extends AbstractTestCase
+class MessageTest extends Framework\TestCase
 {
-    /** @var ObjectProphecy */
+    /**
+     * @var DecoderObject\Record&Framework\MockObject\MockObject
+     */
     private $mockedRecordDecoder;
 
-    /** @var Message */
-    private $decoder;
+    private Message $decoder;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
-        $entry = $this->prophesize(DecoderObject\Entry::class);
-        $this->mockedRecordDecoder = $this
-            ->prophesize(DecoderObject\Record::class)
-            ->willBeConstructedWith([$entry->reveal(), new DecoderObject\Date()])
-        ;
-        $this->decoder = new Message($this->mockedRecordDecoder->reveal(), new DecoderObject\Date());
+        $this->mockedRecordDecoder = $this->createMock(DecoderObject\Record::class);
+        $this->decoder = new Message($this->mockedRecordDecoder, new DecoderObject\Date());
     }
 
-    /**
-     * @test
-     */
-    public function it_adds_group_header(): void
+    public function testItAddsGroupHeader(): void
     {
-        $message = $this->prophesize(DTO\Message::class);
-        $message->setGroupHeader(Argument::type(DTO\GroupHeader::class))->shouldBeCalled();
+        $message = $this->createMock(DTO\Message::class);
 
-        $this->decoder->addGroupHeader($message->reveal(), $this->getXmlMessage());
+        $message
+            ->expects(self::once())
+            ->method('setGroupHeader')
+            ->with(self::isInstanceOf(DTO\GroupHeader::class));
+
+        $this->decoder->addGroupHeader($message, $this->getXmlMessage());
     }
 
-    /**
-     * @test
-     */
-    public function it_adds_reports(): void
+    public function testItAddsReports(): void
     {
-        $message = $this->prophesize(DTO\Message::class);
+        $message = $this->createMock(DTO\Message::class);
 
-        $this->mockedRecordDecoder->addBalances(
-            Argument::type(Camt052\DTO\Report::class),
-            Argument::type('\SimpleXMLElement')
-        )->shouldBeCalled();
-        $this->mockedRecordDecoder->addEntries(
-            Argument::type(Camt052\DTO\Report::class),
-            Argument::type('\SimpleXMLElement')
-        )->shouldBeCalled();
+        $this->mockedRecordDecoder
+            ->expects(self::once())
+            ->method('addBalances')
+            ->with(
+                self::isInstanceOf(Camt052\DTO\Report::class),
+                self::isInstanceOf(SimpleXMLElement::class)
+            );
 
-        $message->setRecords(Argument::that(function ($argument): bool {
-            return is_array($argument) && $argument[0] instanceof Camt052\DTO\Report;
-        }))->shouldBeCalled();
+        $this->mockedRecordDecoder
+            ->expects(self::once())
+            ->method('addEntries')
+            ->with(
+                self::isInstanceOf(Camt052\DTO\Report::class),
+                self::isInstanceOf(SimpleXMLElement::class)
+            );
 
-        $this->decoder->addRecords($message->reveal(), $this->getXmlMessage());
+        $message
+            ->expects(self::once())
+            ->method('setRecords')
+            ->with(self::callback(static function (array $records): bool {
+                self::assertContainsOnlyInstancesOf(Camt052\DTO\Report::class, $records);
+                self::assertCount(1, $records);
+
+                return true;
+            }));
+
+        $this->decoder->addRecords($message, $this->getXmlMessage());
     }
 
     private function getXmlMessage(): SimpleXMLElement

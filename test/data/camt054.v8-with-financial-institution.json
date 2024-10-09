@@ -1,0 +1,118 @@
+{
+    "__CLASS__": "Genkgo\\Camt\\DTO\\Message",
+    "getEntries": [
+        {
+            "__CLASS__": "Genkgo\\Camt\\DTO\\Entry",
+            "getAccountServicerReference": "ACSR160617103200001",
+            "getAdditionalInfo": "",
+            "getAmount": {
+                "__CLASS__": "Money\\Money",
+                "getAmount": "-20000000",
+                "getCurrency": {
+                    "__CLASS__": "Money\\Currency",
+                    "getCode": "SEK"
+                }
+            },
+            "getBankTransactionCode": {
+                "__CLASS__": "Genkgo\\Camt\\DTO\\BankTransactionCode",
+                "getDomain": null,
+                "getProprietary": null
+            },
+            "getBatchPaymentId": null,
+            "getBookingDate": null,
+            "getCharges": null,
+            "getCreditDebitIndicator": "DBIT",
+            "getIndex": 0,
+            "getRecord": {
+                "__CLASS__": "Genkgo\\Camt\\Camt054\\DTO\\Notification",
+                "getAccount": {
+                    "__CLASS__": "Genkgo\\Camt\\DTO\\IbanAccount",
+                    "getIban": {
+                        "__CLASS__": "Genkgo\\Camt\\Iban",
+                        "getIban": "CH2801234000123456789"
+                    },
+                    "getIdentification": "CH2801234000123456789"
+                },
+                "getAdditionalInformation": null,
+                "getCopyDuplicateIndicator": null,
+                "getCreatedOn": {
+                    "__CLASS__": "DateTimeImmutable",
+                    "0": "2007-10-18T11:30:00+00:00"
+                },
+                "getElectronicSequenceNumber": null,
+                "getEntries": [
+                    "__RECURSIVITY__"
+                ],
+                "getFromDate": null,
+                "getId": "AAAASESS-FP-ACCR001",
+                "getLegalSequenceNumber": null,
+                "getPagination": null,
+                "getToDate": null
+            },
+            "getReference": null,
+            "getReversalIndicator": false,
+            "getStatus": "BOOK",
+            "getTransactionDetail": {
+                "__CLASS__": "Genkgo\\Camt\\DTO\\EntryTransactionDetail",
+                "getAdditionalTransactionInformation": null,
+                "getAmount": null,
+                "getAmountDetails": null,
+                "getBankTransactionCode": {
+                    "__CLASS__": "Genkgo\\Camt\\DTO\\BankTransactionCode",
+                    "getDomain": null,
+                    "getProprietary": null
+                },
+                "getCharges": null,
+                "getCreditDebitIndicator": "DBIT",
+                "getReference": null,
+                "getRelatedAgent": null,
+                "getRelatedAgents": [],
+                "getRelatedDates": null,
+                "getRelatedParties": [
+                    {
+                        "__CLASS__": "Genkgo\\Camt\\DTO\\RelatedParty",
+                        "getAccount": null,
+                        "getRelatedPartyType": {
+                            "__CLASS__": "Genkgo\\Camt\\DTO\\Creditor",
+                            "getAddress": {
+                                "__CLASS__": "Genkgo\\Camt\\DTO\\Address",
+                                "getAddressLines": [],
+                                "getBuildingNumber": "31",
+                                "getCountry": "CH",
+                                "getCountrySubDivision": null,
+                                "getDepartment": null,
+                                "getPostCode": "3131",
+                                "getStreetName": "Example Street 3 - V1",
+                                "getSubDepartment": null,
+                                "getTownName": "Example Town 3 - V1"
+                            },
+                            "getName": "Example Creditor 3 - V1"
+                        }
+                    }
+                ],
+                "getRelatedParty": "__RECURSIVITY__",
+                "getRemittanceInformation": null,
+                "getReturnInformation": null
+            },
+            "getTransactionDetails": [
+                "__RECURSIVITY__"
+            ],
+            "getValueDate": null
+        }
+    ],
+    "getGroupHeader": {
+        "__CLASS__": "Genkgo\\Camt\\Camt054\\DTO\\V04\\GroupHeader",
+        "getAdditionalInformation": null,
+        "getCreatedOn": {
+            "__CLASS__": "DateTimeImmutable",
+            "0": "2007-10-18T11:30:00+00:00"
+        },
+        "getMessageId": "AAAASESS-FP-ACCR001",
+        "getMessageRecipient": null,
+        "getOriginalBusinessQuery": null,
+        "getPagination": null
+    },
+    "getRecords": [
+        "__RECURSIVITY__"
+    ]
+}

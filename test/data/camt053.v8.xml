@@ -1,5 +1,5 @@
-<?xml version="1.0"    encoding="UTF-8"?>
-<Document xmlns="urn:iso:std:iso:20022:tech:xsd:camt.053.001.03">
+<?xml version="1.0" encoding="UTF-8"?>
+<Document xmlns="urn:iso:std:iso:20022:tech:xsd:camt.053.001.08" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <BkToCstmrStmt>
         <GrpHdr>
             <MsgId>CAMT053RIB000000000001</MsgId>
@@ -21,10 +21,18 @@
                 </Id>
                 <CtryOfRes>NL</CtryOfRes>
             </MsgRcpt>
+            <MsgPgntn>
+                <PgNb>1</PgNb>
+                <LastPgInd>true</LastPgInd>
+            </MsgPgntn>
             <AddtlInf>Group header additional information</AddtlInf>
         </GrpHdr>
         <Stmt>
             <Id>253EURNL26VAYB8060476890</Id>
+            <StmtPgntn>
+                <PgNb>2</PgNb>
+                <LastPgInd>true</LastPgInd>
+            </StmtPgntn>
             <ElctrncSeqNb>12312</ElctrncSeqNb>
             <LglSeqNb>12312</LglSeqNb>
             <CreDtTm>2015-03-10T18:43:50+00:00</CreDtTm>
@@ -39,23 +47,15 @@
                         <Id>NL26VAYB8060476890</Id>
                     </Othr>
                 </Id>
-                <Tp>
-                    <Prtry>KBC-Business PRO-rekening</Prtry>
-                </Tp>
-                <Ccy>EUR</Ccy>
                 <Ownr>
-                    <Nm>COMPANY BVBA</Nm>
-                    <Id>
-                        <OrgId>
-                            <Othr>
-                                <Id>2545874515</Id>
-                            </Othr>
-                        </OrgId>
-                    </Id>
+                    <Nm>FINPETROL</Nm>
                 </Ownr>
                 <Svcr>
                     <FinInstnId>
-                        <BICFI>KREDBEBB</BICFI>
+                        <Nm>AAAA BANKEN</Nm>
+                        <PstlAdr>
+                            <Ctry>SE</Ctry>
+                        </PstlAdr>
                     </FinInstnId>
                 </Svcr>
             </Acct>
@@ -80,51 +80,76 @@
                 <Amt Ccy="SEK">27.00</Amt>
                 <CdtDbtInd>DBIT</CdtDbtInd>
                 <Dt>
+                    <Dt>2014-12-30</Dt>
+                </Dt>
+            </Bal>
+            <Bal>
+                <Tp>
+                    <CdOrPrtry>
+                        <Cd>OPAV</Cd>
+                    </CdOrPrtry>
+                </Tp>
+                <Amt Ccy="CHF">35.00</Amt>
+                <CdtDbtInd>CRDT</CdtDbtInd>
+                <Dt>
+                    <Dt>2014-12-30</Dt>
+                </Dt>
+            </Bal>
+            <Bal>
+                <Tp>
+                    <CdOrPrtry>
+                        <Cd>CLAV</Cd>
+                    </CdOrPrtry>
+                </Tp>
+                <Amt Ccy="JPY">2700</Amt>
+                <CdtDbtInd>DBIT</CdtDbtInd>
+                <Dt>
                     <Dt>2014-12-31</Dt>
                 </Dt>
             </Bal>
             <Ntry>
                 <Amt Ccy="EUR">8.85</Amt>
                 <CdtDbtInd>CRDT</CdtDbtInd>
-                <Sts>BOOK</Sts>
+                <Sts>
+                    <Cd>BOOK</Cd>
+                </Sts>
                 <BookgDt>
-                    <Dt>2014-12-31</Dt>
+                    <DtTm>2014-12-31T13:15:00+01:00</DtTm>
                 </BookgDt>
                 <ValDt>
                     <Dt>2015-01-02</Dt>
                 </ValDt>
-                <AcctSvcrRef>XXXXXXXXXXXXXXXXXXXXXXEUR</AcctSvcrRef>
+                <AcctSvcrRef>AAAASESS-FP-CN_98765/01</AcctSvcrRef>
                 <BkTxCd>
                     <Domn>
                         <Cd>PMNT</Cd>
                         <Fmly>
                             <Cd>RCDT</Cd>
-                            <SubFmlyCd>DMCT</SubFmlyCd>
+                            <SubFmlyCd>BOOK</SubFmlyCd>
                         </Fmly>
                     </Domn>
-                    <Prtry>
-                        <Cd>025132131</Cd>
-                        <Issr>BBA</Issr>
-                    </Prtry>
                 </BkTxCd>
                 <NtryDtls>
                     <TxDtls>
                         <Refs>
+                            <EndToEndId>MUELL/FINP/RA12345</EndToEndId>
                             <Prtry>
                                 <Tp>LegalSequenceNumber</Tp>
                                 <Ref>100</Ref>
                             </Prtry>
                         </Refs>
-                        <Amt Ccy="EUR">105.750</Amt>
+                        <Amt Ccy="SEK">0</Amt>
                         <CdtDbtInd>CRDT</CdtDbtInd>
                         <RltdPties>
                             <Dbtr>
-                                <Nm>NAME NAME</Nm>
-                                <PstlAdr>
-                                    <Ctry>NL</Ctry>
-                                    <AdrLine>ADDR ADDR 10</AdrLine>
-                                    <AdrLine>2000 ANTWERPEN</AdrLine>
-                                </PstlAdr>
+                                <Pty>
+                                    <Nm>NAME NAME</Nm>
+                                    <PstlAdr>
+                                        <Ctry>NL</Ctry>
+                                        <AdrLine>ADDR ADDR 10</AdrLine>
+                                        <AdrLine>2000 ANTWERPEN</AdrLine>
+                                    </PstlAdr>
+                                </Pty>
                             </Dbtr>
                             <DbtrAcct>
                                 <Id>
@@ -132,18 +157,20 @@
                                 </Id>
                             </DbtrAcct>
                             <Cdtr>
-                                <Nm>Company Name</Nm>
-                                <PstlAdr>
-                                    <Ctry>NL</Ctry>
-                                </PstlAdr>
-                                <Id>
-                                    <OrgId>
-                                        <Othr>
-                                            <Id>455454654</Id>
-                                            <Issr>KBO-BCE</Issr>
-                                        </Othr>
-                                    </OrgId>
-                                </Id>
+                                <Pty>
+                                    <Nm>Company Name</Nm>
+                                    <PstlAdr>
+                                        <Ctry>NL</Ctry>
+                                    </PstlAdr>
+                                    <Id>
+                                        <OrgId>
+                                            <Othr>
+                                                <Id>455454654</Id>
+                                                <Issr>KBO-BCE</Issr>
+                                            </Othr>
+                                        </OrgId>
+                                    </Id>
+                                </Pty>
                             </Cdtr>
                             <CdtrAcct>
                                 <Id>
@@ -152,18 +179,6 @@
                                 <Ccy>EUR</Ccy>
                             </CdtrAcct>
                         </RltdPties>
-                        <RltdAgts>
-                            <DbtrAgt>
-                                <FinInstnId>
-                                    <BICFI>KREDBEBB</BICFI>
-                                </FinInstnId>
-                            </DbtrAgt>
-                            <CdtrAgt>
-                                <FinInstnId>
-                                    <BICFI>KREDBEBB</BICFI>
-                                </FinInstnId>
-                            </CdtrAgt>
-                        </RltdAgts>
                         <RmtInf>
                             <Strd>
                                 <CdtrRefInf>

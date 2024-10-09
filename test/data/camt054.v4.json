@@ -1,0 +1,604 @@
+{
+    "__CLASS__": "Genkgo\\Camt\\DTO\\Message",
+    "getEntries": [
+        {
+            "__CLASS__": "Genkgo\\Camt\\DTO\\Entry",
+            "getAccountServicerReference": "ACSR160617103200001",
+            "getAdditionalInfo": "Order",
+            "getAmount": {
+                "__CLASS__": "Money\\Money",
+                "getAmount": "-20000000",
+                "getCurrency": {
+                    "__CLASS__": "Money\\Currency",
+                    "getCode": "SEK"
+                }
+            },
+            "getBankTransactionCode": {
+                "__CLASS__": "Genkgo\\Camt\\DTO\\BankTransactionCode",
+                "getDomain": {
+                    "__CLASS__": "Genkgo\\Camt\\DTO\\DomainBankTransactionCode",
+                    "getCode": "PMNT",
+                    "getFamily": {
+                        "__CLASS__": "Genkgo\\Camt\\DTO\\DomainFamilyBankTransactionCode",
+                        "getCode": "ICDT",
+                        "getSubFamilyCode": "DMCT"
+                    }
+                },
+                "getProprietary": {
+                    "__CLASS__": "Genkgo\\Camt\\DTO\\ProprietaryBankTransactionCode",
+                    "getCode": "Z24",
+                    "getIssuer": ""
+                }
+            },
+            "getBatchPaymentId": "UXC06170000006PI00001",
+            "getBookingDate": {
+                "__CLASS__": "DateTimeImmutable",
+                "0": "2007-10-18T00:00:00+00:00"
+            },
+            "getCharges": null,
+            "getCreditDebitIndicator": "DBIT",
+            "getIndex": 0,
+            "getRecord": {
+                "__CLASS__": "Genkgo\\Camt\\Camt054\\DTO\\Notification",
+                "getAccount": {
+                    "__CLASS__": "Genkgo\\Camt\\DTO\\IbanAccount",
+                    "getIban": {
+                        "__CLASS__": "Genkgo\\Camt\\Iban",
+                        "getIban": "CH2801234000123456789"
+                    },
+                    "getIdentification": "CH2801234000123456789"
+                },
+                "getAdditionalInformation": "Additional Information",
+                "getCopyDuplicateIndicator": "CODU",
+                "getCreatedOn": {
+                    "__CLASS__": "DateTimeImmutable",
+                    "0": "2007-10-18T11:30:00+00:00"
+                },
+                "getElectronicSequenceNumber": "12312",
+                "getEntries": [
+                    "__RECURSIVITY__"
+                ],
+                "getFromDate": {
+                    "__CLASS__": "DateTimeImmutable",
+                    "0": "2007-10-18T07:00:00+00:00"
+                },
+                "getId": "AAAASESS-FP-ACCR001",
+                "getLegalSequenceNumber": "12312",
+                "getPagination": {
+                    "__CLASS__": "Genkgo\\Camt\\DTO\\Pagination",
+                    "getPageNumber": "2"
+                },
+                "getToDate": {
+                    "__CLASS__": "DateTimeImmutable",
+                    "0": "2007-10-18T11:30:00+00:00"
+                }
+            },
+            "getReference": null,
+            "getReversalIndicator": false,
+            "getStatus": "BOOK",
+            "getTransactionDetail": {
+                "__CLASS__": "Genkgo\\Camt\\DTO\\EntryTransactionDetail",
+                "getAdditionalTransactionInformation": null,
+                "getAmount": {
+                    "__CLASS__": "Money\\Money",
+                    "getAmount": "-310",
+                    "getCurrency": {
+                        "__CLASS__": "Money\\Currency",
+                        "getCode": "CHF"
+                    }
+                },
+                "getAmountDetails": {
+                    "__CLASS__": "Money\\Money",
+                    "getAmount": "-310",
+                    "getCurrency": {
+                        "__CLASS__": "Money\\Currency",
+                        "getCode": "CHF"
+                    }
+                },
+                "getBankTransactionCode": {
+                    "__CLASS__": "Genkgo\\Camt\\DTO\\BankTransactionCode",
+                    "getDomain": {
+                        "__CLASS__": "Genkgo\\Camt\\DTO\\DomainBankTransactionCode",
+                        "getCode": "PMNT",
+                        "getFamily": {
+                            "__CLASS__": "Genkgo\\Camt\\DTO\\DomainFamilyBankTransactionCode",
+                            "getCode": "ICDT",
+                            "getSubFamilyCode": "DMCT"
+                        }
+                    },
+                    "getProprietary": {
+                        "__CLASS__": "Genkgo\\Camt\\DTO\\ProprietaryBankTransactionCode",
+                        "getCode": "Z24",
+                        "getIssuer": ""
+                    }
+                },
+                "getCharges": null,
+                "getCreditDebitIndicator": "DBIT",
+                "getReference": {
+                    "__CLASS__": "Genkgo\\Camt\\DTO\\Reference",
+                    "getAccountOwnerTransactionId": null,
+                    "getAccountServicerReference": null,
+                    "getAccountServicerTransactionId": null,
+                    "getChequeNumber": null,
+                    "getClearingSystemReference": null,
+                    "getEndToEndId": "UXC06170000006PI00001EE00001",
+                    "getInstructionId": "UXC06170000006PI00001II00001",
+                    "getMandateId": null,
+                    "getMarketInfrastructureTransactionId": null,
+                    "getMessageId": null,
+                    "getPaymentInformationId": "UXC06170000006PI00001",
+                    "getProcessingId": null,
+                    "getProprietaries": [],
+                    "getTransactionId": null,
+                    "getUuidEndToEndReference": null
+                },
+                "getRelatedAgent": {
+                    "__CLASS__": "Genkgo\\Camt\\DTO\\RelatedAgent",
+                    "getRelatedAgentType": {
+                        "__CLASS__": "Genkgo\\Camt\\DTO\\CreditorAgent",
+                        "getBIC": "",
+                        "getName": ""
+                    }
+                },
+                "getRelatedAgents": [
+                    "__RECURSIVITY__",
+                    {
+                        "__CLASS__": "Genkgo\\Camt\\DTO\\RelatedAgent",
+                        "getRelatedAgentType": {
+                            "__CLASS__": "Genkgo\\Camt\\DTO\\DebtorAgent",
+                            "getBIC": "BANKCHZHXXX",
+                            "getName": ""
+                        }
+                    }
+                ],
+                "getRelatedDates": null,
+                "getRelatedParties": [
+                    {
+                        "__CLASS__": "Genkgo\\Camt\\DTO\\RelatedParty",
+                        "getAccount": {
+                            "__CLASS__": "Genkgo\\Camt\\DTO\\IbanAccount",
+                            "getIban": {
+                                "__CLASS__": "Genkgo\\Camt\\Iban",
+                                "getIban": "CH4112345003131313131"
+                            },
+                            "getIdentification": "CH4112345003131313131"
+                        },
+                        "getRelatedPartyType": {
+                            "__CLASS__": "Genkgo\\Camt\\DTO\\Creditor",
+                            "getAddress": {
+                                "__CLASS__": "Genkgo\\Camt\\DTO\\Address",
+                                "getAddressLines": [],
+                                "getBuildingNumber": "31",
+                                "getCountry": "CH",
+                                "getCountrySubDivision": null,
+                                "getDepartment": null,
+                                "getPostCode": "3131",
+                                "getStreetName": "Example Street 3 - V1",
+                                "getSubDepartment": null,
+                                "getTownName": "Example Town 3 - V1"
+                            },
+                            "getName": "Example Creditor 3 - V1"
+                        }
+                    },
+                    {
+                        "__CLASS__": "Genkgo\\Camt\\DTO\\RelatedParty",
+                        "getAccount": {
+                            "__CLASS__": "Genkgo\\Camt\\DTO\\IbanAccount",
+                            "getIban": {
+                                "__CLASS__": "Genkgo\\Camt\\Iban",
+                                "getIban": "CH2801234000123456789"
+                            },
+                            "getIdentification": "CH2801234000123456789"
+                        },
+                        "getRelatedPartyType": {
+                            "__CLASS__": "Genkgo\\Camt\\DTO\\Debtor",
+                            "getAddress": null,
+                            "getName": "UNIFITS GmbH"
+                        }
+                    }
+                ],
+                "getRelatedParty": "__RECURSIVITY__",
+                "getRemittanceInformation": {
+                    "__CLASS__": "Genkgo\\Camt\\DTO\\RemittanceInformation",
+                    "getCreditorReferenceInformation": null,
+                    "getMessage": "Unstructured Remittance Information V1",
+                    "getStructuredBlock": {
+                        "__CLASS__": "Genkgo\\Camt\\DTO\\StructuredRemittanceInformation",
+                        "getAdditionalRemittanceInformation": "Additional Remittance Information V1",
+                        "getCreditorReferenceInformation": {
+                            "__CLASS__": "Genkgo\\Camt\\DTO\\CreditorReferenceInformation",
+                            "getCode": null,
+                            "getProprietary": "ISR Reference",
+                            "getRef": "ISR ref number V1"
+                        }
+                    },
+                    "getStructuredBlocks": [
+                        "__RECURSIVITY__"
+                    ],
+                    "getUnstructuredBlock": {
+                        "__CLASS__": "Genkgo\\Camt\\DTO\\UnstructuredRemittanceInformation",
+                        "getMessage": "Unstructured Remittance Information V1"
+                    },
+                    "getUnstructuredBlocks": [
+                        "__RECURSIVITY__"
+                    ]
+                },
+                "getReturnInformation": null
+            },
+            "getTransactionDetails": [
+                "__RECURSIVITY__",
+                {
+                    "__CLASS__": "Genkgo\\Camt\\DTO\\EntryTransactionDetail",
+                    "getAdditionalTransactionInformation": null,
+                    "getAmount": {
+                        "__CLASS__": "Money\\Money",
+                        "getAmount": "-320",
+                        "getCurrency": {
+                            "__CLASS__": "Money\\Currency",
+                            "getCode": "CHF"
+                        }
+                    },
+                    "getAmountDetails": {
+                        "__CLASS__": "Money\\Money",
+                        "getAmount": "-320",
+                        "getCurrency": {
+                            "__CLASS__": "Money\\Currency",
+                            "getCode": "CHF"
+                        }
+                    },
+                    "getBankTransactionCode": {
+                        "__CLASS__": "Genkgo\\Camt\\DTO\\BankTransactionCode",
+                        "getDomain": {
+                            "__CLASS__": "Genkgo\\Camt\\DTO\\DomainBankTransactionCode",
+                            "getCode": "PMNT",
+                            "getFamily": {
+                                "__CLASS__": "Genkgo\\Camt\\DTO\\DomainFamilyBankTransactionCode",
+                                "getCode": "ICDT",
+                                "getSubFamilyCode": "DMCT"
+                            }
+                        },
+                        "getProprietary": {
+                            "__CLASS__": "Genkgo\\Camt\\DTO\\ProprietaryBankTransactionCode",
+                            "getCode": "Z24",
+                            "getIssuer": ""
+                        }
+                    },
+                    "getCharges": null,
+                    "getCreditDebitIndicator": "DBIT",
+                    "getReference": {
+                        "__CLASS__": "Genkgo\\Camt\\DTO\\Reference",
+                        "getAccountOwnerTransactionId": null,
+                        "getAccountServicerReference": null,
+                        "getAccountServicerTransactionId": null,
+                        "getChequeNumber": null,
+                        "getClearingSystemReference": null,
+                        "getEndToEndId": "UXC06170000006PI00001EE00002",
+                        "getInstructionId": "UXC06170000006PI00001II00002",
+                        "getMandateId": null,
+                        "getMarketInfrastructureTransactionId": null,
+                        "getMessageId": null,
+                        "getPaymentInformationId": "UXC06170000006PI00001",
+                        "getProcessingId": null,
+                        "getProprietaries": [],
+                        "getTransactionId": null,
+                        "getUuidEndToEndReference": null
+                    },
+                    "getRelatedAgent": {
+                        "__CLASS__": "Genkgo\\Camt\\DTO\\RelatedAgent",
+                        "getRelatedAgentType": {
+                            "__CLASS__": "Genkgo\\Camt\\DTO\\CreditorAgent",
+                            "getBIC": "BANKCHBE",
+                            "getName": ""
+                        }
+                    },
+                    "getRelatedAgents": [
+                        "__RECURSIVITY__",
+                        {
+                            "__CLASS__": "Genkgo\\Camt\\DTO\\RelatedAgent",
+                            "getRelatedAgentType": {
+                                "__CLASS__": "Genkgo\\Camt\\DTO\\DebtorAgent",
+                                "getBIC": "BANKCHZHXXX",
+                                "getName": ""
+                            }
+                        }
+                    ],
+                    "getRelatedDates": null,
+                    "getRelatedParties": [
+                        {
+                            "__CLASS__": "Genkgo\\Camt\\DTO\\RelatedParty",
+                            "getAccount": {
+                                "__CLASS__": "Genkgo\\Camt\\DTO\\IbanAccount",
+                                "getIban": {
+                                    "__CLASS__": "Genkgo\\Camt\\Iban",
+                                    "getIban": "CH7212345003232323232"
+                                },
+                                "getIdentification": "CH7212345003232323232"
+                            },
+                            "getRelatedPartyType": {
+                                "__CLASS__": "Genkgo\\Camt\\DTO\\Creditor",
+                                "getAddress": {
+                                    "__CLASS__": "Genkgo\\Camt\\DTO\\Address",
+                                    "getAddressLines": [],
+                                    "getBuildingNumber": "32",
+                                    "getCountry": "CH",
+                                    "getCountrySubDivision": null,
+                                    "getDepartment": null,
+                                    "getPostCode": "3232",
+                                    "getStreetName": "Example Street 3 - V2",
+                                    "getSubDepartment": null,
+                                    "getTownName": "Example Town 3 - V2"
+                                },
+                                "getName": "Example Creditor 3 - V2"
+                            }
+                        },
+                        {
+                            "__CLASS__": "Genkgo\\Camt\\DTO\\RelatedParty",
+                            "getAccount": {
+                                "__CLASS__": "Genkgo\\Camt\\DTO\\IbanAccount",
+                                "getIban": {
+                                    "__CLASS__": "Genkgo\\Camt\\Iban",
+                                    "getIban": "CH2801234000123456789"
+                                },
+                                "getIdentification": "CH2801234000123456789"
+                            },
+                            "getRelatedPartyType": {
+                                "__CLASS__": "Genkgo\\Camt\\DTO\\Debtor",
+                                "getAddress": null,
+                                "getName": "UNIFITS GmbH"
+                            }
+                        }
+                    ],
+                    "getRelatedParty": "__RECURSIVITY__",
+                    "getRemittanceInformation": {
+                        "__CLASS__": "Genkgo\\Camt\\DTO\\RemittanceInformation",
+                        "getCreditorReferenceInformation": {
+                            "__CLASS__": "Genkgo\\Camt\\DTO\\CreditorReferenceInformation",
+                            "getCode": null,
+                            "getProprietary": "ISR Reference",
+                            "getRef": "ISR ref number V2"
+                        },
+                        "getMessage": "ISR ref number V2",
+                        "getStructuredBlock": {
+                            "__CLASS__": "Genkgo\\Camt\\DTO\\StructuredRemittanceInformation",
+                            "getAdditionalRemittanceInformation": "Additional Remittance Information V2",
+                            "getCreditorReferenceInformation": "__RECURSIVITY__"
+                        },
+                        "getStructuredBlocks": [
+                            "__RECURSIVITY__"
+                        ],
+                        "getUnstructuredBlock": null,
+                        "getUnstructuredBlocks": []
+                    },
+                    "getReturnInformation": null
+                },
+                {
+                    "__CLASS__": "Genkgo\\Camt\\DTO\\EntryTransactionDetail",
+                    "getAdditionalTransactionInformation": null,
+                    "getAmount": {
+                        "__CLASS__": "Money\\Money",
+                        "getAmount": "-320",
+                        "getCurrency": {
+                            "__CLASS__": "Money\\Currency",
+                            "getCode": "CHF"
+                        }
+                    },
+                    "getAmountDetails": {
+                        "__CLASS__": "Money\\Money",
+                        "getAmount": "-320",
+                        "getCurrency": {
+                            "__CLASS__": "Money\\Currency",
+                            "getCode": "CHF"
+                        }
+                    },
+                    "getBankTransactionCode": {
+                        "__CLASS__": "Genkgo\\Camt\\DTO\\BankTransactionCode",
+                        "getDomain": {
+                            "__CLASS__": "Genkgo\\Camt\\DTO\\DomainBankTransactionCode",
+                            "getCode": "PMNT",
+                            "getFamily": {
+                                "__CLASS__": "Genkgo\\Camt\\DTO\\DomainFamilyBankTransactionCode",
+                                "getCode": "ICDT",
+                                "getSubFamilyCode": "DMCT"
+                            }
+                        },
+                        "getProprietary": {
+                            "__CLASS__": "Genkgo\\Camt\\DTO\\ProprietaryBankTransactionCode",
+                            "getCode": "Z24",
+                            "getIssuer": ""
+                        }
+                    },
+                    "getCharges": null,
+                    "getCreditDebitIndicator": "DBIT",
+                    "getReference": {
+                        "__CLASS__": "Genkgo\\Camt\\DTO\\Reference",
+                        "getAccountOwnerTransactionId": null,
+                        "getAccountServicerReference": null,
+                        "getAccountServicerTransactionId": null,
+                        "getChequeNumber": null,
+                        "getClearingSystemReference": null,
+                        "getEndToEndId": "UXC06170000006PI00001EE00002",
+                        "getInstructionId": "UXC06170000006PI00001II00002",
+                        "getMandateId": null,
+                        "getMarketInfrastructureTransactionId": null,
+                        "getMessageId": null,
+                        "getPaymentInformationId": "UXC06170000006PI00001",
+                        "getProcessingId": null,
+                        "getProprietaries": [],
+                        "getTransactionId": null,
+                        "getUuidEndToEndReference": null
+                    },
+                    "getRelatedAgent": {
+                        "__CLASS__": "Genkgo\\Camt\\DTO\\RelatedAgent",
+                        "getRelatedAgentType": {
+                            "__CLASS__": "Genkgo\\Camt\\DTO\\CreditorAgent",
+                            "getBIC": "BANKCHBE",
+                            "getName": ""
+                        }
+                    },
+                    "getRelatedAgents": [
+                        "__RECURSIVITY__",
+                        {
+                            "__CLASS__": "Genkgo\\Camt\\DTO\\RelatedAgent",
+                            "getRelatedAgentType": {
+                                "__CLASS__": "Genkgo\\Camt\\DTO\\DebtorAgent",
+                                "getBIC": "BANKCHZHXXX",
+                                "getName": ""
+                            }
+                        }
+                    ],
+                    "getRelatedDates": null,
+                    "getRelatedParties": [
+                        {
+                            "__CLASS__": "Genkgo\\Camt\\DTO\\RelatedParty",
+                            "getAccount": {
+                                "__CLASS__": "Genkgo\\Camt\\DTO\\IbanAccount",
+                                "getIban": {
+                                    "__CLASS__": "Genkgo\\Camt\\Iban",
+                                    "getIban": "CH7212345003232323232"
+                                },
+                                "getIdentification": "CH7212345003232323232"
+                            },
+                            "getRelatedPartyType": {
+                                "__CLASS__": "Genkgo\\Camt\\DTO\\Creditor",
+                                "getAddress": {
+                                    "__CLASS__": "Genkgo\\Camt\\DTO\\Address",
+                                    "getAddressLines": [],
+                                    "getBuildingNumber": "32",
+                                    "getCountry": "CH",
+                                    "getCountrySubDivision": null,
+                                    "getDepartment": null,
+                                    "getPostCode": "3232",
+                                    "getStreetName": "Example Street 3 - V3",
+                                    "getSubDepartment": null,
+                                    "getTownName": "Example Town 3 - V3"
+                                },
+                                "getName": "Example Creditor 3 - V3"
+                            }
+                        },
+                        {
+                            "__CLASS__": "Genkgo\\Camt\\DTO\\RelatedParty",
+                            "getAccount": {
+                                "__CLASS__": "Genkgo\\Camt\\DTO\\IbanAccount",
+                                "getIban": {
+                                    "__CLASS__": "Genkgo\\Camt\\Iban",
+                                    "getIban": "CH2801234000123456789"
+                                },
+                                "getIdentification": "CH2801234000123456789"
+                            },
+                            "getRelatedPartyType": {
+                                "__CLASS__": "Genkgo\\Camt\\DTO\\Debtor",
+                                "getAddress": null,
+                                "getName": "UNIFITS GmbH"
+                            }
+                        }
+                    ],
+                    "getRelatedParty": "__RECURSIVITY__",
+                    "getRemittanceInformation": {
+                        "__CLASS__": "Genkgo\\Camt\\DTO\\RemittanceInformation",
+                        "getCreditorReferenceInformation": null,
+                        "getMessage": "Unstructured Remittance Information V3 block 1",
+                        "getStructuredBlock": {
+                            "__CLASS__": "Genkgo\\Camt\\DTO\\StructuredRemittanceInformation",
+                            "getAdditionalRemittanceInformation": "Additional Remittance Information V3 block 1",
+                            "getCreditorReferenceInformation": {
+                                "__CLASS__": "Genkgo\\Camt\\DTO\\CreditorReferenceInformation",
+                                "getCode": "SCOR",
+                                "getProprietary": null,
+                                "getRef": "Ref number V3 block 1"
+                            }
+                        },
+                        "getStructuredBlocks": [
+                            "__RECURSIVITY__",
+                            {
+                                "__CLASS__": "Genkgo\\Camt\\DTO\\StructuredRemittanceInformation",
+                                "getAdditionalRemittanceInformation": "Additional Remittance Information V3 block 2",
+                                "getCreditorReferenceInformation": {
+                                    "__CLASS__": "Genkgo\\Camt\\DTO\\CreditorReferenceInformation",
+                                    "getCode": "SCOR",
+                                    "getProprietary": null,
+                                    "getRef": "Ref number V3 block 2"
+                                }
+                            }
+                        ],
+                        "getUnstructuredBlock": {
+                            "__CLASS__": "Genkgo\\Camt\\DTO\\UnstructuredRemittanceInformation",
+                            "getMessage": "Unstructured Remittance Information V3 block 1"
+                        },
+                        "getUnstructuredBlocks": [
+                            "__RECURSIVITY__",
+                            {
+                                "__CLASS__": "Genkgo\\Camt\\DTO\\UnstructuredRemittanceInformation",
+                                "getMessage": "Unstructured Remittance Information V3 block 2"
+                            }
+                        ]
+                    },
+                    "getReturnInformation": null
+                }
+            ],
+            "getValueDate": {
+                "__CLASS__": "DateTimeImmutable",
+                "0": "2007-10-18T00:00:00+00:00"
+            }
+        }
+    ],
+    "getGroupHeader": {
+        "__CLASS__": "Genkgo\\Camt\\Camt054\\DTO\\V04\\GroupHeader",
+        "getAdditionalInformation": "Group header additional information",
+        "getCreatedOn": {
+            "__CLASS__": "DateTimeImmutable",
+            "0": "2007-10-18T11:30:00+00:00"
+        },
+        "getMessageId": "AAAASESS-FP-ACCR001",
+        "getMessageRecipient": {
+            "__CLASS__": "Genkgo\\Camt\\DTO\\Recipient",
+            "getAddress": {
+                "__CLASS__": "Genkgo\\Camt\\DTO\\Address",
+                "getAddressLines": [],
+                "getBuildingNumber": null,
+                "getCountry": "UK",
+                "getCountrySubDivision": null,
+                "getDepartment": null,
+                "getPostCode": null,
+                "getStreetName": "12 Oxford Street",
+                "getSubDepartment": null,
+                "getTownName": null
+            },
+            "getContactDetails": null,
+            "getCountryOfResidence": "NL",
+            "getIdentification": {
+                "__CLASS__": "Genkgo\\Camt\\DTO\\OrganisationIdentification",
+                "getBankPartyId": null,
+                "getBei": null,
+                "getBic": "DABAIE2D",
+                "getChipsUniversalId": null,
+                "getDuns": null,
+                "getEangln": null,
+                "getIbei": null,
+                "getIdentification": "Some other Id",
+                "getIssuer": null,
+                "getOtherId": "Some other Id",
+                "getOtherIssuer": "Some other Issuer",
+                "getOtherSchemeName": null,
+                "getOtherType": null,
+                "getTaxId": null
+            },
+            "getName": "COMPANY BVBA"
+        },
+        "getOriginalBusinessQuery": {
+            "__CLASS__": "Genkgo\\Camt\\Camt054\\DTO\\V04\\OriginalBusinessQuery",
+            "getCreatedOn": {
+                "__CLASS__": "DateTimeImmutable",
+                "0": "2010-10-18T11:30:00+00:00"
+            },
+            "getMessageId": "SomeMessageId",
+            "getMessageNameId": "SomeMessageNameId"
+        },
+        "getPagination": {
+            "__CLASS__": "Genkgo\\Camt\\DTO\\Pagination",
+            "getPageNumber": "1"
+        }
+    },
+    "getRecords": [
+        "__RECURSIVITY__"
+    ]
+}

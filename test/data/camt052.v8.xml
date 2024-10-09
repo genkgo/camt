@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Document xmlns="urn:iso:std:iso:20022:tech:xsd:camt.052.001.08">
+    <BkToCstmrAcctRpt>
+        <GrpHdr>
+            <MsgId>AAAASESS-FP-ACCR001</MsgId>
+            <CreDtTm>2007-10-18T12:30:00+01:00</CreDtTm>
+            <MsgRcpt>
+                <Nm>COMPANY BVBA</Nm>
+                <PstlAdr>
+                    <StrtNm>12 Oxford Street</StrtNm>
+                    <Ctry>UK</Ctry>
+                </PstlAdr>
+                <Id>
+                    <OrgId>
+                        <AnyBIC>DABAIE2D</AnyBIC>
+                        <Othr>
+                            <Id>Some other Id</Id>
+                            <Issr>Some other Issuer</Issr>
+                        </Othr>
+                    </OrgId>
+                </Id>
+                <CtryOfRes>NL</CtryOfRes>
+            </MsgRcpt>
+            <MsgPgntn>
+                <PgNb>1</PgNb>
+                <LastPgInd>true</LastPgInd>
+            </MsgPgntn>
+            <AddtlInf>Group header additional information</AddtlInf>
+        </GrpHdr>
+        <Rpt>
+            <Id>AAAASESS-FP-ACCR001</Id>
+            <ElctrncSeqNb>12312</ElctrncSeqNb>
+            <LglSeqNb>12312</LglSeqNb>
+            <CreDtTm>2007-10-18T12:30:00+01:00</CreDtTm>
+            <FrToDt>
+                <FrDtTm>2007-10-18T08:00:00+01:00</FrDtTm>
+                <ToDtTm>2007-10-18T12:30:00+01:00</ToDtTm>
+            </FrToDt>
+            <CpyDplctInd>CODU</CpyDplctInd>
+            <Acct>
+                <Id>
+                    <Othr>
+                        <Id>CH2801234000123456789</Id>
+                    </Othr>
+                </Id>
+                <Ownr>
+                    <Nm>UNIFITS GmbH</Nm>
+                </Ownr>
+                <Svcr>
+                    <FinInstnId>
+                        <Nm>UBSWCHZH80A</Nm>
+                        <PstlAdr>
+                            <Ctry>SE</Ctry>
+                        </PstlAdr>
+                    </FinInstnId>
+                </Svcr>
+            </Acct>
+            <Ntry>
+                <Amt Ccy="SEK">200000</Amt>
+                <CdtDbtInd>DBIT</CdtDbtInd>
+                <Sts>
+                    <Cd>BOOK</Cd>
+                </Sts>
+                <BookgDt>
+                    <DtTm>2007-10-18T10:15:00+01:00</DtTm>
+                </BookgDt>
+                <ValDt>
+                    <Dt>2007-10-18</Dt>
+                </ValDt>
+                <AcctSvcrRef>AAAASESS-FP-ACCR-01</AcctSvcrRef>
+                <BkTxCd>
+                    <Domn>
+                        <Cd>PMNT</Cd>
+                        <Fmly>
+                            <Cd>ICDT</Cd>
+                            <SubFmlyCd>XBCT</SubFmlyCd>
+                        </Fmly>
+                    </Domn>
+                </BkTxCd>
+                <NtryDtls>
+                    <Btch>
+                        <MsgId>FINP-0055</MsgId>
+                        <PmtInfId>FINP-0055-001</PmtInfId>
+                        <NbOfTxs>20</NbOfTxs>
+                    </Btch>
+                </NtryDtls>
+                <AddtlNtryInf>Credit</AddtlNtryInf>
+            </Ntry>
+            <AddtlRptInf>Additional Information</AddtlRptInf>
+        </Rpt>
+    </BkToCstmrAcctRpt>
+</Document>

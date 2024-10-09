@@ -1,0 +1,355 @@
+{
+    "__CLASS__": "Genkgo\\Camt\\DTO\\Message",
+    "getEntries": [
+        {
+            "__CLASS__": "Genkgo\\Camt\\DTO\\Entry",
+            "getAccountServicerReference": "AAAASESS-FP-ACCR001",
+            "getAdditionalInfo": "",
+            "getAmount": {
+                "__CLASS__": "Money\\Money",
+                "getAmount": "-20000000",
+                "getCurrency": {
+                    "__CLASS__": "Money\\Currency",
+                    "getCode": "SEK"
+                }
+            },
+            "getBankTransactionCode": {
+                "__CLASS__": "Genkgo\\Camt\\DTO\\BankTransactionCode",
+                "getDomain": {
+                    "__CLASS__": "Genkgo\\Camt\\DTO\\DomainBankTransactionCode",
+                    "getCode": "PMNT",
+                    "getFamily": {
+                        "__CLASS__": "Genkgo\\Camt\\DTO\\DomainFamilyBankTransactionCode",
+                        "getCode": "ICDT",
+                        "getSubFamilyCode": "DMCT"
+                    }
+                },
+                "getProprietary": null
+            },
+            "getBatchPaymentId": null,
+            "getBookingDate": {
+                "__CLASS__": "DateTimeImmutable",
+                "0": "2007-10-18T12:15:00+00:00"
+            },
+            "getCharges": null,
+            "getCreditDebitIndicator": "DBIT",
+            "getIndex": 0,
+            "getRecord": {
+                "__CLASS__": "Genkgo\\Camt\\Camt054\\DTO\\Notification",
+                "getAccount": {
+                    "__CLASS__": "Genkgo\\Camt\\DTO\\OtherAccount",
+                    "getIdentification": "CH2801234000123456789",
+                    "getIssuer": null,
+                    "getSchemeName": null
+                },
+                "getAdditionalInformation": "Additional Information",
+                "getCopyDuplicateIndicator": "CODU",
+                "getCreatedOn": {
+                    "__CLASS__": "DateTimeImmutable",
+                    "0": "2007-10-18T11:30:00+00:00"
+                },
+                "getElectronicSequenceNumber": "12312",
+                "getEntries": [
+                    "__RECURSIVITY__"
+                ],
+                "getFromDate": {
+                    "__CLASS__": "DateTimeImmutable",
+                    "0": "2007-10-18T07:00:00+00:00"
+                },
+                "getId": "AAAASESS-FP-ACCR001",
+                "getLegalSequenceNumber": "12312",
+                "getPagination": null,
+                "getToDate": {
+                    "__CLASS__": "DateTimeImmutable",
+                    "0": "2007-10-18T11:30:00+00:00"
+                }
+            },
+            "getReference": null,
+            "getReversalIndicator": false,
+            "getStatus": "BOOK",
+            "getTransactionDetail": {
+                "__CLASS__": "Genkgo\\Camt\\DTO\\EntryTransactionDetail",
+                "getAdditionalTransactionInformation": null,
+                "getAmount": null,
+                "getAmountDetails": null,
+                "getBankTransactionCode": {
+                    "__CLASS__": "Genkgo\\Camt\\DTO\\BankTransactionCode",
+                    "getDomain": null,
+                    "getProprietary": null
+                },
+                "getCharges": null,
+                "getCreditDebitIndicator": "DBIT",
+                "getReference": {
+                    "__CLASS__": "Genkgo\\Camt\\DTO\\Reference",
+                    "getAccountOwnerTransactionId": null,
+                    "getAccountServicerReference": null,
+                    "getAccountServicerTransactionId": null,
+                    "getChequeNumber": null,
+                    "getClearingSystemReference": null,
+                    "getEndToEndId": "MUELL/FINP/RA12345",
+                    "getInstructionId": null,
+                    "getMandateId": null,
+                    "getMarketInfrastructureTransactionId": null,
+                    "getMessageId": null,
+                    "getPaymentInformationId": null,
+                    "getProcessingId": null,
+                    "getProprietaries": [],
+                    "getTransactionId": null,
+                    "getUuidEndToEndReference": null
+                },
+                "getRelatedAgent": null,
+                "getRelatedAgents": [],
+                "getRelatedDates": null,
+                "getRelatedParties": [
+                    {
+                        "__CLASS__": "Genkgo\\Camt\\DTO\\RelatedParty",
+                        "getAccount": null,
+                        "getRelatedPartyType": {
+                            "__CLASS__": "Genkgo\\Camt\\DTO\\Debtor",
+                            "getAddress": null,
+                            "getName": "MUELLER"
+                        }
+                    }
+                ],
+                "getRelatedParty": "__RECURSIVITY__",
+                "getRemittanceInformation": {
+                    "__CLASS__": "Genkgo\\Camt\\DTO\\RemittanceInformation",
+                    "getCreditorReferenceInformation": null,
+                    "getMessage": "Unstructured Remittance Information V1",
+                    "getStructuredBlock": {
+                        "__CLASS__": "Genkgo\\Camt\\DTO\\StructuredRemittanceInformation",
+                        "getAdditionalRemittanceInformation": "Additional Remittance Information V1",
+                        "getCreditorReferenceInformation": {
+                            "__CLASS__": "Genkgo\\Camt\\DTO\\CreditorReferenceInformation",
+                            "getCode": null,
+                            "getProprietary": "ISR Reference",
+                            "getRef": "ISR ref number V1"
+                        }
+                    },
+                    "getStructuredBlocks": [
+                        "__RECURSIVITY__"
+                    ],
+                    "getUnstructuredBlock": {
+                        "__CLASS__": "Genkgo\\Camt\\DTO\\UnstructuredRemittanceInformation",
+                        "getMessage": "Unstructured Remittance Information V1"
+                    },
+                    "getUnstructuredBlocks": [
+                        "__RECURSIVITY__"
+                    ]
+                },
+                "getReturnInformation": null
+            },
+            "getTransactionDetails": [
+                "__RECURSIVITY__",
+                {
+                    "__CLASS__": "Genkgo\\Camt\\DTO\\EntryTransactionDetail",
+                    "getAdditionalTransactionInformation": null,
+                    "getAmount": null,
+                    "getAmountDetails": null,
+                    "getBankTransactionCode": {
+                        "__CLASS__": "Genkgo\\Camt\\DTO\\BankTransactionCode",
+                        "getDomain": null,
+                        "getProprietary": null
+                    },
+                    "getCharges": null,
+                    "getCreditDebitIndicator": "DBIT",
+                    "getReference": {
+                        "__CLASS__": "Genkgo\\Camt\\DTO\\Reference",
+                        "getAccountOwnerTransactionId": null,
+                        "getAccountServicerReference": null,
+                        "getAccountServicerTransactionId": null,
+                        "getChequeNumber": null,
+                        "getClearingSystemReference": null,
+                        "getEndToEndId": "MUELL/FINP/RA12345",
+                        "getInstructionId": null,
+                        "getMandateId": null,
+                        "getMarketInfrastructureTransactionId": null,
+                        "getMessageId": null,
+                        "getPaymentInformationId": null,
+                        "getProcessingId": null,
+                        "getProprietaries": [],
+                        "getTransactionId": null,
+                        "getUuidEndToEndReference": null
+                    },
+                    "getRelatedAgent": null,
+                    "getRelatedAgents": [],
+                    "getRelatedDates": null,
+                    "getRelatedParties": [
+                        {
+                            "__CLASS__": "Genkgo\\Camt\\DTO\\RelatedParty",
+                            "getAccount": null,
+                            "getRelatedPartyType": {
+                                "__CLASS__": "Genkgo\\Camt\\DTO\\Debtor",
+                                "getAddress": null,
+                                "getName": "MUELLER"
+                            }
+                        }
+                    ],
+                    "getRelatedParty": "__RECURSIVITY__",
+                    "getRemittanceInformation": {
+                        "__CLASS__": "Genkgo\\Camt\\DTO\\RemittanceInformation",
+                        "getCreditorReferenceInformation": {
+                            "__CLASS__": "Genkgo\\Camt\\DTO\\CreditorReferenceInformation",
+                            "getCode": null,
+                            "getProprietary": "ISR Reference",
+                            "getRef": "ISR ref number V2"
+                        },
+                        "getMessage": "ISR ref number V2",
+                        "getStructuredBlock": {
+                            "__CLASS__": "Genkgo\\Camt\\DTO\\StructuredRemittanceInformation",
+                            "getAdditionalRemittanceInformation": "Additional Remittance Information V2",
+                            "getCreditorReferenceInformation": "__RECURSIVITY__"
+                        },
+                        "getStructuredBlocks": [
+                            "__RECURSIVITY__"
+                        ],
+                        "getUnstructuredBlock": null,
+                        "getUnstructuredBlocks": []
+                    },
+                    "getReturnInformation": null
+                },
+                {
+                    "__CLASS__": "Genkgo\\Camt\\DTO\\EntryTransactionDetail",
+                    "getAdditionalTransactionInformation": null,
+                    "getAmount": null,
+                    "getAmountDetails": null,
+                    "getBankTransactionCode": {
+                        "__CLASS__": "Genkgo\\Camt\\DTO\\BankTransactionCode",
+                        "getDomain": null,
+                        "getProprietary": null
+                    },
+                    "getCharges": null,
+                    "getCreditDebitIndicator": "DBIT",
+                    "getReference": {
+                        "__CLASS__": "Genkgo\\Camt\\DTO\\Reference",
+                        "getAccountOwnerTransactionId": null,
+                        "getAccountServicerReference": null,
+                        "getAccountServicerTransactionId": null,
+                        "getChequeNumber": null,
+                        "getClearingSystemReference": null,
+                        "getEndToEndId": "MUELL/FINP/RA12345",
+                        "getInstructionId": null,
+                        "getMandateId": null,
+                        "getMarketInfrastructureTransactionId": null,
+                        "getMessageId": null,
+                        "getPaymentInformationId": null,
+                        "getProcessingId": null,
+                        "getProprietaries": [],
+                        "getTransactionId": null,
+                        "getUuidEndToEndReference": null
+                    },
+                    "getRelatedAgent": null,
+                    "getRelatedAgents": [],
+                    "getRelatedDates": null,
+                    "getRelatedParties": [
+                        {
+                            "__CLASS__": "Genkgo\\Camt\\DTO\\RelatedParty",
+                            "getAccount": null,
+                            "getRelatedPartyType": {
+                                "__CLASS__": "Genkgo\\Camt\\DTO\\Debtor",
+                                "getAddress": null,
+                                "getName": "MUELLER"
+                            }
+                        }
+                    ],
+                    "getRelatedParty": "__RECURSIVITY__",
+                    "getRemittanceInformation": {
+                        "__CLASS__": "Genkgo\\Camt\\DTO\\RemittanceInformation",
+                        "getCreditorReferenceInformation": null,
+                        "getMessage": "Unstructured Remittance Information V3 block 1",
+                        "getStructuredBlock": {
+                            "__CLASS__": "Genkgo\\Camt\\DTO\\StructuredRemittanceInformation",
+                            "getAdditionalRemittanceInformation": "Additional Remittance Information V3 block 1",
+                            "getCreditorReferenceInformation": {
+                                "__CLASS__": "Genkgo\\Camt\\DTO\\CreditorReferenceInformation",
+                                "getCode": "SCOR",
+                                "getProprietary": null,
+                                "getRef": "Ref number V3 block 1"
+                            }
+                        },
+                        "getStructuredBlocks": [
+                            "__RECURSIVITY__",
+                            {
+                                "__CLASS__": "Genkgo\\Camt\\DTO\\StructuredRemittanceInformation",
+                                "getAdditionalRemittanceInformation": "Additional Remittance Information V3 block 2",
+                                "getCreditorReferenceInformation": {
+                                    "__CLASS__": "Genkgo\\Camt\\DTO\\CreditorReferenceInformation",
+                                    "getCode": "SCOR",
+                                    "getProprietary": null,
+                                    "getRef": "Ref number V3 block 2"
+                                }
+                            }
+                        ],
+                        "getUnstructuredBlock": {
+                            "__CLASS__": "Genkgo\\Camt\\DTO\\UnstructuredRemittanceInformation",
+                            "getMessage": "Unstructured Remittance Information V3 block 1"
+                        },
+                        "getUnstructuredBlocks": [
+                            "__RECURSIVITY__",
+                            {
+                                "__CLASS__": "Genkgo\\Camt\\DTO\\UnstructuredRemittanceInformation",
+                                "getMessage": "Unstructured Remittance Information V3 block 2"
+                            }
+                        ]
+                    },
+                    "getReturnInformation": null
+                }
+            ],
+            "getValueDate": {
+                "__CLASS__": "DateTimeImmutable",
+                "0": "2007-10-18T00:00:00+00:00"
+            }
+        }
+    ],
+    "getGroupHeader": {
+        "__CLASS__": "Genkgo\\Camt\\DTO\\GroupHeader",
+        "getAdditionalInformation": "Group header additional information",
+        "getCreatedOn": {
+            "__CLASS__": "DateTimeImmutable",
+            "0": "2007-10-18T11:30:00+00:00"
+        },
+        "getMessageId": "AAAASESS-FP-ACCR001",
+        "getMessageRecipient": {
+            "__CLASS__": "Genkgo\\Camt\\DTO\\Recipient",
+            "getAddress": {
+                "__CLASS__": "Genkgo\\Camt\\DTO\\Address",
+                "getAddressLines": [],
+                "getBuildingNumber": null,
+                "getCountry": "UK",
+                "getCountrySubDivision": null,
+                "getDepartment": null,
+                "getPostCode": null,
+                "getStreetName": "12 Oxford Street",
+                "getSubDepartment": null,
+                "getTownName": null
+            },
+            "getContactDetails": null,
+            "getCountryOfResidence": "NL",
+            "getIdentification": {
+                "__CLASS__": "Genkgo\\Camt\\DTO\\OrganisationIdentification",
+                "getBankPartyId": null,
+                "getBei": "DABAIE2D",
+                "getBic": "DABAIE2D",
+                "getChipsUniversalId": null,
+                "getDuns": null,
+                "getEangln": null,
+                "getIbei": null,
+                "getIdentification": "Some other Id",
+                "getIssuer": null,
+                "getOtherId": "Some other Id",
+                "getOtherIssuer": "Some other Issuer",
+                "getOtherSchemeName": null,
+                "getOtherType": null,
+                "getTaxId": null
+            },
+            "getName": "COMPANY BVBA"
+        },
+        "getPagination": {
+            "__CLASS__": "Genkgo\\Camt\\DTO\\Pagination",
+            "getPageNumber": "1"
+        }
+    },
+    "getRecords": [
+        "__RECURSIVITY__"
+    ]
+}

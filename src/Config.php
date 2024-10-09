@@ -8,25 +8,15 @@ use Genkgo\Camt\Camt052;
 use Genkgo\Camt\Camt053;
 use Genkgo\Camt\Camt054;
 
-/**
- * Class Config
- * @package Genkgo\Camt
- */
 class Config
 {
     /**
      * @var MessageFormatInterface[]
      */
-    private $messageFormats = [];
+    private array $messageFormats = [];
 
-    /**
-     * @var bool
-     */
-    private $xsdValidation = true;
+    private bool $xsdValidation = true;
 
-    /**
-     * @param MessageFormatInterface $messageFormat
-     */
     public function addMessageFormat(MessageFormatInterface $messageFormat): void
     {
         $this->messageFormats[] = $messageFormat;
@@ -45,27 +35,26 @@ class Config
         $this->xsdValidation = false;
     }
 
-    /**
-     * @return bool
-     */
     public function getXsdValidation(): bool
     {
         return $this->xsdValidation;
     }
 
-    /**
-     * @return self
-     */
-    public static function getDefault(): Config
+    public static function getDefault(): self
     {
         $config = new self();
         $config->addMessageFormat(new Camt052\MessageFormat\V01());
+        $config->addMessageFormat(new Camt052\MessageFormat\V02());
         $config->addMessageFormat(new Camt052\MessageFormat\V04());
+        $config->addMessageFormat(new Camt052\MessageFormat\V06());
+        $config->addMessageFormat(new Camt052\MessageFormat\V08());
         $config->addMessageFormat(new Camt053\MessageFormat\V02());
         $config->addMessageFormat(new Camt053\MessageFormat\V03());
         $config->addMessageFormat(new Camt053\MessageFormat\V04());
+        $config->addMessageFormat(new Camt053\MessageFormat\V08());
         $config->addMessageFormat(new Camt054\MessageFormat\V02());
         $config->addMessageFormat(new Camt054\MessageFormat\V04());
+        $config->addMessageFormat(new Camt054\MessageFormat\V08());
 
         return $config;
     }

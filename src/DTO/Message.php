@@ -6,33 +6,20 @@ namespace Genkgo\Camt\DTO;
 
 use Genkgo\Camt\Iterator\EntryIterator;
 
-/**
- * Class Message
- * @package Genkgo\Camt\DTO
- */
 class Message
 {
-    /**
-     * @var GroupHeader
-     */
-    private $groupHeader;
+    private GroupHeader $groupHeader;
 
     /**
      * @var Record[]
      */
-    private $records = [];
+    private array $records = [];
 
-    /**
-     * @return GroupHeader
-     */
     public function getGroupHeader(): GroupHeader
     {
         return $this->groupHeader;
     }
 
-    /**
-     * @param GroupHeader $groupHeader
-     */
     public function setGroupHeader(GroupHeader $groupHeader): void
     {
         $this->groupHeader = $groupHeader;

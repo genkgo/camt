@@ -1,0 +1,327 @@
+{
+    "__CLASS__": "Genkgo\\Camt\\DTO\\Message",
+    "getEntries": [
+        {
+            "__CLASS__": "Genkgo\\Camt\\DTO\\Entry",
+            "getAccountServicerReference": "AAAASESS-FP-CN_98765/01",
+            "getAdditionalInfo": "",
+            "getAmount": {
+                "__CLASS__": "Money\\Money",
+                "getAmount": "885",
+                "getCurrency": {
+                    "__CLASS__": "Money\\Currency",
+                    "getCode": "EUR"
+                }
+            },
+            "getBankTransactionCode": {
+                "__CLASS__": "Genkgo\\Camt\\DTO\\BankTransactionCode",
+                "getDomain": {
+                    "__CLASS__": "Genkgo\\Camt\\DTO\\DomainBankTransactionCode",
+                    "getCode": "PMNT",
+                    "getFamily": {
+                        "__CLASS__": "Genkgo\\Camt\\DTO\\DomainFamilyBankTransactionCode",
+                        "getCode": "RCDT",
+                        "getSubFamilyCode": "BOOK"
+                    }
+                },
+                "getProprietary": null
+            },
+            "getBatchPaymentId": null,
+            "getBookingDate": {
+                "__CLASS__": "DateTimeImmutable",
+                "0": "2014-12-31T12:15:00+00:00"
+            },
+            "getCharges": null,
+            "getCreditDebitIndicator": "CRDT",
+            "getIndex": 0,
+            "getRecord": {
+                "__CLASS__": "Genkgo\\Camt\\Camt053\\DTO\\Statement",
+                "getAccount": {
+                    "__CLASS__": "Genkgo\\Camt\\DTO\\OtherAccount",
+                    "getIdentification": "NL26VAYB8060476890",
+                    "getIssuer": null,
+                    "getSchemeName": null
+                },
+                "getAdditionalInformation": "Additional Information",
+                "getBalances": [
+                    {
+                        "__CLASS__": "Genkgo\\Camt\\DTO\\Balance",
+                        "getAmount": {
+                            "__CLASS__": "Money\\Money",
+                            "getAmount": "1815",
+                            "getCurrency": {
+                                "__CLASS__": "Money\\Currency",
+                                "getCode": "EUR"
+                            }
+                        },
+                        "getDate": {
+                            "__CLASS__": "DateTimeImmutable",
+                            "0": "2014-12-30T00:00:00+00:00"
+                        },
+                        "getType": "opening"
+                    },
+                    {
+                        "__CLASS__": "Genkgo\\Camt\\DTO\\Balance",
+                        "getAmount": {
+                            "__CLASS__": "Money\\Money",
+                            "getAmount": "-2700",
+                            "getCurrency": {
+                                "__CLASS__": "Money\\Currency",
+                                "getCode": "SEK"
+                            }
+                        },
+                        "getDate": {
+                            "__CLASS__": "DateTimeImmutable",
+                            "0": "2014-12-30T00:00:00+00:00"
+                        },
+                        "getType": "closing"
+                    },
+                    {
+                        "__CLASS__": "Genkgo\\Camt\\DTO\\Balance",
+                        "getAmount": {
+                            "__CLASS__": "Money\\Money",
+                            "getAmount": "3500",
+                            "getCurrency": {
+                                "__CLASS__": "Money\\Currency",
+                                "getCode": "CHF"
+                            }
+                        },
+                        "getDate": {
+                            "__CLASS__": "DateTimeImmutable",
+                            "0": "2014-12-30T00:00:00+00:00"
+                        },
+                        "getType": "opening_available"
+                    },
+                    {
+                        "__CLASS__": "Genkgo\\Camt\\DTO\\Balance",
+                        "getAmount": {
+                            "__CLASS__": "Money\\Money",
+                            "getAmount": "-2700",
+                            "getCurrency": {
+                                "__CLASS__": "Money\\Currency",
+                                "getCode": "JPY"
+                            }
+                        },
+                        "getDate": {
+                            "__CLASS__": "DateTimeImmutable",
+                            "0": "2014-12-31T00:00:00+00:00"
+                        },
+                        "getType": "closing_available"
+                    }
+                ],
+                "getCopyDuplicateIndicator": "CODU",
+                "getCreatedOn": {
+                    "__CLASS__": "DateTimeImmutable",
+                    "0": "2015-03-10T18:43:50+00:00"
+                },
+                "getElectronicSequenceNumber": "12312",
+                "getEntries": [
+                    "__RECURSIVITY__"
+                ],
+                "getFromDate": {
+                    "__CLASS__": "DateTimeImmutable",
+                    "0": "2007-10-18T07:00:00+00:00"
+                },
+                "getId": "253EURNL26VAYB8060476890",
+                "getLegalSequenceNumber": "12312",
+                "getPagination": {
+                    "__CLASS__": "Genkgo\\Camt\\DTO\\Pagination",
+                    "getPageNumber": "2"
+                },
+                "getToDate": {
+                    "__CLASS__": "DateTimeImmutable",
+                    "0": "2007-10-18T11:30:00+00:00"
+                }
+            },
+            "getReference": null,
+            "getReversalIndicator": false,
+            "getStatus": "BOOK",
+            "getTransactionDetail": {
+                "__CLASS__": "Genkgo\\Camt\\DTO\\EntryTransactionDetail",
+                "getAdditionalTransactionInformation": null,
+                "getAmount": {
+                    "__CLASS__": "Money\\Money",
+                    "getAmount": "0",
+                    "getCurrency": {
+                        "__CLASS__": "Money\\Currency",
+                        "getCode": "SEK"
+                    }
+                },
+                "getAmountDetails": null,
+                "getBankTransactionCode": {
+                    "__CLASS__": "Genkgo\\Camt\\DTO\\BankTransactionCode",
+                    "getDomain": null,
+                    "getProprietary": null
+                },
+                "getCharges": null,
+                "getCreditDebitIndicator": "CRDT",
+                "getReference": {
+                    "__CLASS__": "Genkgo\\Camt\\DTO\\Reference",
+                    "getAccountOwnerTransactionId": null,
+                    "getAccountServicerReference": null,
+                    "getAccountServicerTransactionId": null,
+                    "getChequeNumber": null,
+                    "getClearingSystemReference": null,
+                    "getEndToEndId": "MUELL/FINP/RA12345",
+                    "getInstructionId": null,
+                    "getMandateId": null,
+                    "getMarketInfrastructureTransactionId": null,
+                    "getMessageId": null,
+                    "getPaymentInformationId": null,
+                    "getProcessingId": null,
+                    "getProprietaries": [
+                        {
+                            "__CLASS__": "Genkgo\\Camt\\DTO\\ProprietaryReference",
+                            "getReference": "100",
+                            "getType": "LegalSequenceNumber"
+                        }
+                    ],
+                    "getTransactionId": null,
+                    "getUuidEndToEndReference": null
+                },
+                "getRelatedAgent": null,
+                "getRelatedAgents": [],
+                "getRelatedDates": null,
+                "getRelatedParties": [
+                    {
+                        "__CLASS__": "Genkgo\\Camt\\DTO\\RelatedParty",
+                        "getAccount": {
+                            "__CLASS__": "Genkgo\\Camt\\DTO\\IbanAccount",
+                            "getIban": {
+                                "__CLASS__": "Genkgo\\Camt\\Iban",
+                                "getIban": "NL56AGDH9619008421"
+                            },
+                            "getIdentification": "NL56AGDH9619008421"
+                        },
+                        "getRelatedPartyType": {
+                            "__CLASS__": "Genkgo\\Camt\\DTO\\Creditor",
+                            "getAddress": {
+                                "__CLASS__": "Genkgo\\Camt\\DTO\\Address",
+                                "getAddressLines": [],
+                                "getBuildingNumber": null,
+                                "getCountry": "NL",
+                                "getCountrySubDivision": null,
+                                "getDepartment": null,
+                                "getPostCode": null,
+                                "getStreetName": null,
+                                "getSubDepartment": null,
+                                "getTownName": null
+                            },
+                            "getName": "Company Name"
+                        }
+                    },
+                    {
+                        "__CLASS__": "Genkgo\\Camt\\DTO\\RelatedParty",
+                        "getAccount": {
+                            "__CLASS__": "Genkgo\\Camt\\DTO\\IbanAccount",
+                            "getIban": {
+                                "__CLASS__": "Genkgo\\Camt\\Iban",
+                                "getIban": "NL56AGDH9619008421"
+                            },
+                            "getIdentification": "NL56AGDH9619008421"
+                        },
+                        "getRelatedPartyType": {
+                            "__CLASS__": "Genkgo\\Camt\\DTO\\Debtor",
+                            "getAddress": {
+                                "__CLASS__": "Genkgo\\Camt\\DTO\\Address",
+                                "getAddressLines": [
+                                    "ADDR ADDR 10",
+                                    "2000 ANTWERPEN"
+                                ],
+                                "getBuildingNumber": null,
+                                "getCountry": "NL",
+                                "getCountrySubDivision": null,
+                                "getDepartment": null,
+                                "getPostCode": null,
+                                "getStreetName": null,
+                                "getSubDepartment": null,
+                                "getTownName": null
+                            },
+                            "getName": "NAME NAME"
+                        }
+                    }
+                ],
+                "getRelatedParty": "__RECURSIVITY__",
+                "getRemittanceInformation": {
+                    "__CLASS__": "Genkgo\\Camt\\DTO\\RemittanceInformation",
+                    "getCreditorReferenceInformation": {
+                        "__CLASS__": "Genkgo\\Camt\\DTO\\CreditorReferenceInformation",
+                        "getCode": "SCOR",
+                        "getProprietary": null,
+                        "getRef": "4654654654654654"
+                    },
+                    "getMessage": "4654654654654654",
+                    "getStructuredBlock": {
+                        "__CLASS__": "Genkgo\\Camt\\DTO\\StructuredRemittanceInformation",
+                        "getAdditionalRemittanceInformation": null,
+                        "getCreditorReferenceInformation": "__RECURSIVITY__"
+                    },
+                    "getStructuredBlocks": [
+                        "__RECURSIVITY__"
+                    ],
+                    "getUnstructuredBlock": null,
+                    "getUnstructuredBlocks": []
+                },
+                "getReturnInformation": null
+            },
+            "getTransactionDetails": [
+                "__RECURSIVITY__"
+            ],
+            "getValueDate": {
+                "__CLASS__": "DateTimeImmutable",
+                "0": "2015-01-02T00:00:00+00:00"
+            }
+        }
+    ],
+    "getGroupHeader": {
+        "__CLASS__": "Genkgo\\Camt\\DTO\\GroupHeader",
+        "getAdditionalInformation": "Group header additional information",
+        "getCreatedOn": {
+            "__CLASS__": "DateTimeImmutable",
+            "0": "2015-03-10T18:43:50+00:00"
+        },
+        "getMessageId": "CAMT053RIB000000000001",
+        "getMessageRecipient": {
+            "__CLASS__": "Genkgo\\Camt\\DTO\\Recipient",
+            "getAddress": {
+                "__CLASS__": "Genkgo\\Camt\\DTO\\Address",
+                "getAddressLines": [],
+                "getBuildingNumber": null,
+                "getCountry": "UK",
+                "getCountrySubDivision": null,
+                "getDepartment": null,
+                "getPostCode": null,
+                "getStreetName": "12 Oxford Street",
+                "getSubDepartment": null,
+                "getTownName": null
+            },
+            "getContactDetails": null,
+            "getCountryOfResidence": "NL",
+            "getIdentification": {
+                "__CLASS__": "Genkgo\\Camt\\DTO\\OrganisationIdentification",
+                "getBankPartyId": null,
+                "getBei": null,
+                "getBic": "DABAIE2D",
+                "getChipsUniversalId": null,
+                "getDuns": null,
+                "getEangln": null,
+                "getIbei": null,
+                "getIdentification": "Some other Id",
+                "getIssuer": null,
+                "getOtherId": "Some other Id",
+                "getOtherIssuer": "Some other Issuer",
+                "getOtherSchemeName": null,
+                "getOtherType": null,
+                "getTaxId": null
+            },
+            "getName": "COMPANY BVBA"
+        },
+        "getPagination": {
+            "__CLASS__": "Genkgo\\Camt\\DTO\\Pagination",
+            "getPageNumber": "1"
+        }
+    },
+    "getRecords": [
+        "__RECURSIVITY__"
+    ]
+}

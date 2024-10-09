@@ -8,24 +8,13 @@ use Genkgo\Camt\DTO\GroupHeader as BaseGroupHeader;
 
 class GroupHeader extends BaseGroupHeader
 {
-    /**
-     * @var null|OriginalBusinessQuery
-     */
-    private $originalBusinessQuery;
+    private ?OriginalBusinessQuery $originalBusinessQuery = null;
 
-    /**
-     * @return null|OriginalBusinessQuery
-     */
     public function getOriginalBusinessQuery(): ?OriginalBusinessQuery
     {
         return $this->originalBusinessQuery;
     }
 
-    /**
-     * @param OriginalBusinessQuery $originalBusinessQuery
-     *
-     * @return GroupHeader
-     */
     public function setOriginalBusinessQuery(OriginalBusinessQuery $originalBusinessQuery): self
     {
         $this->originalBusinessQuery = $originalBusinessQuery;

@@ -4,39 +4,23 @@ declare(strict_types=1);
 
 namespace Genkgo\Camt\DTO;
 
-/**
- * Class RemittanceInformation
- *
- * @package Genkgo\Camt\DTO
- */
 class RemittanceInformation
 {
-    /**
-     * @var null|string
-     */
-    private $message;
+    private ?string $message = null;
 
-    /**
-     * @var null|CreditorReferenceInformation
-     */
-    private $creditorReferenceInformation;
+    private ?CreditorReferenceInformation $creditorReferenceInformation = null;
 
     /**
      * @var StructuredRemittanceInformation[]
      */
-    private $structuredBlocks = [];
+    private array $structuredBlocks = [];
 
     /**
      * @var UnstructuredRemittanceInformation[]
      */
-    private $unstructuredBlocks = [];
+    private array $unstructuredBlocks = [];
 
-    /**
-     * @param string $message
-     *
-     * @return self
-     */
-    public static function fromUnstructured(string $message): RemittanceInformation
+    public static function fromUnstructured(string $message): self
     {
         $information = new self();
         $information->message = $message;
@@ -44,17 +28,11 @@ class RemittanceInformation
         return $information;
     }
 
-    /**
-     * @return null|CreditorReferenceInformation
-     */
     public function getCreditorReferenceInformation(): ?CreditorReferenceInformation
     {
         return $this->creditorReferenceInformation;
     }
 
-    /**
-     * @param CreditorReferenceInformation $creditorReferenceInformation
-     */
     public function setCreditorReferenceInformation(CreditorReferenceInformation $creditorReferenceInformation): void
     {
         $this->creditorReferenceInformation = $creditorReferenceInformation;
@@ -62,7 +40,6 @@ class RemittanceInformation
     }
 
     /**
-     * @return null|string
      * @deprecated Use getStructuredBlocks method instead
      */
     public function getMessage(): ?string
@@ -71,8 +48,6 @@ class RemittanceInformation
     }
 
     /**
-     * @param string $message
-     *
      * @deprecated Use addStructuredBlock method instead
      */
     public function setMessage(string $message): void
@@ -80,9 +55,6 @@ class RemittanceInformation
         $this->message = $message;
     }
 
-    /**
-     * @param StructuredRemittanceInformation $structuredRemittanceInformation
-     */
     public function addStructuredBlock(StructuredRemittanceInformation $structuredRemittanceInformation): void
     {
         $this->structuredBlocks[] = $structuredRemittanceInformation;
@@ -96,9 +68,6 @@ class RemittanceInformation
         return $this->structuredBlocks;
     }
 
-    /**
-     * @return null|StructuredRemittanceInformation
-     */
     public function getStructuredBlock(): ?StructuredRemittanceInformation
     {
         if (isset($this->structuredBlocks[0])) {
@@ -108,9 +77,6 @@ class RemittanceInformation
         return null;
     }
 
-    /**
-     * @param UnstructuredRemittanceInformation $unstructuredRemittanceInformation
-     */
     public function addUnstructuredBlock(UnstructuredRemittanceInformation $unstructuredRemittanceInformation): void
     {
         $this->unstructuredBlocks[] = $unstructuredRemittanceInformation;
@@ -124,9 +90,6 @@ class RemittanceInformation
         return $this->unstructuredBlocks;
     }
 
-    /**
-     * @return UnstructuredRemittanceInformation
-     */
     public function getUnstructuredBlock(): ?UnstructuredRemittanceInformation
     {
         if (isset($this->unstructuredBlocks[0])) {

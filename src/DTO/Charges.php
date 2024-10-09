@@ -8,31 +8,23 @@ use Money\Money;
 
 class Charges
 {
-    /** @var Money */
-    private $totalChargesAndTaxAmount;
-
-    /** @var ChargesRecord[] */
-    private $records = [];
+    private ?Money $totalChargesAndTaxAmount = null;
 
     /**
-     * @return Money
+     * @var ChargesRecord[]
      */
-    public function getTotalChargesAndTaxAmount(): Money
+    private array $records = [];
+
+    public function getTotalChargesAndTaxAmount(): ?Money
     {
         return $this->totalChargesAndTaxAmount;
     }
 
-    /**
-     * @param Money $money
-     */
     public function setTotalChargesAndTaxAmount(Money $money): void
     {
         $this->totalChargesAndTaxAmount = $money;
     }
 
-    /**
-     * @param ChargesRecord $record
-     */
     public function addRecord(ChargesRecord $record): void
     {
         $this->records[] = $record;
@@ -46,9 +38,6 @@ class Charges
         return $this->records;
     }
 
-    /**
-     * @return null|ChargesRecord
-     */
     public function getRecord(): ?ChargesRecord
     {
         if (isset($this->records[0])) {

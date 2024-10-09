@@ -6,107 +6,59 @@ namespace Genkgo\Camt\DTO;
 
 use DateTimeImmutable;
 
-/**
- * Class GroupHeader
- * @package Genkgo\Camt\DTO
- */
 class GroupHeader
 {
-    /**
-     * @var string
-     */
-    private $messageId;
+    private string $messageId;
 
-    /**
-     * @var DateTimeImmutable
-     */
-    private $createdOn;
+    private DateTimeImmutable $createdOn;
 
-    /**
-     * @var null|string
-     */
-    private $additionalInformation;
+    private ?string $additionalInformation = null;
 
-    /**
-     * @var null|Recipient
-     */
-    private $messageRecipient;
+    private ?Recipient $messageRecipient = null;
 
-    /**
-     * @var null|Pagination
-     */
-    private $pagination;
+    private ?Pagination $pagination = null;
 
-
-    /**
-     * @param string $messageId
-     * @param DateTimeImmutable $createdOn
-     */
     public function __construct(string $messageId, DateTimeImmutable $createdOn)
     {
         $this->messageId = $messageId;
         $this->createdOn = $createdOn;
     }
 
-    /**
-     * @return string
-     */
     public function getMessageId(): string
     {
         return $this->messageId;
     }
 
-    /**
-     * @return DateTimeImmutable
-     */
     public function getCreatedOn(): DateTimeImmutable
     {
         return $this->createdOn;
     }
 
-    /**
-     * @return null|string
-     */
     public function getAdditionalInformation(): ?string
     {
         return $this->additionalInformation;
     }
 
-    /**
-     * @param string $additionalInformation
-     */
     public function setAdditionalInformation(string $additionalInformation): void
     {
         $this->additionalInformation = $additionalInformation;
     }
 
-    /**
-     * @return null|Recipient
-     */
-    public function getMessageRecipient():?Recipient
+    public function getMessageRecipient(): ?Recipient
     {
         return $this->messageRecipient;
     }
 
-    /**
-     * @param Recipient $messageRecipient
-     */
     public function setMessageRecipient(Recipient $messageRecipient): void
     {
         $this->messageRecipient = $messageRecipient;
     }
 
-    /**
-     * @return null|Pagination
-     */
     public function getPagination(): ?Pagination
     {
         return $this->pagination;
     }
 
-    /**
-     * @param null|Pagination $pagination
-     */
     public function setPagination(?Pagination $pagination): void
     {
         $this->pagination = $pagination;

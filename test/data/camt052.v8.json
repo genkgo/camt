@@ -1,0 +1,130 @@
+{
+    "__CLASS__": "Genkgo\\Camt\\DTO\\Message",
+    "getEntries": [
+        {
+            "__CLASS__": "Genkgo\\Camt\\DTO\\Entry",
+            "getAccountServicerReference": "AAAASESS-FP-ACCR-01",
+            "getAdditionalInfo": "Credit",
+            "getAmount": {
+                "__CLASS__": "Money\\Money",
+                "getAmount": "-20000000",
+                "getCurrency": {
+                    "__CLASS__": "Money\\Currency",
+                    "getCode": "SEK"
+                }
+            },
+            "getBankTransactionCode": {
+                "__CLASS__": "Genkgo\\Camt\\DTO\\BankTransactionCode",
+                "getDomain": {
+                    "__CLASS__": "Genkgo\\Camt\\DTO\\DomainBankTransactionCode",
+                    "getCode": "PMNT",
+                    "getFamily": {
+                        "__CLASS__": "Genkgo\\Camt\\DTO\\DomainFamilyBankTransactionCode",
+                        "getCode": "ICDT",
+                        "getSubFamilyCode": "XBCT"
+                    }
+                },
+                "getProprietary": null
+            },
+            "getBatchPaymentId": "FINP-0055-001",
+            "getBookingDate": {
+                "__CLASS__": "DateTimeImmutable",
+                "0": "2007-10-18T09:15:00+00:00"
+            },
+            "getCharges": null,
+            "getCreditDebitIndicator": "DBIT",
+            "getIndex": 0,
+            "getRecord": {
+                "__CLASS__": "Genkgo\\Camt\\Camt052\\DTO\\Report",
+                "getAccount": {
+                    "__CLASS__": "Genkgo\\Camt\\DTO\\OtherAccount",
+                    "getIdentification": "CH2801234000123456789",
+                    "getIssuer": null,
+                    "getSchemeName": null
+                },
+                "getAdditionalInformation": "Additional Information",
+                "getBalances": [],
+                "getCopyDuplicateIndicator": "CODU",
+                "getCreatedOn": {
+                    "__CLASS__": "DateTimeImmutable",
+                    "0": "2007-10-18T11:30:00+00:00"
+                },
+                "getElectronicSequenceNumber": "12312",
+                "getEntries": [
+                    "__RECURSIVITY__"
+                ],
+                "getFromDate": {
+                    "__CLASS__": "DateTimeImmutable",
+                    "0": "2007-10-18T07:00:00+00:00"
+                },
+                "getId": "AAAASESS-FP-ACCR001",
+                "getLegalSequenceNumber": "12312",
+                "getPagination": null,
+                "getToDate": {
+                    "__CLASS__": "DateTimeImmutable",
+                    "0": "2007-10-18T11:30:00+00:00"
+                }
+            },
+            "getReference": null,
+            "getReversalIndicator": false,
+            "getStatus": "BOOK",
+            "getTransactionDetail": null,
+            "getTransactionDetails": [],
+            "getValueDate": {
+                "__CLASS__": "DateTimeImmutable",
+                "0": "2007-10-18T00:00:00+00:00"
+            }
+        }
+    ],
+    "getGroupHeader": {
+        "__CLASS__": "Genkgo\\Camt\\DTO\\GroupHeader",
+        "getAdditionalInformation": "Group header additional information",
+        "getCreatedOn": {
+            "__CLASS__": "DateTimeImmutable",
+            "0": "2007-10-18T11:30:00+00:00"
+        },
+        "getMessageId": "AAAASESS-FP-ACCR001",
+        "getMessageRecipient": {
+            "__CLASS__": "Genkgo\\Camt\\DTO\\Recipient",
+            "getAddress": {
+                "__CLASS__": "Genkgo\\Camt\\DTO\\Address",
+                "getAddressLines": [],
+                "getBuildingNumber": null,
+                "getCountry": "UK",
+                "getCountrySubDivision": null,
+                "getDepartment": null,
+                "getPostCode": null,
+                "getStreetName": "12 Oxford Street",
+                "getSubDepartment": null,
+                "getTownName": null
+            },
+            "getContactDetails": null,
+            "getCountryOfResidence": "NL",
+            "getIdentification": {
+                "__CLASS__": "Genkgo\\Camt\\DTO\\OrganisationIdentification",
+                "getBankPartyId": null,
+                "getBei": null,
+                "getBic": "DABAIE2D",
+                "getChipsUniversalId": null,
+                "getDuns": null,
+                "getEangln": null,
+                "getIbei": null,
+                "getIdentification": "Some other Id",
+                "getIssuer": null,
+                "getOtherId": "Some other Id",
+                "getOtherIssuer": "Some other Issuer",
+                "getOtherSchemeName": null,
+                "getOtherType": null,
+                "getTaxId": null
+            },
+            "getName": "COMPANY BVBA"
+        },
+        "getPagination": {
+            "__CLASS__": "Genkgo\\Camt\\DTO\\Pagination",
+            "getPageNumber": "1"
+        }
+    },
+    "getRecords": [
+        "__RECURSIVITY__"
+    ]
+}

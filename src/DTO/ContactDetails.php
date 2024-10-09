@@ -6,148 +6,85 @@ namespace Genkgo\Camt\DTO;
 
 class ContactDetails
 {
-    /**
-     * @var null|string
-     */
-    private $namePrefix;
+    private ?string $namePrefix = null;
 
-    /**
-     * @var null|string
-     */
-    private $name;
+    private ?string $name = null;
 
-    /**
-     * @var null|string
-     */
-    private $phoneNumber;
+    private ?string $phoneNumber = null;
 
-    /**
-     * @var null|string
-     */
-    private $mobileNumber;
+    private ?string $mobileNumber = null;
 
-    /**
-     * @var null|string
-     */
-    private $faxNumber;
+    private ?string $faxNumber = null;
 
-    /**
-     * @var null|string
-     */
-    private $emailAddress;
+    private ?string $emailAddress = null;
 
-    /**
-     * @var null|string
-     */
-    private $other;
+    private ?string $other = null;
 
-    /**
-     * @return null|string
-     */
     public function getNamePrefix(): ?string
     {
         return $this->namePrefix;
     }
 
-    /**
-     * @param string $namePrefix
-     */
     public function setNamePrefix(string $namePrefix): void
     {
         $this->namePrefix = $namePrefix;
     }
 
-    /**
-     * @return null|string
-     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * @param string $name
-     */
     public function setName(string $name): void
     {
         $this->name = $name;
     }
 
-    /**
-     * @return null|string
-     */
     public function getPhoneNumber(): ?string
     {
         return $this->phoneNumber;
     }
 
-    /**
-     * @param string $phoneNumber
-     */
     public function setPhoneNumber(string $phoneNumber): void
     {
         $this->phoneNumber = $phoneNumber;
     }
 
-    /**
-     * @return null|string
-     */
     public function getMobileNumber(): ?string
     {
         return $this->mobileNumber;
     }
 
-    /**
-     * @param string $mobileNumber
-     */
     public function setMobileNumber(string $mobileNumber): void
     {
         $this->mobileNumber = $mobileNumber;
     }
 
-    /**
-     * @return null|string
-     */
     public function getFaxNumber(): ?string
     {
         return $this->faxNumber;
     }
 
-    /**
-     * @param string $faxNumber
-     */
     public function setFaxNumber(string $faxNumber): void
     {
         $this->faxNumber = $faxNumber;
     }
 
-    /**
-     * @return null|string
-     */
     public function getEmailAddress(): ?string
     {
         return $this->emailAddress;
     }
 
-    /**
-     * @param string $emailAddress
-     */
     public function setEmailAddress(string $emailAddress): void
     {
         $this->emailAddress = $emailAddress;
     }
 
-    /**
-     * @return null|string
-     */
     public function getOther(): ?string
     {
         return $this->other;
     }
 
-    /**
-     * @param string $other
-     */
     public function setOther(string $other): void
     {
         $this->other = $other;

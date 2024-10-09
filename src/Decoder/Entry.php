@@ -5,24 +5,17 @@ declare(strict_types=1);
 namespace Genkgo\Camt\Decoder;
 
 use Genkgo\Camt\DTO;
-use \SimpleXMLElement;
+use SimpleXMLElement;
 
 class Entry
 {
-    /**
-     * @var EntryTransactionDetail
-     */
-    private $entryTransactionDetailDecoder;
+    private EntryTransactionDetail $entryTransactionDetailDecoder;
 
     public function __construct(EntryTransactionDetail $entryTransactionDetailDecoder)
     {
         $this->entryTransactionDetailDecoder = $entryTransactionDetailDecoder;
     }
 
-    /**
-     * @param DTO\Entry        $entry
-     * @param SimpleXMLElement $xmlEntry
-     */
     public function addTransactionDetails(DTO\Entry $entry, SimpleXMLElement $xmlEntry): void
     {
         $xmlDetails = $xmlEntry->NtryDtls->TxDtls;
@@ -30,6 +23,7 @@ class Entry
         if ($xmlDetails !== null) {
             foreach ($xmlDetails as $xmlDetail) {
                 $detail = new DTO\EntryTransactionDetail();
+                $this->entryTransactionDetailDecoder->addCreditDebitIdentifier($detail, $xmlEntry->CdtDbtInd);
                 $this->entryTransactionDetailDecoder->addReference($detail, $xmlDetail);
                 $this->entryTransactionDetailDecoder->addRelatedParties($detail, $xmlDetail);
                 $this->entryTransactionDetailDecoder->addRelatedAgents($detail, $xmlDetail);

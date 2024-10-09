@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Document xmlns="urn:iso:std:iso:20022:tech:xsd:camt.054.001.08" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:iso:std:iso:20022:tech:xsd:camt.054.001.08 camt.054.001.08.xsd">
+  <BkToCstmrDbtCdtNtfctn>
+    <GrpHdr>
+      <MsgId>AAAASESS-FP-ACCR001</MsgId>
+      <CreDtTm>2007-10-18T12:30:00+01:00</CreDtTm>
+      <MsgRcpt>
+        <Nm>COMPANY BVBA</Nm>
+        <PstlAdr>
+          <StrtNm>12 Oxford Street</StrtNm>
+          <Ctry>UK</Ctry>
+        </PstlAdr>
+        <Id>
+          <OrgId>
+            <AnyBIC>DABAIE2D</AnyBIC>
+            <Othr>
+              <Id>Some other Id</Id>
+              <Issr>Some other Issuer</Issr>
+            </Othr>
+          </OrgId>
+        </Id>
+        <CtryOfRes>NL</CtryOfRes>
+      </MsgRcpt>
+      <MsgPgntn>
+        <PgNb>1</PgNb>
+        <LastPgInd>true</LastPgInd>
+      </MsgPgntn>
+      <OrgnlBizQry>
+        <MsgId>SomeMessageId</MsgId>
+        <MsgNmId>SomeMessageNameId</MsgNmId>
+        <CreDtTm>2010-10-18T12:30:00+01:00</CreDtTm>
+      </OrgnlBizQry>
+      <AddtlInf>Group header additional information</AddtlInf>
+    </GrpHdr>
+    <Ntfctn>
+      <Id>AAAASESS-FP-ACCR001</Id>
+      <NtfctnPgntn>
+        <PgNb>2</PgNb>
+        <LastPgInd>true</LastPgInd>
+      </NtfctnPgntn>
+      <ElctrncSeqNb>12312</ElctrncSeqNb>
+      <LglSeqNb>12312</LglSeqNb>
+      <CreDtTm>2007-10-18T12:30:00+01:00</CreDtTm>
+      <FrToDt>
+        <FrDtTm>2007-10-18T08:00:00+01:00</FrDtTm>
+        <ToDtTm>2007-10-18T12:30:00+01:00</ToDtTm>
+      </FrToDt>
+      <CpyDplctInd>CODU</CpyDplctInd>
+      <Acct>
+        <Id>
+          <IBAN>CH2801234000123456789</IBAN>
+        </Id>
+        <Ownr>
+          <Nm>UNIFITS GmbH</Nm>
+        </Ownr>
+        <Svcr>
+          <FinInstnId>
+            <BICFI>UBSWCHZH80A</BICFI>
+            <Nm>UBS SWITZERLAND AG</Nm>
+          </FinInstnId>
+        </Svcr>
+      </Acct>
+      <Ntry>
+        <Amt Ccy="SEK">200000</Amt>
+        <CdtDbtInd>DBIT</CdtDbtInd>
+        <Sts>
+          <Cd>BOOK</Cd>
+        </Sts>
+        <BookgDt>
+          <Dt>2007-10-18</Dt>
+        </BookgDt>
+        <ValDt>
+          <Dt>2007-10-18</Dt>
+        </ValDt>
+        <AcctSvcrRef>ACSR160617103200001</AcctSvcrRef>
+        <BkTxCd>
+          <Domn>
+            <Cd>PMNT</Cd>
+            <Fmly>
+              <Cd>ICDT</Cd>
+              <SubFmlyCd>DMCT</SubFmlyCd>
+            </Fmly>
+          </Domn>
+          <Prtry>
+            <Cd>Z24</Cd>
+          </Prtry>
+        </BkTxCd>
+        <NtryDtls>
+          <Btch>
+            <MsgId>UXC06170000006</MsgId>
+            <PmtInfId>UXC06170000006PI00001</PmtInfId>
+            <NbOfTxs>2</NbOfTxs>
+            <TtlAmt Ccy="CHF">6.3</TtlAmt>
+            <CdtDbtInd>DBIT</CdtDbtInd>
+          </Btch>
+          <TxDtls>
+            <Refs>
+              <PmtInfId>UXC06170000006PI00001</PmtInfId>
+              <InstrId>UXC06170000006PI00001II00001</InstrId>
+              <EndToEndId>UXC06170000006PI00001EE00001</EndToEndId>
+            </Refs>
+            <Amt Ccy="CHF">3.1</Amt>
+            <CdtDbtInd>CRDT</CdtDbtInd>
+            <AmtDtls>
+              <TxAmt>
+                <Amt Ccy="CHF">3.1</Amt>
+              </TxAmt>
+            </AmtDtls>
+            <BkTxCd>
+              <Domn>
+                <Cd>PMNT</Cd>
+                <Fmly>
+                  <Cd>ICDT</Cd>
+                  <SubFmlyCd>DMCT</SubFmlyCd>
+                </Fmly>
+              </Domn>
+              <Prtry>
+                <Cd>Z24</Cd>
+              </Prtry>
+            </BkTxCd>
+            <RltdPties>
+              <InitgPty>
+                <Pty>
+                  <Nm>UNIFITS</Nm>
+                </Pty>
+              </InitgPty>
+              <Dbtr>
+                <Pty>
+                  <Nm>UNIFITS GmbH</Nm>
+                </Pty>
+              </Dbtr>
+              <DbtrAcct>
+                <Id>
+                  <IBAN>CH2801234000123456789</IBAN>
+                </Id>
+              </DbtrAcct>
+              <Cdtr>
+                <Pty>
+                  <Nm>Example Creditor 3 - V1</Nm>
+                  <PstlAdr>
+                    <StrtNm>Example Street 3 - V1</StrtNm>
+                    <BldgNb>31</BldgNb>
+                    <PstCd>3131</PstCd>
+                    <TwnNm>Example Town 3 - V1</TwnNm>
+                    <Ctry>CH</Ctry>
+                  </PstlAdr>
+                </Pty>
+              </Cdtr>
+              <CdtrAcct>
+                <Id>
+                  <IBAN>CH4112345003131313131</IBAN>
+                </Id>
+              </CdtrAcct>
+            </RltdPties>
+            <RltdAgts>
+              <DbtrAgt>
+                <FinInstnId>
+                  <BICFI>BANKCHZHXXX</BICFI>
+                </FinInstnId>
+              </DbtrAgt>
+              <CdtrAgt>
+                <FinInstnId>
+                  <ClrSysMmbId>
+                    <ClrSysId>
+                      <Cd>CHBCC</Cd>
+                    </ClrSysId>
+                    <MmbId>100</MmbId>
+                  </ClrSysMmbId>
+                </FinInstnId>
+              </CdtrAgt>
+            </RltdAgts>
+            <RmtInf>
+              <Ustrd>Unstructured Remittance Information V1</Ustrd>
+              <Strd>
+                <CdtrRefInf>
+                  <Tp>
+                    <CdOrPrtry>
+                      <Prtry>ISR Reference</Prtry>
+                    </CdOrPrtry>
+                  </Tp>
+                  <Ref>ISR ref number V1</Ref>
+                </CdtrRefInf>
+                <AddtlRmtInf>Additional Remittance Information V1</AddtlRmtInf>
+              </Strd>
+            </RmtInf>
+          </TxDtls>
+          <TxDtls>
+            <Refs>
+              <PmtInfId>UXC06170000006PI00001</PmtInfId>
+              <InstrId>UXC06170000006PI00001II00002</InstrId>
+              <EndToEndId>UXC06170000006PI00001EE00002</EndToEndId>
+            </Refs>
+            <Amt Ccy="CHF">3.2</Amt>
+            <CdtDbtInd>CRDT</CdtDbtInd>
+            <AmtDtls>
+              <TxAmt>
+                <Amt Ccy="CHF">3.2</Amt>
+              </TxAmt>
+            </AmtDtls>
+            <BkTxCd>
+              <Domn>
+                <Cd>PMNT</Cd>
+                <Fmly>
+                  <Cd>ICDT</Cd>
+                  <SubFmlyCd>DMCT</SubFmlyCd>
+                </Fmly>
+              </Domn>
+              <Prtry>
+                <Cd>Z24</Cd>
+              </Prtry>
+            </BkTxCd>
+            <RltdPties>
+              <InitgPty>
+                <Pty>
+                  <Nm>UNIFITS</Nm>
+                </Pty>
+              </InitgPty>
+              <Dbtr>
+                <Pty>
+                  <Nm>UNIFITS GmbH</Nm>
+                </Pty>
+              </Dbtr>
+              <DbtrAcct>
+                <Id>
+                  <IBAN>CH2801234000123456789</IBAN>
+                </Id>
+              </DbtrAcct>
+              <Cdtr>
+                <Pty>
+                  <Nm>Example Creditor 3 - V2</Nm>
+                  <PstlAdr>
+                    <StrtNm>Example Street 3 - V2</StrtNm>
+                    <BldgNb>32</BldgNb>
+                    <PstCd>3232</PstCd>
+                    <TwnNm>Example Town 3 - V2</TwnNm>
+                    <Ctry>CH</Ctry>
+                  </PstlAdr>
+                </Pty>
+              </Cdtr>
+              <CdtrAcct>
+                <Id>
+                  <IBAN>CH7212345003232323232</IBAN>
+                </Id>
+              </CdtrAcct>
+            </RltdPties>
+            <RltdAgts>
+              <DbtrAgt>
+                <FinInstnId>
+                  <BICFI>BANKCHZHXXX</BICFI>
+                </FinInstnId>
+              </DbtrAgt>
+              <CdtrAgt>
+                <FinInstnId>
+                  <BICFI>BANKCHBE</BICFI>
+                </FinInstnId>
+              </CdtrAgt>
+            </RltdAgts>
+            <RmtInf>
+              <Strd>
+                <CdtrRefInf>
+                  <Tp>
+                    <CdOrPrtry>
+                      <Prtry>ISR Reference</Prtry>
+                    </CdOrPrtry>
+                  </Tp>
+                  <Ref>ISR ref number V2</Ref>
+                </CdtrRefInf>
+                <AddtlRmtInf>Additional Remittance Information V2</AddtlRmtInf>
+              </Strd>
+            </RmtInf>
+          </TxDtls>
+          <TxDtls>
+            <Refs>
+              <PmtInfId>UXC06170000006PI00001</PmtInfId>
+              <InstrId>UXC06170000006PI00001II00002</InstrId>
+              <EndToEndId>UXC06170000006PI00001EE00002</EndToEndId>
+            </Refs>
+            <Amt Ccy="CHF">3.2</Amt>
+            <CdtDbtInd>CRDT</CdtDbtInd>
+            <AmtDtls>
+              <TxAmt>
+                <Amt Ccy="CHF">3.2</Amt>
+              </TxAmt>
+            </AmtDtls>
+            <BkTxCd>
+              <Domn>
+                <Cd>PMNT</Cd>
+                <Fmly>
+                  <Cd>ICDT</Cd>
+                  <SubFmlyCd>DMCT</SubFmlyCd>
+                </Fmly>
+              </Domn>
+              <Prtry>
+                <Cd>Z24</Cd>
+              </Prtry>
+            </BkTxCd>
+            <RltdPties>
+              <InitgPty>
+                <Pty>
+                  <Nm>UNIFITS</Nm>
+                </Pty>
+              </InitgPty>
+              <Dbtr>
+                <Pty>
+                  <Nm>UNIFITS GmbH</Nm>
+                </Pty>
+              </Dbtr>
+              <DbtrAcct>
+                <Id>
+                  <IBAN>CH2801234000123456789</IBAN>
+                </Id>
+              </DbtrAcct>
+              <Cdtr>
+                <Pty>
+                  <Nm>Example Creditor 3 - V3</Nm>
+                  <PstlAdr>
+                    <StrtNm>Example Street 3 - V3</StrtNm>
+                    <BldgNb>32</BldgNb>
+                    <PstCd>3232</PstCd>
+                    <TwnNm>Example Town 3 - V3</TwnNm>
+                    <Ctry>CH</Ctry>
+                  </PstlAdr>
+                </Pty>
+              </Cdtr>
+              <CdtrAcct>
+                <Id>
+                  <IBAN>CH7212345003232323232</IBAN>
+                </Id>
+              </CdtrAcct>
+            </RltdPties>
+            <RltdAgts>
+              <DbtrAgt>
+                <FinInstnId>
+                  <BICFI>BANKCHZHXXX</BICFI>
+                </FinInstnId>
+              </DbtrAgt>
+              <CdtrAgt>
+                <FinInstnId>
+                  <BICFI>BANKCHBE</BICFI>
+                </FinInstnId>
+              </CdtrAgt>
+            </RltdAgts>
+            <RmtInf>
+              <Ustrd>Unstructured Remittance Information V3 block 1</Ustrd>
+              <Ustrd>Unstructured Remittance Information V3 block 2</Ustrd>
+              <Strd>
+                <CdtrRefInf>
+                  <Tp>
+                    <CdOrPrtry>
+                      <Cd>SCOR</Cd>
+                    </CdOrPrtry>
+                  </Tp>
+                  <Ref>Ref number V3 block 1</Ref>
+                </CdtrRefInf>
+                <AddtlRmtInf>Additional Remittance Information V3 block 1</AddtlRmtInf>
+              </Strd>
+              <Strd>
+                <CdtrRefInf>
+                  <Tp>
+                    <CdOrPrtry>
+                      <Cd>SCOR</Cd>
+                    </CdOrPrtry>
+                  </Tp>
+                  <Ref>Ref number V3 block 2</Ref>
+                </CdtrRefInf>
+                <AddtlRmtInf>Additional Remittance Information V3 block 2</AddtlRmtInf>
+              </Strd>
+            </RmtInf>
+          </TxDtls>
+        </NtryDtls>
+        <AddtlNtryInf>Order</AddtlNtryInf>
+      </Ntry>
+      <AddtlNtfctnInf>Additional Information</AddtlNtfctnInf>
+    </Ntfctn>
+  </BkToCstmrDbtCdtNtfctn>
+</Document>

@@ -63,6 +63,30 @@
                     <Dt>2014-12-31</Dt>
                 </Dt>
             </Bal>
+            <Bal>
+                <Tp>
+                    <CdOrPrtry>
+                        <Cd>OPAV</Cd>
+                    </CdOrPrtry>
+                </Tp>
+                <Amt Ccy="CHF">35.00</Amt>
+                <CdtDbtInd>CRDT</CdtDbtInd>
+                <Dt>
+                    <Dt>2014-12-30</Dt>
+                </Dt>
+            </Bal>
+            <Bal>
+                <Tp>
+                    <CdOrPrtry>
+                        <Cd>CLAV</Cd>
+                    </CdOrPrtry>
+                </Tp>
+                <Amt Ccy="JPY">2700</Amt>
+                <CdtDbtInd>DBIT</CdtDbtInd>
+                <Dt>
+                    <Dt>2014-12-31</Dt>
+                </Dt>
+            </Bal>
             <Ntry>
                 <Amt Ccy="EUR">8.85</Amt>
                 <CdtDbtInd>CRDT</CdtDbtInd>
@@ -93,39 +117,20 @@
                             </Prtry>
                         </BkTxCd>
                         <RltdPties>
-                            <Dbtr>
-                                <Nm>NAME NAME</Nm>
+                            <UltmtDbtr>
+                                <Nm>DEBTOR NAME NM</Nm>
                                 <PstlAdr>
-                                    <Ctry>NL</Ctry>
-                                    <AdrLine>ADDR ADDR 10</AdrLine>
-                                    <AdrLine>2000 ANTWERPEN</AdrLine>
+                                    <AdrLine>DEBTOR NAME</AdrLine>
+                                    <AdrLine>DEBTOR ADD</AdrLine>
                                 </PstlAdr>
-                            </Dbtr>
-                            <DbtrAcct>
-                                <Id>
-                                    <IBAN>NL56AGDH9619008421</IBAN>
-                                </Id>
-                            </DbtrAcct>
-                            <Cdtr>
-                                <Nm>Company Name</Nm>
+                            </UltmtDbtr>
+                            <UltmtCdtr>
+                                <Nm>CREDITOR NAME NM</Nm>
                                 <PstlAdr>
-                                    <Ctry>NL</Ctry>
+                                    <AdrLine>CREDITOR NAME</AdrLine>
+                                    <AdrLine>CREDITOR ADD</AdrLine>
                                 </PstlAdr>
-                                <Id>
-                                    <OrgId>
-                                        <Othr>
-                                            <Id>455454654</Id>
-                                            <Issr>KBO-BCE</Issr>
-                                        </Othr>
-                                    </OrgId>
-                                </Id>
-                            </Cdtr>
-                            <CdtrAcct>
-                                <Id>
-                                    <IBAN>NL56AGDH9619008421</IBAN>
-                                </Id>
-                                <Ccy>EUR</Ccy>
-                            </CdtrAcct>
+                            </UltmtCdtr>
                         </RltdPties>
                         <RmtInf>
                             <Strd>

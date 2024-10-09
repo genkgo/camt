@@ -1,14 +1,14 @@
 parameters:
-    level: 7
+    level: max
     paths:
         - src/
         - test/
     inferPrivatePropertyTypeFromConstructor: true
+    checkMissingIterableValueType: false
     ignoreErrors:
-        - '~^Call to an undefined method Prophecy\\Prophecy\\~'
         -
-            message: '~^Parameter \#1 .* of class Genkgo\\Camt\\.* constructor expects Genkgo\\Camt\\.*, object given\.$~'
+            message: '~^Cannot call method .*\(\) on Genkgo\\Camt\\.*\|null\.$~'
             path: test
         -
-            message: '~^Parameter \#1 .* of method Genkgo\\Camt\\.* expects Genkgo\\Camt\\.*, object given\.$~'
+            message: '~^Cannot call method format\(\) on DateTimeImmutable\|null\.$~'
             path: test

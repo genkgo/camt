@@ -5,14 +5,14 @@ declare(strict_types=1);
 namespace Genkgo\TestCamt\Unit;
 
 use DOMDocument;
-use Genkgo\TestCamt\AbstractTestCase;
-use Genkgo\Camt\DTO;
 use Genkgo\Camt\Camt053\MessageFormat;
 use Genkgo\Camt\Config;
+use Genkgo\Camt\DTO;
 use Genkgo\Camt\Exception\ReaderException;
 use Genkgo\Camt\Reader;
+use PHPUnit\Framework;
 
-class ReaderTest extends AbstractTestCase
+class ReaderTest extends Framework\TestCase
 {
     protected function getDefaultConfig(): Config
     {
@@ -45,10 +45,9 @@ class ReaderTest extends AbstractTestCase
     public function testReadFile(): void
     {
         $reader = new Reader(Config::getDefault());
-        $message = $reader->readFile(__DIR__.'/Camt053/Stubs/camt053.v2.minimal.xml');
-        $this->assertInstanceOf(DTO\Message::class, $message);
+        $message = $reader->readFile('test/data/camt053.v2.minimal.xml');
+        self::assertInstanceOf(DTO\Message::class, $message);
     }
-
 
     public function testReadFileWithNoXsdValidation(): void
     {
@@ -56,7 +55,7 @@ class ReaderTest extends AbstractTestCase
         $config->disableXsdValidation();
 
         $reader = new Reader($config);
-        $message = $reader->readFile(__DIR__.'/Camt053/Stubs/camt053.v2.minimal.xml');
-        $this->assertInstanceOf(DTO\Message::class, $message);
+        $message = $reader->readFile('test/data/camt053.v2.minimal.xml');
+        self::assertInstanceOf(DTO\Message::class, $message);
     }
 }

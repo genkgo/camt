@@ -1,22 +1,20 @@
 <?php
 
 declare(strict_types=1);
+
 namespace Genkgo\Camt\Iterator;
 
 use AppendIterator;
 use ArrayIterator;
+use Genkgo\Camt\DTO\Entry;
 use Genkgo\Camt\DTO\Message;
 use IteratorIterator;
 
 /**
- * Class SimpleEntryIterator
- * @package Genkgo\Camt\Iterator
+ * @extends IteratorIterator<int, Entry, AppendIterator>
  */
 class EntryIterator extends IteratorIterator
 {
-    /**
-     * @param Message $message
-     */
     public function __construct(Message $message)
     {
         $appendIterator = new AppendIterator();

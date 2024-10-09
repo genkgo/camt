@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:iso:std:iso:20022:tech:xsd:camt.053.001.02">
+<Document xmlns="urn:iso:std:iso:20022:tech:xsd:camt.053.001.04" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <BkToCstmrStmt>
         <GrpHdr>
             <MsgId>CAMT053RIB000000000001</MsgId>
@@ -12,7 +12,7 @@
                 </PstlAdr>
                 <Id>
                     <OrgId>
-                        <BICOrBEI>DABAIE2D</BICOrBEI>
+                        <AnyBIC>DABAIE2D</AnyBIC>
                         <Othr>
                             <Id>Some other Id</Id>
                             <Issr>Some other Issuer</Issr>
@@ -21,10 +21,18 @@
                 </Id>
                 <CtryOfRes>NL</CtryOfRes>
             </MsgRcpt>
+            <MsgPgntn>
+                <PgNb>1</PgNb>
+                <LastPgInd>true</LastPgInd>
+            </MsgPgntn>
             <AddtlInf>Group header additional information</AddtlInf>
         </GrpHdr>
         <Stmt>
             <Id>253EURNL26VAYB8060476890</Id>
+            <StmtPgntn>
+                <PgNb>2</PgNb>
+                <LastPgInd>true</LastPgInd>
+            </StmtPgntn>
             <ElctrncSeqNb>12312</ElctrncSeqNb>
             <LglSeqNb>12312</LglSeqNb>
             <CreDtTm>2015-03-10T18:43:50+00:00</CreDtTm>
@@ -35,9 +43,21 @@
             <CpyDplctInd>CODU</CpyDplctInd>
             <Acct>
                 <Id>
-                    <IBAN>NL26VAYB8060476890</IBAN>
+                    <Othr>
+                        <Id>NL26VAYB8060476890</Id>
+                    </Othr>
                 </Id>
-                <Ccy>EUR</Ccy>
+                <Ownr>
+                    <Nm>FINPETROL</Nm>
+                </Ownr>
+                <Svcr>
+                    <FinInstnId>
+                        <Nm>AAAA BANKEN</Nm>
+                        <PstlAdr>
+                            <Ctry>SE</Ctry>
+                        </PstlAdr>
+                    </FinInstnId>
+                </Svcr>
             </Acct>
             <Bal>
                 <Tp>
@@ -60,13 +80,36 @@
                 <Amt Ccy="SEK">27.00</Amt>
                 <CdtDbtInd>DBIT</CdtDbtInd>
                 <Dt>
+                    <Dt>2014-12-30</Dt>
+                </Dt>
+            </Bal>
+            <Bal>
+                <Tp>
+                    <CdOrPrtry>
+                        <Cd>OPAV</Cd>
+                    </CdOrPrtry>
+                </Tp>
+                <Amt Ccy="CHF">35.00</Amt>
+                <CdtDbtInd>CRDT</CdtDbtInd>
+                <Dt>
+                    <Dt>2014-12-30</Dt>
+                </Dt>
+            </Bal>
+            <Bal>
+                <Tp>
+                    <CdOrPrtry>
+                        <Cd>CLAV</Cd>
+                    </CdOrPrtry>
+                </Tp>
+                <Amt Ccy="JPY">2700</Amt>
+                <CdtDbtInd>DBIT</CdtDbtInd>
+                <Dt>
                     <Dt>2014-12-31</Dt>
                 </Dt>
             </Bal>
             <Ntry>
                 <Amt Ccy="EUR">8.85</Amt>
                 <CdtDbtInd>CRDT</CdtDbtInd>
-                <RvslInd>false</RvslInd>
                 <Sts>BOOK</Sts>
                 <BookgDt>
                     <Dt>2014-12-31</Dt>
@@ -74,10 +117,15 @@
                 <ValDt>
                     <Dt>2015-01-02</Dt>
                 </ValDt>
+                <AcctSvcrRef>AAAASESS-FP-CN_98765/01</AcctSvcrRef>
                 <BkTxCd>
-                    <Prtry>
-                        <Cd>544</Cd>
-                    </Prtry>
+                    <Domn>
+                        <Cd>PAYM</Cd>
+                        <Fmly>
+                            <Cd>0001</Cd>
+                            <SubFmlyCd>0005</SubFmlyCd>
+                        </Fmly>
+                    </Domn>
                 </BkTxCd>
                 <NtryDtls>
                     <TxDtls>
@@ -87,26 +135,42 @@
                                 <Ref>100</Ref>
                             </Prtry>
                         </Refs>
-                        <BkTxCd>
-                            <Prtry>
-                                <Cd>544</Cd>
-                            </Prtry>
-                        </BkTxCd>
+                        <Amt Ccy="SEK">0</Amt>
+                        <CdtDbtInd>CRDT</CdtDbtInd>
                         <RltdPties>
-                            <UltmtDbtr>
-                                <Nm>DEBTOR NAME NM</Nm>
+                            <Dbtr>
+                                <Nm>NAME NAME</Nm>
                                 <PstlAdr>
-                                    <AdrLine>DEBTOR NAME</AdrLine>
-                                    <AdrLine>DEBTOR ADD</AdrLine>
+                                    <Ctry>NL</Ctry>
+                                    <AdrLine>ADDR ADDR 10</AdrLine>
+                                    <AdrLine>2000 ANTWERPEN</AdrLine>
                                 </PstlAdr>
-                            </UltmtDbtr>
-                            <UltmtCdtr>
-                                <Nm>CREDITOR NAME NM</Nm>
+                            </Dbtr>
+                            <DbtrAcct>
+                                <Id>
+                                    <IBAN>NL56AGDH9619008421</IBAN>
+                                </Id>
+                            </DbtrAcct>
+                            <Cdtr>
+                                <Nm>Company Name</Nm>
                                 <PstlAdr>
-                                    <AdrLine>CREDITOR NAME</AdrLine>
-                                    <AdrLine>CREDITOR ADD</AdrLine>
+                                    <Ctry>NL</Ctry>
                                 </PstlAdr>
-                            </UltmtCdtr>
+                                <Id>
+                                    <OrgId>
+                                        <Othr>
+                                            <Id>455454654</Id>
+                                            <Issr>KBO-BCE</Issr>
+                                        </Othr>
+                                    </OrgId>
+                                </Id>
+                            </Cdtr>
+                            <CdtrAcct>
+                                <Id>
+                                    <IBAN>NL56AGDH9619008421</IBAN>
+                                </Id>
+                                <Ccy>EUR</Ccy>
+                            </CdtrAcct>
                         </RltdPties>
                         <RmtInf>
                             <Strd>

@@ -4,23 +4,23 @@ declare(strict_types=1);
 
 namespace Genkgo\Camt\Camt054\Decoder\V04;
 
-use SimpleXMLElement;
 use Genkgo\Camt\Camt054\Decoder\Message as BaseMessage;
 use Genkgo\Camt\Camt054\DTO\V04 as Camt054V04DTO;
-use Genkgo\Camt\DTO;
 use Genkgo\Camt\Decoder\Factory\DTO as DTOFactory;
+use Genkgo\Camt\DTO;
+use SimpleXMLElement;
 
 class Message extends BaseMessage
 {
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     public function addGroupHeader(DTO\Message $message, SimpleXMLElement $document): void
     {
         $xmlGroupHeader = $this->getRootElement($document)->GrpHdr;
         $groupHeader = new Camt054V04DTO\GroupHeader(
-            (string)$xmlGroupHeader->MsgId,
-            $this->dateDecoder->decode((string)$xmlGroupHeader->CreDtTm)
+            (string) $xmlGroupHeader->MsgId,
+            $this->dateDecoder->decode((string) $xmlGroupHeader->CreDtTm)
         );
 
         if (isset($xmlGroupHeader->OrgnlBizQry)) {

@@ -4,49 +4,27 @@ declare(strict_types=1);
 
 namespace Genkgo\Camt\DTO;
 
-/**
- * Class StructuredRemittanceInformation
- * @package Genkgo\Camt\DTO
- */
 class StructuredRemittanceInformation
 {
-    /**
-     * @var null|CreditorReferenceInformation
-     */
-    private $creditorReferenceInformation;
+    private ?CreditorReferenceInformation $creditorReferenceInformation = null;
 
-    /**
-     * @var null|string
-     */
-    private $additionalRemittanceInformation;
+    private ?string $additionalRemittanceInformation = null;
 
-    /**
-     * @return null|string
-     */
     public function getAdditionalRemittanceInformation(): ?string
     {
         return $this->additionalRemittanceInformation;
     }
 
-    /**
-     * @param null|string $additionalRemittanceInformation
-     */
     public function setAdditionalRemittanceInformation(?string $additionalRemittanceInformation): void
     {
         $this->additionalRemittanceInformation = $additionalRemittanceInformation;
     }
 
-    /**
-     * @return null|CreditorReferenceInformation
-     */
     public function getCreditorReferenceInformation(): ?CreditorReferenceInformation
     {
         return $this->creditorReferenceInformation;
     }
 
-    /**
-     * @param null|CreditorReferenceInformation $creditorReferenceInformation
-     */
     public function setCreditorReferenceInformation(?CreditorReferenceInformation $creditorReferenceInformation): void
     {
         $this->creditorReferenceInformation = $creditorReferenceInformation;

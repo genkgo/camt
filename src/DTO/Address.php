@@ -4,68 +4,35 @@ declare(strict_types=1);
 
 namespace Genkgo\Camt\DTO;
 
-/**
- * Class Address
- * @package Genkgo\Camt\DTO
- */
 class Address
 {
-    /**
-     * @var null|string
-     */
-    private $country;
+    private ?string $country = null;
 
-    /**
-     * @var null|string
-     */
-    private $countrySubDivision;
+    private ?string $countrySubDivision = null;
 
     /**
      * @var string[]
      */
-    private $addressLines = [];
+    private array $addressLines = [];
 
-    /**
-     * @var null|string
-     */
-    private $department;
+    private ?string $department = null;
 
-    /**
-     * @var null|string
-     */
-    private $subDepartment;
+    private ?string $subDepartment = null;
 
-    /**
-     * @var null|string
-     */
-    private $streetName;
+    private ?string $streetName = null;
 
-    /**
-     * @var null|string
-     */
-    private $buildingNumber;
+    private ?string $buildingNumber = null;
 
-    /**
-     * @var null|string
-     */
-    private $postCode;
+    private ?string $postCode = null;
 
-    /**
-     * @var null|string
-     */
-    private $townName;
+    private ?string $townName = null;
 
-    /**
-     * @return null|string
-     */
     public function getCountry(): ?string
     {
         return $this->country;
     }
 
     /**
-     * @param  string $country
-     *
      * @return static
      */
     public function setCountry(string $country): self
@@ -76,17 +43,12 @@ class Address
         return $cloned;
     }
 
-    /**
-     * @return null|string
-     */
     public function getCountrySubDivision(): ?string
     {
         return $this->countrySubDivision;
     }
 
     /**
-     * @param  string $countrySubDivision
-     *
      * @return static
      */
     public function setCountrySubDivision(string $countrySubDivision): self
@@ -119,8 +81,6 @@ class Address
     }
 
     /**
-     * @param  string $addressLine
-     *
      * @return static
      */
     public function addAddressLine(string $addressLine): self
@@ -131,17 +91,12 @@ class Address
         return $cloned;
     }
 
-    /**
-     * @return null|string
-     */
     public function getDepartment(): ?string
     {
         return $this->department;
     }
 
     /**
-     * @param  string $department
-     *
      * @return static
      */
     public function setDepartment(string $department): self
@@ -152,17 +107,12 @@ class Address
         return $cloned;
     }
 
-    /**
-     * @return null|string
-     */
     public function getSubDepartment(): ?string
     {
         return $this->subDepartment;
     }
 
     /**
-     * @param  string $subDepartment
-     *
      * @return static
      */
     public function setSubDepartment(string $subDepartment): self
@@ -173,17 +123,12 @@ class Address
         return $cloned;
     }
 
-    /**
-     * @return null|string
-     */
     public function getStreetName(): ?string
     {
         return $this->streetName;
     }
 
     /**
-     * @param  string $streetName
-     *
      * @return static
      */
     public function setStreetName(string $streetName): self
@@ -194,17 +139,12 @@ class Address
         return $cloned;
     }
 
-    /**
-     * @return null|string
-     */
     public function getBuildingNumber(): ?string
     {
         return $this->buildingNumber;
     }
 
     /**
-     * @param  string $buildingNumber
-     *
      * @return static
      */
     public function setBuildingNumber(string $buildingNumber): self
@@ -215,17 +155,12 @@ class Address
         return $cloned;
     }
 
-    /**
-     * @return null|string
-     */
     public function getPostCode(): ?string
     {
         return $this->postCode;
     }
 
     /**
-     * @param  string $postCode
-     *
      * @return static
      */
     public function setPostCode(string $postCode): self
@@ -236,17 +171,12 @@ class Address
         return $cloned;
     }
 
-    /**
-     * @return null|string
-     */
     public function getTownName(): ?string
     {
         return $this->townName;
     }
 
     /**
-     * @param  string $townName
-     *
      * @return static
      */
     public function setTownName(string $townName): self
