@@ -31,7 +31,8 @@
                         "__CLASS__": "Genkgo\\Camt\\Iban",
                         "getIban": "CH2801234000123456789"
                     },
-                    "getIdentification": "CH2801234000123456789"
+                    "getIdentification": "CH2801234000123456789",
+                    "getName": null
                 },
                 "getAdditionalInformation": null,
                 "getCopyDuplicateIndicator": null,

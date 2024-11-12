@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:iso:std:iso:20022:tech:xsd:camt.054.001.02">
+    <BkToCstmrDbtCdtNtfctn>
+        <GrpHdr>
+            <MsgId>AAAASESS-FP-ACCR001</MsgId>
+            <CreDtTm>2007-10-18T12:30:00+01:00</CreDtTm>
+        </GrpHdr>
+        <Ntfctn>
+            <Id>AAAASESS-FP-ACCR001</Id>
+            <CreDtTm>2007-10-18T12:30:00+01:00</CreDtTm>
+            <Acct>
+                <Id>
+                    <IBAN>CH2801234000123456789</IBAN>
+                </Id>
+                <Nm>Account Owner Name</Nm>
+            </Acct>
+            <Ntry>
+                <Amt Ccy="SEK">200000</Amt>
+                <CdtDbtInd>DBIT</CdtDbtInd>
+                <Sts>BOOK</Sts>
+                <BkTxCd>
+                    <Domn>
+                        <Cd>PMNT</Cd>
+                        <Fmly>
+                            <Cd>ICDT</Cd>
+                            <SubFmlyCd>DMCT</SubFmlyCd>
+                        </Fmly>
+                    </Domn>
+                </BkTxCd>
+                <NtryDtls>
+                    <TxDtls>
+                        <RltdPties>
+                            <Dbtr>
+                                <Nm>MUELLER</Nm>
+                            </Dbtr>
+                            <DbtrAcct>
+                                <Id>
+                                    <IBAN>CH2801234000123456789</IBAN>
+                                </Id>
+                                <Nm>Debitor Account Name</Nm>
+                            </DbtrAcct>
+                        </RltdPties>
+                    </TxDtls>
+                </NtryDtls>
+            </Ntry>
+        </Ntfctn>
+    </BkToCstmrDbtCdtNtfctn>
+</Document>

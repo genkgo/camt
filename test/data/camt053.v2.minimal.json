@@ -38,7 +38,8 @@
                         "__CLASS__": "Genkgo\\Camt\\Iban",
                         "getIban": "NL26VAYB8060476890"
                     },
-                    "getIdentification": "NL26VAYB8060476890"
+                    "getIdentification": "NL26VAYB8060476890",
+                    "getName": null
                 },
                 "getAdditionalInformation": "Additional Information",
                 "getBalances": [
@@ -183,7 +184,8 @@
                                 "__CLASS__": "Genkgo\\Camt\\Iban",
                                 "getIban": "NL56AGDH9619008421"
                             },
-                            "getIdentification": "NL56AGDH9619008421"
+                            "getIdentification": "NL56AGDH9619008421",
+                            "getName": null
                         },
                         "getRelatedPartyType": {
                             "__CLASS__": "Genkgo\\Camt\\DTO\\Creditor",
@@ -210,7 +212,8 @@
                                 "__CLASS__": "Genkgo\\Camt\\Iban",
                                 "getIban": "NL56AGDH9619008421"
                             },
-                            "getIdentification": "NL56AGDH9619008421"
+                            "getIdentification": "NL56AGDH9619008421",
+                            "getName": null
                         },
                         "getRelatedPartyType": {
                             "__CLASS__": "Genkgo\\Camt\\DTO\\Debtor",

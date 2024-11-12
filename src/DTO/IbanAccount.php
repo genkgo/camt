@@ -8,16 +8,20 @@ use Genkgo\Camt\Iban;
 
 class IbanAccount extends Account
 {
-    private Iban $iban;
-
-    public function __construct(Iban $iban)
-    {
-        $this->iban = $iban;
+    public function __construct(
+        private readonly Iban $iban,
+        private readonly ?string $name,
+    ) {
     }
 
     public function getIban(): Iban
     {
         return $this->iban;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
     }
 
     /**

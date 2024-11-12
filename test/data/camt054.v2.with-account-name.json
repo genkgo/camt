@@ -15,7 +15,15 @@
             },
             "getBankTransactionCode": {
                 "__CLASS__": "Genkgo\\Camt\\DTO\\BankTransactionCode",
-                "getDomain": null,
+                "getDomain": {
+                    "__CLASS__": "Genkgo\\Camt\\DTO\\DomainBankTransactionCode",
+                    "getCode": "PMNT",
+                    "getFamily": {
+                        "__CLASS__": "Genkgo\\Camt\\DTO\\DomainFamilyBankTransactionCode",
+                        "getCode": "ICDT",
+                        "getSubFamilyCode": "DMCT"
+                    }
+                },
                 "getProprietary": null
             },
             "getBatchPaymentId": null,
@@ -32,7 +40,7 @@
                         "getIban": "CH2801234000123456789"
                     },
                     "getIdentification": "CH2801234000123456789",
-                    "getName": null
+                    "getName": "Account Owner Name"
                 },
                 "getAdditionalInformation": null,
                 "getCopyDuplicateIndicator": null,
@@ -65,29 +73,30 @@
                 },
                 "getCharges": null,
                 "getCreditDebitIndicator": "DBIT",
-                "getReference": {
-                    "__CLASS__": "Genkgo\\Camt\\DTO\\Reference",
-                    "getAccountOwnerTransactionId": null,
-                    "getAccountServicerReference": null,
-                    "getAccountServicerTransactionId": null,
-                    "getChequeNumber": null,
-                    "getClearingSystemReference": null,
-                    "getEndToEndId": null,
-                    "getInstructionId": null,
-                    "getMandateId": null,
-                    "getMarketInfrastructureTransactionId": null,
-                    "getMessageId": null,
-                    "getPaymentInformationId": null,
-                    "getProcessingId": null,
-                    "getProprietaries": [],
-                    "getTransactionId": null,
-                    "getUuidEndToEndReference": "255ae394-9965-4438-ac86-f406feada396"
-                },
+                "getReference": null,
                 "getRelatedAgent": null,
                 "getRelatedAgents": [],
                 "getRelatedDates": null,
-                "getRelatedParties": [],
-                "getRelatedParty": null,
+                "getRelatedParties": [
+                    {
+                        "__CLASS__": "Genkgo\\Camt\\DTO\\RelatedParty",
+                        "getAccount": {
+                            "__CLASS__": "Genkgo\\Camt\\DTO\\IbanAccount",
+                            "getIban": {
+                                "__CLASS__": "Genkgo\\Camt\\Iban",
+                                "getIban": "CH2801234000123456789"
+                            },
+                            "getIdentification": "CH2801234000123456789",
+                            "getName": "Debitor Account Name"
+                        },
+                        "getRelatedPartyType": {
+                            "__CLASS__": "Genkgo\\Camt\\DTO\\Debtor",
+                            "getAddress": null,
+                            "getName": "MUELLER"
+                        }
+                    }
+                ],
+                "getRelatedParty": "__RECURSIVITY__",
                 "getRemittanceInformation": null,
                 "getReturnInformation": null
             },
@@ -98,7 +107,7 @@
         }
     ],
     "getGroupHeader": {
-        "__CLASS__": "Genkgo\\Camt\\Camt054\\DTO\\V04\\GroupHeader",
+        "__CLASS__": "Genkgo\\Camt\\DTO\\GroupHeader",
         "getAdditionalInformation": null,
         "getCreatedOn": {
             "__CLASS__": "DateTimeImmutable",
@@ -106,7 +115,6 @@
         },
         "getMessageId": "AAAASESS-FP-ACCR001",
         "getMessageRecipient": null,
-        "getOriginalBusinessQuery": null,
         "getPagination": null
     },
     "getRecords": [

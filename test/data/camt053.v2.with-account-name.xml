@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:iso:std:iso:20022:tech:xsd:camt.053.001.02">
+    <BkToCstmrStmt>
+        <GrpHdr>
+            <MsgId>CAMT053RIB000000000001</MsgId>
+            <CreDtTm>2015-03-10T18:43:50+00:00</CreDtTm>
+        </GrpHdr>
+        <Stmt>
+            <Id>253EURCH2801234000123456789</Id>
+            <CreDtTm>2015-03-10T18:43:50+00:00</CreDtTm>
+            <Acct>
+                <Id>
+                    <IBAN>CH2801234000123456789</IBAN>
+                </Id>
+                <Nm>Account Owner Name</Nm>
+            </Acct>
+            <Bal>
+                <Tp>
+                    <CdOrPrtry>
+                        <Cd>CLAV</Cd>
+                    </CdOrPrtry>
+                </Tp>
+                <Amt Ccy="JPY">2700</Amt>
+                <CdtDbtInd>DBIT</CdtDbtInd>
+                <Dt>
+                    <Dt>2014-12-31</Dt>
+                </Dt>
+            </Bal>
+            <Ntry>
+                <Amt Ccy="EUR">8.85</Amt>
+                <CdtDbtInd>CRDT</CdtDbtInd>
+                <RvslInd>false</RvslInd>
+                <Sts>BOOK</Sts>
+                <BookgDt>
+                    <Dt>2014-12-31</Dt>
+                </BookgDt>
+                <BkTxCd>
+                    <Prtry>
+                        <Cd>544</Cd>
+                    </Prtry>
+                </BkTxCd>
+                <NtryDtls>
+                    <TxDtls>
+                        <RltdPties>
+                            <Cdtr>
+                                <Nm>Company Name</Nm>
+                            </Cdtr>
+                            <CdtrAcct>
+                                <Id>
+                                    <IBAN>CH2801234000123456789</IBAN>
+                                </Id>
+                                <Nm>Creditor Account Name</Nm>
+                            </CdtrAcct>
+                        </RltdPties>
+                    </TxDtls>
+                </NtryDtls>
+            </Ntry>
+        </Stmt>
+    </BkToCstmrStmt>
+</Document>

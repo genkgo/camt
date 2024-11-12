@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:iso:std:iso:20022:tech:xsd:camt.052.001.02">
+    <BkToCstmrAcctRpt>
+        <GrpHdr>
+            <MsgId>AAAASESS-FP-ACCR001</MsgId>
+            <CreDtTm>2007-10-18T12:30:00+01:00</CreDtTm>
+        </GrpHdr>
+        <Rpt>
+            <Id>AAAASESS-FP-ACCR001</Id>
+            <CreDtTm>2007-10-18T12:30:00+01:00</CreDtTm>
+            <Acct>
+                <Id>
+                    <IBAN>CH2801234000123456789</IBAN>
+                </Id>
+                <Nm>Account Owner Name</Nm>
+            </Acct>
+            <Ntry>
+                <Amt Ccy="SEK">200000</Amt>
+                <CdtDbtInd>DBIT</CdtDbtInd>
+                <Sts>BOOK</Sts>
+                <BkTxCd>
+                </BkTxCd>
+                <NtryDtls>
+                    <TxDtls>
+                        <RltdPties>
+                            <Dbtr>
+                                <Nm>NAME NAME</Nm>
+                            </Dbtr>
+                            <DbtrAcct>
+                                <Id>
+                                    <IBAN>CH2801234000123456789</IBAN>
+                                </Id>
+                                <Nm>Debitor Account Name</Nm>
+                            </DbtrAcct>
+                            <Cdtr>
+                                <Nm>Company Name</Nm>
+                            </Cdtr>
+                            <CdtrAcct>
+                                <Id>
+                                    <IBAN>CH2801234000123456789</IBAN>
+                                </Id>
+                                <Nm>Creditor Account Name</Nm>
+                            </CdtrAcct>
+                        </RltdPties>
+                    </TxDtls>
+                </NtryDtls>
+            </Ntry>
+        </Rpt>
+    </BkToCstmrAcctRpt>
+</Document>

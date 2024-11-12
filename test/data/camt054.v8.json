@@ -46,7 +46,8 @@
                         "__CLASS__": "Genkgo\\Camt\\Iban",
                         "getIban": "CH2801234000123456789"
                     },
-                    "getIdentification": "CH2801234000123456789"
+                    "getIdentification": "CH2801234000123456789",
+                    "getName": null
                 },
                 "getAdditionalInformation": "Additional Information",
                 "getCopyDuplicateIndicator": "CODU",
@@ -161,7 +162,8 @@
                                 "__CLASS__": "Genkgo\\Camt\\Iban",
                                 "getIban": "CH4112345003131313131"
                             },
-                            "getIdentification": "CH4112345003131313131"
+                            "getIdentification": "CH4112345003131313131",
+                            "getName": null
                         },
                         "getRelatedPartyType": {
                             "__CLASS__": "Genkgo\\Camt\\DTO\\Creditor",
@@ -188,7 +190,8 @@
                                 "__CLASS__": "Genkgo\\Camt\\Iban",
                                 "getIban": "CH2801234000123456789"
                             },
-                            "getIdentification": "CH2801234000123456789"
+                            "getIdentification": "CH2801234000123456789",
+                            "getName": null
                         },
                         "getRelatedPartyType": {
                             "__CLASS__": "Genkgo\\Camt\\DTO\\Debtor",
@@ -312,7 +315,8 @@
                                     "__CLASS__": "Genkgo\\Camt\\Iban",
                                     "getIban": "CH7212345003232323232"
                                 },
-                                "getIdentification": "CH7212345003232323232"
+                                "getIdentification": "CH7212345003232323232",
+                                "getName": null
                             },
                             "getRelatedPartyType": {
                                 "__CLASS__": "Genkgo\\Camt\\DTO\\Creditor",
@@ -339,7 +343,8 @@
                                     "__CLASS__": "Genkgo\\Camt\\Iban",
                                     "getIban": "CH2801234000123456789"
                                 },
-                                "getIdentification": "CH2801234000123456789"
+                                "getIdentification": "CH2801234000123456789",
+                                "getName": null
                             },
                             "getRelatedPartyType": {
                                 "__CLASS__": "Genkgo\\Camt\\DTO\\Debtor",
@@ -456,7 +461,8 @@
                                     "__CLASS__": "Genkgo\\Camt\\Iban",
                                     "getIban": "CH7212345003232323232"
                                 },
-                                "getIdentification": "CH7212345003232323232"
+                                "getIdentification": "CH7212345003232323232",
+                                "getName": null
                             },
                             "getRelatedPartyType": {
                                 "__CLASS__": "Genkgo\\Camt\\DTO\\Creditor",
@@ -483,7 +489,8 @@
                                     "__CLASS__": "Genkgo\\Camt\\Iban",
                                     "getIban": "CH2801234000123456789"
                                 },
-                                "getIdentification": "CH2801234000123456789"
+                                "getIdentification": "CH2801234000123456789",
+                                "getName": null
                             },
                             "getRelatedPartyType": {
                                 "__CLASS__": "Genkgo\\Camt\\DTO\\Debtor",

@@ -38,7 +38,8 @@
                         "__CLASS__": "Genkgo\\Camt\\Iban",
                         "getIban": "NL26VAYB8060476890"
                     },
-                    "getIdentification": "NL26VAYB8060476890"
+                    "getIdentification": "NL26VAYB8060476890",
+                    "getName": null
                 },
                 "getAdditionalInformation": "Additional Information",
                 "getBalances": [
