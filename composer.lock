@@ -4,25 +4,25 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b28a1a560a7fd1f5f966a76fd045269f",
+    "content-hash": "a67d4556ff668ed6e7c1193eed221d0e",
     "packages": [
         {
             "name": "jschaedl/iban-validation",
-            "version": "v2.3.0",
+            "version": "v2.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jschaedl/iban-validation.git",
-                "reference": "27ef93772489833b0ee447fb12b8bcc0ba47c09e"
+                "reference": "7e8b9d428a756d1351c4551a32ef040eba847076"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jschaedl/iban-validation/zipball/27ef93772489833b0ee447fb12b8bcc0ba47c09e",
-                "reference": "27ef93772489833b0ee447fb12b8bcc0ba47c09e",
+                "url": "https://api.github.com/repos/jschaedl/iban-validation/zipball/7e8b9d428a756d1351c4551a32ef040eba847076",
+                "reference": "7e8b9d428a756d1351c4551a32ef040eba847076",
                 "shasum": ""
             },
             "require": {
                 "ext-ctype": "*",
-                "php": "~8.0.0 || ~8.1.0 || ~8.2.0 || ~8.3.0",
+                "php": "~8.0.0 || ~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0",
                 "symfony/options-resolver": "^5.4|^6|^7"
             },
             "require-dev": {
@@ -61,9 +61,9 @@
             ],
             "support": {
                 "issues": "https://github.com/jschaedl/iban-validation/issues",
-                "source": "https://github.com/jschaedl/iban-validation/tree/v2.3.0"
+                "source": "https://github.com/jschaedl/iban-validation/tree/v2.5.0"
             },
-            "time": "2023-11-30T17:08:05+00:00"
+            "time": "2024-11-24T13:07:33+00:00"
         },
         {
             "name": "moneyphp/money",
