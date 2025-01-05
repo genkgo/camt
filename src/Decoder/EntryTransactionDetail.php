@@ -198,17 +198,13 @@ abstract class EntryTransactionDetail
                         );
                     }
 
-                    if (isset($xmlDetailsStructuredBlock->CdtrRefInf->Tp, $xmlDetailsStructuredBlock->CdtrRefInf->Tp->CdOrPrtry, $xmlDetailsStructuredBlock->CdtrRefInf->Tp->CdOrPrtry->Prtry)
-
-                    ) {
+                    if (isset($xmlDetailsStructuredBlock->CdtrRefInf->Tp, $xmlDetailsStructuredBlock->CdtrRefInf->Tp->CdOrPrtry, $xmlDetailsStructuredBlock->CdtrRefInf->Tp->CdOrPrtry->Prtry)) {
                         $creditorReferenceInformation->setProprietary(
                             (string) $xmlDetailsStructuredBlock->CdtrRefInf->Tp->CdOrPrtry->Prtry
                         );
                     }
 
-                    if (isset($xmlDetailsStructuredBlock->CdtrRefInf->Tp, $xmlDetailsStructuredBlock->CdtrRefInf->Tp->CdOrPrtry, $xmlDetailsStructuredBlock->CdtrRefInf->Tp->CdOrPrtry->Cd)
-
-                    ) {
+                    if (isset($xmlDetailsStructuredBlock->CdtrRefInf->Tp, $xmlDetailsStructuredBlock->CdtrRefInf->Tp->CdOrPrtry, $xmlDetailsStructuredBlock->CdtrRefInf->Tp->CdOrPrtry->Cd)) {
                         $creditorReferenceInformation->setCode(
                             (string) $xmlDetailsStructuredBlock->CdtrRefInf->Tp->CdOrPrtry->Cd
                         );
@@ -218,8 +214,10 @@ abstract class EntryTransactionDetail
 
                     // Legacy : do not overwrite message if already defined above
                     // and no creditor reference is already defined
-                    if (false === $unstructuredBlockExists
-                        && $remittanceInformation->getCreditorReferenceInformation() === null) {
+                    if (
+                        false === $unstructuredBlockExists
+                        && $remittanceInformation->getCreditorReferenceInformation() === null
+                    ) {
                         $remittanceInformation->setCreditorReferenceInformation($creditorReferenceInformation);
                     }
                 }
@@ -362,6 +360,6 @@ abstract class EntryTransactionDetail
      */
     protected function getAgentBic(SimpleXMLElement $xmlAgent): ?SimpleXMLElement
     {
-        return $xmlAgent->FinInstnId->BIC;
+        return $xmlAgent->FinInstnId->BIC ?? $xmlAgent->FinInstnId->BICFI;
     }
 }
