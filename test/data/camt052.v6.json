@@ -180,7 +180,7 @@
                     "__CLASS__": "Genkgo\\Camt\\DTO\\RelatedAgent",
                     "getRelatedAgentType": {
                         "__CLASS__": "Genkgo\\Camt\\DTO\\CreditorAgent",
-                        "getBIC": "",
+                        "getBIC": "BANKCHZHXXX",
                         "getName": ""
                     }
                 },
@@ -190,7 +190,7 @@
                         "__CLASS__": "Genkgo\\Camt\\DTO\\RelatedAgent",
                         "getRelatedAgentType": {
                             "__CLASS__": "Genkgo\\Camt\\DTO\\DebtorAgent",
-                            "getBIC": "",
+                            "getBIC": "BANKCHBE",
                             "getName": ""
                         }
                     }
