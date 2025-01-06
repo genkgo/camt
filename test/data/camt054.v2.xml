@@ -102,6 +102,52 @@
                     </TxDtls>
                     <TxDtls>
                         <Refs>
+                            <EndToEndId>NOTPROVIDED</EndToEndId>
+                        </Refs>
+                        <AmtDtls>
+                            <PrtryAmt>
+                                <Tp>DBIT</Tp>
+                                <Amt Ccy="SEK">236.25</Amt>
+                            </PrtryAmt>
+                        </AmtDtls>
+                        <RltdPties>
+                            <Dbtr>
+                                <Nm>Test Name</Nm>
+                                <PstlAdr>
+                                    <PstCd>17577</PstCd>
+                                    <TwnNm>STOCKHOLM</TwnNm>
+                                </PstlAdr>
+                                <Id>
+                                    <OrgId>
+                                        <Othr>
+                                            <Id>002021012973</Id>
+                                            <SchmeNm>
+                                                <Cd>CUST</Cd>
+                                            </SchmeNm>
+                                        </Othr>
+                                    </OrgId>
+                                </Id>
+                            </Dbtr>
+                        </RltdPties>
+                        <RmtInf>
+                            <Ustrd>ISR ref number V2</Ustrd>
+                            <Strd>
+                                <CdtrRefInf>
+                                    <Tp>
+                                        <CdOrPrtry>
+                                            <Cd>SCOR</Cd>
+                                        </CdOrPrtry>
+                                    </Tp>
+                                    <Ref>ISR ref number V2</Ref>
+                                </CdtrRefInf>
+                            </Strd>
+                        </RmtInf>
+                        <RltdDts>
+                            <AccptncDtTm>2023-03-02T01:01:01</AccptncDtTm>
+                        </RltdDts>
+                    </TxDtls>
+                    <TxDtls>
+                        <Refs>
                             <EndToEndId>MUELL/FINP/RA12345</EndToEndId>
                         </Refs>
                         <RltdPties>

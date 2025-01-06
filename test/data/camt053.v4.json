@@ -207,7 +207,8 @@
                                 "getSubDepartment": null,
                                 "getTownName": null
                             },
-                            "getName": "Company Name"
+                            "getName": "Company Name",
+                            "getOrgId": "455454654"
                         }
                     },
                     {
@@ -237,7 +238,8 @@
                                 "getSubDepartment": null,
                                 "getTownName": null
                             },
-                            "getName": "NAME NAME"
+                            "getName": "NAME NAME",
+                            "getOrgId": null
                         }
                     }
                 ],
