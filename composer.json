@@ -17,8 +17,8 @@
         "ext-dom": "*",
         "ext-libxml": "*",
         "ext-simplexml": "*",
-        "moneyphp/money": "^4.0",
-        "jschaedl/iban-validation": "^2.0"
+        "moneyphp/money": "^4.6",
+        "jschaedl/iban-validation": "^2.5"
     },
     "autoload": {
         "psr-4": {

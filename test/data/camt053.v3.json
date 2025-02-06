@@ -184,7 +184,7 @@
                     "__CLASS__": "Genkgo\\Camt\\DTO\\RelatedAgent",
                     "getRelatedAgentType": {
                         "__CLASS__": "Genkgo\\Camt\\DTO\\CreditorAgent",
-                        "getBIC": "",
+                        "getBIC": "KREDBEBB",
                         "getName": ""
                     }
                 },
@@ -194,7 +194,7 @@
                         "__CLASS__": "Genkgo\\Camt\\DTO\\RelatedAgent",
                         "getRelatedAgentType": {
                             "__CLASS__": "Genkgo\\Camt\\DTO\\DebtorAgent",
-                            "getBIC": "",
+                            "getBIC": "KREDBEBB",
                             "getName": ""
                         }
                     }
