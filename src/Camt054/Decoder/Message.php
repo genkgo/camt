@@ -56,12 +56,9 @@ class Message extends BaseMessageDecoder
 
     protected function getAccount(SimpleXMLElement $xmlRecord): Account
     {
-        if (isset($xmlRecord->Acct->Nm)) {
-            return new DTO\NamedAccount(new Iban((string) $xmlRecord->Acct->Id->IBAN), (string) $xmlRecord->Acct->Nm);
-        }
-        
         if (isset($xmlRecord->Acct->Id->IBAN)) {
-            return new DTO\IbanAccount(new Iban((string) $xmlRecord->Acct->Id->IBAN));
+            $name = isset($xmlRecord->Acct->Nm) ? (string) $xmlRecord->Acct->Nm : null;
+            return new DTO\IbanAccount(new Iban((string) $xmlRecord->Acct->Id->IBAN), $name);
         }
 
         if (isset($xmlRecord->Acct->Id->BBAN)) {

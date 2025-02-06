@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:iso:std:iso:20022:tech:xsd:camt.054.001.02">
+    <BkToCstmrDbtCdtNtfctn>
+        <GrpHdr>
+            <MsgId>AAAASESS-FP-ACCR001</MsgId>
+            <CreDtTm>2007-10-18T12:30:00+01:00</CreDtTm>
+            <MsgRcpt>
+                <Nm>COMPANY BVBA</Nm>
+                <PstlAdr>
+                    <StrtNm>12 Oxford Street</StrtNm>
+                    <Ctry>UK</Ctry>
+                </PstlAdr>
+                <Id>
+                    <OrgId>
+                        <BICOrBEI>DABAIE2D</BICOrBEI>
+                        <Othr>
+                            <Id>Some other Id</Id>
+                            <Issr>Some other Issuer</Issr>
+                        </Othr>
+                    </OrgId>
+                </Id>
+                <CtryOfRes>NL</CtryOfRes>
+            </MsgRcpt>
+            <MsgPgntn>
+              <PgNb>1</PgNb>
+              <LastPgInd>true</LastPgInd>
+            </MsgPgntn>
+            <AddtlInf>Group header additional information</AddtlInf>
+        </GrpHdr>
+        <Ntfctn>
+            <Id>AAAASESS-FP-ACCR001</Id>
+            <ElctrncSeqNb>12312</ElctrncSeqNb>
+            <LglSeqNb>12312</LglSeqNb>
+            <CreDtTm>2007-10-18T12:30:00+01:00</CreDtTm>
+            <FrToDt>
+                <FrDtTm>2007-10-18T08:00:00+01:00</FrDtTm>
+                <ToDtTm>2007-10-18T12:30:00+01:00</ToDtTm>
+            </FrToDt>
+            <CpyDplctInd>CODU</CpyDplctInd>
+            <Acct>
+                <Id>
+                    <IBAN>CH2801234000123456789</IBAN>
+                </Id>
+                <Nm>Account Owner Name</Nm>
+                <Ownr>
+                    <Nm>FINPETROL</Nm>
+                </Ownr>
+                <Svcr>
+                    <FinInstnId>
+                        <Nm>AAAA BANKEN</Nm>
+                        <PstlAdr>
+                            <Ctry>SE</Ctry>
+                        </PstlAdr>
+                    </FinInstnId>
+                </Svcr>
+            </Acct>
+            <Ntry>
+                <Amt Ccy="SEK">200000</Amt>
+                <CdtDbtInd>DBIT</CdtDbtInd>
+                <Sts>BOOK</Sts>
+                <BookgDt>
+                    <DtTm>2007-10-18T13:15:00+01:00</DtTm>
+                </BookgDt>
+                <ValDt>
+                    <Dt>2007-10-18</Dt>
+                </ValDt>
+                <AcctSvcrRef>AAAASESS-FP-ACCR001</AcctSvcrRef>
+                <BkTxCd>
+                    <Domn>
+                        <Cd>PMNT</Cd>
+                        <Fmly>
+                            <Cd>ICDT</Cd>
+                            <SubFmlyCd>DMCT</SubFmlyCd>
+                        </Fmly>
+                    </Domn>
+                </BkTxCd>
+                <NtryDtls>
+                    <TxDtls>
+                        <Refs>
+                            <EndToEndId>MUELL/FINP/RA12345</EndToEndId>
+                        </Refs>
+                        <RltdPties>
+                            <Dbtr>
+                                <Nm>MUELLER</Nm>
+                            </Dbtr>
+                            <DbtrAcct>
+                                <Id>
+                                    <IBAN>CH2801234000123456789</IBAN>
+                                </Id>
+                                <Nm>Related Party Name</Nm>
+                            </DbtrAcct>
+                        </RltdPties>
+                        <RmtInf>
+                          <Ustrd>Unstructured Remittance Information V1</Ustrd>
+                          <Strd>
+                            <CdtrRefInf>
+                              <Tp>
+                                <CdOrPrtry>
+                                  <Prtry>ISR Reference</Prtry>
+                                </CdOrPrtry>
+                              </Tp>
+                              <Ref>ISR ref number V1</Ref>
+                            </CdtrRefInf>
+                            <AddtlRmtInf>Additional Remittance Information V1</AddtlRmtInf>                                                                
+                          </Strd>              
+                        </RmtInf>                       
+                    </TxDtls>
+                    <TxDtls>
+                        <Refs>
+                            <EndToEndId>MUELL/FINP/RA12345</EndToEndId>
+                        </Refs>
+                        <RltdPties>
+                            <Dbtr>
+                                <Nm>MUELLER</Nm>
+                            </Dbtr>
+                            <DbtrAcct>
+                                <Id>
+                                    <IBAN>CH2801234000123456789</IBAN>
+                                </Id>
+                                <Nm>Related Party Name</Nm>
+                            </DbtrAcct>
+                        </RltdPties>
+                        <RmtInf>
+                          <Strd>
+                            <CdtrRefInf>
+                              <Tp>
+                                <CdOrPrtry>
+                                  <Prtry>ISR Reference</Prtry>
+                                </CdOrPrtry>
+                              </Tp>
+                              <Ref>ISR ref number V2</Ref>
+                            </CdtrRefInf>
+                            <AddtlRmtInf>Additional Remittance Information V2</AddtlRmtInf>                                                                
+                          </Strd>             
+                        </RmtInf>                         
+                    </TxDtls> 
+                    <TxDtls>
+                      <Refs>
+                        <EndToEndId>MUELL/FINP/RA12345</EndToEndId>
+                      </Refs>
+                      <RltdPties>
+                        <Dbtr>
+                          <Nm>MUELLER</Nm>
+                        </Dbtr>
+                        <DbtrAcct>
+                            <Id>
+                                <IBAN>CH2801234000123456789</IBAN>
+                            </Id>
+                            <Nm>Related Party Name</Nm>
+                        </DbtrAcct>
+                      </RltdPties>
+                        <RmtInf>
+                          <Ustrd>Unstructured Remittance Information V3 block 1</Ustrd>
+                          <Ustrd>Unstructured Remittance Information V3 block 2</Ustrd>
+                          <Strd>
+                            <CdtrRefInf>
+                              <Tp>
+                                <CdOrPrtry>
+                                  <Cd>SCOR</Cd>
+                                </CdOrPrtry>
+                              </Tp>
+                              <Ref>Ref number V3 block 1</Ref>
+                            </CdtrRefInf>
+                            <AddtlRmtInf>Additional Remittance Information V3 block 1</AddtlRmtInf>                                                                
+                          </Strd>   
+                          <Strd>
+                            <CdtrRefInf>
+                              <Tp>
+                                <CdOrPrtry>
+                                  <Cd>SCOR</Cd>
+                                </CdOrPrtry>
+                              </Tp>
+                              <Ref>Ref number V3 block 2</Ref>
+                            </CdtrRefInf>
+                            <AddtlRmtInf>Additional Remittance Information V3 block 2</AddtlRmtInf>                                                                
+                          </Strd>                         
+                        </RmtInf>                        
+                    </TxDtls>                                                            
+                </NtryDtls>
+            </Ntry>
+            <AddtlNtfctnInf>Additional Information</AddtlNtfctnInf>
+        </Ntfctn>
+    </BkToCstmrDbtCdtNtfctn>
+</Document>

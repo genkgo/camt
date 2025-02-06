@@ -376,4 +376,32 @@ class EndToEndTest extends Framework\TestCase
             }
         }
     }
+
+    public function testAccountWithName(): void
+    {
+        $dom = new DOMDocument('1.0', 'UTF-8');
+        $dom->load('test/data/camt054.v2.with-account-name.xml');
+        $message = (new MessageFormat\V02())->getDecoder()->decode($dom);
+
+        $notifications = $message->getRecords();
+        $this->assertCount(1, $notifications);
+
+        $notification = $notifications[0];
+        $account = $notification->getAccount();
+
+        $this->assertInstanceOf(DTO\IbanAccount::class, $account);
+        /** @var DTO\IbanAccount $account */
+        $this->assertEquals('CH2801234000123456789', $account->getIdentification());
+        $this->assertEquals('Account Owner Name', $account->getName());
+
+        $entries = $notification->getEntries();
+        $this->assertCount(1, $entries);
+        
+        $relatedPartyAccount = $entries[0]->getTransactionDetail()->getRelatedParty()->getAccount();
+        $this->assertInstanceOf(DTO\IbanAccount::class, $relatedPartyAccount);
+        /** @var DTO\IbanAccount $relatedPartyAccount */
+        $this->assertEquals('CH2801234000123456789', $relatedPartyAccount->getIdentification());
+        $this->assertEquals('Related Party Name', $relatedPartyAccount->getName());
+    }
+
 }
