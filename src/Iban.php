@@ -14,13 +14,19 @@ class Iban
 
     public function __construct(string $iban)
     {
-        $iban = new IbanDetails($iban);
+        // Skip IBAN validation for 8-digit account numbers (UK format)
+        if (preg_match('/^[0-9]{8}$/', $iban)) {
+            $this->iban = $iban;
+            return;
+        }
 
-        if (!(new Validator())->validate($iban)) {
+        $ibanDetails = new IbanDetails($iban);
+
+        if (!(new Validator())->validate($ibanDetails)) {
             throw new InvalidArgumentException("Unknown IBAN {$iban}");
         }
 
-        $this->iban = $iban->getNormalizedIban();
+        $this->iban = $ibanDetails->getNormalizedIban();
     }
 
     public function getIban(): string
@@ -35,6 +41,11 @@ class Iban
 
     public function equals(string $iban): bool
     {
+        // Handle comparison with 8-digit account numbers
+        if (preg_match('/^[0-9]{8}$/', $iban) && preg_match('/^[0-9]{8}$/', $this->iban)) {
+            return $iban === $this->iban;
+        }
+        
         return (new IbanDetails($iban))->getNormalizedIban() === $this->iban;
     }
 }
