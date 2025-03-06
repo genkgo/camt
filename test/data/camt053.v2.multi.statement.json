@@ -157,7 +157,8 @@
                                 "getSubDepartment": null,
                                 "getTownName": null
                             },
-                            "getName": "Company Name 2"
+                            "getName": "Company Name 2",
+                            "getOrgId": null
                         }
                     }
                 ],
