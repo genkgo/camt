@@ -282,6 +282,7 @@
                                 "getSubDepartment": null,
                                 "getTownName": null
                             },
+                            "getIdentification": null,
                             "getName": "Company Name"
                         }
                     }

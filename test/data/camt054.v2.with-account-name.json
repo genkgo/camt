@@ -92,6 +92,7 @@
                         "getRelatedPartyType": {
                             "__CLASS__": "Genkgo\\Camt\\DTO\\Debtor",
                             "getAddress": null,
+                            "getIdentification": null,
                             "getName": "MUELLER"
                         }
                     }

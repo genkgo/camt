@@ -109,6 +109,7 @@
                         "getRelatedPartyType": {
                             "__CLASS__": "Genkgo\\Camt\\DTO\\Creditor",
                             "getAddress": null,
+                            "getIdentification": null,
                             "getName": "Company Name"
                         }
                     }

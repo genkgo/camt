@@ -264,6 +264,8 @@ class EndToEndTest extends Framework\TestCase
                                     self::assertEquals('NL', $party->getRelatedPartyType()->getAddress()->getCountry());
                                     self::assertEquals([], $party->getRelatedPartyType()->getAddress()->getAddressLines());
                                     self::assertEquals('NL56AGDH9619008421', (string) $party->getAccount()->getIdentification());
+                                    self::assertEquals('455454654', $party->getRelatedPartyType()->getIdentification()->getOtherId());
+                                    self::assertEquals('KBO-BCE', $party->getRelatedPartyType()->getIdentification()->getOtherIssuer());
                                 }
                             } elseif ($party->getRelatedPartyType() instanceof DTO\Debtor) {
                                 if ($party->getRelatedPartyType() instanceof DTO\UltimateDebtor) {

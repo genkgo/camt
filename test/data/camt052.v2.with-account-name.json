@@ -85,6 +85,7 @@
                         "getRelatedPartyType": {
                             "__CLASS__": "Genkgo\\Camt\\DTO\\Creditor",
                             "getAddress": null,
+                            "getIdentification": null,
                             "getName": "Company Name"
                         }
                     },
@@ -102,6 +103,7 @@
                         "getRelatedPartyType": {
                             "__CLASS__": "Genkgo\\Camt\\DTO\\Debtor",
                             "getAddress": null,
+                            "getIdentification": null,
                             "getName": "NAME NAME"
                         }
                     }
