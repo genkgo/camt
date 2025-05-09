@@ -198,7 +198,7 @@ class Record
             if (isset($xmlEntry->Chrgs)) {
                 $charges = new DTO\Charges();
 
-                if (isset($xmlEntry->Chrgs->TtlChrgsAndTaxAmt) && (string) $xmlEntry->Chrgs->TtlChrgsAndTaxAmt) {
+                if (isset($xmlEntry->Chrgs->TtlChrgsAndTaxAmt)) {
                     $money = $this->moneyFactory->create($xmlEntry->Chrgs->TtlChrgsAndTaxAmt, null);
                     $charges->setTotalChargesAndTaxAmount($money);
                 }
@@ -209,7 +209,7 @@ class Record
                     foreach ($chargesRecords as $chargesRecord) {
                         $chargesDetail = new DTO\ChargesRecord();
 
-                        if (isset($chargesRecord->Amt) && (string) $chargesRecord->Amt) {
+                        if (isset($chargesRecord->Amt)) {
                             $money = $this->moneyFactory->create($chargesRecord->Amt, $chargesRecord->CdtDbtInd);
 
                             $chargesDetail->setAmount($money);

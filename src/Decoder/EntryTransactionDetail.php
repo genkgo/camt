@@ -316,7 +316,7 @@ abstract class EntryTransactionDetail
         if (isset($xmlDetail->Chrgs)) {
             $charges = new DTO\Charges();
 
-            if (isset($xmlDetail->Chrgs->TtlChrgsAndTaxAmt) && (string) $xmlDetail->Chrgs->TtlChrgsAndTaxAmt) {
+            if (isset($xmlDetail->Chrgs->TtlChrgsAndTaxAmt)) {
                 $money = $this->moneyFactory->create($xmlDetail->Chrgs->TtlChrgsAndTaxAmt, null);
 
                 $charges->setTotalChargesAndTaxAmount($money);
@@ -328,7 +328,7 @@ abstract class EntryTransactionDetail
                 foreach ($chargesRecords as $chargesRecord) {
                     $chargesDetail = new DTO\ChargesRecord();
 
-                    if (isset($chargesRecord->Amt) && (string) $chargesRecord->Amt) {
+                    if (isset($chargesRecord->Amt)) {
                         $money = $this->moneyFactory->create($chargesRecord->Amt, $chargesRecord->CdtDbtInd);
                         $chargesDetail->setAmount($money);
                     }
