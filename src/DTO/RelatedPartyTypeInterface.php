@@ -16,4 +16,8 @@ interface RelatedPartyTypeInterface
     public function getAddress(): ?Address;
 
     public function getName(): ?string;
+
+    public function getIdentification(): ?Identification;
+
+    public function setIdentification(Identification $identification): void;
 }

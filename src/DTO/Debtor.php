@@ -8,6 +8,8 @@ class Debtor implements RelatedPartyTypeInterface
 {
     private ?Address $address = null;
 
+    private ?Identification $identification = null;
+
     public function __construct(private ?string $name)
     {
     }
@@ -15,6 +17,11 @@ class Debtor implements RelatedPartyTypeInterface
     public function setAddress(Address $address): void
     {
         $this->address = $address;
+    }
+
+    public function setIdentification(Identification $identification): void
+    {
+        $this->identification = $identification;
     }
 
     public function getAddress(): ?Address
@@ -25,5 +32,10 @@ class Debtor implements RelatedPartyTypeInterface
     public function getName(): ?string
     {
         return $this->name;
+    }
+
+    public function getIdentification(): ?Identification
+    {
+        return $this->identification;
     }
 }

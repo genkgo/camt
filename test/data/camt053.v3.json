@@ -226,6 +226,23 @@
                                 "getSubDepartment": null,
                                 "getTownName": null
                             },
+                            "getIdentification": {
+                                "__CLASS__": "Genkgo\\Camt\\DTO\\OrganisationIdentification",
+                                "getBankPartyId": null,
+                                "getBei": null,
+                                "getBic": null,
+                                "getChipsUniversalId": null,
+                                "getDuns": null,
+                                "getEangln": null,
+                                "getIbei": null,
+                                "getIdentification": "455454654",
+                                "getIssuer": null,
+                                "getOtherId": "455454654",
+                                "getOtherIssuer": "KBO-BCE",
+                                "getOtherSchemeName": null,
+                                "getOtherType": null,
+                                "getTaxId": null
+                            },
                             "getName": "Company Name"
                         }
                     },
@@ -257,6 +274,7 @@
                                 "getSubDepartment": null,
                                 "getTownName": null
                             },
+                            "getIdentification": null,
                             "getName": "NAME NAME"
                         }
                     }
