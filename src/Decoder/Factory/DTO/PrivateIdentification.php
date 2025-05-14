@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Genkgo\Camt\Decoder\Factory\DTO;
 
+use Genkgo\Camt\Decoder\Date;
 use Genkgo\Camt\DTO;
 use SimpleXMLElement;
 
@@ -14,7 +15,8 @@ class PrivateIdentification
         $privateIdentification = new DTO\PrivateIdentification();
         if (isset($xmlPrivateIdentification->DtAndPlcOfBirth)) {
             if (isset($xmlPrivateIdentification->DtAndPlcOfBirth->BirthDt)) {
-                $privateIdentification->setBirthDate((string) $xmlPrivateIdentification->DtAndPlcOfBirth->BirthDt);
+                $dateDecoder = new Date();
+                $privateIdentification->setBirthDate($dateDecoder->decode((string) $xmlPrivateIdentification->DtAndPlcOfBirth->BirthDt));
             }
             if (isset($xmlPrivateIdentification->DtAndPlcOfBirth->PrvcOfBirth)) {
                 $privateIdentification->setProvinceOfBirth((string) $xmlPrivateIdentification->DtAndPlcOfBirth->PrvcOfBirth);

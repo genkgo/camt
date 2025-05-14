@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace Genkgo\Camt\DTO;
 
+use DateTimeImmutable;
+
 class PrivateIdentification extends Identification
 {
-    private ?string $birthDate = null;
+    private ?DateTimeImmutable $birthDate = null;
 
     private ?string $provinceOfBirth = null;
 
@@ -20,12 +22,12 @@ class PrivateIdentification extends Identification
 
     private ?string $otherSchemeName = null;
 
-    public function getBirthDate(): ?string
+    public function getBirthDate(): ?DateTimeImmutable
     {
         return $this->birthDate;
     }
 
-    public function setBirthDate(?string $birthDate): void
+    public function setBirthDate(?DateTimeImmutable $birthDate): void
     {
         $this->birthDate = $birthDate;
     }

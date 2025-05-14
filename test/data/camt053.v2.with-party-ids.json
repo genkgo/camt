@@ -251,7 +251,10 @@
                             },
                             "getIdentification": {
                                 "__CLASS__": "Genkgo\\Camt\\DTO\\PrivateIdentification",
-                                "getBirthDate": "1912-12-12",
+                                "getBirthDate": {
+                                    "__CLASS__": "DateTimeImmutable",
+                                    "0": "1912-12-12T00:00:00+00:00"
+                                },
                                 "getCityOfBirth": "Göteborg",
                                 "getCountryOfBirth": "SE",
                                 "getIdentification": null,
