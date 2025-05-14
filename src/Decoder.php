@@ -58,7 +58,7 @@ class Decoder implements DecoderInterface
 
         $this->document = $document;
 
-        $message = new DTO\Message();
+        $message = new Message();
         $this->messageDecoder->addGroupHeader($message, $this->document);
         $this->messageDecoder->addRecords($message, $this->document);
 

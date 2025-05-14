@@ -4,11 +4,16 @@ parameters:
         - src/
         - test/
     inferPrivatePropertyTypeFromConstructor: true
-    checkMissingIterableValueType: false
     ignoreErrors:
+        -
+            identifier: missingType.iterableValue
+
         -
             message: '~^Cannot call method .*\(\) on Genkgo\\Camt\\.*\|null\.$~'
             path: test
         -
             message: '~^Cannot call method format\(\) on DateTimeImmutable\|null\.$~'
             path: test
+
+includes:
+    - phpstan-baseline.neon

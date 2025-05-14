@@ -1,0 +1,13 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Cannot cast mixed to string\.$#'
+			identifier: cast.string
+			count: 1
+			path: src/Decoder/Factory/DTO/OrganisationIdentification.php
+
+		-
+			message: '#^Parameter \#1 \$variable of method Genkgo\\TestCamt\\Unit\\Dumper\:\:cast\(\) expects bool\|float\|int\|iterable\|object\|string\|null, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: test/Unit/Dumper.php

@@ -14,7 +14,7 @@ class Dumper
 {
     private array $saw = [];
 
-    public function dump(object|array|string|float|int|bool|null $variable): string
+    public function dump(object|iterable|string|float|int|bool|null $variable): string
     {
         $this->saw = [];
         $a = $this->cast($variable);
@@ -22,7 +22,7 @@ class Dumper
         return json_encode($a, JSON_PRETTY_PRINT | JSON_THROW_ON_ERROR | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . PHP_EOL;
     }
 
-    private function cast(object|array|string|float|int|bool|null $variable): array|string|float|int|bool|null
+    private function cast(object|iterable|string|float|int|bool|null $variable): array|string|float|int|bool|null
     {
         if ((is_iterable($variable))) {
             $values = [];
