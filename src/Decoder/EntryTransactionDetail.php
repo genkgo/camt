@@ -123,8 +123,7 @@ abstract class EntryTransactionDetail
         if (isset($xmlPartyDetail->Id)) {
             if (isset($xmlPartyDetail->Id->PrvtId)) {
                 $relatedPartyType->setIdentification(DTOFactory\PrivateIdentification::createFromXml($xmlPartyDetail->Id->PrvtId));
-            }
-            if (isset($xmlPartyDetail->Id->OrgId)) {
+            } elseif (isset($xmlPartyDetail->Id->OrgId)) {
                 $relatedPartyType->setIdentification(DTOFactory\OrganisationIdentification::createFromXml($xmlPartyDetail->Id->OrgId));
             }
         }
