@@ -6,7 +6,6 @@ namespace Genkgo\TestCamt\Unit;
 
 use Genkgo\Camt\Config;
 use Genkgo\Camt\Reader;
-use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\TestCase;
 
 class RegressionTest extends TestCase
@@ -39,7 +38,7 @@ class RegressionTest extends TestCase
     }
 
     /**
-     * Custom assert that will not produce gigantic diff.
+     * Custom assert that will also log entire, actual, content to file.
      */
     private function assertFile(string $file, string $actualContent): void
     {
@@ -49,10 +48,7 @@ class RegressionTest extends TestCase
         @mkdir($dir, 0777, true);
         file_put_contents($logFile, $actualContent);
 
-        Assert::assertFileExists($file, 'Expected file must exist on disk, fix it with: cp ' . $logFile . ' ' . $file);
-        $expected = file_get_contents($file);
-
-        Assert::assertTrue($expected === $actualContent, 'File content does not match, compare with: meld ' . $file . ' ' . $logFile);
+        self::assertStringEqualsFile($file, $actualContent, 'File content does not match, compare with: meld ' . $file . ' ' . $logFile);
     }
 
     public static function providerRegression(): iterable
