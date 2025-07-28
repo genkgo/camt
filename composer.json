@@ -1,5 +1,5 @@
 {
-    "name": "genkgo/camt",
+    "name": "secupay/camt-parser",
     "description": "Library to read CAMT files (XML containing bank statements).",
     "license": "MIT",
     "scripts": {
