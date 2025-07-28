@@ -153,10 +153,6 @@ class Record
                 $entry->setBatchPaymentId((string) $xmlEntry->NtryDtls->Btch->PmtInfId);
             }
 
-            if (isset($xmlEntry->NtryDtls->TxDtls->Refs->PmtInfId) && (string) $xmlEntry->NtryDtls->TxDtls->Refs->PmtInfId) {
-                $entry->setBatchPaymentId((string) $xmlEntry->NtryDtls->TxDtls->Refs->PmtInfId);
-            }
-
             if (isset($xmlEntry->CdtDbtInd) && in_array((string) $xmlEntry->CdtDbtInd, ['CRDT', 'DBIT'], true)) {
                 $entry->setCreditDebitIndicator((string) $xmlEntry->CdtDbtInd);
             }
