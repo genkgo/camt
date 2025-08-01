@@ -6,25 +6,25 @@ namespace Genkgo\Camt\DTO;
 
 class DebtorAgent implements RelatedAgentTypeInterface
 {
-    private string $name;
+    private ?string $name;
 
     private string $BIC;
 
     /**
      * CreditorAgent constructor.
      */
-    public function __construct(string $name, string $BIC)
+    public function __construct(?string $name, string $BIC)
     {
-        $this->name = $name;
+        $this->name = $name ?? null;
         $this->BIC = $BIC;
     }
 
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
 
-    public function setName(string $name): void
+    public function setName(?string $name): void
     {
         $this->name = $name;
     }
