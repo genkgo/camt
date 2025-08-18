@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace Genkgo\Camt\Decoder;
 
 use DateTimeImmutable;
+use Genkgo\Camt\Exception\InvalidMessageException;
 use InvalidArgumentException;
+use SimpleXMLElement;
 
 class Date implements DateDecoderInterface
 {
@@ -13,6 +15,10 @@ class Date implements DateDecoderInterface
 
     public function decode(string $date): DateTimeImmutable
     {
+        if (!$date) {
+            throw new InvalidMessageException('Cannot decode empty string as a date');
+        }
+
         if ($this->format === null) {
             $result = new DateTimeImmutable($date);
         } else {
@@ -32,5 +38,12 @@ class Date implements DateDecoderInterface
         $decoder->format = $format;
 
         return $decoder;
+    }
+
+    public function fromDateAndDateTimeChoice(SimpleXMLElement $xmlEntry): DateTimeImmutable
+    {
+        $date = ((string) $xmlEntry->Dt) ?: (string) $xmlEntry->DtTm;
+
+        return $this->decode($date);
     }
 }

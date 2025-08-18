@@ -124,10 +124,10 @@ class RecordTest extends Framework\TestCase
     <Ntry>
         <Amt Ccy="EUR">1.42</Amt>
         <BookgDt>
-            <Dt></Dt>
+            <Dt>2025-07-23</Dt>
         </BookgDt>
         <ValDt>
-            <Dt></Dt>
+            <DtTm>2025-07-23T00:00:00.000000000</DtTm>
         </ValDt>
         <CdtDbtInd>DBIT</CdtDbtInd>
         <RvslInd>true</RvslInd>

@@ -1,0 +1,60 @@
+{
+    "__CLASS__": "Genkgo\\Camt\\DTO\\Message",
+    "getEntries": [],
+    "getGroupHeader": {
+        "__CLASS__": "Genkgo\\Camt\\DTO\\GroupHeader",
+        "getAdditionalInformation": null,
+        "getCreatedOn": {
+            "__CLASS__": "DateTimeImmutable",
+            "0": "2025-07-24T06:10:29+00:00"
+        },
+        "getMessageId": "I38y0h4YyLnQiOV6P7nEd44r2",
+        "getMessageRecipient": null,
+        "getPagination": null
+    },
+    "getRecords": [
+        {
+            "__CLASS__": "Genkgo\\Camt\\Camt053\\DTO\\Statement",
+            "getAccount": {
+                "__CLASS__": "Genkgo\\Camt\\DTO\\IbanAccount",
+                "getIban": {
+                    "__CLASS__": "Genkgo\\Camt\\Iban",
+                    "getIban": "GB33BUKB20201555555555"
+                },
+                "getIdentification": "GB33BUKB20201555555555",
+                "getName": null
+            },
+            "getAdditionalInformation": null,
+            "getBalances": [
+                {
+                    "__CLASS__": "Genkgo\\Camt\\DTO\\Balance",
+                    "getAmount": {
+                        "__CLASS__": "Money\\Money",
+                        "getAmount": "544209",
+                        "getCurrency": {
+                            "__CLASS__": "Money\\Currency",
+                            "getCode": "RON"
+                        }
+                    },
+                    "getDate": {
+                        "__CLASS__": "DateTimeImmutable",
+                        "0": "2025-07-23T00:00:00+00:00"
+                    },
+                    "getType": "opening"
+                }
+            ],
+            "getCopyDuplicateIndicator": null,
+            "getCreatedOn": {
+                "__CLASS__": "DateTimeImmutable",
+                "0": "2025-07-24T06:10:29+00:00"
+            },
+            "getElectronicSequenceNumber": null,
+            "getEntries": [],
+            "getFromDate": null,
+            "getId": "I38y0h4YyLnQiOV6P7nEd44r2",
+            "getLegalSequenceNumber": null,
+            "getPagination": null,
+            "getToDate": null
+        }
+    ]
+}

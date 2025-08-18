@@ -32,7 +32,7 @@ class Record
         $xmlBalances = $xmlRecord->Bal;
         foreach ($xmlBalances as $xmlBalance) {
             $money = $this->moneyFactory->create($xmlBalance->Amt, $xmlBalance->CdtDbtInd);
-            $date = $this->dateDecoder->decode((string) $xmlBalance->Dt->Dt);
+            $date = $this->dateDecoder->fromDateAndDateTimeChoice($xmlBalance->Dt);
 
             if (!isset($xmlBalance->Tp, $xmlBalance->Tp->CdOrPrtry)) {
                 continue;
@@ -117,8 +117,8 @@ class Record
         $xmlEntries = $xmlRecord->Ntry;
         foreach ($xmlEntries as $xmlEntry) {
             $money = $this->moneyFactory->create($xmlEntry->Amt, $xmlEntry->CdtDbtInd);
-            $bookingDate = ((string) $xmlEntry->BookgDt->Dt) ?: (string) $xmlEntry->BookgDt->DtTm;
-            $valueDate = ((string) $xmlEntry->ValDt->Dt) ?: (string) $xmlEntry->ValDt->DtTm;
+            $bookingDate = $xmlEntry->BookgDt;
+            $valueDate = $xmlEntry->ValDt;
             $additionalInfo = ((string) $xmlEntry->AddtlNtryInf) ?: (string) $xmlEntry->AddtlNtryInf;
 
             $entry = new DTO\Entry(
@@ -128,11 +128,11 @@ class Record
             );
 
             if ($bookingDate) {
-                $entry->setBookingDate($this->dateDecoder->decode($bookingDate));
+                $entry->setBookingDate($this->dateDecoder->fromDateAndDateTimeChoice($bookingDate));
             }
 
             if ($valueDate) {
-                $entry->setValueDate($this->dateDecoder->decode($valueDate));
+                $entry->setValueDate($this->dateDecoder->fromDateAndDateTimeChoice($valueDate));
             }
 
             $entry->setAdditionalInfo($additionalInfo);
