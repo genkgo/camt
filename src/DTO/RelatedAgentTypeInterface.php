@@ -6,7 +6,7 @@ namespace Genkgo\Camt\DTO;
 
 interface RelatedAgentTypeInterface
 {
-    public function getName(): string;
+    public function getName(): ?string;
 
     public function getBIC(): string;
 }
