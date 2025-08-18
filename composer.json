@@ -1,6 +1,7 @@
 {
     "name": "secupay/camt-parser",
     "description": "Library to read CAMT files (XML containing bank statements).",
+    "version": "0.0.2",
     "license": "MIT",
     "scripts": {
         "check": [
