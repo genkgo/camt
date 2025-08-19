@@ -42,6 +42,8 @@ class Entry
 
     private ?string $creditDebitIndicator = null;
 
+    private ?BatchInformation $btch = null;
+
     public function __construct(Record $record, int $index, Money $amount)
     {
         $this->record = $record;
@@ -129,11 +131,17 @@ class Entry
         return $this->index;
     }
 
+    /**
+     * @deprecated use setBatch() instead
+     */
     public function setBatchPaymentId(?string $batchPaymentId): void
     {
         $this->batchPaymentId = trim((string) $batchPaymentId);
     }
 
+    /**
+     * @deprecated use getBatch() instead
+     */
     public function getBatchPaymentId(): ?string
     {
         return $this->batchPaymentId;
@@ -197,5 +205,15 @@ class Entry
     public function setCreditDebitIndicator(?string $creditDebitIndicator): void
     {
         $this->creditDebitIndicator = $creditDebitIndicator;
+    }
+
+    public function getBatch(): ?BatchInformation
+    {
+        return $this->btch;
+    }
+
+    public function setBatch(?BatchInformation $batch): void
+    {
+        $this->btch = $batch;
     }
 }
