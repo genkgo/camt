@@ -7,7 +7,6 @@ namespace Genkgo\Camt\Decoder;
 use DateTimeImmutable;
 use Genkgo\Camt\Exception\InvalidMessageException;
 use InvalidArgumentException;
-use SimpleXMLElement;
 
 class Date implements DateDecoderInterface
 {
