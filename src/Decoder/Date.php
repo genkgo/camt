@@ -39,11 +39,4 @@ class Date implements DateDecoderInterface
 
         return $decoder;
     }
-
-    public function fromDateAndDateTimeChoice(SimpleXMLElement $xmlEntry): DateTimeImmutable
-    {
-        $date = ((string) $xmlEntry->Dt) ?: (string) $xmlEntry->DtTm;
-
-        return $this->decode($date);
-    }
 }

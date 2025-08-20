@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Genkgo\Camt\Decoder;
 
+use DateTimeImmutable;
 use Genkgo\Camt\DTO;
 use Genkgo\Camt\DTO\RecordWithBalances;
 use Genkgo\Camt\Util\MoneyFactory;
@@ -32,7 +33,7 @@ class Record
         $xmlBalances = $xmlRecord->Bal;
         foreach ($xmlBalances as $xmlBalance) {
             $money = $this->moneyFactory->create($xmlBalance->Amt, $xmlBalance->CdtDbtInd);
-            $date = $this->dateDecoder->fromDateAndDateTimeChoice($xmlBalance->Dt);
+            $date = $this->fromDateAndDateTimeChoice($xmlBalance->Dt);
 
             if (!isset($xmlBalance->Tp, $xmlBalance->Tp->CdOrPrtry)) {
                 continue;
@@ -128,11 +129,11 @@ class Record
             );
 
             if ($bookingDate) {
-                $entry->setBookingDate($this->dateDecoder->fromDateAndDateTimeChoice($bookingDate));
+                $entry->setBookingDate($this->fromDateAndDateTimeChoice($bookingDate));
             }
 
             if ($valueDate) {
-                $entry->setValueDate($this->dateDecoder->fromDateAndDateTimeChoice($valueDate));
+                $entry->setValueDate($this->fromDateAndDateTimeChoice($valueDate));
             }
 
             $entry->setAdditionalInfo($additionalInfo);
@@ -242,5 +243,12 @@ class Record
             ?: (string) $xmlStatus?->Prtry
                 ?: (string) $xmlStatus
                     ?: null;
+    }
+
+    private function fromDateAndDateTimeChoice(SimpleXMLElement $xmlEntry): DateTimeImmutable
+    {
+        $date = ((string) $xmlEntry->Dt) ?: (string) $xmlEntry->DtTm;
+
+        return $this->dateDecoder->decode($date);
     }
 }
