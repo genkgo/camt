@@ -153,15 +153,15 @@ class Record
                 $batch = new DTO\BatchInformation();
 
                 if (isset($xmlEntry->NtryDtls->Btch->MsgId) && (string) $xmlEntry->NtryDtls->Btch->MsgId) {
-                    $batch->setMessageId($xmlEntry->NtryDtls->Btch->MsgId);
+                    $batch->setMessageId((string) $xmlEntry->NtryDtls->Btch->MsgId);
                 }
 
                 if (isset($xmlEntry->NtryDtls->Btch->PmtInfId) && (string) $xmlEntry->NtryDtls->Btch->PmtInfId) {
-                    $batch->setPaymentInformationId($xmlEntry->NtryDtls->Btch->PmtInfId);
+                    $batch->setPaymentInformationId((string) $xmlEntry->NtryDtls->Btch->PmtInfId);
                 }
 
                 if (isset($xmlEntry->NtryDtls->Btch->NbOfTxs) && (string) $xmlEntry->NtryDtls->Btch->NbOfTxs) {
-                    $batch->setNumberOfTransactions($xmlEntry->NtryDtls->Btch->NbOfTxs);
+                    $batch->setNumberOfTransactions((string) $xmlEntry->NtryDtls->Btch->NbOfTxs);
                 }
 
                 if (isset($xmlEntry->NtryDtls->Btch->TtlAmt)) {
@@ -172,7 +172,7 @@ class Record
                         )
                     );
 
-                    $batch->setCreditDebitIndicator($xmlEntry->NtryDtls->Btch->CdtDbtInd);
+                    $batch->setCreditDebitIndicator((string) $xmlEntry->NtryDtls->Btch->CdtDbtInd);
                 }
 
                 $entry->setBatch($batch);
