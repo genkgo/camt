@@ -19,10 +19,17 @@ class Message extends BaseMessageDecoder
         $notifications = [];
 
         $xmlNotifications = $this->getRootElement($document)->Ntfctn;
+        $fallbackCreationDate = $message->getGroupHeader()->getCreatedOn();
         foreach ($xmlNotifications as $xmlNotification) {
+            $recordDateStr = (string) $xmlNotification->CreDtTm;
+            if ($recordDateStr === '') {
+                $notificationDate = $fallbackCreationDate;
+            } else {
+                $notificationDate = $this->dateDecoder->decode($recordDateStr);
+            }
             $notification = new Camt054DTO\Notification(
                 (string) $xmlNotification->Id,
-                $this->dateDecoder->decode((string) $xmlNotification->CreDtTm),
+                $notificationDate,
                 $this->getAccount($xmlNotification)
             );
 

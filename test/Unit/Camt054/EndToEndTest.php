@@ -40,6 +40,22 @@ class EndToEndTest extends Framework\TestCase
         return (new MessageFormat\V08())->getDecoder()->decode($dom);
     }
 
+    protected function getv8MessageCredTmHeaderOnly(): Message
+    {
+        $dom = new DOMDocument('1.0', 'UTF-8');
+        $dom->load('test/data/camt054.v8-grphdr-credttm.xml');
+
+        return (new MessageFormat\V08())->getDecoder()->decode($dom);
+    }
+
+    protected function getv8MessageCredTmHeaderAndNotification(): Message
+    {
+        $dom = new DOMDocument('1.0', 'UTF-8');
+        $dom->load('test/data/camt054.v8-ntfctn-credttm.xml');
+
+        return (new MessageFormat\V08())->getDecoder()->decode($dom);
+    }
+
     public function testGroupHeader(): void
     {
         $messages = [
@@ -375,5 +391,22 @@ class EndToEndTest extends Framework\TestCase
                 }
             }
         }
+    }
+
+    public function testCreditDateInHeaderOnly(): void
+    {
+        $message = $this->getv8MessageCredTmHeaderOnly();
+
+        self::assertSame('2025-03-25T21:18:34+01:00', $message->getGroupHeader()->getCreatedOn()->format(DATE_ATOM));
+        self::assertSame('2025-03-25T21:18:34+01:00', $message->getRecords()[0]->getCreatedOn()->format(DATE_ATOM));
+    }
+
+    public function testCreditDateInHeaderAndNotificationOnly(): void
+    {
+        $message = $this->getv8MessageCredTmHeaderAndNotification();
+
+        self::assertSame('2025-03-25T21:18:34+01:00', $message->getGroupHeader()->getCreatedOn()->format(DATE_ATOM));
+        $records = $message->getRecords();
+        self::assertSame('2025-03-25T21:17:59+01:00', $records[0]->getCreatedOn()->format(DATE_ATOM));
     }
 }

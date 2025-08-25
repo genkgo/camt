@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Document xmlns="urn:iso:std:iso:20022:tech:xsd:camt.054.001.08" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <BkToCstmrDbtCdtNtfctn>
+        <GrpHdr>
+            <MsgId>COBADEFF250326012345678</MsgId>
+            <CreDtTm>2025-03-25T21:18:34+01:00</CreDtTm>
+        </GrpHdr>
+        <Ntfctn>
+            <Id>250326012345678</Id>
+            <CreDtTm>2025-03-25T21:17:59+01:00</CreDtTm>
+            <Acct>
+                <Id>
+                    <IBAN>DE91100000000123456789</IBAN>
+                </Id>
+                <Svcr>
+                    <FinInstnId>
+                        <BICFI>COBADEFF</BICFI>
+                    </FinInstnId>
+                </Svcr>
+            </Acct>
+            <Ntry>
+                <Amt Ccy="EUR">47.4</Amt>
+                <CdtDbtInd>CRDT</CdtDbtInd>
+                <Sts>
+                    <Cd>INFO</Cd>
+                </Sts>
+                <ValDt>
+                    <Dt>2025-03-25</Dt>
+                </ValDt>
+                <BkTxCd>
+                    <Domn>
+                        <Cd>PMNT</Cd>
+                        <Fmly>
+                            <Cd>RRCT</Cd>
+                            <SubFmlyCd>ESCT</SubFmlyCd>
+                        </Fmly>
+                    </Domn>
+                </BkTxCd>
+                <NtryDtls>
+                    <TxDtls>
+                        <Refs>
+                            <EndToEndId>NOTPROVIDED</EndToEndId>
+                        </Refs>
+                        <RltdPties>
+                            <Dbtr>
+                                <Pty>
+                                    <Nm>Remote Party</Nm>
+                                </Pty>
+                            </Dbtr>
+                            <DbtrAcct>
+                                <Id>
+                                    <IBAN>DE02200505501015871393</IBAN>
+                                </Id>
+                            </DbtrAcct>
+                            <Cdtr>
+                                <Pty>
+                                    <Nm>MyBigCompany GmbH</Nm>
+                                </Pty>
+                            </Cdtr>
+                        </RltdPties>
+                    </TxDtls>
+                </NtryDtls>
+            </Ntry>
+        </Ntfctn>
+    </BkToCstmrDbtCdtNtfctn>
+</Document>
