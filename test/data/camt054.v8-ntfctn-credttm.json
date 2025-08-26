@@ -1,0 +1,155 @@
+{
+    "__CLASS__": "Genkgo\\Camt\\DTO\\Message",
+    "getEntries": [
+        {
+            "__CLASS__": "Genkgo\\Camt\\DTO\\Entry",
+            "getAccountServicerReference": null,
+            "getAdditionalInfo": "",
+            "getAmount": {
+                "__CLASS__": "Money\\Money",
+                "getAmount": "4740",
+                "getCurrency": {
+                    "__CLASS__": "Money\\Currency",
+                    "getCode": "EUR"
+                }
+            },
+            "getBankTransactionCode": {
+                "__CLASS__": "Genkgo\\Camt\\DTO\\BankTransactionCode",
+                "getDomain": {
+                    "__CLASS__": "Genkgo\\Camt\\DTO\\DomainBankTransactionCode",
+                    "getCode": "PMNT",
+                    "getFamily": {
+                        "__CLASS__": "Genkgo\\Camt\\DTO\\DomainFamilyBankTransactionCode",
+                        "getCode": "RRCT",
+                        "getSubFamilyCode": "ESCT"
+                    }
+                },
+                "getProprietary": null
+            },
+            "getBatchPaymentId": null,
+            "getBookingDate": null,
+            "getCharges": null,
+            "getCreditDebitIndicator": "CRDT",
+            "getIndex": 0,
+            "getRecord": {
+                "__CLASS__": "Genkgo\\Camt\\Camt054\\DTO\\Notification",
+                "getAccount": {
+                    "__CLASS__": "Genkgo\\Camt\\DTO\\IbanAccount",
+                    "getIban": {
+                        "__CLASS__": "Genkgo\\Camt\\Iban",
+                        "getIban": "DE91100000000123456789"
+                    },
+                    "getIdentification": "DE91100000000123456789",
+                    "getName": null
+                },
+                "getAdditionalInformation": null,
+                "getCopyDuplicateIndicator": null,
+                "getCreatedOn": {
+                    "__CLASS__": "DateTimeImmutable",
+                    "0": "2025-03-25T20:17:59+00:00"
+                },
+                "getElectronicSequenceNumber": null,
+                "getEntries": [
+                    "__RECURSIVITY__"
+                ],
+                "getFromDate": null,
+                "getId": "250326012345678",
+                "getLegalSequenceNumber": null,
+                "getPagination": null,
+                "getToDate": null
+            },
+            "getReference": null,
+            "getReversalIndicator": false,
+            "getStatus": "INFO",
+            "getTransactionDetail": {
+                "__CLASS__": "Genkgo\\Camt\\DTO\\EntryTransactionDetail",
+                "getAdditionalTransactionInformation": null,
+                "getAmount": null,
+                "getAmountDetails": null,
+                "getBankTransactionCode": {
+                    "__CLASS__": "Genkgo\\Camt\\DTO\\BankTransactionCode",
+                    "getDomain": null,
+                    "getProprietary": null
+                },
+                "getCharges": null,
+                "getCreditDebitIndicator": "CRDT",
+                "getReference": {
+                    "__CLASS__": "Genkgo\\Camt\\DTO\\Reference",
+                    "getAccountOwnerTransactionId": null,
+                    "getAccountServicerReference": null,
+                    "getAccountServicerTransactionId": null,
+                    "getChequeNumber": null,
+                    "getClearingSystemReference": null,
+                    "getEndToEndId": "NOTPROVIDED",
+                    "getInstructionId": null,
+                    "getMandateId": null,
+                    "getMarketInfrastructureTransactionId": null,
+                    "getMessageId": null,
+                    "getPaymentInformationId": null,
+                    "getProcessingId": null,
+                    "getProprietaries": [],
+                    "getTransactionId": null,
+                    "getUuidEndToEndReference": null
+                },
+                "getRelatedAgent": null,
+                "getRelatedAgents": [],
+                "getRelatedDates": null,
+                "getRelatedParties": [
+                    {
+                        "__CLASS__": "Genkgo\\Camt\\DTO\\RelatedParty",
+                        "getAccount": null,
+                        "getRelatedPartyType": {
+                            "__CLASS__": "Genkgo\\Camt\\DTO\\Creditor",
+                            "getAddress": null,
+                            "getIdentification": null,
+                            "getName": "MyBigCompany GmbH"
+                        }
+                    },
+                    {
+                        "__CLASS__": "Genkgo\\Camt\\DTO\\RelatedParty",
+                        "getAccount": {
+                            "__CLASS__": "Genkgo\\Camt\\DTO\\IbanAccount",
+                            "getIban": {
+                                "__CLASS__": "Genkgo\\Camt\\Iban",
+                                "getIban": "DE02200505501015871393"
+                            },
+                            "getIdentification": "DE02200505501015871393",
+                            "getName": null
+                        },
+                        "getRelatedPartyType": {
+                            "__CLASS__": "Genkgo\\Camt\\DTO\\Debtor",
+                            "getAddress": null,
+                            "getIdentification": null,
+                            "getName": "Remote Party"
+                        }
+                    }
+                ],
+                "getRelatedParty": "__RECURSIVITY__",
+                "getRemittanceInformation": null,
+                "getReturnInformation": null
+            },
+            "getTransactionDetails": [
+                "__RECURSIVITY__"
+            ],
+            "getValueDate": {
+                "__CLASS__": "DateTimeImmutable",
+                "0": "2025-03-25T00:00:00+00:00"
+            }
+        }
+    ],
+    "getGroupHeader": {
+        "__CLASS__": "Genkgo\\Camt\\Camt054\\DTO\\V04\\GroupHeader",
+        "getAdditionalInformation": null,
+        "getCreatedOn": {
+            "__CLASS__": "DateTimeImmutable",
+            "0": "2025-03-25T20:18:34+00:00"
+        },
+        "getMessageId": "COBADEFF250326012345678",
+        "getMessageRecipient": null,
+        "getOriginalBusinessQuery": null,
+        "getPagination": null
+    },
+    "getRecords": [
+        "__RECURSIVITY__"
+    ]
+}
