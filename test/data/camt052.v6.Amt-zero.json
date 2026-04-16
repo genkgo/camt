@@ -73,7 +73,12 @@
                         "getIban": "CH2801234000123456789"
                     },
                     "getIdentification": "CH2801234000123456789",
-                    "getName": null
+                    "getName": null,
+                    "getServicer": {
+                        "__CLASS__": "Genkgo\\Camt\\DTO\\FinancialInstitution",
+                        "getBic": "UBSWCHZH80A",
+                        "getName": "UBS SWITZERLAND AG"
+                    }
                 },
                 "getAdditionalInformation": "Additional Information",
                 "getBalances": [
@@ -233,7 +238,8 @@
                                 "getIban": "CH2801234000123456789"
                             },
                             "getIdentification": "CH2801234000123456789",
-                            "getName": null
+                            "getName": null,
+                            "getServicer": null
                         },
                         "getRelatedPartyType": {
                             "__CLASS__": "Genkgo\\Camt\\DTO\\Creditor",
@@ -251,7 +257,8 @@
                                 "getIban": "CH2401234004141414141"
                             },
                             "getIdentification": "CH2401234004141414141",
-                            "getName": null
+                            "getName": null,
+                            "getServicer": null
                         },
                         "getRelatedPartyType": {
                             "__CLASS__": "Genkgo\\Camt\\DTO\\Debtor",

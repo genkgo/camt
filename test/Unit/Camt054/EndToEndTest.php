@@ -120,6 +120,12 @@ class EndToEndTest extends Framework\TestCase
         self::assertInstanceOf(DTO\Pagination::class, $notificationV4->getPagination());
         self::assertEquals('2', $notificationV4->getPagination()->getPageNumber());
         self::assertTrue($notificationV4->getPagination()->isLastPage());
+
+        $notificationV8 = $this->getV8Message()->getRecords()[0];
+        $servicer = $notificationV8->getAccount()->getServicer();
+        self::assertInstanceOf(DTO\FinancialInstitution::class, $servicer);
+        self::assertSame('UBSWCHZH80A', $servicer->getBic());
+        self::assertSame('UBS SWITZERLAND AG', $servicer->getName());
     }
 
     public function testEntries(): void

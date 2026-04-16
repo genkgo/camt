@@ -39,7 +39,8 @@
                 "getAccount": {
                     "__CLASS__": "Genkgo\\Camt\\DTO\\ProprietaryAccount",
                     "getId": "CH2801234000123456789",
-                    "getIdentification": "CH2801234000123456789"
+                    "getIdentification": "CH2801234000123456789",
+                    "getServicer": null
                 },
                 "getAdditionalInformation": "Additional Information",
                 "getBalances": [],

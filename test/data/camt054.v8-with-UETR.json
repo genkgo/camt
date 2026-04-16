@@ -32,7 +32,8 @@
                         "getIban": "CH2801234000123456789"
                     },
                     "getIdentification": "CH2801234000123456789",
-                    "getName": null
+                    "getName": null,
+                    "getServicer": null
                 },
                 "getAdditionalInformation": null,
                 "getCopyDuplicateIndicator": null,

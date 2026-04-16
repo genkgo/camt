@@ -39,7 +39,8 @@
                         "getIban": "CH2801234000123456789"
                     },
                     "getIdentification": "CH2801234000123456789",
-                    "getName": "Account Owner Name"
+                    "getName": "Account Owner Name",
+                    "getServicer": null
                 },
                 "getAdditionalInformation": null,
                 "getBalances": [
@@ -104,7 +105,8 @@
                                 "getIban": "CH2801234000123456789"
                             },
                             "getIdentification": "CH2801234000123456789",
-                            "getName": "Creditor Account Name"
+                            "getName": "Creditor Account Name",
+                            "getServicer": null
                         },
                         "getRelatedPartyType": {
                             "__CLASS__": "Genkgo\\Camt\\DTO\\Creditor",

@@ -40,7 +40,12 @@
                         "getIban": "DE91100000000123456789"
                     },
                     "getIdentification": "DE91100000000123456789",
-                    "getName": null
+                    "getName": null,
+                    "getServicer": {
+                        "__CLASS__": "Genkgo\\Camt\\DTO\\FinancialInstitution",
+                        "getBic": "COBADEFF",
+                        "getName": null
+                    }
                 },
                 "getAdditionalInformation": null,
                 "getCopyDuplicateIndicator": null,
@@ -114,7 +119,8 @@
                                 "getIban": "DE02200505501015871393"
                             },
                             "getIdentification": "DE02200505501015871393",
-                            "getName": null
+                            "getName": null,
+                            "getServicer": null
                         },
                         "getRelatedPartyType": {
                             "__CLASS__": "Genkgo\\Camt\\DTO\\Debtor",

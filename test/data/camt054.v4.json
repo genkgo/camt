@@ -47,7 +47,12 @@
                         "getIban": "CH2801234000123456789"
                     },
                     "getIdentification": "CH2801234000123456789",
-                    "getName": null
+                    "getName": null,
+                    "getServicer": {
+                        "__CLASS__": "Genkgo\\Camt\\DTO\\FinancialInstitution",
+                        "getBic": "UBSWCHZH80A",
+                        "getName": "UBS SWITZERLAND AG"
+                    }
                 },
                 "getAdditionalInformation": "Additional Information",
                 "getCopyDuplicateIndicator": "CODU",
@@ -163,7 +168,8 @@
                                 "getIban": "CH4112345003131313131"
                             },
                             "getIdentification": "CH4112345003131313131",
-                            "getName": null
+                            "getName": null,
+                            "getServicer": null
                         },
                         "getRelatedPartyType": {
                             "__CLASS__": "Genkgo\\Camt\\DTO\\Creditor",
@@ -192,7 +198,8 @@
                                 "getIban": "CH2801234000123456789"
                             },
                             "getIdentification": "CH2801234000123456789",
-                            "getName": null
+                            "getName": null,
+                            "getServicer": null
                         },
                         "getRelatedPartyType": {
                             "__CLASS__": "Genkgo\\Camt\\DTO\\Debtor",
@@ -318,7 +325,8 @@
                                     "getIban": "CH7212345003232323232"
                                 },
                                 "getIdentification": "CH7212345003232323232",
-                                "getName": null
+                                "getName": null,
+                                "getServicer": null
                             },
                             "getRelatedPartyType": {
                                 "__CLASS__": "Genkgo\\Camt\\DTO\\Creditor",
@@ -347,7 +355,8 @@
                                     "getIban": "CH2801234000123456789"
                                 },
                                 "getIdentification": "CH2801234000123456789",
-                                "getName": null
+                                "getName": null,
+                                "getServicer": null
                             },
                             "getRelatedPartyType": {
                                 "__CLASS__": "Genkgo\\Camt\\DTO\\Debtor",
@@ -466,7 +475,8 @@
                                     "getIban": "CH7212345003232323232"
                                 },
                                 "getIdentification": "CH7212345003232323232",
-                                "getName": null
+                                "getName": null,
+                                "getServicer": null
                             },
                             "getRelatedPartyType": {
                                 "__CLASS__": "Genkgo\\Camt\\DTO\\Creditor",
@@ -495,7 +505,8 @@
                                     "getIban": "CH2801234000123456789"
                                 },
                                 "getIdentification": "CH2801234000123456789",
-                                "getName": null
+                                "getName": null,
+                                "getServicer": null
                             },
                             "getRelatedPartyType": {
                                 "__CLASS__": "Genkgo\\Camt\\DTO\\Debtor",

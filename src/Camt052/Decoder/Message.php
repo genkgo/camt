@@ -20,10 +20,12 @@ abstract class Message extends BaseMessageDecoder
 
         $xmlReports = $this->getRootElement($document)->Rpt;
         foreach ($xmlReports as $xmlReport) {
+            $account = $this->getAccount($xmlReport);
+            $account->setServicer($this->getAccountServicer($xmlReport->Acct));
             $report = new Camt052DTO\Report(
                 (string) $xmlReport->Id,
                 $this->dateDecoder->decode((string) $xmlReport->CreDtTm),
-                $this->getAccount($xmlReport)
+                $account
             );
 
             if (isset($xmlReport->RptPgntn)) {

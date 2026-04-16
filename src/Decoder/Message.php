@@ -71,4 +71,26 @@ abstract class Message
     abstract public function addRecords(DTO\Message $message, SimpleXMLElement $document): void;
 
     abstract public function getRootElement(SimpleXMLElement $document): SimpleXMLElement;
+
+    protected function getAccountServicer(SimpleXMLElement $xmlAccount): ?DTO\FinancialInstitution
+    {
+        if (!isset($xmlAccount->Svcr->FinInstnId)) {
+            return null;
+        }
+
+        $finInstnId = $xmlAccount->Svcr->FinInstnId;
+        $bic = null;
+        if (isset($finInstnId->BICFI)) {
+            $bic = (string) $finInstnId->BICFI;
+        } elseif (isset($finInstnId->BIC)) {
+            $bic = (string) $finInstnId->BIC;
+        }
+        $name = isset($finInstnId->Nm) ? (string) $finInstnId->Nm : null;
+
+        if ($bic === null && $name === null) {
+            return null;
+        }
+
+        return new DTO\FinancialInstitution($bic, $name);
+    }
 }

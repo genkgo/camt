@@ -44,7 +44,12 @@
                     "__CLASS__": "Genkgo\\Camt\\DTO\\OtherAccount",
                     "getIdentification": "CH2801234000123456789",
                     "getIssuer": null,
-                    "getSchemeName": null
+                    "getSchemeName": null,
+                    "getServicer": {
+                        "__CLASS__": "Genkgo\\Camt\\DTO\\FinancialInstitution",
+                        "getBic": null,
+                        "getName": "AAAA BANKEN"
+                    }
                 },
                 "getAdditionalInformation": "Additional Information",
                 "getBalances": [],
@@ -119,7 +124,8 @@
                                 "getIban": "NL56AGDH9619008421"
                             },
                             "getIdentification": "NL56AGDH9619008421",
-                            "getName": null
+                            "getName": null,
+                            "getServicer": null
                         },
                         "getRelatedPartyType": {
                             "__CLASS__": "Genkgo\\Camt\\DTO\\Creditor",
@@ -164,7 +170,8 @@
                                 "getIban": "NL56AGDH9619008421"
                             },
                             "getIdentification": "NL56AGDH9619008421",
-                            "getName": null
+                            "getName": null,
+                            "getServicer": null
                         },
                         "getRelatedPartyType": {
                             "__CLASS__": "Genkgo\\Camt\\DTO\\Debtor",

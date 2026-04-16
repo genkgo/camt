@@ -18,10 +18,12 @@ class Message extends BaseMessageDecoder
 
         $xmlStatements = $this->getRootElement($document)->Stmt;
         foreach ($xmlStatements as $xmlStatement) {
+            $account = $this->getAccount($xmlStatement);
+            $account->setServicer($this->getAccountServicer($xmlStatement->Acct));
             $statement = new Camt053DTO\Statement(
                 (string) $xmlStatement->Id,
                 $this->dateDecoder->decode((string) $xmlStatement->CreDtTm),
-                $this->getAccount($xmlStatement)
+                $account
             );
 
             if (isset($xmlStatement->StmtPgntn)) {

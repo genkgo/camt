@@ -39,7 +39,8 @@
                         "getIban": "NL26VAYB8060476890"
                     },
                     "getIdentification": "NL26VAYB8060476890",
-                    "getName": null
+                    "getName": null,
+                    "getServicer": null
                 },
                 "getAdditionalInformation": "Additional Information",
                 "getBalances": [
@@ -141,7 +142,8 @@
                                 "getIban": "NL56AGDH9619008421"
                             },
                             "getIdentification": "NL56AGDH9619008421",
-                            "getName": null
+                            "getName": null,
+                            "getServicer": null
                         },
                         "getRelatedPartyType": {
                             "__CLASS__": "Genkgo\\Camt\\DTO\\Creditor",
