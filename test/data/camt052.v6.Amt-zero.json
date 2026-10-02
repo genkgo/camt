@@ -270,6 +270,16 @@
                             "getIdentification": null,
                             "getName": "Example Creditor 6 - V1"
                         }
+                    },
+                    {
+                        "__CLASS__": "Genkgo\\Camt\\DTO\\RelatedParty",
+                        "getAccount": null,
+                        "getRelatedPartyType": {
+                            "__CLASS__": "Genkgo\\Camt\\DTO\\InitiatingParty",
+                            "getAddress": null,
+                            "getIdentification": null,
+                            "getName": "UNIFITS"
+                        }
                     }
                 ],
                 "getRelatedParty": "__RECURSIVITY__",

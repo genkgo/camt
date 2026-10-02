@@ -102,6 +102,12 @@ abstract class EntryTransactionDetail
 
                 $this->addRelatedParty($detail, $xmlRelatedPartyType, DTO\UltimateDebtor::class);
             }
+
+            if (isset($xmlRelatedParty->InitgPty)) {
+                $xmlRelatedPartyType = $xmlRelatedParty->InitgPty;
+
+                $this->addRelatedParty($detail, $xmlRelatedPartyType, DTO\InitiatingParty::class);
+            }
         }
     }
 

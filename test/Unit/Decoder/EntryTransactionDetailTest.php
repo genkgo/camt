@@ -152,6 +152,18 @@ class EntryTransactionDetailTest extends Framework\TestCase
         (new Camt053\Decoder\EntryTransactionDetail(new Date()))->addRelatedParties($detail, $this->getXmlDetail());
     }
 
+    public function testItAddsInitiatingPartyIfIsPresentInXml(): void
+    {
+        $detail = new DTO\EntryTransactionDetail();
+        $xmlDetail = new SimpleXMLElement('<content><RltdPties><InitgPty><Pty><Nm>Jane Doe</Nm></Pty></InitgPty></RltdPties></content>');
+
+        (new Camt053\Decoder\EntryTransactionDetail(new Date()))->addRelatedParties($detail, $xmlDetail);
+
+        $relatedPartyType = $detail->getRelatedParty()?->getRelatedPartyType();
+        self::assertInstanceOf(DTO\InitiatingParty::class, $relatedPartyType);
+        self::assertSame('Jane Doe', $relatedPartyType->getName());
+    }
+
     public function testItDoesNotAddRelatedDatesIfThereIsNoneInXml(): void
     {
         $detail = $this->createMock(DTO\EntryTransactionDetail::class);
