@@ -200,6 +200,16 @@
                             "getIdentification": null,
                             "getName": "UNIFITS GmbH"
                         }
+                    },
+                    {
+                        "__CLASS__": "Genkgo\\Camt\\DTO\\RelatedParty",
+                        "getAccount": null,
+                        "getRelatedPartyType": {
+                            "__CLASS__": "Genkgo\\Camt\\DTO\\InitiatingParty",
+                            "getAddress": null,
+                            "getIdentification": null,
+                            "getName": "UNIFITS"
+                        }
                     }
                 ],
                 "getRelatedParty": "__RECURSIVITY__",
@@ -355,6 +365,16 @@
                                 "getIdentification": null,
                                 "getName": "UNIFITS GmbH"
                             }
+                        },
+                        {
+                            "__CLASS__": "Genkgo\\Camt\\DTO\\RelatedParty",
+                            "getAccount": null,
+                            "getRelatedPartyType": {
+                                "__CLASS__": "Genkgo\\Camt\\DTO\\InitiatingParty",
+                                "getAddress": null,
+                                "getIdentification": null,
+                                "getName": "UNIFITS"
+                            }
                         }
                     ],
                     "getRelatedParty": "__RECURSIVITY__",
@@ -502,6 +522,16 @@
                                 "getAddress": null,
                                 "getIdentification": null,
                                 "getName": "UNIFITS GmbH"
+                            }
+                        },
+                        {
+                            "__CLASS__": "Genkgo\\Camt\\DTO\\RelatedParty",
+                            "getAccount": null,
+                            "getRelatedPartyType": {
+                                "__CLASS__": "Genkgo\\Camt\\DTO\\InitiatingParty",
+                                "getAddress": null,
+                                "getIdentification": null,
+                                "getName": "UNIFITS"
                             }
                         }
                     ],
